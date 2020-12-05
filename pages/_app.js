@@ -1,6 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { ApolloProvider } from '@apollo/client'
+import '../assets/bootstrap.min.css'
 
 import store from '../store'
 import client from '../utils/graphql-api/client'
