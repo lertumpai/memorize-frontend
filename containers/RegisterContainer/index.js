@@ -7,7 +7,7 @@ const Register = () => {
   return (
     <Container fluid className='border'>
       <Row className='justify-content-center'>
-        <Col lg={3}>
+        <Col className='' lg={3}>
           <RegisterForm/>
         </Col>
       </Row>
