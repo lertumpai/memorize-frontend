@@ -6,14 +6,14 @@ const jsonHeader = {
   'Access-Control-Allow-Origin': '*',
 }
 
-async function request(path, {method, headers, body}) {
+async function request(path, { method, headers, body }) {
   const url = `${config.base_url}/${path}`
 
   const response = await fetch(url,
     {
-    method,
-    headers,
-    body: JSON.stringify(body)
+      method,
+      headers,
+      body: JSON.stringify(body),
     })
 
   return response.json()
@@ -24,7 +24,7 @@ function headers() {
   return token
     ? {
       ...jsonHeader,
-      Authorization: token
+      Authorization: token,
     }
     : jsonHeader
 }
@@ -33,8 +33,8 @@ export const get = () => {
 
 }
 
-export const post = async (path, {body}) => {
-  const response = await request(path, {method: 'POST', headers: headers(), body})
+export const post = async (path, { body }) => {
+  const response = await request(path, { method: 'POST', headers: headers(), body })
 
   if (response.error) {
     throw Error(response.error)

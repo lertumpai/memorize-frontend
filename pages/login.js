@@ -1,17 +1,17 @@
 import { useDispatch } from 'react-redux'
 import React from 'react'
 
-import {useInputChange} from '../stores/controller/input'
-import {login} from '../stores/slices/authSlice/handler'
+import { useInputChange } from '../stores/controller/input'
+import { login } from '../stores/slices/authSlice/handler'
 
 const Login = () => {
   const dispatch = useDispatch()
-  const [input, handleInputChange] = useInputChange({username: '', password: ''})
+  const [input, handleInputChange] = useInputChange({ username: '', password: '' })
 
   async function onSubmit(e) {
     e.preventDefault()
-    const {username, password } = input
-    dispatch(login({username, password}))
+    const { username, password } = input
+    dispatch(login({ username, password }))
   }
 
   return (

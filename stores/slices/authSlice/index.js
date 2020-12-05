@@ -1,13 +1,13 @@
-import {createSlice} from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import Router from 'next/router'
 
-import {register, login} from './handler'
+import { register, login } from './handler'
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
     error: null,
-    isAuthenticated: false
+    isAuthenticated: false,
   },
   reducers: {
 
@@ -28,9 +28,9 @@ const authSlice = createSlice({
     [login.rejected]: (state, action) => {
       state.error = action.error.message
     },
-  }
+  },
 })
 
-export const selectAuth = (state) => state.auth
+export const selectAuth = state => state.auth
 
 export default authSlice.reducer

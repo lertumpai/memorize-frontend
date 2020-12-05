@@ -1,17 +1,17 @@
 import { useDispatch } from 'react-redux'
 import React from 'react'
 
-import {useInputChange} from '../stores/controller/input'
-import {register} from '../stores/slices/authSlice/handler'
+import { useInputChange } from '../stores/controller/input'
+import { register } from '../stores/slices/authSlice/handler'
 
 const Register = () => {
   const dispatch = useDispatch()
-  const [input, handleInputChange] = useInputChange({username: '', password: ''})
+  const [input, handleInputChange] = useInputChange({ username: '', password: '' })
 
   function onSubmit(e) {
     e.preventDefault()
-    const {username, password} = input
-    dispatch(register({username, password}))
+    const { username, password } = input
+    dispatch(register({ username, password }))
   }
 
   return (
