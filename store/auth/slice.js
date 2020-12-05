@@ -5,6 +5,7 @@ import { register } from './asyncThunk'
 
 const initialState = {
   status: STATUS_IDLE,
+  error: null,
   token: null,
   user: null,
 }
