@@ -18,7 +18,6 @@ const authSlices = createSlice({
     },
     [register.fulfilled]: (state, action) => {
       state.status = STATUS_SUCCESS
-      console.log(action)
     },
     [register.rejected]: state => {
       state.status = STATUS_ERROR
