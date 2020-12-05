@@ -1,4 +1,3 @@
-import getConfig from 'next/config'
 import React from 'react'
 
 const IndexPage = () => {
