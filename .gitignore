@@ -1,8 +1,0 @@
-node_modules
-
-environment
-
-.env*.local
-.env.development
-
-.next
