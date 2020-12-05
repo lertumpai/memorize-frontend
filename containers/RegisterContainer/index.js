@@ -5,13 +5,15 @@ import RegisterForm from '../../components/RegisterForm'
 
 const Register = () => {
   return (
-    <Container fluid className='border'>
-      <Row className='justify-content-center'>
-        <Col className='' lg={3}>
-          <RegisterForm/>
-        </Col>
-      </Row>
-    </Container>
+    <div>
+      <Container fluid className='border'>
+        <Row className='justify-content-center'>
+          <Col className='' lg={3}>
+            <RegisterForm/>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   )
 }
 
