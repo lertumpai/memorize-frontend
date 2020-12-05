@@ -4,3 +4,5 @@ environment
 
 .env*.local
 .env.development
+
+.next
