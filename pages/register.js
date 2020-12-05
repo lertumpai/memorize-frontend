@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux'
 import React from 'react'
 
-import {useInputChange} from '../lib/controller/input'
-import {register} from '../lib/slices/authSlice/handler'
+import {useInputChange} from '../stores/controller/input'
+import {register} from '../stores/slices/authSlice/handler'
 
 const Register = () => {
   const dispatch = useDispatch()

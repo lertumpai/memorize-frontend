@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux'
 import React from 'react'
 
-import {useInputChange} from '../lib/controller/input'
-import {login} from '../lib/slices/authSlice/handler'
+import {useInputChange} from '../stores/controller/input'
+import {login} from '../stores/slices/authSlice/handler'
 
 const Login = () => {
   const dispatch = useDispatch()
@@ -10,7 +10,7 @@ const Login = () => {
 
   async function onSubmit(e) {
     e.preventDefault()
-    const {username, password} = input
+    const {username, password } = input
     dispatch(login({username, password}))
   }
 

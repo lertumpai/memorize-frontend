@@ -1,6 +1,7 @@
+import React from 'react'
 import { Provider } from 'react-redux'
 
-import store from '../lib/slices/store'
+import store from '../stores/slices/store'
 
 const MyApp = ({ Component, pageProps }) => {
   return (
