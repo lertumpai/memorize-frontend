@@ -1,18 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { useMutation } from '@apollo/client'
 
-import { error } from '../../utils/graphql-api/error'
-
+import { mutation } from '../../utils/graphql-api/client'
 import { REGISTER } from './gql'
 
 export const register = createAsyncThunk(
   'auth/register',
-  async ({ username, password }) => {
-    const [user] = useMutation(REGISTER)
+  async ({ username, password }, { rejectWithValue }) => {
     try {
-      const registered = await user({ variables: { username, password } })
+      const response = await mutation(REGISTER, { username, password })
+      return response
     } catch (e) {
-      error(e.graphQLErrors)
+      return rejectWithValue(e)
     }
   },
 )

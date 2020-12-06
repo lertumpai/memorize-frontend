@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
+import { useDispatch } from 'react-redux'
+import { register } from '../../store/auth/asyncThunk'
 import './style.scss'
 
 const AuthenticationForm = () => {
+  const dispatch = useDispatch()
   const [form, setForm] = useState({ username: '', password: '' })
   const [isLogin, setIsLogin] = useState(true)
 
@@ -21,19 +24,27 @@ const AuthenticationForm = () => {
     setForm({ username: '', password: '' })
   }
 
+  function onRegister() {
+    dispatch(register(form))
+  }
+
   function ButtonRegisterForm() {
     return (
       <div className='d-flex justify-content-end pt-4'>
-        <Button className='submit-button' variant='success' type='button'>Register</Button>
+        <Button className='submit-button' variant='success' type='button' onClick={onRegister}>Register</Button>
         <Button className='register-login-button ml-1' type='button' onClick={onClickRegisterToLogin}>Login</Button>
       </div>
     )
   }
 
+  function onLogin() {
+
+  }
+
   function ButtonLoginForm() {
     return (
       <div className='d-flex justify-content-end pt-4'>
-        <Button className='submit-button' variant='success' type='button'>Login</Button>
+        <Button className='submit-button' variant='success' type='button' onClick={onLogin}>Login</Button>
         <Button className='login-register-button ml-1' type='button' onClick={onClickLoginToRegister}>Register</Button>
       </div>
     )

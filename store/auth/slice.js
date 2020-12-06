@@ -6,7 +6,6 @@ import { register } from './asyncThunk'
 const initialState = {
   status: STATUS_IDLE,
   error: null,
-  token: null,
   user: null,
 }
 
@@ -18,9 +17,13 @@ const authSlices = createSlice({
       state.status = STATUS_LOADING
     },
     [register.fulfilled]: (state, action) => {
+      state.error = null
+      state.user = action.payload
       state.status = STATUS_SUCCESS
     },
-    [register.rejected]: state => {
+    [register.rejected]: (state, action) => {
+      state.error = action.payload
+      state.user = null
       state.status = STATUS_ERROR
     },
   },
