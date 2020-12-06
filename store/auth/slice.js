@@ -18,6 +18,9 @@ const authSlices = createSlice({
       state.user = null
       state.status = STATUS_IDLE
     },
+    idleStateAuth: state => {
+      state.status = STATUS_IDLE
+    },
   },
   extraReducers: {
     [register.pending]: state => {
@@ -49,6 +52,6 @@ const authSlices = createSlice({
   },
 })
 
-export const { resetStateAuth } = authSlices.actions
+export const { resetStateAuth, idleStateAuth } = authSlices.actions
 
 export default authSlices.reducer

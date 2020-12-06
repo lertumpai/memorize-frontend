@@ -1,18 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
 import _ from 'lodash'
 
-import { useDispatch, useSelector } from 'react-redux'
-
-import { resetStateAuth } from '../../store/auth/slice'
+import { STATUS_SUCCESS } from '../../store/status'
+import { resetStateAuth, idleStateAuth } from '../../store/auth/slice'
 import { register, login } from '../../store/auth/asyncThunk'
 import './style.scss'
 
 const AuthenticationForm = () => {
   const dispatch = useDispatch()
+  const router = useRouter()
+
   const auth = useSelector(state => state.auth)
+  const { error, user, status } = auth
+
   const [form, setForm] = useState({ username: '', password: '' })
   const [isLogin, setIsLogin] = useState(true)
+
+  useEffect(() => {
+    if (status === STATUS_SUCCESS && user) {
+      router.push('/articles')
+      dispatch(idleStateAuth())
+    }
+  })
 
   function onChange(e) {
     setForm({ ...form, [e.target.id]: e.target.value })
@@ -66,7 +78,7 @@ const AuthenticationForm = () => {
   }
 
   function UsernameForm() {
-    const message = _.get(auth, 'error.username')
+    const message = _.get(error, 'username')
     const errorControlStyle = message ? 'form-control-error' : ''
     return (
       <Form.Group className='pt-4' controlId='username'>
@@ -78,7 +90,7 @@ const AuthenticationForm = () => {
   }
 
   function PasswordForm() {
-    const message = _.get(auth, 'error.password')
+    const message = _.get(error, 'password')
     const errorControlStyle = message ? 'form-control-error' : ''
     return (
       <Form.Group className='pt-4' controlId='password'>
