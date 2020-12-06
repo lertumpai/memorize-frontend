@@ -40,7 +40,7 @@ const PrivateRoute = ({ children }) => {
     }
   })
 
-  return currentUser || router.pathname === '/' ? children : undefined
+  return currentUser || router.pathname === '/' ? 'children' : 'loading'
 }
 
 export default PrivateRoute

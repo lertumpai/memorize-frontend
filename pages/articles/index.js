@@ -1,10 +1,12 @@
 import React from 'react'
 
+import ApplicationLayout from '../../containers/ApplicationLayout/ApplicationLayout'
+
 const ArticlePage = () => {
   return (
-    <div>
+    <ApplicationLayout>
       article
-    </div>
+    </ApplicationLayout>
   )
 }
 
