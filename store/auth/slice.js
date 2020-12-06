@@ -6,7 +6,7 @@ import { register, login } from './asyncThunk'
 const initialState = {
   status: STATUS_IDLE,
   error: null,
-  user: null,
+  currentUser: null,
 }
 
 const authSlices = createSlice({
@@ -21,8 +21,8 @@ const authSlices = createSlice({
     idleStateAuth: state => {
       state.status = STATUS_IDLE
     },
-    setUser: (state, action) => {
-      state.user = action.user
+    setCurrentUser: (state, user) => {
+      state.currentUser = user
     },
   },
   extraReducers: {
@@ -31,12 +31,12 @@ const authSlices = createSlice({
     },
     [register.fulfilled]: (state, action) => {
       state.error = null
-      state.user = action.payload
+      state.currentUser = action.payload
       state.status = STATUS_SUCCESS
     },
     [register.rejected]: (state, action) => {
       state.error = action.payload
-      state.user = null
+      state.currentUser = null
       state.status = STATUS_ERROR
     },
     [login.pending]: state => {
@@ -44,17 +44,17 @@ const authSlices = createSlice({
     },
     [login.fulfilled]: (state, action) => {
       state.error = null
-      state.user = action.payload
+      state.currentUser = action.payload
       state.status = STATUS_SUCCESS
     },
     [login.rejected]: (state, action) => {
       state.error = action.payload
-      state.user = null
+      state.currentUser = null
       state.status = STATUS_ERROR
     },
   },
 })
 
-export const { resetStateAuth, idleStateAuth } = authSlices.actions
+export const { resetStateAuth, idleStateAuth, setCurrentUser } = authSlices.actions
 
 export default authSlices.reducer

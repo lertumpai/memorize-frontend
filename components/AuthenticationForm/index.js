@@ -15,14 +15,14 @@ const AuthenticationForm = () => {
   const router = useRouter()
 
   const auth = useSelector(state => state.auth)
-  const { error, user, status } = auth
+  const { error, currentUser, status } = auth
 
   const [form, setForm] = useState({ username: '', password: '' })
   const [isLogin, setIsLogin] = useState(true)
 
   useEffect(() => {
-    if (status === STATUS_SUCCESS && user) {
-      const userInformation = base64.encode(JSON.stringify(user))
+    if (status === STATUS_SUCCESS && currentUser) {
+      const userInformation = base64.encode(JSON.stringify(currentUser))
       localStorage.setItem('current_user', userInformation)
       dispatch(idleStateAuth())
       router.push('/articles')

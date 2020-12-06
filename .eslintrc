@@ -27,7 +27,6 @@
     "computed-property-spacing": ["error", "never"],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "no-return-await": "error",
-    "indent": ["error", 2],
     "arrow-parens": ["error", "as-needed"],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error"
