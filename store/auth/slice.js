@@ -12,6 +12,13 @@ const initialState = {
 const authSlices = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    resetStateAuth: state => {
+      state.error = null
+      state.user = null
+      state.status = STATUS_IDLE
+    },
+  },
   extraReducers: {
     [register.pending]: state => {
       state.status = STATUS_LOADING
@@ -28,5 +35,7 @@ const authSlices = createSlice({
     },
   },
 })
+
+export const { resetStateAuth } = authSlices.actions
 
 export default authSlices.reducer

@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { resetStateAuth } from '../../store/auth/slice'
 import { register } from '../../store/auth/asyncThunk'
 import './style.scss'
 
 const AuthenticationForm = () => {
   const dispatch = useDispatch()
+  const auth = useSelector(state => state.auth)
   const [form, setForm] = useState({ username: '', password: '' })
   const [isLogin, setIsLogin] = useState(true)
 
@@ -17,11 +20,13 @@ const AuthenticationForm = () => {
   function onClickLoginToRegister() {
     setIsLogin(false)
     setForm({ username: '', password: '' })
+    dispatch(resetStateAuth())
   }
 
   function onClickRegisterToLogin() {
     setIsLogin(true)
     setForm({ username: '', password: '' })
+    dispatch(resetStateAuth())
   }
 
   function onRegister() {
@@ -60,19 +65,33 @@ const AuthenticationForm = () => {
   }
 
   function UsernameForm() {
+    let errorMessage
+    let errorStyle
+    if (auth.error && auth.error.username) {
+      errorMessage = <Form.Text className='text-error'>{auth.error.username}</Form.Text>
+      errorStyle = 'form-control-error'
+    }
     return (
       <Form.Group className='pt-4' controlId='username'>
         <Form.Label className='text-label'>Username</Form.Label>
-        <Form.Control type='text' placeholder='Username' value={form.username} onChange={onChange} />
+        <Form.Control className={errorStyle} type='text' placeholder='Username' value={form.username} onChange={onChange} />
+        {errorMessage}
       </Form.Group>
     )
   }
 
   function PasswordForm() {
+    let errorMessage
+    let errorStyle
+    if (auth.error && auth.error.password) {
+      errorMessage = <Form.Text className='text-error'>{auth.error.password}</Form.Text>
+      errorStyle = 'form-control-error'
+    }
     return (
       <Form.Group className='pt-4' controlId='password'>
         <Form.Label className='text-label'>Password</Form.Label>
-        <Form.Control type='password' placeholder='Password' value={form.password} onChange={onChange} />
+        <Form.Control className={errorStyle} type='password' placeholder='Password' value={form.password} onChange={onChange} />
+        {errorMessage}
       </Form.Group>
     )
   }
