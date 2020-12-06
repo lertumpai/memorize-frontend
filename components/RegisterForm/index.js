@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-// import './style.css'
+import './style.scss'
 
 const RegisterForm = () => {
   const [form, setForm] = useState({ username: '', password: '' })
@@ -13,7 +13,7 @@ const RegisterForm = () => {
   function FormUsername() {
     return (
       <Form.Group controlId='username'>
-        <Form.Label className='test test2'>Username</Form.Label>
+        <Form.Label>Username</Form.Label>
         <Form.Control type='text' placeholder='Username' value={form.username} onChange={onChange} />
       </Form.Group>
     )
