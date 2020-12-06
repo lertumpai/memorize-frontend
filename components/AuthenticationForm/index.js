@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 
 import './style.scss'
 
-const RegisterForm = () => {
+const AuthenticationForm = () => {
   const [form, setForm] = useState({ username: '', password: '' })
   const [isLogin, setIsLogin] = useState(true)
 
@@ -43,14 +43,20 @@ const RegisterForm = () => {
     return isLogin ? <ButtonLoginForm /> : <ButtonRegisterForm />
   }
 
+  function LabelForm() {
+    let text = isLogin ? 'Login Form' : 'Register Form'
+    return <Form.Label className='authentication-label'>{text}</Form.Label>
+  }
+
   return (
-    <Form className='border p-2'>
-      <Form.Group controlId='username'>
-        <Form.Label className='label'>Username</Form.Label>
+    <Form className='border p-3'>
+      <LabelForm />
+      <Form.Group className='pt-4' controlId='username'>
+        <Form.Label className='text-label'>Username</Form.Label>
         <Form.Control type='text' placeholder='Username' value={form.username} onChange={onChange} />
       </Form.Group>
-      <Form.Group controlId='password' className='pt-4'>
-        <Form.Label className='label'>Password</Form.Label>
+      <Form.Group className='pt-4' controlId='password'>
+        <Form.Label className='text-label'>Password</Form.Label>
         <Form.Control type='password' placeholder='Password' value={form.password} onChange={onChange} />
       </Form.Group>
       <ButtonForm />
@@ -58,4 +64,4 @@ const RegisterForm = () => {
   )
 }
 
-export default RegisterForm
+export default AuthenticationForm
