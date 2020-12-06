@@ -1,14 +1,14 @@
 import React from 'react'
 
 import './style.scss'
-import RegisterForm from '../../components/AuthenticationForm'
+import AuthenticationForm from '../../components/AuthenticationForm'
 
-const Authentication = () => {
+const AuthenticationContainer = () => {
   return (
     <div className='container-authentication'>
-      <RegisterForm/>
+      <AuthenticationForm />
     </div>
   )
 }
 
-export default Authentication
+export default AuthenticationContainer
