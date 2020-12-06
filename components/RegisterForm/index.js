@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-import './style.scss'
-
 const RegisterForm = () => {
   const [form, setForm] = useState({ username: '', password: '' })
 
@@ -29,7 +27,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <Form className='border'>
+    <Form>
       <FormUsername />
       <FormPassword />
 
