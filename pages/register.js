@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterContainer from '../containers/RegisterContainer/dynamic'
+import RegisterContainer from '../containers/RegisterContainer'
 
 const Register = () => {
   return (
