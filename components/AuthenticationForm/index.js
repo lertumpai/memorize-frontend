@@ -49,7 +49,7 @@ const AuthenticationForm = () => {
   }
 
   return (
-    <Form className='form-style p-3'>
+    <Form className='form-style p-4'>
       <LabelForm />
       <Form.Group className='pt-4' controlId='username'>
         <Form.Label className='text-label'>Username</Form.Label>

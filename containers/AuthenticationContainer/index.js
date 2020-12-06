@@ -5,7 +5,7 @@ import AuthenticationForm from '../../components/AuthenticationForm'
 
 const AuthenticationContainer = () => {
   return (
-    <div className='container-authentication'>
+    <div className='container-authentication d-flex justify-content-center align-items-center'>
       <AuthenticationForm />
     </div>
   )
