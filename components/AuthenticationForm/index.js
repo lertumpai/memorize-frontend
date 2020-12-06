@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import _ from 'lodash'
+import base64 from 'base-64'
 
 import { STATUS_SUCCESS } from '../../store/status'
 import { resetStateAuth, idleStateAuth } from '../../store/auth/slice'
@@ -21,8 +22,10 @@ const AuthenticationForm = () => {
 
   useEffect(() => {
     if (status === STATUS_SUCCESS && user) {
-      router.push('/articles')
+      const userInformation = base64.encode(JSON.stringify(user))
+      localStorage.setItem('current_user', userInformation)
       dispatch(idleStateAuth())
+      router.push('/articles')
     }
   })
 

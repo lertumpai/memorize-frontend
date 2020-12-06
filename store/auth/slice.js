@@ -21,6 +21,9 @@ const authSlices = createSlice({
     idleStateAuth: state => {
       state.status = STATUS_IDLE
     },
+    setUser: (state, action) => {
+      state.user = action.user
+    },
   },
   extraReducers: {
     [register.pending]: state => {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import AuthenticationContainer from '../containers/AuthenticationContainer'
+import AuthenticationContainer from '../../containers/AuthenticationContainer'
 
 const IndexPage = () => {
   return (
