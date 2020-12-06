@@ -19,7 +19,7 @@ export async function mutation(gql, variables) {
 }
 
 export async function query(gql, variables) {
-  const response = await client.query({ query: gql, variables, errorPolicy: 'all' })
+  const response = await client.query({ query: gql, variables, errorPolicy: 'all', fetchPolicy: 'no-cache' })
 
   if (response.errors) {
     throw response.errors[0]['message']
