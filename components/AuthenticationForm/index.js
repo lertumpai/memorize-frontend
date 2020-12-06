@@ -24,8 +24,8 @@ const AuthenticationForm = () => {
   function ButtonRegisterForm() {
     return (
       <div className='d-flex justify-content-end pt-4'>
-        <Button className='submit-button' variant='primary' type='button'>Register</Button>
-        <Button className='register-login-button ml-1' variant='danger' type='button' onClick={onClickRegisterToLogin}>Login</Button>
+        <Button className='submit-button' variant='success' type='button'>Register</Button>
+        <Button className='register-login-button ml-1' type='button' onClick={onClickRegisterToLogin}>Login</Button>
       </div>
     )
   }
@@ -33,8 +33,8 @@ const AuthenticationForm = () => {
   function ButtonLoginForm() {
     return (
       <div className='d-flex justify-content-end pt-4'>
-        <Button className='submit-button' variant='primary' type='button'>Login</Button>
-        <Button className='login-register-button ml-1' variant='danger' type='button' onClick={onClickLoginToRegister}>Register</Button>
+        <Button className='submit-button' variant='success' type='button'>Login</Button>
+        <Button className='login-register-button ml-1' type='button' onClick={onClickLoginToRegister}>Register</Button>
       </div>
     )
   }
@@ -49,7 +49,7 @@ const AuthenticationForm = () => {
   }
 
   return (
-    <Form className='border p-3'>
+    <Form className='form-style p-3'>
       <LabelForm />
       <Form.Group className='pt-4' controlId='username'>
         <Form.Label className='text-label'>Username</Form.Label>
