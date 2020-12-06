@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "env-cmd -f ./environment/.development next start",
+    "start": "next start",
     "lint": "eslint .",
     "lint-fix": "eslint --fix ."
   },
