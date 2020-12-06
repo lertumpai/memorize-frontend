@@ -18,4 +18,14 @@ export async function mutation(gql, variables) {
   return response.data
 }
 
+export async function query(gql, variables) {
+  const response = await client.query({ query: gql, variables, errorPolicy: 'all' })
+
+  if (response.errors) {
+    throw response.errors[0]['message']
+  }
+
+  return response.data
+}
+
 export default client

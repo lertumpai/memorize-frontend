@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { resetStateAuth } from '../../store/auth/slice'
-import { register } from '../../store/auth/asyncThunk'
+import { register, login } from '../../store/auth/asyncThunk'
 import './style.scss'
 
 const AuthenticationForm = () => {
@@ -43,7 +43,7 @@ const AuthenticationForm = () => {
   }
 
   function onLogin() {
-
+    dispatch(login(form))
   }
 
   function ButtonLoginForm() {

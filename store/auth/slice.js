@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import { STATUS_SUCCESS, STATUS_ERROR, STATUS_IDLE, STATUS_LOADING } from '../status'
-import { register } from './asyncThunk'
+import { register, login } from './asyncThunk'
 
 const initialState = {
   status: STATUS_IDLE,
@@ -29,6 +29,19 @@ const authSlices = createSlice({
       state.status = STATUS_SUCCESS
     },
     [register.rejected]: (state, action) => {
+      state.error = action.payload
+      state.user = null
+      state.status = STATUS_ERROR
+    },
+    [login.pending]: state => {
+      state.status = STATUS_LOADING
+    },
+    [login.fulfilled]: (state, action) => {
+      state.error = null
+      state.user = action.payload
+      state.status = STATUS_SUCCESS
+    },
+    [login.rejected]: (state, action) => {
       state.error = action.payload
       state.user = null
       state.status = STATUS_ERROR
