@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
+import _ from 'lodash'
 
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -67,7 +68,7 @@ const AuthenticationForm = () => {
   function UsernameForm() {
     let errorMessage
     let errorStyle
-    if (auth.error && auth.error.username) {
+    if (_.has(auth, 'error.username')) {
       errorMessage = <Form.Text className='text-error'>{auth.error.username}</Form.Text>
       errorStyle = 'form-control-error'
     }
@@ -83,7 +84,7 @@ const AuthenticationForm = () => {
   function PasswordForm() {
     let errorMessage
     let errorStyle
-    if (auth.error && auth.error.password) {
+    if (_.has(auth, 'error.password')) {
       errorMessage = <Form.Text className='text-error'>{auth.error.password}</Form.Text>
       errorStyle = 'form-control-error'
     }
