@@ -1,9 +1,10 @@
 import React from 'react'
+import AuthenticationContainer from '../containers/AuthenticationContainer'
 
 const IndexPage = () => {
   return (
     <div>
-      index
+      <AuthenticationContainer />
     </div>
   )
 }

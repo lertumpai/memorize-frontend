@@ -5,9 +5,20 @@ import './style.scss'
 
 const RegisterForm = () => {
   const [form, setForm] = useState({ username: '', password: '' })
+  const [isLogin, setIsLogin] = useState(true)
 
   function onChange(e) {
     setForm({ ...form, [e.target.id]: e.target.value })
+  }
+
+  function onClickLoginToRegister() {
+    setIsLogin(false)
+    setForm({ username: '', password: '' })
+  }
+
+  function onClickRegisterToLogin() {
+    setIsLogin(true)
+    setForm({ username: '', password: '' })
   }
 
   function UsernameForm() {
@@ -28,13 +39,26 @@ const RegisterForm = () => {
     )
   }
 
-  function ButtonForm() {
+  function ButtonRegisterForm() {
     return (
       <div className='d-flex justify-content-end pt-4'>
-        <Button className='register-button' variant='primary' type='button'>Register</Button>
-        <Button className='login-button ml-1' variant='danger' type='button'>Cancel</Button>
+        <Button className='submit-button' variant='primary' type='button'>Register</Button>
+        <Button className='register-login-button ml-1' variant='danger' type='button' onClick={onClickRegisterToLogin}>Login</Button>
       </div>
     )
+  }
+
+  function ButtonLoginForm() {
+    return (
+      <div className='d-flex justify-content-end pt-4'>
+        <Button className='submit-button' variant='primary' type='button'>Login</Button>
+        <Button className='login-register-button ml-1' variant='danger' type='button' onClick={onClickLoginToRegister}>Register</Button>
+      </div>
+    )
+  }
+
+  function ButtonForm() {
+    return isLogin ? <ButtonLoginForm /> : <ButtonRegisterForm />
   }
 
   return (
