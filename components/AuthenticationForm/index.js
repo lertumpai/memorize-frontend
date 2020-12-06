@@ -48,17 +48,29 @@ const AuthenticationForm = () => {
     return <Form.Label className='authentication-label'>{text}</Form.Label>
   }
 
-  return (
-    <Form className='form-style p-4'>
-      <LabelForm />
+  function UsernameForm() {
+    return (
       <Form.Group className='pt-4' controlId='username'>
         <Form.Label className='text-label'>Username</Form.Label>
         <Form.Control type='text' placeholder='Username' value={form.username} onChange={onChange} />
       </Form.Group>
+    )
+  }
+
+  function PasswordForm() {
+    return (
       <Form.Group className='pt-4' controlId='password'>
         <Form.Label className='text-label'>Password</Form.Label>
         <Form.Control type='password' placeholder='Password' value={form.password} onChange={onChange} />
       </Form.Group>
+    )
+  }
+
+  return (
+    <Form className='form-style p-4'>
+      <LabelForm />
+      {UsernameForm()}
+      {PasswordForm()}
       <ButtonForm />
     </Form>
   )
