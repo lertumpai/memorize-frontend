@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 
-import RegisterForm from '../../components/RegisterForm'
+import RegisterForm from '../../components/RegisterForm/dynamic'
 
 const Register = () => {
   return (
