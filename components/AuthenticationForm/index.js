@@ -66,33 +66,25 @@ const AuthenticationForm = () => {
   }
 
   function UsernameForm() {
-    let errorMessage
-    let errorStyle
-    if (_.has(auth, 'error.username')) {
-      errorMessage = <Form.Text className='text-error'>{auth.error.username}</Form.Text>
-      errorStyle = 'form-control-error'
-    }
+    const message = _.get(auth, 'error.username')
+    const errorControlStyle = message ? 'form-control-error' : ''
     return (
       <Form.Group className='pt-4' controlId='username'>
         <Form.Label className='text-label'>Username</Form.Label>
-        <Form.Control className={errorStyle} type='text' placeholder='Username' value={form.username} onChange={onChange} />
-        {errorMessage}
+        <Form.Control className={errorControlStyle} type='text' placeholder='Username' value={form.username} onChange={onChange} />
+        <Form.Text className='text-error'>{message}</Form.Text>
       </Form.Group>
     )
   }
 
   function PasswordForm() {
-    let errorMessage
-    let errorStyle
-    if (_.has(auth, 'error.password')) {
-      errorMessage = <Form.Text className='text-error'>{auth.error.password}</Form.Text>
-      errorStyle = 'form-control-error'
-    }
+    const message = _.get(auth, 'error.password')
+    const errorControlStyle = message ? 'form-control-error' : ''
     return (
       <Form.Group className='pt-4' controlId='password'>
         <Form.Label className='text-label'>Password</Form.Label>
-        <Form.Control className={errorStyle} type='password' placeholder='Password' value={form.password} onChange={onChange} />
-        {errorMessage}
+        <Form.Control className={errorControlStyle} type='password' placeholder='Password' value={form.password} onChange={onChange} />
+        <Form.Text className='text-error'>{message}</Form.Text>
       </Form.Group>
     )
   }
