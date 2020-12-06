@@ -46,11 +46,11 @@ const RegisterForm = () => {
   return (
     <Form className='border p-2'>
       <Form.Group controlId='username'>
-        <Form.Label>Username</Form.Label>
+        <Form.Label className='label'>Username</Form.Label>
         <Form.Control type='text' placeholder='Username' value={form.username} onChange={onChange} />
       </Form.Group>
       <Form.Group controlId='password' className='pt-4'>
-        <Form.Label>Password</Form.Label>
+        <Form.Label className='label'>Password</Form.Label>
         <Form.Control type='password' placeholder='Password' value={form.password} onChange={onChange} />
       </Form.Group>
       <ButtonForm />
