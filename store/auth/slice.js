@@ -15,7 +15,7 @@ const authSlices = createSlice({
   reducers: {
     resetStateAuth: state => {
       state.error = null
-      state.user = null
+      state.currentUser = null
       state.status = STATUS_IDLE
     },
     idleStateAuth: state => {

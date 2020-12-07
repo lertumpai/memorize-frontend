@@ -1,9 +1,12 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import base64 from 'base-64'
 import getConfig from 'next/config'
+import FadeIn from 'react-fade-in'
+import Lottie from 'react-lottie'
 
+import * as loading from '../../public/loading/loading.json'
 import { setCurrentUser } from '../../store/auth/slice'
 
 const { publicRuntimeConfig } = getConfig()
@@ -43,7 +46,21 @@ const PrivateRoute = ({ children }) => {
     }
   })
 
-  return currentUser || router.pathname === '/' ? children : ''
+  function Loading() {
+    const options = {
+      loop: true,
+      autoplay: true,
+      animationData: loading.default,
+    }
+
+    return (
+      <FadeIn>
+        <Lottie options={options} height={300} width={300} />
+      </FadeIn>
+    )
+  }
+
+  return currentUser || router.pathname === '/' ? children : <Loading />
 }
 
 export default PrivateRoute
