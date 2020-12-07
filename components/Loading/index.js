@@ -1,5 +1,4 @@
 import React from 'react'
-import FadeIn from 'react-fade-in'
 import Lottie from 'react-lottie'
 
 import * as loading from '../../public/loading/loading.json'
@@ -11,11 +10,7 @@ const options = {
 }
 
 const Loading = ({ height, width }) => {
-  return (
-    <FadeIn>
-      <Lottie options={options} height={height} width={width} />
-    </FadeIn>
-  )
+  return <Lottie options={options} height={height} width={width} />
 }
 
 export default Loading
