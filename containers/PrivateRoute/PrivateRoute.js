@@ -8,7 +8,6 @@ import { setCurrentUser } from '../../store/auth/slice'
 const PrivateRoute = ({ children }) => {
   const dispatch = useDispatch()
   const router = useRouter()
-
   const auth = useSelector(state => state.auth)
   const { currentUser } = auth
 
@@ -28,7 +27,7 @@ const PrivateRoute = ({ children }) => {
 
       // eslint-disable-next-line no-fallthrough
       default: {
-        if (!userLocalStorage || !currentUser) {
+        if (!userLocalStorage) {
           return router.push('/')
         }
 
@@ -40,7 +39,7 @@ const PrivateRoute = ({ children }) => {
     }
   })
 
-  return currentUser || router.pathname === '/' ? 'children' : 'loading'
+  return currentUser || router.pathname === '/' ? children : ''
 }
 
 export default PrivateRoute
