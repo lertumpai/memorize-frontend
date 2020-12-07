@@ -1,5 +1,10 @@
+import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { useRouter } from 'next/router'
+
+import { FiHome } from 'react-icons/fi'
+import { CgProfile } from 'react-icons/cg'
+import { IoIosLogOut } from 'react-icons/io'
 
 import './style.scss'
 
@@ -7,25 +12,38 @@ const NavBar = () => {
   const router = useRouter()
 
   function Home() {
-    const className = router.pathname === '/articles' ? 'active-memorize px-4' : 'px-4'
+    let className = 'nav-memorize'
+    className = router.pathname === '/articles' ? className + ' active-memorize' : className
     return (
       <Nav.Link href='/articles'>
-        <div className={className}>Home</div>
+        <div className={className}>
+          <FiHome className='icon-memorize'/>
+        </div>
       </Nav.Link>
     )
   }
 
   function Profile() {
-    const className = router.pathname === '/profile' ? 'active-memorize px-4' : 'px-4'
+    let className = 'nav-memorize'
+    className = router.pathname === '/profile' ? className + ' active-memorize' : className
     return (
       <Nav.Link href='/profile'>
-        <div className={className}>Profile</div>
+        <div className={className}>
+          <CgProfile className='icon-memorize' />
+        </div>
       </Nav.Link>
     )
   }
 
   function Logout() {
-    return <Nav.Link className='px-4' href='/'>Logout</Nav.Link>
+    let className = 'nav-memorize'
+    return (
+      <Nav.Link href='/'>
+        <div className={className}>
+          <IoIosLogOut className='icon-memorize' />
+        </div>
+      </Nav.Link>
+    )
   }
 
   return (

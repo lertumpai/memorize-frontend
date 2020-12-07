@@ -1,7 +1,19 @@
 .navbar-memorize {
-  background: #fcc2c2;
+  background: #f8deeb;
+  height: 58px;
+}
+
+.nav-memorize {
+  padding: 10px 30px;
+  font-size: 18px;
 }
 
 .active-memorize {
-  color: #6196d6;
+  color: #348eff;
+  border-bottom: 2px solid #348eff;
+  padding-bottom: 10px;
+}
+
+.icon-memorize {
+  font-size: 30px;
 }
