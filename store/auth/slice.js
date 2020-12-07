@@ -21,8 +21,8 @@ const authSlices = createSlice({
     idleStateAuth: state => {
       state.status = STATUS_IDLE
     },
-    setCurrentUser: (state, user) => {
-      state.currentUser = user
+    setCurrentUser: (state, { payload }) => {
+      state.currentUser = payload
     },
   },
   extraReducers: {
