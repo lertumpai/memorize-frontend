@@ -2,7 +2,7 @@ import { Navbar, Nav } from 'react-bootstrap'
 
 const NavBar = () => {
   return (
-    <Navbar className='d-flex justify-content-end' collapseOnSelect expand='lg' bg='dark' variant='dark'>
+    <Navbar className='navbar-memorize d-flex justify-content-end' collapseOnSelect expand='lg'>
       <Navbar.Toggle className='mr-3' aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <div className='d-flex justify-content-center m-lg-auto'>
