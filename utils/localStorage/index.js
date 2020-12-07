@@ -13,3 +13,7 @@ export function loadUser() {
   const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
   return storage ? JSON.parse(base64.decode(storage)) : null
 }
+
+export function clearUser() {
+  localStorage.removeItem(LOCAL_STORAGE_KEY)
+}
