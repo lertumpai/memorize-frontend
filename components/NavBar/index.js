@@ -1,15 +1,22 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
+import getConfig from 'next/config'
 
 import { FiHome } from 'react-icons/fi'
 import { CgProfile } from 'react-icons/cg'
 import { IoIosLogOut } from 'react-icons/io'
 
+import { resetStateAuth } from '../../store/auth/slice'
 import './style.scss'
+
+const { publicRuntimeConfig } = getConfig()
+const { LOCAL_STORAGE_KEY } = publicRuntimeConfig
 
 const NavBar = () => {
   const router = useRouter()
+  const dispatch = useDispatch()
 
   function Home() {
     let className = 'nav-menu-memorize'
@@ -35,11 +42,20 @@ const NavBar = () => {
     )
   }
 
+  function unsaveUser() {
+   localStorage.removeItem(LOCAL_STORAGE_KEY)
+  }
+
+  function onLogout() {
+    unsaveUser()
+    dispatch(resetStateAuth())
+  }
+
   function Logout() {
     let className = 'nav-menu-memorize'
     return (
-      <Nav.Link href='/'>
-        <div className={className}>
+      <Nav.Link>
+        <div className={className} onClick={onLogout}>
           <IoIosLogOut className='icon-memorize' />
         </div>
       </Nav.Link>
