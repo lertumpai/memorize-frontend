@@ -1,10 +1,12 @@
 import React from 'react'
 
+import ApplicationLayout from '../../containers/ApplicationLayout/ApplicationLayout'
+
 const ProfilePage = () => {
   return (
-    <div>
+    <ApplicationLayout>
       profile
-    </div>
+    </ApplicationLayout>
   )
 }
 
