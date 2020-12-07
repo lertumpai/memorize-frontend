@@ -26,8 +26,8 @@ export const login = createAsyncThunk(
   },
 )
 
-export const saveProfile = createAsyncThunk(
-  'auth/profile',
+export const mutationProfile = createAsyncThunk(
+  'auth/mutation/profile',
   async ({ id, name, birthday, status }) => {
     const input = { name, birthday, status }
     return mutation(SAVE_PROFILE, { id, input })

@@ -7,7 +7,7 @@ import moment from 'moment'
 
 import Loading from '../Loading'
 import { saveUser } from '../../utils/localStorage'
-import { saveProfile } from '../../store/auth/asyncThunk'
+import { mutationProfile } from '../../store/auth/asyncThunk'
 import { idleStateAuth } from '../../store/auth/slice'
 import { STATUS_SUCCESS, STATUS_LOADING } from '../../store/status'
 import './style.scss'
@@ -34,7 +34,7 @@ const ProfileForm = () => {
 
 
   function onSave() {
-    dispatch(saveProfile({ ...profile, id: _.get(currentUser, 'id') }))
+    dispatch(mutationProfile({ ...profile, id: _.get(currentUser, 'id') }))
   }
 
   function onProfileChange(e) {
