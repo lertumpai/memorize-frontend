@@ -17,9 +17,16 @@ export function loadUser() {
     return null
   }
 
-  // const user = JSON.parse(base64.decode(storage))
+  const user = JSON.parse(base64.decode(storage))
+  const tokenDecoded = jwt_decode(user.token)
+  const date = new Date()
 
-  return storage ? JSON.parse(base64.decode(storage)) : null
+  if (date.valueOf() > tokenDecoded.exp * 1000) {
+    clearUser()
+    return null
+  }
+
+  return user
 }
 
 export function clearUser() {
