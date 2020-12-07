@@ -12,7 +12,7 @@ const NavBar = () => {
   const router = useRouter()
 
   function Home() {
-    let className = 'nav-memorize'
+    let className = 'nav-menu-memorize'
     className = router.pathname === '/articles' ? className + ' active-memorize' : className
     return (
       <Nav.Link href='/articles'>
@@ -24,7 +24,7 @@ const NavBar = () => {
   }
 
   function Profile() {
-    let className = 'nav-memorize'
+    let className = 'nav-menu-memorize'
     className = router.pathname === '/profile' ? className + ' active-memorize' : className
     return (
       <Nav.Link href='/profile'>
@@ -36,7 +36,7 @@ const NavBar = () => {
   }
 
   function Logout() {
-    let className = 'nav-memorize'
+    let className = 'nav-menu-memorize'
     return (
       <Nav.Link href='/'>
         <div className={className}>
@@ -50,7 +50,7 @@ const NavBar = () => {
     <Navbar className='navbar-memorize d-flex justify-content-end' collapseOnSelect expand='lg'>
       <Navbar.Toggle className='mr-3' aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
-        <div className='d-flex justify-content-center m-lg-auto'>
+        <div className='nav-memorize d-flex justify-content-center m-lg-auto'>
           <Nav>
             <Home />
             <Profile />

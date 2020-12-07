@@ -3,17 +3,35 @@
   height: 58px;
 }
 
-.nav-memorize {
-  padding: 10px 30px;
-  font-size: 18px;
-}
-
-.active-memorize {
-  color: #348eff;
-  border-bottom: 2px solid #348eff;
-  padding-bottom: 10px;
-}
-
 .icon-memorize {
   font-size: 30px;
+}
+
+@media only screen and (min-width:992px) {
+  .active-memorize {
+    color: #348eff;
+    border-bottom: 2px solid #348eff;
+  }
+
+  .nav-menu-memorize {
+    padding: 10px 30px;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width:992px) {
+  .active-memorize {
+    color: #348eff;
+    border-bottom: 2px solid #348eff;
+  }
+
+  .nav-menu-memorize {
+    padding: 10px 30px;
+    font-size: 18px;
+  }
+
+  .nav-memorize {
+    margin-top: 10px;
+    background: #fde6eb;
+  }
 }
