@@ -5,6 +5,7 @@ import _ from 'lodash'
 import Datetime from 'react-datetime'
 import moment from 'moment'
 
+import { saveUser } from '../../utils/localStorage'
 import { saveProfile } from '../../store/auth/asyncThunk'
 import './style.scss'
 
@@ -22,7 +23,7 @@ const ProfileForm = () => {
   const [profile, setProfile] = useState(initialProfile)
 
   useEffect(() => {
-
+    saveUser(currentUser)
   })
 
 

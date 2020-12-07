@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
-import base64 from 'base-64'
-import getConfig from 'next/config'
 import FadeIn from 'react-fade-in'
 import Lottie from 'react-lottie'
 
 import * as loading from '../../public/loading/loading.json'
 import { setCurrentUser } from '../../store/auth/slice'
-
-const { publicRuntimeConfig } = getConfig()
-const { LOCAL_STORAGE_KEY } = publicRuntimeConfig
+import { loadUser } from '../../utils/localStorage'
 
 const PrivateRoute = ({ children }) => {
   const dispatch = useDispatch()
@@ -19,13 +15,11 @@ const PrivateRoute = ({ children }) => {
   const { currentUser } = auth
 
   useEffect(() => {
-    const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
-    const userLocalStorage = storage ? base64.decode(storage) : null
+    const userLocalStorage = loadUser()
     switch (router.pathname) {
       case '/': {
         if (userLocalStorage && !currentUser) {
-          const jsonUser = JSON.parse(userLocalStorage)
-          dispatch(setCurrentUser(jsonUser))
+          dispatch(setCurrentUser(userLocalStorage))
           return router.push('/articles')
         }
 
@@ -39,8 +33,7 @@ const PrivateRoute = ({ children }) => {
         }
 
         if (userLocalStorage && !currentUser) {
-          const jsonUser = JSON.parse(userLocalStorage)
-          dispatch(setCurrentUser(jsonUser))
+          dispatch(setCurrentUser(userLocalStorage))
         }
       }
     }

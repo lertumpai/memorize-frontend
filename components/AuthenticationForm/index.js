@@ -3,16 +3,12 @@ import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import _ from 'lodash'
-import base64 from 'base-64'
-import getConfig from 'next/config'
 
 import { STATUS_SUCCESS } from '../../store/status'
 import { resetStateAuth, idleStateAuth } from '../../store/auth/slice'
 import { register, login } from '../../store/auth/asyncThunk'
+import { saveUser } from '../../utils/localStorage'
 import './style.scss'
-
-const { publicRuntimeConfig } = getConfig()
-const { LOCAL_STORAGE_KEY } = publicRuntimeConfig
 
 const AuthenticationForm = () => {
   const dispatch = useDispatch()
@@ -24,14 +20,9 @@ const AuthenticationForm = () => {
   const [form, setForm] = useState({ username: '', password: '' })
   const [isLogin, setIsLogin] = useState(true)
 
-  function saveUser() {
-    const userInformation = base64.encode(JSON.stringify(currentUser))
-    localStorage.setItem(LOCAL_STORAGE_KEY, userInformation)
-  }
-
   useEffect(() => {
     if (status === STATUS_SUCCESS && currentUser) {
-      saveUser()
+      saveUser(currentUser)
       dispatch(idleStateAuth())
       router.push('/articles')
     }

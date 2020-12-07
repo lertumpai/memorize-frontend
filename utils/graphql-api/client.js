@@ -1,10 +1,28 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 import getConfig from 'next/config'
 
 const { publicRuntimeConfig } = getConfig()
+const { SERVER_URL } = publicRuntimeConfig
+
+import { loadUser } from '../localStorage'
+
+const httpLink = createHttpLink({
+  uri: SERVER_URL,
+})
+
+const authLink = setContext((_, { headers }) => {
+  const currentUser = loadUser()
+  return {
+    headers: {
+      ...headers,
+      authorization: currentUser ? `Memorize ${currentUser.token}` : "",
+    },
+  }
+})
 
 const client = new ApolloClient({
-  uri: publicRuntimeConfig.SERVER_URL,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 })
 

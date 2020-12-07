@@ -57,7 +57,7 @@ const authSlices = createSlice({
     },
     [saveProfile.fulfilled]: (state, action) => {
       state.error = null
-      state.currentUser = action.payload
+      state.currentUser.profile = action.payload.profile.profile
       state.status = STATUS_SUCCESS
     },
   },
