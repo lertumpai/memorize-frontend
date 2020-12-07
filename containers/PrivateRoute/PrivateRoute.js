@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
-import FadeIn from 'react-fade-in'
-import Lottie from 'react-lottie'
 
-import * as loading from '../../public/loading/loading.json'
+import Loading from '../../components/Loading'
 import { setCurrentUser } from '../../store/auth/slice'
 import { loadUser } from '../../utils/localStorage'
 
@@ -39,21 +37,7 @@ const PrivateRoute = ({ children }) => {
     }
   })
 
-  function Loading() {
-    const options = {
-      loop: true,
-      autoplay: true,
-      animationData: loading.default,
-    }
-
-    return (
-      <FadeIn>
-        <Lottie options={options} height={300} width={300} />
-      </FadeIn>
-    )
-  }
-
-  return currentUser || router.pathname === '/' ? children : <Loading />
+  return currentUser || router.pathname === '/' ? children : <Loading height={300} width={300} />
 }
 
 export default PrivateRoute
