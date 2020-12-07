@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { mutation, query } from '../../utils/graphql-api/client'
-import { REGISTER, LOGIN } from './gql'
+import { REGISTER, LOGIN, SAVE_PROFILE } from './gql'
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -23,5 +23,14 @@ export const login = createAsyncThunk(
     } catch (e) {
       return rejectWithValue(e)
     }
+  },
+)
+
+export const saveProfile = createAsyncThunk(
+  'auth/profile',
+  async ({ id, name, birthday, status }) => {
+    const input = { name, birthday, status }
+    const response = await mutation(SAVE_PROFILE, { id, input })
+    console.log(response)
   },
 )

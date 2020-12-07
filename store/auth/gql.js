@@ -28,9 +28,9 @@ export const LOGIN = gql`
   }
 `
 
-export const PROFILE = gql`
-  mutation profile($id: MID!, $password: String!) {
-    profile(id: $id, password: $password) {
+export const SAVE_PROFILE = gql`
+  mutation profile($id: MID!, $input: ProfileInput) {
+    profile(id: $id, input: $input) {
       profile {
         name
         status
