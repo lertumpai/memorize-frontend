@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-datetime/css/react-datetime.css'
 
-import PrivateRoute from '../containers/PrivateRoute/PrivateRoute'
+import PrivateContainer from '../containers/PrivateContainer'
 import reduxWrapper from '../store'
 import client from '../utils/graphql-api/client'
 
@@ -12,9 +12,9 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <ApolloProvider client={client}>
-      <PrivateRoute>
+      <PrivateContainer>
         <Component {...pageProps} />
-      </PrivateRoute>
+      </PrivateContainer>
     </ApolloProvider>
   )
 }

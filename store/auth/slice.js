@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import { STATUS_SUCCESS, STATUS_ERROR, STATUS_IDLE, STATUS_LOADING } from '../status'
-import { register, login, saveProfile } from './asyncThunk'
+import { register, login, mutationProfile } from './asyncThunk'
 
 const initialState = {
   status: STATUS_IDLE,
@@ -52,10 +52,10 @@ const authSlices = createSlice({
       state.currentUser = null
       state.status = STATUS_ERROR
     },
-    [saveProfile.pending]: state => {
+    [mutationProfile.pending]: state => {
       state.status = STATUS_LOADING
     },
-    [saveProfile.fulfilled]: (state, action) => {
+    [mutationProfile.fulfilled]: (state, action) => {
       state.error = null
       state.currentUser.profile = action.payload.profile.profile
       state.status = STATUS_SUCCESS

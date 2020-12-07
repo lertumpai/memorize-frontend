@@ -6,7 +6,7 @@ import Loading from '../../components/Loading'
 import { setCurrentUser } from '../../store/auth/slice'
 import { loadUser } from '../../utils/localStorage'
 
-const PrivateRoute = ({ children }) => {
+const PrivateContainer = ({ children }) => {
   const dispatch = useDispatch()
   const router = useRouter()
   const auth = useSelector(state => state.auth)
@@ -14,6 +14,7 @@ const PrivateRoute = ({ children }) => {
 
   useEffect(() => {
     const userLocalStorage = loadUser()
+
     switch (router.pathname) {
       case '/': {
         if (userLocalStorage && !currentUser) {
@@ -40,4 +41,4 @@ const PrivateRoute = ({ children }) => {
   return currentUser || router.pathname === '/' ? children : <Loading height={300} width={300} />
 }
 
-export default PrivateRoute
+export default PrivateContainer
