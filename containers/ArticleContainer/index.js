@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import _ from 'lodash'
 
+import { articleSelectors } from '../../store/articles/slice'
+import { userSelectors } from '../../store/users/slice'
 import { queryArticles } from '../../store/articles/asyncThunk'
 
 const ArticleContainer = () => {
   const dispatch = useDispatch()
-  const [count, setCount] = useState(0)
+
+  const state = useSelector(state => state)
+  const articles = articleSelectors.selectAll(state)
 
   useEffect(() => {
-    if (count < 1) {
-      console.log('useEffect article')
-      setCount(count + 1)
-      dispatch(queryArticles({}))
-    }
-  }, [count])
+    dispatch(queryArticles({}))
+  }, [articles])
 
-  return <div>Article</div>
+  return <div>articles</div>
 }
 
 export default ArticleContainer

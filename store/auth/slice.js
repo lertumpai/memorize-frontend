@@ -65,4 +65,5 @@ const authSlices = createSlice({
 
 export const { resetStateAuth, idleStateAuth, setCurrentUser } = authSlices.actions
 
+
 export default authSlices.reducer
