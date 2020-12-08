@@ -7,7 +7,8 @@ export const register = createAsyncThunk(
   'auth/register',
   async ({ username, password }, { rejectWithValue }) => {
     try {
-      return await mutation(REGISTER, { username, password })
+      const response = await mutation(REGISTER, { username, password })
+      return response.user
     } catch (e) {
       return rejectWithValue(e)
     }
