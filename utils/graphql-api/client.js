@@ -16,7 +16,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: currentUser ? `Memorize ${currentUser.token}` : "",
+      authorization: currentUser ? `Memorize ${currentUser.token}` : '',
     },
   }
 })

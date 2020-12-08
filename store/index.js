@@ -2,17 +2,22 @@ import { configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 
 import authReducer from './auth/slice'
+import userReducer from './users/slice'
+import articleReducer from './articles/slice'
+import commentReducer from './comments/slice'
 
 const rootReducer = {
   auth: authReducer,
+  users: userReducer,
+  articles: articleReducer,
+  commentReducers: commentReducer,
 }
 
 const config = () => {
-  const store = configureStore({
+  return configureStore({
     reducer: rootReducer,
     devTools: process.env.NODE_ENV !== 'production',
   })
-  return store
 }
 
 export default createWrapper(config)
