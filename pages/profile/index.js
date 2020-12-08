@@ -1,7 +1,7 @@
 import React from 'react'
 
-import ApplicationLayout from '../../containers/ApplicationLayout/ApplicationLayout'
-import ProfileContainer from '../../containers/ProfileContainer/ProfileContainer'
+import ApplicationLayout from '../../containers/ApplicationLayout/dynamic'
+import ProfileContainer from '../../containers/ProfileContainer/dynamic'
 
 const ProfilePage = () => {
   return (

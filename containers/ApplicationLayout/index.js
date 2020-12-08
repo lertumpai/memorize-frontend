@@ -2,7 +2,7 @@ import React from 'react'
 
 import NavBar from '../../components/NavBar'
 
-const ApplicationLayout = ({ children }) => {
+const Index = ({ children }) => {
   return (
     <div>
       <NavBar />
@@ -11,4 +11,4 @@ const ApplicationLayout = ({ children }) => {
   )
 }
 
-export default ApplicationLayout
+export default Index

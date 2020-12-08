@@ -1,7 +1,7 @@
 import React from 'react'
 
 import './style.scss'
-import AuthenticationForm from '../../components/AuthenticationForm'
+import AuthenticationForm from '../../components/AuthenticationForm/dynamic'
 
 const AuthenticationContainer = () => {
   return (

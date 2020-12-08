@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ApplicationLayout from '../../containers/ApplicationLayout/ApplicationLayout'
+import ApplicationLayout from '../../containers/ApplicationLayout/dynamic'
 
 const ArticlePage = () => {
   return (
