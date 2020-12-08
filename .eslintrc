@@ -8,7 +8,7 @@
     "react",
     "react-hooks"
   ],
-  "extends": ["eslint:recommended"],
+  "extends": ["eslint:recommended", "plugin:react-hooks/recommended"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
