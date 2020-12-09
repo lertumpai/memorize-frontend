@@ -16,7 +16,7 @@ const NavBar = () => {
   const dispatch = useDispatch()
 
   function Home() {
-    let className = ''
+    let className = 'nav-menu-memorize'
     className = router.pathname === '/articles' ? className + ' active-memorize' : className
     return (
       <Link href='/articles'>
@@ -28,7 +28,7 @@ const NavBar = () => {
   }
 
   function Profile() {
-    let className = ''
+    let className = 'nav-menu-memorize'
     className = router.pathname === '/profile' ? className + ' active-memorize' : className
     return (
       <Link href='/profile'>
@@ -45,9 +45,10 @@ const NavBar = () => {
   }
 
   function Logout() {
+    let className = 'nav-menu-memorize'
     return (
       <Link href='#'>
-        <div onClick={onLogout}>
+        <div className={className} onClick={onLogout}>
           <a><IoIosLogOut className='icon-memorize' /></a>
         </div>
       </Link>
