@@ -11,7 +11,6 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { clearUser } from '../../utils/localStorage'
 import { resetStateAuth } from '../../store/auth/slice'
 import './style.scss'
-import { func } from 'prop-types'
 
 const NavBar = () => {
   const router = useRouter()
@@ -26,11 +25,11 @@ const NavBar = () => {
       classNameMenu += ' active-memorize'
     }
     return (
-      <div className={classNameMenu}>
-        <Link href='/articles'>
+      <Link href='/articles'>
+        <div className={classNameMenu}>
           <a><FiHome className={classNameIcon} /></a>
-        </Link>
-      </div>
+        </div>
+      </Link>
     )
   }
 
@@ -42,11 +41,11 @@ const NavBar = () => {
       classNameMenu += ' active-memorize'
     }
     return (
-      <div className={classNameMenu}>
-        <Link href='/profile'>
+      <Link href='/profile'>
+        <div className={classNameMenu}>
           <a><CgProfile className={classNameIcon} /></a>
-        </Link>
-      </div>
+        </div>
+      </Link>
     )
   }
 
