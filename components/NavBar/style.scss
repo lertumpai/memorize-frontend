@@ -22,8 +22,6 @@
 
 .nav-menu-memorize.active-memorize {
   border-bottom: 2px solid #1b7ffd;
-  padding-top: 12px;
-  padding-bottom: 12px;
 }
 
 @media only screen and (min-width:992px) {
@@ -31,8 +29,17 @@
     justify-content: center;
   }
 
+  .navbar-link-memorize.collapse {
+    display: flex;
+  }
+
   .nav-menu-memorize {
     padding: 0px 35px;
+  }
+
+  .nav-menu-memorize.active-memorize {
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 
   .hamburger-menu-memorize {
@@ -53,7 +60,15 @@
     display: block;
   }
 
+  .collapse {
+    display: block;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    border: 1px solid red;
+  }
+
   .hamburger-menu-memorize {
-    padding-right: 20px;
+    margin-right: 25px;
   }
 }

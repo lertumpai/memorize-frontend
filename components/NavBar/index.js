@@ -66,9 +66,13 @@ const NavBar = () => {
     )
   }
 
-  function NavbarLinks() {
+  function NavbarLink() {
+    let className = 'navbar-link-memorize'
+    if (isCollapse) {
+      className += ' collapse'
+    }
     return (
-      <div className='navbar-link-memorize'>
+      <div className={className}>
         <Home />
         <Profile />
         <Logout />
@@ -94,8 +98,8 @@ const NavBar = () => {
   function NavbarCollapse() {
     return (
       <div className='navbar-memorize'>
+        <NavbarLink />
         <HamburgerMenu />
-        <NavbarLinks />
       </div>
     )
   }
