@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { FiHome } from 'react-icons/fi'
 import { CgProfile } from 'react-icons/cg'
 import { IoIosLogOut } from 'react-icons/io'
+import { GiHamburgerMenu } from 'react-icons/gi'
 
 import { clearUser } from '../../utils/localStorage'
 import { resetStateAuth } from '../../store/auth/slice'
@@ -14,28 +15,37 @@ import './style.scss'
 const NavBar = () => {
   const router = useRouter()
   const dispatch = useDispatch()
+  const [isCollapse, setIsCollapse] = useState(false)
 
   function Home() {
-    let className = 'nav-menu-memorize'
-    className = router.pathname === '/articles' ? className + ' active-memorize' : className
+    let classNameIcon = 'icon-memorize'
+    let classNameMenu = 'nav-menu-memorize'
+    if (router.pathname === '/articles') {
+      classNameIcon += ' active-memorize'
+      classNameMenu += ' active-memorize'
+    }
     return (
-      <Link href='/articles'>
-        <div className={className}>
-          <a><FiHome className='icon-memorize'/></a>
-        </div>
-      </Link>
+      <div className={classNameMenu}>
+        <Link href='/articles'>
+          <a><FiHome className={classNameIcon} /></a>
+        </Link>
+      </div>
     )
   }
 
   function Profile() {
-    let className = 'nav-menu-memorize'
-    className = router.pathname === '/profile' ? className + ' active-memorize' : className
+    let classNameIcon = 'icon-memorize'
+    let classNameMenu = 'nav-menu-memorize'
+    if (router.pathname === '/profile') {
+      classNameIcon += ' active-memorize'
+      classNameMenu += ' active-memorize'
+    }
     return (
-      <Link href='/profile'>
-        <div className={className}>
-          <a><CgProfile className='icon-memorize' /></a>
-        </div>
-      </Link>
+      <div className={classNameMenu}>
+        <Link href='/profile'>
+          <a><CgProfile className={classNameIcon} /></a>
+        </Link>
+      </div>
     )
   }
 
@@ -47,21 +57,41 @@ const NavBar = () => {
   function Logout() {
     let className = 'nav-menu-memorize'
     return (
-      <Link href='#'>
-        <div className={className} onClick={onLogout}>
+      <div className={className} onClick={onLogout}>
+        <Link href='#'>
           <a><IoIosLogOut className='icon-memorize' /></a>
-        </div>
-      </Link>
+        </Link>
+      </div>
     )
   }
 
-  return (
-    <div className='navbar-memorize'>
+  function collapse() {
+    setIsCollapse(!isCollapse)
+  }
+
+  function HamburgerMenu() {
+    let className = 'hamburger-menu-memorize'
+    return (
+      <div className={className} onClick={collapse}>
+        <Link href=''>
+          <a><GiHamburgerMenu className='icon-memorize' /></a>
+        </Link>
+      </div>
+    )
+  }
+
+  function NavbarCollapse() {
+    return (
+      <div className='navbar-memorize'>
         <Home />
         <Profile />
         <Logout />
-    </div>
-  )
+        <HamburgerMenu />
+      </div>
+    )
+  }
+
+  return <NavbarCollapse />
 }
 
 export default NavBar

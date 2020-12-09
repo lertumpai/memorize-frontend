@@ -1,27 +1,53 @@
 .navbar-memorize {
-  background: #f8deeb;
+  background: #f3c2d8;
   height: 60px;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
 .icon-memorize {
   font-size: 30px;
+  color: #6e6e6e;
+}
+
+.icon-memorize.active-memorize {
+  color: #1b7ffd;
+}
+
+.nav-menu-memorize.active-memorize {
+  border-bottom: 2px solid #1b7ffd;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 @media only screen and (min-width:992px) {
-  .active-memorize {
-    color: #348eff;
+  .navbar-memorize {
+    justify-content: center;
   }
 
   .nav-menu-memorize {
     padding: 0px 35px;
   }
+
+  .hamburger-menu-memorize {
+    display: none;
+  }
 }
 
 @media only screen and (max-width:992px) {
-  .active-memorize {
-    color: #348eff;
+  .navbar-memorize {
+    justify-content: flex-end;
+  }
+
+  .nav-menu-memorize {
+    display: none;
+  }
+
+  .nav-menu-memorize.collapse {
+    display: block;
+  }
+
+  .hamburger-menu-memorize {
+    padding-right: 20px;
   }
 }
