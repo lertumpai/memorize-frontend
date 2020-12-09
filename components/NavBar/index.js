@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 
@@ -16,26 +16,26 @@ const NavBar = () => {
   const dispatch = useDispatch()
 
   function Home() {
-    let className = 'nav-menu-memorize'
+    let className = ''
     className = router.pathname === '/articles' ? className + ' active-memorize' : className
     return (
-      <Nav.Link href='/articles'>
+      <Link href='/articles'>
         <div className={className}>
-          <FiHome className='icon-memorize'/>
+          <a><FiHome className='icon-memorize'/></a>
         </div>
-      </Nav.Link>
+      </Link>
     )
   }
 
   function Profile() {
-    let className = 'nav-menu-memorize'
+    let className = ''
     className = router.pathname === '/profile' ? className + ' active-memorize' : className
     return (
-      <Nav.Link href='/profile'>
+      <Link href='/profile'>
         <div className={className}>
-          <CgProfile className='icon-memorize' />
+          <a><CgProfile className='icon-memorize' /></a>
         </div>
-      </Nav.Link>
+      </Link>
     )
   }
 
@@ -45,29 +45,21 @@ const NavBar = () => {
   }
 
   function Logout() {
-    let className = 'nav-menu-memorize'
     return (
-      <Nav.Link>
-        <div className={className} onClick={onLogout}>
-          <IoIosLogOut className='icon-memorize' />
+      <Link href='#'>
+        <div onClick={onLogout}>
+          <a><IoIosLogOut className='icon-memorize' /></a>
         </div>
-      </Nav.Link>
+      </Link>
     )
   }
 
   return (
-    <Navbar className='navbar-memorize d-flex justify-content-end' collapseOnSelect expand='lg'>
-      <Navbar.Toggle className='mr-3 nav-toggle-memorize' aria-controls='responsive-navbar-nav' />
-      <Navbar.Collapse id='responsive-navbar-nav'>
-        <div className='nav-memorize d-flex justify-content-center m-lg-auto'>
-          <Nav>
-            <Home />
-            <Profile />
-            <Logout />
-          </Nav>
-        </div>
-      </Navbar.Collapse>
-    </Navbar>
+    <div className='navbar-memorize'>
+        <Home />
+        <Profile />
+        <Logout />
+    </div>
   )
 }
 
