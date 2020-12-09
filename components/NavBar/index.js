@@ -11,6 +11,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { clearUser } from '../../utils/localStorage'
 import { resetStateAuth } from '../../store/auth/slice'
 import './style.scss'
+import { func } from 'prop-types'
 
 const NavBar = () => {
   const router = useRouter()
@@ -65,6 +66,16 @@ const NavBar = () => {
     )
   }
 
+  function NavbarLinks() {
+    return (
+      <div className='navbar-link-memorize'>
+        <Home />
+        <Profile />
+        <Logout />
+      </div>
+    )
+  }
+
   function collapse() {
     setIsCollapse(!isCollapse)
   }
@@ -83,10 +94,8 @@ const NavBar = () => {
   function NavbarCollapse() {
     return (
       <div className='navbar-memorize'>
-        <Home />
-        <Profile />
-        <Logout />
         <HamburgerMenu />
+        <NavbarLinks />
       </div>
     )
   }

@@ -2,6 +2,12 @@
   background: #f3c2d8;
   height: 60px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-link-memorize {
+  display: flex;
   align-items: center;
 }
 
@@ -21,7 +27,7 @@
 }
 
 @media only screen and (min-width:992px) {
-  .navbar-memorize {
+  .navbar-link-memorize {
     justify-content: center;
   }
 
@@ -34,16 +40,16 @@
   }
 }
 
-@media only screen and (max-width:992px) {
+@media only screen and (max-width:991px) {
   .navbar-memorize {
     justify-content: flex-end;
   }
 
-  .nav-menu-memorize {
+  .navbar-link-memorize {
     display: none;
   }
 
-  .nav-menu-memorize.collapse {
+  .navbar-link-memorize.collapse {
     display: block;
   }
 
