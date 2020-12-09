@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Container } from 'react-bootstrap'
-import _ from 'lodash'
 
 import { articleSelectors } from '../../store/articles/slice'
+import { userSelectors } from '../../store/users/slice'
 import { queryArticles } from '../../store/articles/asyncThunk'
-import ContentBox from '../../components/ContentBox/dynamic'
+import ContentArticleBox from '../../components/ContentArticleBox/dynamic'
 
 const ArticleContainer = () => {
   const dispatch = useDispatch()
@@ -17,14 +17,17 @@ const ArticleContainer = () => {
     dispatch(queryArticles({}))
   }, [articles])
 
-  function ArticleContentBox() {
-    return articles.map(article => <ContentBox article={article} />)
+  function ContentArticleBoxes() {
+    return articles.map(article => {
+      const user = userSelectors.selectById(state, article.author.id)
+      return <ContentArticleBox key={article.id} article={article} user={user} />
+    })
   }
 
   return (
-    <Container className='content-box-memorize p-2 p-lg-4'>
-      {ArticleContentBox()}
-    </Container>
+    <div className='content-boxes-memorize'>
+      {ContentArticleBoxes()}
+    </div>
   )
 }
 

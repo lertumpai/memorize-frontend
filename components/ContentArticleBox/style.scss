@@ -1,0 +1,48 @@
+.content-box-memorize {
+  padding: 10px;
+}
+
+@media only screen and (min-width:992px) {
+  .content-box-memorize {
+    width: 800px;
+  }
+}
+@media only screen and (max-width:992px) {
+  .content-box-memorize {
+    width: 700px;
+  }
+}
+@media only screen and (max-width:768px) {
+  .content-box-memorize {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width:576px) {
+  .content-box-memorize {
+    width: 370px;
+  }
+}
+
+.content-box-head-memorize {
+  border: 1px solid #8e8a8a;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.content-box-body-memorize {
+  overflow-wrap: break-word;
+  border: 1px solid #8e8a8a;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.profile-name-memorize {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.article-createdAt-memorize {
+  font-size: 15px;
+  color: #787878;
+}
