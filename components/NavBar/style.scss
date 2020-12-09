@@ -46,12 +46,12 @@
 
 @media only screen and (max-width:991px) {
   .nav-menu-memorize {
-    margin: 5px 5px;
+    margin: 8px 5px;
     padding: 5px 5px;
     display: flex;
     justify-content: flex-end;
     background: #d2d2d2;
-    border-radius: 14px;
+    border-radius: 15px;
   }
 
   .navbar-memorize {
@@ -63,6 +63,7 @@
   }
 
   .navbar-link-memorize.collapse {
+    transition-timing-function: linear;
     display: block;
     position: absolute;
     top: 60px;
