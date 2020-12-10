@@ -81,7 +81,7 @@ const ProfileForm = () => {
   }
 
   function Saving() {
-    return status === STATUS_LOADING ? <Loading height={200} /> : ''
+    return status === STATUS_LOADING ? <Loading height={400} /> : ''
   }
 
   return (
