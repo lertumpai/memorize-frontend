@@ -58,6 +58,11 @@
   padding: 20px;
 }
 
+.profile-saving {
+  position: absolute;
+  top: 400px
+}
+
 @media only screen and (min-width:769px) {
   .profile-form-memorize {
     margin-top: 100px;
@@ -98,5 +103,9 @@
 
   .profile-save-button-memorize {
     width: 100%;
+  }
+
+  .profile-saving {
+    top: 200px
   }
 }
