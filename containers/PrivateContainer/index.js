@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 
-import Loading from '../../components/Loading'
+import Loading from '../../components/Loading/dynamic'
 import { setCurrentUser } from '../../store/auth/slice'
 import { loadUser } from '../../utils/localStorage'
 

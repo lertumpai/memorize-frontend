@@ -8,7 +8,7 @@ const Navbar = ({ children }) => {
   return (
     <>
       <NavBar />
-      <div className='application-layout-memorize'>
+      <div id='application-layout-memorize' className='application-layout-memorize'>
         {children}
       </div>
     </>
