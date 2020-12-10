@@ -58,7 +58,7 @@ const ProfileForm = () => {
     return (
       <div className='profile-form-control-input-memorize'>
         <div className='profile-form-label-input-memorize'>Birthday</div>
-        <Datetime value={date} dateFormat='DD/MM/YYYY' timeFormat={false} onChange={onDateChange} onClose={onDateChange} />
+        <Datetime className='profile-form-date-picker-memorize' value={date} dateFormat='DD/MM/YYYY' timeFormat={false} onChange={onDateChange} onClose={onDateChange} />
       </div>
     )
   }
@@ -88,7 +88,7 @@ const ProfileForm = () => {
     <>
       <div className='profile-form-memorize'>
         {Name()}
-        {/*{Birthday()}*/}
+        {Birthday()}
         {Status()}
         <ButtonSave />
       </div>
