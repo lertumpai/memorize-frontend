@@ -72,7 +72,7 @@ const AuthenticationForm = () => {
   function ButtonForm() {
     const buttonForm = isLogin ? <ButtonLoginForm /> : <ButtonRegisterForm />
     return (
-      <div className=''>
+      <div className='form-button-memorize'>
         {buttonForm}
       </div>
     )

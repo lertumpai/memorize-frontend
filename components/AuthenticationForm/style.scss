@@ -4,21 +4,6 @@
   padding: 30px 20px;
 }
 
-@media only screen and (min-width:576px) {
-  .form-authentication-memorize {
-    width: 600px;
-  }
-}
-@media only screen and (max-width:576px) {
-  .form-authentication-memorize {
-    width: 400px;
-  }
-}
-
-.form-text-input-memorize {
-  margin: 20px 0px;
-}
-
 .form-submit-button-memorize {
   width: 150px;
   background: #14b048;
@@ -38,6 +23,52 @@
   background: #3a78f1;
   border-color: #3a78f1;
   font-size: 18px;
+}
+
+@media only screen and (min-width:576px) {
+  .form-authentication-memorize {
+    width: 600px;
+  }
+
+  .form-button-memorize {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid red;
+  }
+
+  .form-submit-button-memorize {
+    margin-right: 10px;
+  }
+}
+@media only screen and (max-width:576px) {
+  .form-authentication-memorize {
+    width: 400px;
+  }
+
+  .form-button-memorize {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+  }
+
+  .form-submit-button-memorize {
+    margin: 0px 5px;
+  }
+
+  .form-register-login-button-memorize {
+    margin: 0px 5px;
+  }
+
+  .form-login-register-button-memorize {
+    margin: 0px 5px;
+  }
+}
+
+.form-text-input-memorize {
+  margin: 20px 0px;
+  border: 1px solid red;
 }
 
 .form-control-text-label-memorize {
