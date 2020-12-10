@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import React from 'react'
 import moment from 'moment'
 
 import './style.scss'
@@ -18,7 +17,7 @@ const ContentArticleBox = ({ article, user }) => {
             </div>
           </div>
           <div className='content-box-body-memorize'>
-              {article.content}
+            {article.content}
           </div>
         </div>
       </div>
