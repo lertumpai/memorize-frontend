@@ -35,7 +35,7 @@ const articleSlices = createSlice({
   },
 })
 
-export const { articleAddOne, articleAddMany, articleUpdateOne, articleUpdateMany, articleRemoveOne, articleRemoveMany } = articleSlices.actions
+export const { articleAddOne, articleAddMany, articleUpdateOne, articleUpdateMany, articleRemoveOne, articleRemoveMany, idleStateArticles } = articleSlices.actions
 export const articleSelectors = articleAdapters.getSelectors(state => state.articles)
 
 export default articleSlices.reducer

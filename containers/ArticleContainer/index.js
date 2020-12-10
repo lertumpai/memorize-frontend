@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import _ from 'lodash'
 
-import { articleSelectors } from '../../store/articles/slice'
+import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
+import { articleSelectors, idleStateArticles } from '../../store/articles/slice'
 import { userSelectors } from '../../store/users/slice'
 import { queryArticles } from '../../store/articles/asyncThunk'
 import ContentArticleBox from '../../components/ContentArticleBox/dynamic'
@@ -14,6 +15,8 @@ const ArticleContainer = () => {
   const dispatch = useDispatch()
 
   const state = useSelector(state => state)
+
+  const { status } = useSelector(state => state.articles)
   const articles = articleSelectors.selectAll(state)
 
   const [page, setPage] = useState(1)
@@ -24,25 +27,31 @@ const ArticleContainer = () => {
       rootMargin: '300px',
       threshold: 0.5,
     }
-    // initialize IntersectionObserver
-    // and attaching to Load More div
     const observer = new IntersectionObserver(handleObserver, options)
     if (loader.current) {
       observer.observe(loader.current)
     }
   }, [])
 
-  // logic load more articles
   useEffect(() => {
+    // eslint-disable-next-line default-case
     const lastArticle = _.last(articles)
     if (lastArticle) {
-      const pagination = { before: lastArticle.createdAt, limit: 15 }
+      const pagination = {
+        before: lastArticle.createdAt,
+        limit: 15,
+      }
       dispatch(queryArticles({ pagination }))
-    }
-    else {
+    } else {
       dispatch(queryArticles({}))
     }
   }, [page])
+
+  useEffect(() => {
+    if (status === STATUS_SUCCESS) {
+      dispatch(idleStateArticles())
+    }
+  })
 
   const handleObserver = entities => {
     const target = entities[0]
@@ -54,7 +63,9 @@ const ArticleContainer = () => {
   function ContentArticleBoxes() {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author.id)
-      return <ContentArticleBox key={article.id} article={article} user={user} />
+      return user
+        ? <ContentArticleBox key={article.id} article={article} user={user} />
+        : 'loading'
     })
   }
 
