@@ -51,11 +51,13 @@
 @media only screen and (max-width:991px) {
   .nav-menu-memorize {
     margin: 8px 5px;
-    padding: 5px 5px;
-    display: flex;
-    justify-content: flex-end;
+    padding: 7px 7px 3px 7px;
     background: #d2d2d2;
     border-radius: 15px;
+  }
+
+  .icon-memorize {
+    font-size: 40px;
   }
 
   .navbar-memorize {
@@ -64,14 +66,13 @@
 
   .navbar-link-memorize {
     display: none;
+    position: absolute;
+    top: 60px;
+    padding: 0px 13px;
   }
 
   .navbar-link-memorize.collapse {
     display: block;
-    position: absolute;
-    top: 60px;
-    width: 80px;
-    padding: 0px 15px;
   }
 
   .hamburger-menu-memorize {
