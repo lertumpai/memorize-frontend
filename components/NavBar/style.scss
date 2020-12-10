@@ -6,11 +6,6 @@
   align-items: center;
 }
 
-.navbar-link-memorize {
-  display: flex;
-  align-items: center;
-}
-
 .icon-memorize {
   font-size: 30px;
   color: #6e6e6e;
@@ -26,11 +21,8 @@
 
 @media only screen and (min-width:992px) {
   .navbar-link-memorize {
-    justify-content: center;
-  }
-
-  .navbar-link-memorize.collapse {
     display: flex;
+    border: 1px solid red;
   }
 
   .nav-menu-memorize {
@@ -38,9 +30,9 @@
   }
 
   .nav-menu-memorize.active-memorize {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid #1b7ffd;
+    //padding-top: 12px;
+    //border-bottom: 2px solid #1b7ffd;
+    //padding-bottom: 12px;
   }
 
   .hamburger-menu-memorize {
