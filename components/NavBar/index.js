@@ -3,11 +3,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 
-import { FiHome } from 'react-icons/fi'
-import { CgProfile } from 'react-icons/cg'
-import { IoIosLogOut } from 'react-icons/io'
-import { GiHamburgerMenu } from 'react-icons/gi'
-
 import { clearUser } from '../../utils/localStorage'
 import { resetStateAuth } from '../../store/auth/slice'
 import './style.scss'
@@ -27,7 +22,7 @@ const NavBar = () => {
     return (
       <div className={classNameMenu}>
         <Link href='/articles'>
-          <a><FiHome className={classNameIcon} /></a>
+          <a>home</a>
         </Link>
       </div>
     )
@@ -43,7 +38,7 @@ const NavBar = () => {
     return (
       <div className={classNameMenu}>
         <Link href='/profile'>
-          <a><CgProfile className={classNameIcon} /></a>
+          <a>profile</a>
         </Link>
       </div>
     )
@@ -59,7 +54,7 @@ const NavBar = () => {
     return (
       <div className={className} onClick={onLogout}>
         <Link href='#'>
-          <a><IoIosLogOut className='icon-memorize' /></a>
+          <a>logout</a>
         </Link>
       </div>
     )
@@ -88,7 +83,7 @@ const NavBar = () => {
     return (
       <div className={className} onClick={collapse}>
         <Link href=''>
-          <a><GiHamburgerMenu className='icon-memorize' /></a>
+          <a>ham</a>
         </Link>
       </div>
     )
