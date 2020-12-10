@@ -1,7 +1,7 @@
 .form-authentication-memorize {
   border: 3px solid #c1c1c1;
   border-radius: 20px;
-  padding: 30px 20px;
+  padding: 50px 30px;
 }
 
 .form-submit-button-memorize {
@@ -31,12 +31,13 @@
 }
 
 .form-text-input-memorize {
-  width: 100%;
+  width: calc(100% - 22px);
   border-radius: 5px;
   border: 1px solid #d4d4d4;
   height: 40px;
   margin-top: 8px;
   padding: 0px 10px;
+  font-size: 18px;
 }
 
 .form-text-input-memorize:focus {
