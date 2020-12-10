@@ -85,14 +85,14 @@ const AuthenticationForm = () => {
 
   function UsernameForm() {
     const message = _.get(error, 'username')
-    let classNameFormControl = 'form-control-memorize'
+    let classNameFormControl = 'form-text-input-memorize'
     if (message) {
       classNameFormControl += ' form-error-active-memorize'
     }
     return (
-      <div className='form-text-input-memorize'>
+      <div className='form-control-memorize'>
         <div className='form-control-text-label-memorize'>Username</div>
-        <input className={classNameFormControl} type='text' placeholder='Username' value={form.username} onChange={onChange} />
+        <input className={classNameFormControl} id='username' type='text' value={form.username} onChange={onChange} />
         <div className='form-control-text-error-memorize'>{message}</div>
       </div>
     )
@@ -100,14 +100,14 @@ const AuthenticationForm = () => {
 
   function PasswordForm() {
     const message = _.get(error, 'password')
-    let classNameFormControl = 'form-control-memorize'
+    let classNameFormControl = 'form-text-input-memorize'
     if (message) {
       classNameFormControl += ' form-error-active-memorize'
     }
     return (
-      <div className='form-text-input-memorize'>
+      <div className='form-control-memorize'>
         <div className='form-control-text-label-memorize'>Password</div>
-        <input className={classNameFormControl} type='password' placeholder='Password' value={form.password} onChange={onChange} />
+        <input className={classNameFormControl} id='password' type='password' value={form.password} onChange={onChange} />
         <div className='form-control-text-error-memorize'>{message}</div>
       </div>
     )
