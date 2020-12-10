@@ -7,6 +7,8 @@ import PrivateContainer from '../containers/PrivateContainer'
 import reduxWrapper from '../store'
 import client from '../utils/graphql-api/client'
 
+import '../public/style/style.scss'
+
 const MyApp = ({ Component, pageProps }) => {
 
   return (
