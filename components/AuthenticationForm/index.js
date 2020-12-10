@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import _ from 'lodash'
@@ -50,9 +49,9 @@ const AuthenticationForm = () => {
 
   function ButtonRegisterForm() {
     return (
-      <div className='d-flex justify-content-end pt-4'>
-        <Button className='submit-button' variant='success' type='button' onClick={onRegister}>Register</Button>
-        <Button className='register-login-button ml-1' type='button' onClick={onClickRegisterToLogin}>Login</Button>
+      <div className=''>
+        <button type='button' className='form-submit-button-memorize' onClick={onRegister}>Register</button>
+        <button type='button' className='form-register-login-button-memorize' onClick={onClickRegisterToLogin}>Login</button>
       </div>
     )
   }
@@ -63,9 +62,9 @@ const AuthenticationForm = () => {
 
   function ButtonLoginForm() {
     return (
-      <div className='d-flex justify-content-end pt-4'>
-        <Button className='submit-button' variant='success' type='button' onClick={onLogin}>Login</Button>
-        <Button className='login-register-button ml-1' type='button' onClick={onClickLoginToRegister}>Register</Button>
+      <div className=''>
+        <button type='button' className='form-submit-button-memorize' onClick={onLogin}>Login</button>
+        <button type='button' className='form-login-register-button-memorize' onClick={onClickLoginToRegister}>Register</button>
       </div>
     )
   }
@@ -76,40 +75,46 @@ const AuthenticationForm = () => {
 
   function LabelForm() {
     let text = isLogin ? 'Login Form' : 'Register Form'
-    return <Form.Label className='authentication-label'>{text}</Form.Label>
+    return <div className='form-authentication-label'>{text}</div>
   }
 
   function UsernameForm() {
     const message = _.get(error, 'username')
-    const errorControlStyle = message ? 'form-control-error' : ''
+    let classNameFormControl = 'form-control-memorize'
+    if (message) {
+      classNameFormControl += 'form-error-active-memorize'
+    }
     return (
-      <Form.Group className='pt-4' controlId='username'>
-        <Form.Label className='text-label'>Username</Form.Label>
-        <Form.Control className={errorControlStyle} type='text' placeholder='Username' value={form.username} onChange={onChange} />
-        <Form.Text className='text-error'>{message}</Form.Text>
-      </Form.Group>
+      <div className='form-text-input-memorize'>
+        <div className='form-text-label-memorize'>Username</div>
+        <input className={classNameFormControl} type='text' placeholder='Username' value={form.username} onChange={onChange} />
+        <div className='form-text-error-memorize'>{message}</div>
+      </div>
     )
   }
 
   function PasswordForm() {
     const message = _.get(error, 'password')
-    const errorControlStyle = message ? 'form-control-error' : ''
+    let classNameFormControl = 'form-control-memorize'
+    if (message) {
+      classNameFormControl += 'form-error-active-memorize'
+    }
     return (
-      <Form.Group className='pt-4' controlId='password'>
-        <Form.Label className='text-label'>Password</Form.Label>
-        <Form.Control className={errorControlStyle} type='password' placeholder='Password' value={form.password} onChange={onChange} />
-        <Form.Text className='text-error'>{message}</Form.Text>
-      </Form.Group>
+      <div className='form-text-input-memorize'>
+        <div className='form-text-label-memorize'>Password</div>
+        <input className={classNameFormControl} type='password' placeholder='Password' value={form.password} onChange={onChange} />
+        <div className='form-text-error-memorize'>{message}</div>
+      </div>
     )
   }
 
   return (
-    <Form className='form-style p-4'>
+    <div className='form-authentication-memorize'>
       <LabelForm />
       {UsernameForm()}
       {PasswordForm()}
       <ButtonForm />
-    </Form>
+    </div>
   )
 }
 
