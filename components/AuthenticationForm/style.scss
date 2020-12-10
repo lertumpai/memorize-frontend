@@ -1,11 +1,11 @@
 .form-authentication-memorize {
   border: 3px solid #c1c1c1;
   border-radius: 20px;
-  padding: 50px 30px;
+  padding: 40px 20px;
 }
 
 .form-submit-button-memorize {
-  padding: 7px 0px;
+  padding: 10px 0px;
   background: #14b048;
   border-color: #14b048;
   font-size: 20px;
@@ -16,7 +16,7 @@
 }
 
 .form-change-authen-button-memorize {
-  padding: 7px 0px;
+  padding: 10px 0px;
   background: #3a78f1;
   border-color: #3a78f1;
   font-size: 20px;
@@ -67,13 +67,16 @@
   margin-left: 3px;
 }
 
+.form-button-memorize {
+  margin-top: 35px;
+}
+
 @media only screen and (min-width:576px) {
   .form-authentication-memorize {
     width: 600px;
   }
 
   .form-button-memorize {
-    padding: 10px 0px;
     display: flex;
     justify-content: flex-end;
   }
@@ -93,7 +96,6 @@
   }
 
   .form-button-memorize {
-    padding: 10px 0px;
     display: flex;
     justify-content: center;
   }
