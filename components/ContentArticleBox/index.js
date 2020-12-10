@@ -9,19 +9,17 @@ const ContentArticleBox = ({ article, user }) => {
   function ContentBox() {
     console.log('article')
     return (
-      <div className='d-flex justify-content-center'>
-        <div className='content-box-memorize'>
-          <div className='content-box-head-memorize'>
-            <div className='profile-name-memorize'>
-              {_.get(user, 'profile.name') || 'unknown'}
-            </div>
-            <div className='article-createdAt-memorize'>
-              {moment(article.createdAt).format('DD/MM/YYYY HH:mm:ss')}
-            </div>
+      <div className='content-box-memorize'>
+        <div className='content-box-head-memorize'>
+          <div className='profile-name-memorize'>
+            {_.get(user, 'profile.name') || 'unknown'}
           </div>
-          <div className='content-box-body-memorize'>
-            {article.content}
+          <div className='article-createdAt-memorize'>
+            {moment(article.createdAt).format('DD/MM/YYYY HH:mm:ss')}
           </div>
+        </div>
+        <div className='content-box-body-memorize'>
+          {article.content}
         </div>
       </div>
     )
