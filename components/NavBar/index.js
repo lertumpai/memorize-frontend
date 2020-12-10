@@ -25,11 +25,11 @@ const NavBar = () => {
       classNameMenu += ' active-memorize'
     }
     return (
-      <Link href='/articles'>
-        <div className={classNameMenu}>
+      <div className={classNameMenu}>
+        <Link href='/articles'>
           <a><FiHome className={classNameIcon} /></a>
-        </div>
-      </Link>
+        </Link>
+      </div>
     )
   }
 
@@ -41,11 +41,11 @@ const NavBar = () => {
       classNameMenu += ' active-memorize'
     }
     return (
-      <Link href='/profile'>
-        <div className={classNameMenu}>
+      <div className={classNameMenu}>
+        <Link href='/profile'>
           <a><CgProfile className={classNameIcon} /></a>
-        </div>
-      </Link>
+        </Link>
+      </div>
     )
   }
 

@@ -22,17 +22,22 @@
 @media only screen and (min-width:992px) {
   .navbar-link-memorize {
     display: flex;
-    border: 1px solid red;
+    align-items: center;
   }
 
   .nav-menu-memorize {
-    padding: 0px 35px;
+    padding: 13px 35px 10px 35px;
+  }
+
+  .nav-menu-memorize:hover {
+    background: #abd0ff;
+    border-bottom: 2px solid #1b7ffd;
   }
 
   .nav-menu-memorize.active-memorize {
-    //padding-top: 12px;
-    //border-bottom: 2px solid #1b7ffd;
-    //padding-bottom: 12px;
+    padding-top: 12px;
+    border-bottom: 2px solid #1b7ffd;
+    padding-bottom: 11px;
   }
 
   .hamburger-menu-memorize {
