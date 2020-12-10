@@ -87,7 +87,7 @@ const AuthenticationForm = () => {
     const message = _.get(error, 'username')
     let classNameFormControl = 'form-control-memorize'
     if (message) {
-      classNameFormControl += 'form-error-active-memorize'
+      classNameFormControl += ' form-error-active-memorize'
     }
     return (
       <div className='form-text-input-memorize'>
@@ -102,7 +102,7 @@ const AuthenticationForm = () => {
     const message = _.get(error, 'password')
     let classNameFormControl = 'form-control-memorize'
     if (message) {
-      classNameFormControl += 'form-error-active-memorize'
+      classNameFormControl += ' form-error-active-memorize'
     }
     return (
       <div className='form-text-input-memorize'>

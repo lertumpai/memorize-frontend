@@ -5,7 +5,6 @@
 }
 
 .form-submit-button-memorize {
-  width: 150px;
   padding: 7px 0px;
   background: #14b048;
   border-color: #14b048;
@@ -17,7 +16,6 @@
 }
 
 .form-change-authen-button-memorize {
-  width: 150px;
   padding: 7px 0px;
   background: #3a78f1;
   border-color: #3a78f1;
@@ -28,49 +26,13 @@
   cursor: pointer;
 }
 
-@media only screen and (min-width:576px) {
-  .form-authentication-memorize {
-    width: 600px;
-  }
-
-  .form-button-memorize {
-    padding: 10px 0px;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .form-submit-button-memorize {
-    margin-right: 10px;
-  }
-}
-@media only screen and (max-width:576px) {
-  .form-authentication-memorize {
-    width: 400px;
-  }
-
-  .form-button-memorize {
-    padding: 10px 0px;
-    display: flex;
-    justify-content: center;
-    border: 1px solid red;
-  }
-
-  .form-submit-button-memorize {
-    margin: 0px 5px;
-  }
-
-  .form-register-login-button-memorize {
-    margin: 0px 5px;
-  }
-
-  .form-login-register-button-memorize {
-    margin: 0px 5px;
-  }
+.form-control-memorize {
+  width: 100%;
+  border-radius: 5px;
 }
 
 .form-text-input-memorize {
   margin: 20px 0px;
-  border: 1px solid red;
 }
 
 .form-control-text-label-memorize {
@@ -89,13 +51,56 @@
   -webkit-box-shadow: inset 0 5px 5px rgba(231, 119, 119, 0.07),0 0 8px rgb(233, 81, 81);
 }
 
-.form-error-active-memorize:focus {
-  border-color: #ff0032;
-  outline: 0;
-  box-shadow: inset 0 1px 1px rgba(231, 119, 119, 0.07),0 0 8px rgb(233, 81, 81);
-  -webkit-box-shadow: inset 0 1px 1px rgba(231, 119, 119, 0.07),0 0 8px rgb(233, 81, 81);
-}
-
 .form-control-text-error-memorize {
   color: red;
+}
+
+@media only screen and (min-width:576px) {
+  .form-authentication-memorize {
+    width: 600px;
+  }
+
+  .form-button-memorize {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .form-submit-button-memorize {
+    margin-right: 10px;
+    width: 150px;
+  }
+
+  .form-change-authen-button-memorize {
+    width: 150px;
+  }
+}
+@media only screen and (max-width:576px) {
+  .form-authentication-memorize {
+    width: 400px;
+  }
+
+  .form-button-memorize {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-register-login-button-memorize {
+    margin: 0px 5px;
+  }
+
+  .form-login-register-button-memorize {
+    margin: 0px 5px;
+  }
+
+  .form-submit-button-memorize {
+    width: 100%;
+    margin-right: 3px;
+  }
+
+  .form-change-authen-button-memorize {
+    width: 100%;
+    margin-left: 3px;
+  }
 }
