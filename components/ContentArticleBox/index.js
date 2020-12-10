@@ -5,7 +5,9 @@ import _ from 'lodash'
 import './style.scss'
 
 const ContentArticleBox = ({ article, user }) => {
+
   function ContentBox() {
+    console.log('article')
     return (
       <div className='d-flex justify-content-center'>
         <div className='content-box-memorize'>

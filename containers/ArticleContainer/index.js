@@ -16,9 +16,7 @@ const ArticleContainer = () => {
   const state = useSelector(state => state)
   const articles = articleSelectors.selectAll(state)
 
-  // tracking on which page we currently are
-  const [page, setPage] = useState(1);
-  // add loader ref
+  const [page, setPage] = useState(1)
   const loader = useRef(null)
   useEffect(() => {
     const options = {
@@ -28,18 +26,11 @@ const ArticleContainer = () => {
     }
     // initialize IntersectionObserver
     // and attaching to Load More div
-    const observer = new IntersectionObserver(handleObserver, options);
+    const observer = new IntersectionObserver(handleObserver, options)
     if (loader.current) {
       observer.observe(loader.current)
     }
   }, [])
-
-  const handleObserver = entities => {
-    const target = entities[0];
-    if (target.isIntersecting) {
-      setPage(page => page + 1)
-    }
-  }
 
   // logic load more articles
   useEffect(() => {
@@ -53,6 +44,13 @@ const ArticleContainer = () => {
     }
   }, [page])
 
+  const handleObserver = entities => {
+    const target = entities[0]
+    if (target.isIntersecting) {
+      setPage(page => page + 1)
+    }
+  }
+
   function ContentArticleBoxes() {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author.id)
@@ -61,12 +59,14 @@ const ArticleContainer = () => {
   }
 
   return (
-    <div className='article-container-memorize'>
-      {ContentArticleBoxes()}
+    <>
+      <div className='article-container-memorize'>
+        {ContentArticleBoxes()}
+      </div>
       <div ref={loader}>
         <Loading width={300} />
       </div>
-    </div>
+    </>
   )
 }
 
