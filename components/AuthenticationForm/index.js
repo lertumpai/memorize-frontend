@@ -49,10 +49,10 @@ const AuthenticationForm = () => {
 
   function ButtonRegisterForm() {
     return (
-      <div className=''>
+      <>
         <button type='button' className='form-submit-button-memorize' onClick={onRegister}>Register</button>
         <button type='button' className='form-register-login-button-memorize' onClick={onClickRegisterToLogin}>Login</button>
-      </div>
+      </>
     )
   }
 
@@ -62,15 +62,20 @@ const AuthenticationForm = () => {
 
   function ButtonLoginForm() {
     return (
-      <div className=''>
+      <>
         <button type='button' className='form-submit-button-memorize' onClick={onLogin}>Login</button>
         <button type='button' className='form-login-register-button-memorize' onClick={onClickLoginToRegister}>Register</button>
-      </div>
+      </>
     )
   }
 
   function ButtonForm() {
-    return isLogin ? <ButtonLoginForm /> : <ButtonRegisterForm />
+    const buttonForm = isLogin ? <ButtonLoginForm /> : <ButtonRegisterForm />
+    return (
+      <div className=''>
+        {buttonForm}
+      </div>
+    )
   }
 
   function LabelForm() {
@@ -86,9 +91,9 @@ const AuthenticationForm = () => {
     }
     return (
       <div className='form-text-input-memorize'>
-        <div className='form-text-label-memorize'>Username</div>
+        <div className='form-control-text-label-memorize'>Username</div>
         <input className={classNameFormControl} type='text' placeholder='Username' value={form.username} onChange={onChange} />
-        <div className='form-text-error-memorize'>{message}</div>
+        <div className='form-control-text-error-memorize'>{message}</div>
       </div>
     )
   }
@@ -101,9 +106,9 @@ const AuthenticationForm = () => {
     }
     return (
       <div className='form-text-input-memorize'>
-        <div className='form-text-label-memorize'>Password</div>
+        <div className='form-control-text-label-memorize'>Password</div>
         <input className={classNameFormControl} type='password' placeholder='Password' value={form.password} onChange={onChange} />
-        <div className='form-text-error-memorize'>{message}</div>
+        <div className='form-control-text-error-memorize'>{message}</div>
       </div>
     )
   }
