@@ -74,7 +74,7 @@ const ProfileForm = () => {
 
   function ButtonSave() {
     return (
-      <div className='profile-save-button-memorize'>
+      <div className='profile-form-save-button-memorize'>
         <div className='profile-save-button-memorize' onClick={onSave} >save</div>
       </div>
     )
@@ -88,7 +88,7 @@ const ProfileForm = () => {
     <>
       <div className='profile-form-memorize'>
         {Name()}
-        {Birthday()}
+        {/*{Birthday()}*/}
         {Status()}
         <ButtonSave />
       </div>
