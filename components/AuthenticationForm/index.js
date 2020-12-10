@@ -50,8 +50,8 @@ const AuthenticationForm = () => {
   function ButtonRegisterForm() {
     return (
       <>
-        <button type='button' className='form-submit-button-memorize' onClick={onRegister}>Register</button>
-        <button type='button' className='form-register-login-button-memorize' onClick={onClickRegisterToLogin}>Login</button>
+        <div className='form-submit-button-memorize' onClick={onRegister}>Register</div>
+        <div className='form-change-authen-button-memorize' onClick={onClickRegisterToLogin}>Login</div>
       </>
     )
   }
@@ -63,8 +63,8 @@ const AuthenticationForm = () => {
   function ButtonLoginForm() {
     return (
       <>
-        <button type='button' className='form-submit-button-memorize' onClick={onLogin}>Login</button>
-        <button type='button' className='form-login-register-button-memorize' onClick={onClickLoginToRegister}>Register</button>
+        <div className='form-submit-button-memorize' onClick={onLogin}>Login</div>
+        <div className='form-change-authen-button-memorize' onClick={onClickLoginToRegister}>Register</div>
       </>
     )
   }
