@@ -7,7 +7,6 @@ import './style.scss'
 const ContentArticleBox = ({ article, user }) => {
 
   function ContentBox() {
-    console.log('article')
     return (
       <div className='content-box-memorize'>
         <div className='content-box-head-memorize'>
