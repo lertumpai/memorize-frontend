@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Form } from 'react-bootstrap'
 import _ from 'lodash'
 import Datetime from 'react-datetime'
 import moment from 'moment'
@@ -47,36 +46,36 @@ const ProfileForm = () => {
 
   function Name() {
     return (
-      <Form.Group controlId='name'>
-        <Form.Label>Name</Form.Label>
-        <Form.Control type='text' value={profile.name} onChange={onProfileChange} />
-      </Form.Group>
+      <div className='profile-form-control-input-memorize'>
+        <div className='profile-form-label-input-memorize'>Name</div>
+        <input className='profile-form-text-input-memorize' id='name' type='text' value={profile.name} onChange={onProfileChange} />
+      </div>
     )
   }
 
   function Birthday() {
     const date = moment(profile.birthday)
     return (
-      <Form.Group controlId='birthday' className='pt-3'>
-        <Form.Label>Birthday</Form.Label>
+      <div className='profile-form-control-input-memorize'>
+        <div className='profile-form-label-input-memorize'>Birthday</div>
         <Datetime value={date} dateFormat='DD/MM/YYYY' timeFormat={false} onChange={onDateChange} onClose={onDateChange} />
-      </Form.Group>
+      </div>
     )
   }
 
   function Status() {
     return (
-      <Form.Group controlId='status' className='pt-3'>
-        <Form.Label>Status</Form.Label>
-        <Form.Control as='textarea' rows={3} value={profile.status} onChange={onProfileChange} />
-      </Form.Group>
+      <div className='profile-form-control-input-memorize'>
+        <div className='profile-form-label-input-memorize'>Status</div>
+        <input className='profile-form-text-input-memorize' type='text' value={profile.status} onChange={onProfileChange} />
+      </div>
     )
   }
 
   function ButtonSave() {
     return (
-      <div className='d-flex justify-content-end pt-4'>
-        <Button className='save-button-profile' variant='success' type='button' onClick={onSave} >save</Button>
+      <div className='profile-save-button-memorize'>
+        <div className='profile-save-button-memorize' onClick={onSave} >save</div>
       </div>
     )
   }
@@ -86,17 +85,17 @@ const ProfileForm = () => {
   }
 
   return (
-    <div className='profile-container'>
-      <Form className='profile-form-memorize'>
+    <>
+      <div className='profile-form-memorize'>
         {Name()}
         {Birthday()}
         {Status()}
         <ButtonSave />
-      </Form>
+      </div>
       <div className='profile-saving'>
         <Saving />
       </div>
-    </div>
+    </>
   )
 }
 

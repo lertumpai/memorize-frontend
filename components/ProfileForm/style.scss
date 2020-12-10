@@ -1,11 +1,5 @@
-.profile-container {
-  width: 700px;
-}
-
 .profile-form-memorize {
   margin-top: 50px;
-  padding: 30px;
-  max-width: 700px;
   border: 3px solid #b1b0b0;
   border-radius: 15px;
 }
@@ -17,13 +11,45 @@
   font-size: 20px;
 }
 
-@media only screen and (min-width:450px) {
+.profile-form-control-input-memorize {
+
+}
+
+.profile-form-label-input-memorize {
+
+}
+
+.profile-form-text-input-memorize {
+
+}
+
+.profile-save-button-memorize {
+
+}
+
+.profile-save-button-memorize {
+
+}
+
+@media only screen and (min-width:576px) {
+  .profile-form-memorize {
+    margin-top: 50px;
+    border: 3px solid #b1b0b0;
+    border-radius: 15px;
+  }
+
   .profile-saving {
     margin-top: -155px;
   }
 }
 
-@media only screen and (max-width:450px) {
+@media only screen and (max-width:575px) {
+  .profile-form-memorize {
+    margin-top: 50px;
+    border: 3px solid #b1b0b0;
+    border-radius: 15px;
+  }
+
   .profile-saving {
     margin-top: -155px;
     margin-left: -170px;
