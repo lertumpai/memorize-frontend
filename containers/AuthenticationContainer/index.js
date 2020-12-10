@@ -5,7 +5,7 @@ import './style.scss'
 
 const AuthenticationContainer = () => {
   return (
-    <div className='authentication-container'>
+    <div className='authentication-container-memorize'>
       <AuthenticationForm />
     </div>
   )

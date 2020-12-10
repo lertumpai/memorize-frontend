@@ -6,7 +6,7 @@ import './style.scss'
 
 const ProfileContainer = () => {
   return (
-    <div className='profile-container'>
+    <div className='profile-container-memorize'>
       <ProfileForm />
     </div>
   )

@@ -6,6 +6,8 @@ import { userSelectors } from '../../store/users/slice'
 import { queryArticles } from '../../store/articles/asyncThunk'
 import ContentArticleBox from '../../components/ContentArticleBox/dynamic'
 
+import './style.scss'
+
 const ArticleContainer = () => {
   const dispatch = useDispatch()
 
@@ -24,7 +26,7 @@ const ArticleContainer = () => {
   }
 
   return (
-    <div className='content-boxes-memorize'>
+    <div className='article-container-memorize'>
       {ContentArticleBoxes()}
     </div>
   )

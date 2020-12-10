@@ -4,7 +4,7 @@ import NavBar from '../../components/NavBar'
 
 import './style.scss'
 
-const Index = ({ children }) => {
+const Navbar = ({ children }) => {
   return (
     <>
       <NavBar />
@@ -15,4 +15,4 @@ const Index = ({ children }) => {
   )
 }
 
-export default Index
+export default Navbar
