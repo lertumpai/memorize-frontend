@@ -32,7 +32,6 @@ const ArticleContainer = () => {
     if (loader.current) {
       observer.observe(loader.current)
     }
-
   }, [])
 
   const handleObserver = entities => {
@@ -42,15 +41,16 @@ const ArticleContainer = () => {
     }
   }
 
-  // handle initial articles
-  useMemo(() => {
-    dispatch(queryArticles({}))
-  }, [articles])
-
   // logic load more articles
   useEffect(() => {
     const lastArticle = _.last(articles)
-    console.log(lastArticle)
+    if (lastArticle) {
+      const pagination = { before: lastArticle.createdAt, limit: 15 }
+      dispatch(queryArticles({ pagination }))
+    }
+    else {
+      dispatch(queryArticles({}))
+    }
   }, [page])
 
   function ContentArticleBoxes() {
