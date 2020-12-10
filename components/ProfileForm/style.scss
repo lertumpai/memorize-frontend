@@ -11,7 +11,7 @@
 
 .profile-form-label-input-memorize {
   margin-left: 5px;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .form-control,
@@ -21,11 +21,13 @@
   border-radius: 5px;
   border: 1px solid #d4d4d4;
   height: 40px;
-  padding: 0px 10px;
+  padding: 1px 10px;
+  font-size: 18px;
 }
 
 .profile-form-textarea-input-memorize {
   height: 100px;
+  padding: 8px 10px;
 }
 
 .form-control:focus,
