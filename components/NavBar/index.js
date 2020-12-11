@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux'
 
 import { clearUser } from '../../utils/localStorage'
 import { resetStateAuth } from '../../store/auth/slice'
+import { resetStateArticles } from '../../store/articles/slice'
+import { resetStateUsers } from '../../store/users/slice'
 import './style.scss'
 
 const NavBar = () => {
@@ -47,6 +49,8 @@ const NavBar = () => {
   function onLogout() {
     clearUser()
     dispatch(resetStateAuth())
+    dispatch(resetStateArticles())
+    dispatch(resetStateUsers())
   }
 
   function Logout() {

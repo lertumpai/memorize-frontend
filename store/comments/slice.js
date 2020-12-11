@@ -6,8 +6,17 @@ const commentAdapters = createEntityAdapter()
 
 const commentSlices = createSlice({
   name: 'comments',
-  initialState: commentAdapters.getInitialState(),
+  initialState: commentAdapters.getInitialState({
+    status: STATUS_IDLE,
+    error: null,
+  }),
   reducers: {
+    resetStateComments: state => {
+      state.status = STATUS_IDLE
+      state.error = null
+      state.ids = []
+      state.entities = {}
+    },
     idleStateComments: state => {
       state.status = STATUS_IDLE
     },
@@ -20,7 +29,16 @@ const commentSlices = createSlice({
   },
 })
 
-export const { commentAddOne, commentAddMany, commentUpdateOne, commentUpdateMany, commentRemoveOne, commentRemoveMany } = commentSlices.actions
+export const {
+  commentAddOne,
+  commentAddMany,
+  commentUpdateOne,
+  commentUpdateMany,
+  commentRemoveOne,
+  commentRemoveMany,
+  idleStateComments,
+  resetStateComments,
+} = commentSlices.actions
 export const commentSelectors = commentAdapters.getSelectors(state => state.comments)
 
 export default commentSlices.reducer

@@ -18,6 +18,12 @@ const articleSlices = createSlice({
     error: null,
   }),
   reducers: {
+    resetStateArticles: state => {
+      state.status = STATUS_IDLE
+      state.error = null
+      state.ids = []
+      state.entities = {}
+    },
     idleStateArticles: state => {
       state.status = STATUS_IDLE
     },
@@ -39,7 +45,16 @@ const articleSlices = createSlice({
   },
 })
 
-export const { articleAddOne, articleAddMany, articleUpdateOne, articleUpdateMany, articleRemoveOne, articleRemoveMany, idleStateArticles } = articleSlices.actions
+export const {
+  articleAddOne,
+  articleAddMany,
+  articleUpdateOne,
+  articleUpdateMany,
+  articleRemoveOne,
+  articleRemoveMany,
+  resetStateArticles,
+  idleStateArticles,
+} = articleSlices.actions
 export const articleSelectors = articleAdapters.getSelectors(state => state.articles)
 
 export default articleSlices.reducer
