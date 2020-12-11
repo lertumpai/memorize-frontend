@@ -13,11 +13,11 @@ const ContentArticleBox = ({ article, user }) => {
             {user?.profile?.name || 'unknown'}
           </div>
           <div className='article-createdAt-memorize'>
-            {moment(article.createdAt).format('DD/MM/YYYY HH:mm:ss')}
+            {moment(article?.createdAt).format('DD/MM/YYYY HH:mm:ss')}
           </div>
         </div>
         <div className='content-box-body-memorize'>
-          {article.content}
+          {article?.content}
         </div>
       </div>
     )

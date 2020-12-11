@@ -5,7 +5,9 @@ import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { articleSelectors, idleStateArticles } from '../../store/articles/slice'
 import { userSelectors } from '../../store/users/slice'
 import { queryArticles } from '../../store/articles/asyncThunk'
-import ContentArticleBox from '../../components/ContentArticleBox/dynamic'
+
+import ArticleCreateBox from '../../components/ArticleCreateBox/dynamic'
+import ArticleContentBox from '../../components/ArticleContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
 
 import './style.scss'
@@ -54,17 +56,18 @@ const ArticleContainer = () => {
     }
   }
 
-  function ContentArticleBoxes() {
+  function ArticleContentBoxes() {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author.id)
-      return <ContentArticleBox key={article.id} article={article} user={user} />
+      return <ArticleContentBox key={article.id} article={article} user={user} />
     })
   }
 
   return (
     <>
       <div className='article-container-memorize'>
-        {ContentArticleBoxes()}
+        <ArticleCreateBox />
+        {ArticleContentBoxes()}
         <div ref={loader}>
           {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
         </div>
