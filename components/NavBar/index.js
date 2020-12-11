@@ -20,11 +20,11 @@ const NavBar = () => {
       classNameMenu += ' active-memorize'
     }
     return (
-      <div className={classNameMenu}>
-        <Link href='/articles'>
+      <Link href='/articles'>
+        <div className={classNameMenu}>
           <a><i className={classNameIcon} /></a>
-        </Link>
-      </div>
+        </div>
+      </Link>
     )
   }
 
@@ -36,11 +36,11 @@ const NavBar = () => {
       classNameMenu += ' active-memorize'
     }
     return (
-      <div className={classNameMenu}>
-        <Link href='/profile'>
+      <Link href='/profile'>
+        <div className={classNameMenu}>
           <a><i className={classNameIcon} /></a>
-        </Link>
-      </div>
+        </div>
+      </Link>
     )
   }
 
@@ -51,11 +51,11 @@ const NavBar = () => {
 
   function Logout() {
     return (
-      <div className='nav-menu-memorize' onClick={onLogout}>
-        <Link href='#'>
+      <Link href='#'>
+        <div className='nav-menu-memorize' onClick={onLogout}>
           <a><i className='icon-memorize fa fa-sign-out' /></a>
-        </Link>
-      </div>
+        </div>
+      </Link>
     )
   }
 
