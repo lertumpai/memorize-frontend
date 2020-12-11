@@ -32,12 +32,16 @@
 }
 
 .article-textarea-content-box-memorize {
+  -ms-overflow-style: none;
   width: calc(100% - 32px);
   border-radius: 15px;
   border-color: #d4d4d4;
   padding: 10px 15px;
   font-size: 18px;
   resize: unset;
+}
+.article-textarea-content-box-memorize::-webkit-scrollbar {
+  display: none;
 }
 .article-textarea-content-box-memorize:focus {
   border: 1px solid #33a1ff;
