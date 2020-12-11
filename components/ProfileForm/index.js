@@ -30,7 +30,6 @@ const ProfileForm = () => {
     }
   })
 
-
   function onSave() {
     dispatch(mutationProfile({ ...profile, id: currentUser?.id }))
   }
