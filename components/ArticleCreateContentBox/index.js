@@ -14,7 +14,11 @@ const Index = () => {
   }
 
   function ArticleCreateButton() {
-    return <div className='article-form-create-button-memorize'>Post</div>
+    return (
+      <div className='article-form-create-button-memorize'>
+        <div className='article-create-button-memorize'>Post</div>
+      </div>
+    )
   }
 
   function ArticleCreateContentBox() {
