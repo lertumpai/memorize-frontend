@@ -48,9 +48,10 @@
 @media only screen and (max-width:991px) {
   .nav-menu-memorize {
     margin: 10px 5px;
-    padding: 7px 7px 2px 7px;
+    padding: 5px;
     background: #d2d2d2;
     border-radius: 15px;
+    text-align: center;
   }
 
   .icon-memorize {
@@ -62,6 +63,7 @@
   }
 
   .navbar-link-memorize {
+    border: 1px solid red;
     display: none;
     position: absolute;
     top: 60px;
@@ -74,6 +76,7 @@
 
   .hamburger-menu-memorize {
     margin-right: 25px;
+    border: 1px solid red;
     font-size: 40px;
   }
 }
