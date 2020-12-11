@@ -57,9 +57,7 @@ const ArticleContainer = () => {
   function ContentArticleBoxes() {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author.id)
-      return user
-        ? <ContentArticleBox key={article.id} article={article} user={user} />
-        : 'loading'
+      return <ContentArticleBox key={article.id} article={article} user={user} />
     })
   }
 
