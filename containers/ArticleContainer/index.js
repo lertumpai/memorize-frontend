@@ -25,8 +25,8 @@ const ArticleContainer = () => {
   useEffect(() => {
     const options = {
       root: document.querySelector('#application-layout-memorize'),
-      rootMargin: '0px',
-      threshold: 1,
+      rootMargin: '100px',
+      threshold: 0.5,
     }
     const observer = new IntersectionObserver(handleObserver, options)
     if (loader.current) {
