@@ -64,3 +64,8 @@
   background: #4fbda4;
   border-radius: 15px;
 }
+
+.article-create-button-memorize.disable-click-memorize {
+  background: #6c7c79;
+  pointer-events: none;
+}

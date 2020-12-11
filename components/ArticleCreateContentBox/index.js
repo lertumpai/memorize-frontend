@@ -45,9 +45,12 @@ const Index = () => {
   }
 
   function ArticleCreateButton() {
+    const classNameButton = content.length > 0
+      ? 'article-create-button-memorize'
+      : 'article-create-button-memorize disable-click-memorize'
     return (
       <div className='article-form-create-button-memorize'>
-        <div className='article-create-button-memorize' onClick={onContentClick} >Post</div>
+        <div className={classNameButton} onClick={onContentClick} >Post</div>
       </div>
     )
   }
