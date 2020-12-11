@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import _ from 'lodash'
 
-import { STATUS_SUCCESS } from '../../store/status'
+import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { articleSelectors, idleStateArticles } from '../../store/articles/slice'
 import { userSelectors } from '../../store/users/slice'
 import { queryArticles } from '../../store/articles/asyncThunk'
@@ -34,7 +34,6 @@ const ArticleContainer = () => {
   }, [])
 
   useEffect(() => {
-    // eslint-disable-next-line default-case
     const lastArticle = _.last(articles)
     if (lastArticle) {
       const pagination = {
@@ -75,7 +74,7 @@ const ArticleContainer = () => {
         {ContentArticleBoxes()}
       </div>
       <div ref={loader}>
-        <Loading width={300} />
+        {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
       </div>
     </>
   )
