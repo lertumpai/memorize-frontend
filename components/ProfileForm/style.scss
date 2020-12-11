@@ -17,6 +17,7 @@
 .form-control,
 .profile-form-text-input-memorize,
 .profile-form-textarea-input-memorize {
+  width: calc(100% - 22px);
   margin-top: 8px;
   border-radius: 5px;
   border: 1px solid #d4d4d4;
@@ -60,7 +61,7 @@
 .profile-form-memorize {
   border: 3px solid #b1b0b0;
   border-radius: 15px;
-  //padding: 20px;
+  padding: 20px;
 }
 
 .profile-saving {
