@@ -1,0 +1,47 @@
+.article-form-create-content-box-memorize {
+  margin-top: 15px;
+  border: 1px solid red;
+}
+
+@media only screen and (min-width:992px) {
+  .article-form-create-content-box-memorize {
+    width: 800px;
+  }
+}
+@media only screen and (max-width:992px) {
+  .article-form-create-content-box-memorize {
+    width: 85%;
+  }
+}
+@media only screen and (max-width:768px) {
+  .article-form-create-content-box-memorize {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width:576px) {
+  .article-form-create-content-box-memorize {
+    width: 98%;
+  }
+}
+
+.article-form-textarea-content-box-memorize {
+
+}
+
+.article-textarea-content-box-memorize {
+  padding: 10px 15px;
+  font-size: 18px;
+  resize: unset;
+}
+
+.article-form-create-button-memorize {
+  cursor: pointer;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: #32c465;
+  border-radius: 15px;
+}

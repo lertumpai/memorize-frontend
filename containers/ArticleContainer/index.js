@@ -6,7 +6,7 @@ import { articleSelectors, idleStateArticles } from '../../store/articles/slice'
 import { userSelectors } from '../../store/users/slice'
 import { queryArticles } from '../../store/articles/asyncThunk'
 
-import ArticleCreateBox from '../../components/ArticleCreateBox/dynamic'
+import ArticleCreateContentBox from '../../components/ArticleCreateContentBox/dynamic'
 import ArticleContentBox from '../../components/ArticleContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
 
@@ -66,7 +66,7 @@ const ArticleContainer = () => {
   return (
     <>
       <div className='article-container-memorize'>
-        <ArticleCreateBox />
+        <ArticleCreateContentBox />
         {ArticleContentBoxes()}
         <div ref={loader}>
           {status !== STATUS_IDLE ? <Loading width={300} /> : ''}

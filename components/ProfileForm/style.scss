@@ -28,7 +28,7 @@
 .profile-form-textarea-input-memorize {
   height: 100px;
   padding: 8px 10px;
-  resize: vertical;
+  resize: unset;
 }
 
 .form-control:focus,
@@ -60,7 +60,7 @@
 .profile-form-memorize {
   border: 3px solid #b1b0b0;
   border-radius: 15px;
-  padding: 20px;
+  //padding: 20px;
 }
 
 .profile-saving {
