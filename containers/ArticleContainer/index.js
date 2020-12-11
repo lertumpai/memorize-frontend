@@ -35,15 +35,11 @@ const ArticleContainer = () => {
 
   useEffect(() => {
     const lastArticle = _.last(articles)
-    if (lastArticle) {
-      const pagination = {
-        before: lastArticle.createdAt,
-        limit: 15,
-      }
-      dispatch(queryArticles({ pagination }))
-    } else {
-      dispatch(queryArticles({}))
+    const pagination = {
+      before: _.get(lastArticle, 'createdAt'),
+      limit: 15,
     }
+    dispatch(queryArticles({ pagination }))
   }, [page])
 
   useEffect(() => {
