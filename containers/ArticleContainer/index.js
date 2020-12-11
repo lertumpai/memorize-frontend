@@ -24,8 +24,8 @@ const ArticleContainer = () => {
   useEffect(() => {
     const options = {
       root: document.querySelector('#application-layout-memorize'),
-      rootMargin: '300px',
-      threshold: 0.5,
+      rootMargin: '0px',
+      threshold: 1,
     }
     const observer = new IntersectionObserver(handleObserver, options)
     if (loader.current) {
@@ -68,9 +68,9 @@ const ArticleContainer = () => {
     <>
       <div className='article-container-memorize'>
         {ContentArticleBoxes()}
-      </div>
-      <div ref={loader}>
-        {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+        <div ref={loader}>
+          {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+        </div>
       </div>
     </>
   )
