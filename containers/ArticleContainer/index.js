@@ -58,7 +58,7 @@ const ArticleContainer = () => {
 
   function ArticleContentBoxes() {
     return articles.map(article => {
-      const user = userSelectors.selectById(state, article.author.id)
+      const user = userSelectors.selectById(state, article.author)
       return <ArticleContentBox key={article.id} article={article} user={user} />
     })
   }

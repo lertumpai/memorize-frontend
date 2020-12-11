@@ -4,9 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import './style.scss'
 import { STATUS_SUCCESS } from '../../store/status'
 import { idleStateArticles } from '../../store/articles/slice'
+import { mutateArticle } from '../../store/articles/asyncThunk'
 
 const Index = () => {
   const dispatch = useDispatch()
+
+  const article = useSelector(state => state.articles)
+  const { status } = article
+
   const [content, setContent] = useState('')
 
   useEffect(() => {
@@ -17,6 +22,11 @@ const Index = () => {
 
   function onContentChange(e) {
     setContent(e.target.value)
+  }
+
+  function onContentClick() {
+    dispatch(mutateArticle({ content }))
+    setContent('')
   }
 
   function ArticleContentBox() {
@@ -37,7 +47,7 @@ const Index = () => {
   function ArticleCreateButton() {
     return (
       <div className='article-form-create-button-memorize'>
-        <div className='article-create-button-memorize'>Post</div>
+        <div className='article-create-button-memorize' onClick={onContentClick} >Post</div>
       </div>
     )
   }
@@ -51,7 +61,7 @@ const Index = () => {
     )
   }
 
-  return <ArticleCreateContentBox />
+  return ArticleCreateContentBox()
 }
 
 export default Index

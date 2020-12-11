@@ -24,8 +24,13 @@ export const queryArticles = createAsyncThunk(
 export const mutateArticle = createAsyncThunk(
   'articles/mutation/article',
   async ({ id, content }, { dispatch }) => {
-    const input = { content }
-    console.log(id, input)
-    // const response = await mutation(MUTATE_ARTICLE, { id, input })
+    const ArticleInput = { content }
+    const response = await mutation(MUTATE_ARTICLE, { id, ArticleInput })
+
+    const { user, article } = prepareResponseArticles(response)
+    dispatch(articleAddOne(article))
+    dispatch(userAddOne(user))
+
+    return true
   },
 )
