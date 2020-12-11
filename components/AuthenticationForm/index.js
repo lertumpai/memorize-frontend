@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
-import _ from 'lodash'
 
 import { STATUS_SUCCESS } from '../../store/status'
 import { resetStateAuth, idleStateAuth } from '../../store/auth/slice'
@@ -84,7 +83,7 @@ const AuthenticationForm = () => {
   }
 
   function UsernameForm() {
-    const message = _.get(error, 'username')
+    const message = error?.username
     let classNameFormControl = 'form-text-input-memorize'
     if (message) {
       classNameFormControl += ' form-error-active-memorize'
@@ -99,7 +98,7 @@ const AuthenticationForm = () => {
   }
 
   function PasswordForm() {
-    const message = _.get(error, 'password')
+    const message = error?.password
     let classNameFormControl = 'form-text-input-memorize'
     if (message) {
       classNameFormControl += ' form-error-active-memorize'

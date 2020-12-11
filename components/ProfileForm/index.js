@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import _ from 'lodash'
 import Datetime from 'react-datetime'
 import moment from 'moment'
 
@@ -18,9 +17,9 @@ const ProfileForm = () => {
   const { currentUser, status } = auth
 
   const initialProfile = {
-    name: _.get(currentUser, 'profile.name') || '',
-    status: _.get(currentUser, 'profile.status') || '',
-    birthday: _.get(currentUser, 'profile.birthday') || moment(),
+    name: currentUser?.profile?.name || '',
+    status: currentUser?.profile?.status || '',
+    birthday: currentUser?.profile?.birthday || moment(),
   }
   const [profile, setProfile] = useState(initialProfile)
 

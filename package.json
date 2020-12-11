@@ -19,7 +19,6 @@
     "graphql": "^15.4.0",
     "install": "^0.13.0",
     "jwt-decode": "^3.1.2",
-    "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "next": "10.0.3",
     "next-redux-wrapper": "^6.0.2",
@@ -38,6 +37,7 @@
     "styled-components": "^5"
   },
   "devDependencies": {
+    "@babel/node": "^7.12.10",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.14.0",
     "eslint-plugin-react": "^7.21.5",

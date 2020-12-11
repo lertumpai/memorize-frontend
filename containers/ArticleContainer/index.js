@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import _ from 'lodash'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { articleSelectors, idleStateArticles } from '../../store/articles/slice'
@@ -34,9 +33,9 @@ const ArticleContainer = () => {
   }, [])
 
   useEffect(() => {
-    const lastArticle = _.last(articles)
+    const lastArticle = articles ? articles[articles.length - 1] : null
     const pagination = {
-      before: _.get(lastArticle, 'createdAt'),
+      before: lastArticle?.createdAt,
       limit: 15,
     }
     dispatch(queryArticles({ pagination }))
