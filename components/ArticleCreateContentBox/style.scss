@@ -1,6 +1,7 @@
 .article-form-create-content-box-memorize {
   margin-top: 15px;
-  border: 1px solid red;
+  //border: 1px solid red;
+  border-radius: 15px;
 }
 
 @media only screen and (min-width:992px) {
@@ -25,14 +26,18 @@
   }
 }
 
-.article-form-textarea-content-box-memorize {
-
-}
-
 .article-textarea-content-box-memorize {
+  width: calc(100% - 32px);
+  border-radius: 15px;
   padding: 10px 15px;
   font-size: 18px;
   resize: unset;
+}
+.article-textarea-content-box-memorize:focus {
+  border: 1px solid #33a1ff;
+  box-shadow: inset 0 0px 5px rgb(207, 207, 207),0 0 8px rgb(95, 167, 250);
+  -webkit-box-shadow: inset 0 0px 5px rgb(207, 207, 207),0 0 8px rgb(95, 167, 250);
+  outline: 0;
 }
 
 .article-form-create-button-memorize {

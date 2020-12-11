@@ -8,7 +8,7 @@ const Index = () => {
   function ArticleContentBox() {
     return (
       <div className='article-form-textarea-content-box-memorize'>
-        <textarea className='article-textarea-content-box-memorize' id='content' rows='3' />
+        <textarea className='article-textarea-content-box-memorize' id='content' rows='5' placeholder='Your post today ^^' />
       </div>
     )
   }
