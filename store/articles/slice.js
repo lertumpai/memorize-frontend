@@ -4,7 +4,11 @@ import { queryArticles } from './asyncThunk'
 import { STATUS_LOADING, STATUS_SUCCESS, STATUS_IDLE } from '../status'
 
 const articleAdapters = createEntityAdapter({
-  sortComparer: (a, b) => a.createdAt > b.createdAt,
+  sortComparer: (a, b) => {
+    const valueA = new Date(a.createdAt).valueOf()
+    const valueB = new Date(b.createdAt).valueOf()
+    return valueB - valueA
+  },
 })
 
 const articleSlices = createSlice({
