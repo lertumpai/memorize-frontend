@@ -1,5 +1,5 @@
 .navbar-memorize {
-  background: #f3c2d8;
+  background: #96ceb4;
   height: 60px;
   display: flex;
   justify-content: center;
@@ -8,11 +8,11 @@
 
 .icon-memorize {
   font-size: 30px;
-  color: #6e6e6e;
+  color: #ececec;
 }
 
 .icon-memorize.active-memorize {
-  color: #1b7ffd;
+  color: #015efc;
 }
 
 .nav-menu-memorize {
@@ -26,18 +26,18 @@
   }
 
   .nav-menu-memorize {
-    padding: 14px 35px 13px 35px;
+    padding: 13px 35px 13px 35px;
   }
 
   .nav-menu-memorize:hover {
     background: #abd0ff;
-    border-bottom: 2px solid #1b7ffd;
+    border-bottom: 3px solid #015efc;
   }
 
   .nav-menu-memorize.active-memorize {
-    padding-top: 14px;
+    padding-top: 13px;
     padding-bottom: 13px;
-    border-bottom: 2px solid #1b7ffd;
+    border-bottom: 3px solid #015efc;
   }
 
   .hamburger-menu-memorize {
