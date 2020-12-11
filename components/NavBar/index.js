@@ -13,7 +13,7 @@ const NavBar = () => {
   const [isCollapse, setIsCollapse] = useState(false)
 
   function Home() {
-    let classNameIcon = 'icon-memorize'
+    let classNameIcon = 'icon-memorize fa fa-home'
     let classNameMenu = 'nav-menu-memorize'
     if (router.pathname === '/articles') {
       classNameIcon += ' active-memorize'
@@ -22,14 +22,14 @@ const NavBar = () => {
     return (
       <div className={classNameMenu}>
         <Link href='/articles'>
-          <a>home</a>
+          <a><i className={classNameIcon} /></a>
         </Link>
       </div>
     )
   }
 
   function Profile() {
-    let classNameIcon = 'icon-memorize'
+    let classNameIcon = 'icon-memorize fa fa-user'
     let classNameMenu = 'nav-menu-memorize'
     if (router.pathname === '/profile') {
       classNameIcon += ' active-memorize'
@@ -38,7 +38,7 @@ const NavBar = () => {
     return (
       <div className={classNameMenu}>
         <Link href='/profile'>
-          <a>profile</a>
+          <a><i className={classNameIcon} /></a>
         </Link>
       </div>
     )
@@ -50,11 +50,10 @@ const NavBar = () => {
   }
 
   function Logout() {
-    let className = 'nav-menu-memorize'
     return (
-      <div className={className} onClick={onLogout}>
+      <div className='nav-menu-memorize' onClick={onLogout}>
         <Link href='#'>
-          <a>logout</a>
+          <a><i className='icon-memorize fa fa-sign-out' /></a>
         </Link>
       </div>
     )
@@ -83,7 +82,7 @@ const NavBar = () => {
     return (
       <div className={className} onClick={collapse}>
         <Link href=''>
-          <a>ham</a>
+          <a><i className='fa fa-bars' /></a>
         </Link>
       </div>
     )
