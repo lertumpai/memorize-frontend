@@ -48,8 +48,8 @@
 @media only screen and (max-width:991px) {
   .nav-menu-memorize {
     margin: 10px 5px;
-    padding: 5px;
-    background: #d2d2d2;
+    padding: 5px 7px;
+    background: #dbdada;
     border-radius: 15px;
     text-align: center;
   }
@@ -71,10 +71,36 @@
 
   .navbar-link-memorize.collapse {
     display: block;
+    animation:animateDown 0.6s;
+  }
+
+  @keyframes animateDown {
+    from {
+      top: 20px;
+      opacity: 0;
+    }
+    to {
+      top: 60px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes animateUp {
+    from {
+      top: 60px;
+      opacity: 1;
+    }
+    to {
+      top: 20px;
+      opacity: 0;
+    }
   }
 
   .hamburger-menu-memorize {
-    margin-right: 25px;
+    margin-right: 26px;
     font-size: 40px;
+  }
+  .hamburger-memorize {
+    color: #6e6e6e;
   }
 }

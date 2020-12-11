@@ -78,11 +78,12 @@ const NavBar = () => {
   }
 
   function HamburgerMenu() {
-    let className = 'hamburger-menu-memorize'
+    const classNameHamburgerMenu = 'hamburger-menu-memorize'
+    const classNameHamburger = 'fa fa-bars hamburger-memorize'
     return (
-      <div className={className} onClick={collapse}>
+      <div className={classNameHamburgerMenu} onClick={collapse}>
         <Link href=''>
-          <a><i className='fa fa-bars' /></a>
+          <a><i className={classNameHamburger} /></a>
         </Link>
       </div>
     )
