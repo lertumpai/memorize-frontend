@@ -84,7 +84,7 @@ const AuthenticationForm = () => {
 
   function UsernameForm() {
     const message = error?.username
-    let classNameFormControl = 'form-text-input-memorize'
+    let classNameFormControl = 'form-text-input-memorize input-memorize'
     if (message) {
       classNameFormControl += ' form-error-active-memorize'
     }
@@ -99,7 +99,7 @@ const AuthenticationForm = () => {
 
   function PasswordForm() {
     const message = error?.password
-    let classNameFormControl = 'form-text-input-memorize'
+    let classNameFormControl = 'form-text-input-memorize input-memorize'
     if (message) {
       classNameFormControl += ' form-error-active-memorize'
     }

@@ -46,7 +46,7 @@ const ProfileForm = () => {
     return (
       <div className='profile-form-control-input-memorize'>
         <div className='profile-form-label-input-memorize'>Name</div>
-        <input className='profile-form-text-input-memorize' id='name' type='text' value={profile.name} onChange={onProfileChange} />
+        <input className='profile-form-text-input-memorize input-memorize' id='name' type='text' value={profile.name} onChange={onProfileChange} />
       </div>
     )
   }
@@ -65,7 +65,7 @@ const ProfileForm = () => {
     return (
       <div className='profile-form-control-input-memorize'>
         <div className='profile-form-label-input-memorize'>Status</div>
-        <textarea className='profile-form-textarea-input-memorize' id='status' value={profile.status} onChange={onProfileChange} />
+        <textarea className='profile-form-textarea-input-memorize input-memorize' id='status' value={profile.status} onChange={onProfileChange} />
       </div>
     )
   }

@@ -33,7 +33,7 @@ const Index = () => {
     return (
       <div className='article-form-textarea-content-box-memorize'>
         <textarea
-          className='article-textarea-content-box-memorize'
+          className='article-textarea-content-box-memorize input-memorize'
           id='content'
           rows='5'
           placeholder='Your post today ^^'
