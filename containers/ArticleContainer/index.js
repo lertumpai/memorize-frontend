@@ -49,7 +49,7 @@ const Index = () => {
     if (status === STATUS_SUCCESS) {
       dispatch(idleStateArticles())
     }
-  })
+  }, [status])
 
   const handleObserver = entities => {
     const target = entities[0]
