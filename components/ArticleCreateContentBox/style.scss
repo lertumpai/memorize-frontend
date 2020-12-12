@@ -7,23 +7,23 @@
 
 @media only screen and (min-width:992px) {
   .article-form-create-content-box-memorize {
-    width: 800px;
+    width: 796px;
   }
 }
 @media only screen and (max-width:992px) {
   .article-form-create-content-box-memorize {
-    width: 85%;
+    width: calc(85% - 4px);
   }
 }
 @media only screen and (max-width:768px) {
   .article-form-create-content-box-memorize {
-    width: 80%;
+    width: calc(80% - 4px);
   }
 }
 
 @media only screen and (max-width:576px) {
   .article-form-create-content-box-memorize {
-    width: 98%;
+    width: calc(98% - 4px);
   }
 }
 
