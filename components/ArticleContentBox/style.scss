@@ -31,34 +31,42 @@
 }
 
 .article-container-button-box-body-memorize {
-  padding: 5px 0px;
   display: flex;
   justify-content: flex-end;
 }
 
 .article-button-comment-memorize {
-  background: #4f9fbd;
+  background: #63a3ba;
   border-radius: 15px;
   cursor: pointer;
   width: 80px;
-  padding: 7px 10px;
+  padding: 5px 10px;
 }
 
+.article-button-like-memorize {
+  background: #f17878;
+  border-radius: 15px;
+  cursor: pointer;
+  width: 80px;
+  padding: 5px 10px;
+}
+
+.article-like-icon-memorize,
 .article-comment-icon-memorize {
   position: relative;
-  left: calc(50% - 12.5px);
-  font-size: 25px;
+  left: calc(50% - 9px);
+  font-size: 18px;
   font-weight: bold;
   color: #f1f0f0;
 }
-
+.article-like-icon-memorize::after,
 .article-comment-icon-memorize::after {
   position: relative;
-  font-size: 14px;
+  font-size: 13px;
   color: red;
-  content: '100';
-  top: -12px;
-  right: 10px;
+  content: attr(comment-count);
+  top: -7px;
+  right: 5px;
 }
 
 .article-horizontal--memorize {
@@ -87,6 +95,10 @@
   }
 
   .article-button-comment-memorize {
+    width: 100%;
+  }
+
+  .article-button-like-memorize {
     width: 100%;
   }
 }

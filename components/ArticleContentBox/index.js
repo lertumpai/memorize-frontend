@@ -22,8 +22,11 @@ const ContentArticleBox = ({ article, user }) => {
           </div>
           <hr className='article-horizontal--memorize' />
           <div className='article-container-button-box-body-memorize'>
+            <div className='article-button-like-memorize'>
+              <i className='fa fa-heart-o article-like-icon-memorize' comment-count={article?.comment} />
+            </div>
             <div className='article-button-comment-memorize'>
-              <i className='fa fa-comment-o article-comment-icon-memorize' data-count={article?.comment} />
+              <i className='fa fa-comment-o article-comment-icon-memorize' comment-count={article?.comment} />
             </div>
           </div>
         </div>
