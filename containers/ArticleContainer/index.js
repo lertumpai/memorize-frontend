@@ -2,17 +2,19 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
-import { articleSelectors, idleStateArticles } from '../../store/articles/slice'
 import { userSelectors } from '../../store/users/slice'
+import { articleSelectors, idleStateArticles } from '../../store/articles/slice'
 import { queryArticles } from '../../store/articles/asyncThunk'
+import { mutateArticle } from '../../store/articles/asyncThunk'
 
 import ArticleCreateContentBox from '../../components/ArticleCreateContentBox/dynamic'
+import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import ArticleContentBox from '../../components/ArticleContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
 
 import './style.scss'
 
-const ArticleContainer = () => {
+const Index = () => {
   const dispatch = useDispatch()
 
   const state = useSelector(state => state)
@@ -63,17 +65,26 @@ const ArticleContainer = () => {
     })
   }
 
-  return (
-    <>
-      <div className='article-container-memorize'>
-        <ArticleCreateContentBox />
-        {ArticleContentBoxes()}
-        <div ref={loader}>
-          {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+  function ArticleContainer() {
+    const memorize = { status }
+    return (
+      <>
+        <div className='article-container-memorize'>
+          <MemorizeCreateContentBox
+            memorize={memorize}
+            idleState={idleStateArticles}
+            mutateContent={mutateArticle}
+          />
+          {ArticleContentBoxes()}
+          <div ref={loader}>
+            {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+          </div>
         </div>
-      </div>
-    </>
-  )
+      </>
+    )
+  }
+
+  return <ArticleContainer />
 }
 
-export default ArticleContainer
+export default Index
