@@ -1,4 +1,3 @@
-import base64 from 'base-64'
 import getConfig from 'next/config'
 import jwt_decode from 'jwt-decode'
 
@@ -6,8 +5,7 @@ const { publicRuntimeConfig } = getConfig()
 const { LOCAL_STORAGE_KEY } = publicRuntimeConfig
 
 export function saveUser(user) {
-  const userBase64 = base64.encode(JSON.stringify(user))
-  localStorage.setItem(LOCAL_STORAGE_KEY, userBase64)
+  localStorage.setItem(LOCAL_STORAGE_KEY, user.token)
 }
 
 export function loadUser() {
@@ -17,13 +15,19 @@ export function loadUser() {
     return null
   }
 
-  const user = JSON.parse(base64.decode(storage))
-  const tokenDecoded = jwt_decode(user.token)
+  const tokenDecoded = jwt_decode(storage)
   const date = new Date()
 
   if (date.valueOf() > tokenDecoded.exp * 1000) {
     clearUser()
     return null
+  }
+
+  const user = {
+    id: tokenDecoded.userId,
+    username: tokenDecoded.username,
+    profile: tokenDecoded.profile,
+    token: storage,
   }
 
   return user
