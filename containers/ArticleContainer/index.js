@@ -7,10 +7,10 @@ import { articleSelectors, idleStateArticles } from '../../store/articles/slice'
 import { queryArticles } from '../../store/articles/asyncThunk'
 import { mutateArticle } from '../../store/articles/asyncThunk'
 
-import ArticleCreateContentBox from '../../components/ArticleCreateContentBox/dynamic'
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
-import ArticleContentBox from '../../components/ArticleContentBox/dynamic'
+import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
+import { MODE_ARTICLE } from '../../components/MemorizeContentBox/mode'
 
 import './style.scss'
 
@@ -61,7 +61,7 @@ const Index = () => {
   function ArticleContentBoxes() {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author)
-      return <ArticleContentBox key={article.id} article={article} user={user} />
+      return <MemorizeContentBox key={article.id} memorize={article} user={user} mode={MODE_ARTICLE} />
     })
   }
 
