@@ -17,7 +17,7 @@ const NavBar = () => {
   function Home() {
     let classNameIcon = 'icon-memorize fa fa-home'
     let classNameMenu = 'nav-menu-memorize'
-    if (router.pathname === '/articles') {
+    if (router.pathname.includes('/articles')) {
       classNameIcon += ' active-memorize'
       classNameMenu += ' active-memorize'
     }

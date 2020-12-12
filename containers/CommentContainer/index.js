@@ -1,26 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
-import { articleSelectors, idleStateArticles } from '../../store/articles/slice'
-import { queryArticles } from '../../store/articles/asyncThunk'
-import { mutateArticle } from '../../store/articles/asyncThunk'
+import { commentSelectors, idleStateComments } from '../../store/comments/slice'
+import { queryComments } from '../../store/comments/asyncThunk'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
-import { MODE_ARTICLE } from '../../components/MemorizeContentBox/mode'
+import { MODE_COMMENT } from '../../components/MemorizeContentBox/mode'
 
 import './style.scss'
 
 const Index = () => {
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const state = useSelector(state => state)
 
-  const { status } = useSelector(state => state.articles)
-  const articles = articleSelectors.selectAll(state)
+  const { status } = useSelector(state => state.comments)
+  const comments = commentSelectors.selectAll(state)
 
   const [page, setPage] = useState(1)
   const loader = useRef(null)
@@ -37,17 +38,18 @@ const Index = () => {
   }, [])
 
   useEffect(() => {
-    const lastArticle = articles ? articles[articles.length - 1] : null
+    const { articleId } = router.query
+    const lastComment = comments ? comments[comments.length - 1] : null
     const pagination = {
-      before: lastArticle?.createdAt,
+      before: lastComment?.createdAt,
       limit: 15,
     }
-    dispatch(queryArticles({ pagination }))
+    dispatch(queryComments({ articleId, pagination }))
   }, [page])
 
   useEffect(() => {
     if (status === STATUS_SUCCESS) {
-      dispatch(idleStateArticles())
+      dispatch(idleStateComments())
     }
   }, [status])
 
@@ -58,24 +60,18 @@ const Index = () => {
     }
   }
 
-  function ArticleContentBoxes() {
-    return articles.map(article => {
-      const user = userSelectors.selectById(state, article.author)
-      return <MemorizeContentBox key={article.id} memorize={article} user={user} mode={MODE_ARTICLE} />
+  function CommentContentBoxes() {
+    return comments.map(comment => {
+      const user = userSelectors.selectById(state, comment.author)
+      return <MemorizeContentBox key={comment.id} memorize={comment} user={user} mode={MODE_COMMENT} />
     })
   }
 
-  function ArticleContainer() {
-    const memorize = { status }
+  function CommentContainer() {
     return (
       <>
-        <div className='article-container-memorize'>
-          <MemorizeCreateContentBox
-            memorize={memorize}
-            idleState={idleStateArticles}
-            mutateContent={mutateArticle}
-          />
-          {ArticleContentBoxes()}
+        <div className='comment-container-memorize'>
+          {CommentContentBoxes()}
           <div ref={loader}>
             {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
           </div>
@@ -84,7 +80,7 @@ const Index = () => {
     )
   }
 
-  return <ArticleContainer />
+  return <CommentContainer />
 }
 
 export default Index

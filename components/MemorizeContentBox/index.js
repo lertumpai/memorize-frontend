@@ -26,7 +26,7 @@ const ContentArticleBox = ({ memorize, user, mode }) => {
       ? (
         <Link href={href}>
           <div className='memorize-button-comment-memorize'>
-            <i className='fa fa-comment-o memorize-comment-icon-memorize' count={memorize?.comment} />
+            <i className='fa fa-comment-o memorize-comment-icon-memorize' count={memorize?.comment || 0} />
           </div>
         </Link>
       ) : ''
@@ -38,7 +38,7 @@ const ContentArticleBox = ({ memorize, user, mode }) => {
         <hr className='memorize-horizontal--memorize' />
         <div className='memorize-container-button-box-body-memorize'>
           <div className='memorize-button-like-memorize'>
-            <i className='fa fa-heart-o memorize-like-icon-memorize' count={memorize?.comment} />
+            <i className='fa fa-heart-o memorize-like-icon-memorize' count={memorize?.comment || 0} />
           </div>
           {commentButton}
         </div>

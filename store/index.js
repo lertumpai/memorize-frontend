@@ -10,7 +10,7 @@ const rootReducer = {
   auth: authReducer,
   users: userReducer,
   articles: articleReducer,
-  commentReducers: commentReducer,
+  comments: commentReducer,
 }
 
 const config = () => {

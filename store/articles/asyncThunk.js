@@ -6,7 +6,7 @@ import { articleAddMany, articleAddOne } from './slice'
 import { query, mutation } from '../../utils/graphql-api/client'
 import { QUERY_ARTICLES, MUTATE_ARTICLE } from './gql'
 
-import prepareResponseArticles from '../../utils/prepareResponse/prepareResponseArticles'
+import { prepareResponseArticles } from '../../utils/prepareResponse'
 
 export const queryArticles = createAsyncThunk(
   'articles/query/articles',

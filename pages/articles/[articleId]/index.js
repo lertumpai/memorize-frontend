@@ -1,7 +1,14 @@
 import React from 'react'
 
+import ApplicationLayout from '../../../containers/ApplicationLayout/dynamic'
+import CommentContainer from '../../../containers/CommentContainer/dynamic'
+
 const Index = () => {
-  return <div>articles comment</div>
+  return (
+    <ApplicationLayout>
+      <CommentContainer />
+    </ApplicationLayout>
+  )
 }
 
 export default Index

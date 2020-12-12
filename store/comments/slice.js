@@ -1,6 +1,8 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit'
 
-import { STATUS_IDLE } from '../status'
+import { STATUS_IDLE, STATUS_LOADING, STATUS_SUCCESS } from '../status'
+import { queryComments } from './asyncThunk'
+import { queryArticles } from '../articles/asyncThunk'
 
 const commentAdapters = createEntityAdapter()
 
@@ -26,6 +28,15 @@ const commentSlices = createSlice({
     commentUpdateMany: commentAdapters.updateMany,
     commentRemoveOne: commentAdapters.removeOne,
     commentRemoveMany: commentAdapters.removeMany,
+  },
+  extraReducers: {
+    [queryComments.pending]: state => {
+      state.status = STATUS_LOADING
+    },
+    [queryComments.fulfilled]: state => {
+      state.error = null
+      state.status = STATUS_SUCCESS
+    },
   },
 })
 
