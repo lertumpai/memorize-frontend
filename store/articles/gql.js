@@ -6,6 +6,7 @@ export const QUERY_ARTICLES = gql`
       id
       content
       createdAt
+      comment
       author {
         id
         profile {
@@ -22,6 +23,7 @@ export const MUTATE_ARTICLE = gql`
       id
       content
       createdAt
+      comment
       author {
         id
         profile {

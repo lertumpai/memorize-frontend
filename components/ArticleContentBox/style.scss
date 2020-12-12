@@ -1,44 +1,48 @@
-.content-box-memorize {
+.article-content-box-memorize {
   margin: 10px;
 }
 
 @media only screen and (min-width:992px) {
-  .content-box-memorize {
+  .article-content-box-memorize {
     width: 800px;
   }
 }
 @media only screen and (max-width:992px) {
-  .content-box-memorize {
+  .article-content-box-memorize {
     width: 85%;
   }
 }
 @media only screen and (max-width:768px) {
-  .content-box-memorize {
+  .article-content-box-memorize {
     width: 80%;
   }
 }
 
 @media only screen and (max-width:576px) {
-  .content-box-memorize {
+  .article-content-box-memorize {
     width: 98%;
   }
 }
 
-.content-box-head-memorize {
+.article-content-box-head-memorize {
   border: 2px solid #f1f0f0;
   border-radius: 13px;
   padding: 10px 15px;
 }
 
-.content-box-body-memorize {
+.article-content-box-body-memorize {
   overflow-wrap: break-word;
+  border: 1px solid red;
+}
+
+.article-container-content-box-body-memorize {
   border: 2px solid #f1f0f0;
   border-radius: 13px;
   padding: 10px 15px;
   margin-top: -2px;
 }
 
-.profile-name-memorize {
+.article-profile-name-memorize {
   font-size: 18px;
   font-weight: bold;
 }
@@ -47,4 +51,36 @@
   margin-top: 5px;
   font-size: 15px;
   color: #787878;
+}
+
+.article-container-button-box-body-memorize {
+  border: 1px solid red;
+  padding: 5px 0px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.article-button-comment-memorize {
+  background: #4f9fbd;
+  border-radius: 15px;
+  cursor: pointer;
+  width: 80px;
+  padding: 7px 10px;
+}
+
+.article-comment-icon-memorize {
+  position: relative;
+  left: 27.5px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #f1f0f0;
+}
+
+.article-comment-icon-memorize::after {
+  position: relative;
+  font-size: 14px;
+  color: red;
+  content: '100';
+  top: -12px;
+  right: 10px;
 }
