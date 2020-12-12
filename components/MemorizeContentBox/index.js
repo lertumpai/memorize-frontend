@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import Link from 'next/link'
 
 import { MODE_ARTICLE } from './mode'
 import './style.scss'
@@ -20,11 +21,14 @@ const ContentArticleBox = ({ memorize, user, mode }) => {
   }
 
   function MemorizeContentBoxBody() {
+    const href = `/articles/${memorize.id}`
     const commentButton = mode === MODE_ARTICLE
       ? (
-        <div className='memorize-button-comment-memorize'>
-          <i className='fa fa-comment-o memorize-comment-icon-memorize' count={memorize?.comment} />
-        </div>
+        <Link href={href}>
+          <div className='memorize-button-comment-memorize'>
+            <i className='fa fa-comment-o memorize-comment-icon-memorize' count={memorize?.comment} />
+          </div>
+        </Link>
       ) : ''
     return (
       <div className='memorize-container-content-box-body-memorize'>
