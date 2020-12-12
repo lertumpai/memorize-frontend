@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux'
 
 import './style.scss'
 import { STATUS_SUCCESS } from '../../store/status'
+import { MODE_CREATE, MODE_EDIT } from './mode'
 
 // memorize = { id, status, content }
-const Index = ({ memorize, idleState, mutateContent, articleId, mode }) => {
+const Index = ({ memorize, idleState, mutateContent, articleId, mode = MODE_CREATE }) => {
   const dispatch = useDispatch()
 
   const [content, setContent] = useState('')
@@ -27,7 +28,12 @@ const Index = ({ memorize, idleState, mutateContent, articleId, mode }) => {
   }
 
   function onContentClick() {
-    dispatch(mutateContent({ content }))
+    const mutateObject = {
+      id: memorize.id,
+      content,
+      articleId,
+    }
+    dispatch(mutateContent(mutateObject))
     setContent('')
   }
 
