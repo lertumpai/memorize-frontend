@@ -63,10 +63,14 @@
 .article-comment-icon-memorize::after {
   position: relative;
   font-size: 13px;
-  color: red;
+  color: #ffffff;
+  background: #6e6e6e;
+  opacity: 0.8;
+  border-radius: 15px;
+  padding: 2px 5px;
   content: attr(comment-count);
   top: -7px;
-  right: 5px;
+  right: 7px;
 }
 
 .article-horizontal--memorize {
