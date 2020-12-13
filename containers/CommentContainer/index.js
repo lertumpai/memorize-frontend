@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useRouter } from 'next/router'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
-import { commentSelectors, idleStateComments, queryComments } from '../../store/comments/slice'
+import { commentSelectors, idleStateComments, queryComments, resetStateComments } from '../../store/comments/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
@@ -15,7 +14,6 @@ import './style.scss'
 
 const Index = () => {
   const dispatch = useDispatch()
-  const router = useRouter()
 
   const state = useSelector(state => state)
 
@@ -25,6 +23,7 @@ const Index = () => {
   const [page, setPage] = useState(1)
   const loader = useRef(null)
   useEffect(() => {
+    dispatch(resetStateComments())
     const options = {
       root: document.querySelector('#application-layout-memorize'),
       rootMargin: '100px',

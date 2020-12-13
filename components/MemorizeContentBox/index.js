@@ -1,11 +1,14 @@
 import React from 'react'
 import moment from 'moment'
+import { useDispatch } from 'react-redux'
 import Link from 'next/link'
 
+import { resetStateArticles } from '../../store/articles/slice'
 import { MODE_ARTICLE } from './mode'
 import './style.scss'
 
 const ContentArticleBox = ({ memorize, user, mode }) => {
+  const dispatch = useDispatch()
 
   function MemorizeContentBoxHead() {
     return (

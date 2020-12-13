@@ -64,20 +64,14 @@ const Index = () => {
   }
 
   function ArticleContainer() {
-    const memorize = { status }
     return (
-      <>
-        <div className='article-container-memorize'>
-          <MemorizeCreateContentBox
-            memorize={memorize}
-            mutateContent={mutateArticle}
-          />
-          {ArticleContentBoxes()}
-          <div ref={loader}>
-            {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
-          </div>
+      <div className='article-container-memorize'>
+        <MemorizeCreateContentBox mutateContent={mutateArticle} />
+        {ArticleContentBoxes()}
+        <div ref={loader}>
+          {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
         </div>
-      </>
+      </div>
     )
   }
 

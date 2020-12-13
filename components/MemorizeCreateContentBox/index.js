@@ -22,7 +22,7 @@ const Index = ({ memorize, mutateContent, articleId, mode = MODE_CREATE }) => {
 
   function onContentClick() {
     const mutateObject = {
-      id: memorize.id,
+      id: memorize?.id,
       content,
       articleId,
     }
