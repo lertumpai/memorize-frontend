@@ -4,8 +4,7 @@ import { useRouter } from 'next/router'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
-import { commentSelectors, idleStateComments } from '../../store/comments/slice'
-import { queryComments } from '../../store/comments/slice'
+import { commentSelectors, idleStateComments, queryComments } from '../../store/comments/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
@@ -38,7 +37,7 @@ const Index = () => {
   }, [])
 
   useEffect(() => {
-    const { articleId } = router.query
+    const articleId = window.location.pathname.replace('/articles/', '')
     const lastComment = comments ? comments[comments.length - 1] : null
     const pagination = {
       before: lastComment?.createdAt,
