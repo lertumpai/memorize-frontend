@@ -22,17 +22,25 @@ const Index = () => {
 
   const [page, setPage] = useState(1)
   const loader = useRef(null)
+
   useEffect(() => {
     const options = {
       root: document.querySelector('#application-layout-memorize'),
       rootMargin: '100px',
-      threshold: 0.5,
+      threshold: 1.0,
     }
     const observer = new IntersectionObserver(handleObserver, options)
     if (loader.current) {
       observer.observe(loader.current)
     }
   }, [])
+
+  const handleObserver = entities => {
+    const target = entities[0]
+    if (target.isIntersecting) {
+      setPage(page => page + 1)
+    }
+  }
 
   useEffect(() => {
     const lastArticle = articles ? articles[articles.length - 1] : null
@@ -49,13 +57,6 @@ const Index = () => {
     }
   }, [status])
 
-  const handleObserver = entities => {
-    const target = entities[0]
-    if (target.isIntersecting) {
-      setPage(page => page + 1)
-    }
-  }
-
   function ArticleContentBoxes() {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author)
@@ -69,7 +70,7 @@ const Index = () => {
         <MemorizeCreateContentBox mutateContent={mutateArticle} />
         {ArticleContentBoxes()}
         <div ref={loader}>
-          {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+          <Loading width={300} />
         </div>
       </div>
     )
