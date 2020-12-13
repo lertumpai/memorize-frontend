@@ -36,8 +36,7 @@ const Index = () => {
   }, [])
 
   const handleObserver = entities => {
-    const target = entities[0]
-    if (target.isIntersecting) {
+    if (entities[0].isIntersecting) {
       setPage(page => page + 1)
     }
   }
@@ -70,9 +69,9 @@ const Index = () => {
         <div className='article-container-memorize'>
           <MemorizeCreateContentBox mutateContent={mutateArticle} />
           {ArticleContentBoxes()}
-        </div>
-        <div ref={loader}>
-          {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+          <div ref={loader}>
+            {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+          </div>
         </div>
       </>
     )

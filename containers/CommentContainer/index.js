@@ -35,6 +35,12 @@ const Index = () => {
     }
   }, [])
 
+  const handleObserver = entities => {
+    if (entities[0].isIntersecting) {
+      setPage(page => page + 1)
+    }
+  }
+
   useEffect(() => {
     const articleId = window.location.pathname.replace('/articles/', '')
     const lastComment = comments ? comments[comments.length - 1] : null
@@ -50,13 +56,6 @@ const Index = () => {
       dispatch(idleStateComments())
     }
   }, [status])
-
-  const handleObserver = entities => {
-    const target = entities[0]
-    if (target.isIntersecting) {
-      setPage(page => page + 1)
-    }
-  }
 
   function CommentContentBoxes() {
     return comments.map(comment => {
@@ -78,7 +77,7 @@ const Index = () => {
     )
   }
 
-  return <CommentContainer />
+  return CommentContainer()
 }
 
 export default Index
