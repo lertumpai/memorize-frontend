@@ -66,17 +66,19 @@ const Index = () => {
 
   function ArticleContainer() {
     return (
-      <div className='article-container-memorize'>
-        <MemorizeCreateContentBox mutateContent={mutateArticle} />
-        {ArticleContentBoxes()}
-        <div ref={loader}>
-          <Loading width={300} />
+      <>
+        <div className='article-container-memorize'>
+          <MemorizeCreateContentBox mutateContent={mutateArticle} />
+          {ArticleContentBoxes()}
         </div>
-      </div>
+        <div ref={loader}>
+          {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+        </div>
+      </>
     )
   }
 
-  return <ArticleContainer />
+  return ArticleContainer()
 }
 
 export default Index
