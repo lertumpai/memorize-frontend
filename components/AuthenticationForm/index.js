@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 
 import { STATUS_SUCCESS } from '../../store/status'
-import { resetStateAuth, idleStateAuth } from '../../store/auth/slice'
-import { register, login } from '../../store/auth/asyncThunk'
+import { resetStateAuth, idleStateAuth, register, login } from '../../store/auth/slice'
 import { saveUser } from '../../utils/localStorage'
 import './style.scss'
 

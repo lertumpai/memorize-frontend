@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 
 import './style.scss'
-import { STATUS_SUCCESS } from '../../store/status'
-import { MODE_CREATE, MODE_EDIT } from './mode'
+import { MODE_CREATE } from './mode'
 
 // memorize = { id, status, content }
-const Index = ({ memorize, idleState, mutateContent, articleId, mode = MODE_CREATE }) => {
+const Index = ({ memorize, mutateContent, articleId, mode = MODE_CREATE }) => {
   const dispatch = useDispatch()
 
   const [content, setContent] = useState('')
@@ -16,12 +15,6 @@ const Index = ({ memorize, idleState, mutateContent, articleId, mode = MODE_CREA
      setContent(memorize.content)
    }
   }, [])
-
-  useEffect(() => {
-    if (memorize?.status === STATUS_SUCCESS) {
-      dispatch(idleState())
-    }
-  })
 
   function onContentChange(e) {
     setContent(e.target.value)

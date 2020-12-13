@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
 import { commentSelectors, idleStateComments } from '../../store/comments/slice'
-import { queryComments } from '../../store/comments/asyncThunk'
+import { queryComments } from '../../store/comments/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'

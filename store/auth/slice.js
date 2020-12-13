@@ -64,6 +64,6 @@ const authSlices = createSlice({
 })
 
 export const { resetStateAuth, idleStateAuth, setCurrentUser } = authSlices.actions
-
+export { register, login, mutationProfile }
 
 export default authSlices.reducer

@@ -5,8 +5,7 @@ import moment from 'moment'
 
 import Loading from '../Loading'
 import { saveUser } from '../../utils/localStorage'
-import { mutationProfile } from '../../store/auth/asyncThunk'
-import { idleStateAuth } from '../../store/auth/slice'
+import { idleStateAuth, mutationProfile } from '../../store/auth/slice'
 import { STATUS_SUCCESS, STATUS_LOADING } from '../../store/status'
 import './style.scss'
 

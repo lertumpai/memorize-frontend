@@ -2,7 +2,6 @@ import { createSlice, createEntityAdapter } from '@reduxjs/toolkit'
 
 import { STATUS_IDLE, STATUS_LOADING, STATUS_SUCCESS } from '../status'
 import { queryComments } from './asyncThunk'
-import { queryArticles } from '../articles/asyncThunk'
 
 const commentAdapters = createEntityAdapter()
 
@@ -50,6 +49,9 @@ export const {
   idleStateComments,
   resetStateComments,
 } = commentSlices.actions
+
+export { queryComments }
+
 export const commentSelectors = commentAdapters.getSelectors(state => state.comments)
 
 export default commentSlices.reducer

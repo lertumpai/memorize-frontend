@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
-import { articleSelectors, idleStateArticles } from '../../store/articles/slice'
-import { queryArticles } from '../../store/articles/asyncThunk'
-import { mutateArticle } from '../../store/articles/asyncThunk'
+import { articleSelectors, idleStateArticles, queryArticles, mutateArticle } from '../../store/articles/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
@@ -72,7 +70,6 @@ const Index = () => {
         <div className='article-container-memorize'>
           <MemorizeCreateContentBox
             memorize={memorize}
-            idleState={idleStateArticles}
             mutateContent={mutateArticle}
           />
           {ArticleContentBoxes()}
