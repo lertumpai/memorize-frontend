@@ -1,11 +1,41 @@
-.comment-container-memorize {
+.comment-container-col-left-memorize {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  border: 1px solid red;
 }
 
-.comment-container-col-memorize {
+.comment-container-col-right-memorize {
   display: flex;
-  align-items: center;
   flex-direction: column;
-  width: 50%;
+  border: 1px solid red;
+}
+
+.comment-container-memorize {
+  display: flex;
+}
+
+@media only screen and (min-width:992px) {
+  .comment-container-col-left-memorize {
+    align-items: flex-end;
+    width: 50%;
+  }
+
+  .comment-container-col-right-memorize {
+    align-items: end;
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width:991px) {
+  .comment-container-memorize {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .comment-container-col-right-memorize,
+  .comment-container-col-left-memorize {
+    align-items: center;
+    width: 100%;
+  }
 }
