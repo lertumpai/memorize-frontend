@@ -16,8 +16,5 @@ module.exports = withCss(
       importLoaders: 1,
       localIdentName: "[local]",
     },
-    sassOptions: {
-      includePaths: ['styles'],
-    },
   }),
 )
