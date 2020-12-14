@@ -68,9 +68,14 @@ const Index = () => {
     return (
       <>
         <div className='comment-container-memorize'>
-          {CommentContentBoxes()}
-          <div ref={loader}>
-            {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+          <div className='comment-container-col-memorize'>
+
+          </div>
+          <div className='comment-container-col-memorize'>
+            {CommentContentBoxes()}
+            <div ref={loader}>
+              {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+            </div>
           </div>
         </div>
       </>

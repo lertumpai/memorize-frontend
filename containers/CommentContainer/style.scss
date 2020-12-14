@@ -1,5 +1,11 @@
 .comment-container-memorize {
   display: flex;
   align-items: center;
+}
+
+.comment-container-col-memorize {
+  display: flex;
+  align-items: center;
   flex-direction: column;
+  width: 50%;
 }
