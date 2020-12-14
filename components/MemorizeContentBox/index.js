@@ -3,7 +3,6 @@ import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import Link from 'next/link'
 
-import nFormatter from '../../utils/nFormatter'
 import { resetStateArticles } from '../../store/articles/slice'
 import { MODE_ARTICLE } from './mode'
 import './style.scss'
@@ -31,7 +30,7 @@ const ContentArticleBox = ({ memorize, user, mode }) => {
       ? (
         <Link href={href}>
           <div className='memorize-button-comment-memorize'>
-            <i className='fa fa-comment-o memorize-comment-icon-memorize' count={nFormatter(memorize?.comment || 0, 1)} />
+            <i className='fa fa-comment-o memorize-comment-icon-memorize' count={memorize?.comment || 0} />
           </div>
         </Link>
       ) : ''
@@ -41,7 +40,7 @@ const ContentArticleBox = ({ memorize, user, mode }) => {
   function MemorizeLikeButton() {
     return (
       <div className='memorize-button-like-memorize'>
-        <i className='fa fa-heart-o memorize-like-icon-memorize' count={nFormatter(memorize?.comment || 0, 1)} />
+        <i className='fa fa-heart-o memorize-like-icon-memorize' count={memorize?.comment || 0} />
       </div>
     )
   }
