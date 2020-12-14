@@ -3,6 +3,7 @@ import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import Link from 'next/link'
 
+import nFormatter from '../../utils/nFormatter'
 import { resetStateArticles } from '../../store/articles/slice'
 import { MODE_ARTICLE } from './mode'
 import './style.scss'
@@ -23,17 +24,30 @@ const ContentArticleBox = ({ memorize, user, mode }) => {
     )
   }
 
-  function MemorizeContentBoxBody() {
+  function MemorizeCommentButton() {
     const articleId = memorize.id || window.location.pathname.replace('/articles/', '')
     const href = `/articles/${articleId}`
     const commentButton = mode === MODE_ARTICLE
       ? (
         <Link href={href}>
           <div className='memorize-button-comment-memorize'>
-            <i className='fa fa-comment-o memorize-comment-icon-memorize' count={memorize?.comment || 0} />
+            <i className='fa fa-comment-o memorize-comment-icon-memorize' count={nFormatter(memorize?.comment || 0, 1)} />
           </div>
         </Link>
       ) : ''
+    return commentButton
+  }
+
+  function MemorizeLikeButton() {
+    return (
+      <div className='memorize-button-like-memorize'>
+        <i className='fa fa-heart-o memorize-like-icon-memorize' count={nFormatter(memorize?.comment || 0, 1)} />
+      </div>
+    )
+  }
+
+  function MemorizeContentBoxBody() {
+
     return (
       <div className='memorize-container-content-box-body-memorize'>
         <div className='memorize-content-box-body-memorize'>
@@ -41,10 +55,8 @@ const ContentArticleBox = ({ memorize, user, mode }) => {
         </div>
         <hr className='memorize-horizontal--memorize' />
         <div className='memorize-container-button-box-body-memorize'>
-          <div className='memorize-button-like-memorize'>
-            <i className='fa fa-heart-o memorize-like-icon-memorize' count={memorize?.comment || 0} />
-          </div>
-          {commentButton}
+          {MemorizeLikeButton()}
+          {MemorizeCommentButton()}
         </div>
       </div>
     )
