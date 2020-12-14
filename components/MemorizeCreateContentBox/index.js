@@ -2,10 +2,10 @@ import React, { useState, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 
 import './style.scss'
-import { MODE_CREATE } from './mode'
+import { MODE_ARTICLE } from './mode'
 
 // memorize = { id, status, content }
-const Index = ({ memorize, mutateContent, articleId, mode = MODE_CREATE }) => {
+const Index = ({ memorize, mutateContent, articleId, mode = MODE_ARTICLE }) => {
   const dispatch = useDispatch()
 
   const [content, setContent] = useState('')

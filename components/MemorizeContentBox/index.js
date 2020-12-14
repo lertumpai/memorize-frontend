@@ -3,13 +3,10 @@ import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import Link from 'next/link'
 
-import { resetStateArticles } from '../../store/articles/slice'
 import { MODE_ARTICLE } from './mode'
 import './style.scss'
 
 const ContentArticleBox = ({ memorize, user, mode }) => {
-  const dispatch = useDispatch()
-
   function MemorizeContentBoxHead() {
     return (
       <div className='memorize-content-box-head-memorize'>
@@ -52,7 +49,7 @@ const ContentArticleBox = ({ memorize, user, mode }) => {
         <div className='memorize-content-box-body-memorize'>
           {memorize?.content}
         </div>
-        <hr className='memorize-horizontal--memorize' />
+        <hr className='memorize-horizontal-memorize' />
         <div className='memorize-container-button-box-body-memorize'>
           {MemorizeLikeButton()}
           {MemorizeCommentButton()}
