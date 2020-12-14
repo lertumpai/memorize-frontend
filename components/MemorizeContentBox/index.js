@@ -24,7 +24,8 @@ const ContentArticleBox = ({ memorize, user, mode }) => {
   }
 
   function MemorizeContentBoxBody() {
-    const href = `/articles/${memorize.id}`
+    const articleId = memorize.id || window.location.pathname.replace('/articles/', '')
+    const href = `/articles/${articleId}`
     const commentButton = mode === MODE_ARTICLE
       ? (
         <Link href={href}>

@@ -86,9 +86,7 @@ const NavBar = () => {
     const classNameHamburger = 'fa fa-bars hamburger-memorize'
     return (
       <div className={classNameHamburgerMenu} onClick={collapse}>
-        <Link href=''>
-          <a><i className={classNameHamburger} /></a>
-        </Link>
+        <a><i className={classNameHamburger} /></a>
       </div>
     )
   }
