@@ -1,10 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { userAddMany } from '../users/slice'
-import { articleAddMany } from './slice'
-import { query } from '../../utils/graphql-api/client'
-import { QUERY_ARTICLES } from './gql'
-import prepareResponseArticles from '../../utils/prepareResponse/prepareResponseArticles'
+import { userAddMany, userAddOne } from '../users/slice'
+import { articleAddMany, articleAddOne } from './slice'
+
+import { query, mutation } from '../../utils/graphql-api/client'
+import { QUERY_ARTICLES, MUTATE_ARTICLE } from './gql'
+
+import { prepareResponseArticles } from '../../utils/prepareResponse'
 
 export const queryArticles = createAsyncThunk(
   'articles/query/articles',
@@ -14,6 +16,21 @@ export const queryArticles = createAsyncThunk(
     const { users, articles } = prepareResponseArticles(response)
     dispatch(articleAddMany(articles))
     dispatch(userAddMany(users))
+
+    return true
+  },
+)
+
+export const mutateArticle = createAsyncThunk(
+  'articles/mutation/article',
+  async ({ id, content }, { dispatch }) => {
+    const ArticleInput = { content }
+    const response = await mutation(MUTATE_ARTICLE, { id, ArticleInput })
+
+    const { user, article } = prepareResponseArticles(response)
+    dispatch(articleAddOne(article))
+    dispatch(userAddOne(user))
+
     return true
   },
 )

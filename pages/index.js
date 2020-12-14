@@ -4,7 +4,7 @@ import AuthenticationContainer from '../containers/AuthenticationContainer/dynam
 
 const IndexPage = () => {
   return (
-    <div className='bg-authentication border'>
+    <div className='bg-authentication'>
       <img className='bg' src='background-authentication.jpg' alt='authentication-bg' />
       <AuthenticationContainer />
       <style jsx>{`
@@ -12,7 +12,7 @@ const IndexPage = () => {
           position: fixed;
           width: 100%;
           height: 100%;
-          opacity: 0.2;
+          opacity: 0.15;
         }
       `}</style>
     </div>

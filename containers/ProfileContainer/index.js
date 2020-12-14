@@ -1,10 +1,12 @@
 import React from 'react'
 
-import ProfileForm from '../../components/ProfileForm'
+import ProfileForm from '../../components/ProfileForm/dynamic'
+
+import './style.scss'
 
 const ProfileContainer = () => {
   return (
-    <div className='d-flex justify-content-center'>
+    <div className='profile-container-memorize'>
       <ProfileForm />
     </div>
   )

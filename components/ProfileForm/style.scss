@@ -1,31 +1,105 @@
-.profile-container {
-  width: 700px;
+.profile-form-control-input-memorize {
+  margin: 20px 0px;
+}
+
+.profile-form-label-input-memorize {
+  margin-left: 5px;
+  font-size: 25px;
+}
+
+.form-control,
+.profile-form-text-input-memorize,
+.profile-form-textarea-input-memorize {
+  width: calc(100% - 22px);
+  margin-top: 8px;
+  border-radius: 5px;
+  border: 1px solid #d4d4d4;
+  height: 40px;
+  padding: 1px 10px;
+  font-size: 18px;
+}
+
+.profile-form-textarea-input-memorize {
+  height: 100px;
+  padding: 8px 10px;
+  resize: unset;
+}
+
+.profile-form-save-button-memorize {
+  padding: 10px 0px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-save-button-memorize {
+  background: #4fbda4;
+  width: 180px;
+  padding: 10px 0px;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #e7e6e6;
 }
 
 .profile-form-memorize {
-  margin-top: 50px;
-  padding: 30px;
-  max-width: 700px;
   border: 3px solid #b1b0b0;
   border-radius: 15px;
+  padding: 20px;
 }
 
-.save-button-profile {
-  width: 150px;
-  background: #14b048;
-  border-color: #14b048;
-  font-size: 20px;
+.profile-saving {
+  position: absolute;
+  top: 350px
 }
 
-@media only screen and (min-width:450px) {
-  .profile-saving {
-    margin-top: -155px;
+@media only screen and (min-width:769px) {
+  .profile-form-memorize {
+    margin-top: 5%;
+    width: 700px;
   }
 }
+@media only screen and (max-width:768px) {
+  .profile-form-memorize {
+    margin-top: 5%;
+    width: 600px;
+  }
+}
+@media only screen and (max-width:600px) {
+  .profile-form-memorize {
+    margin-top: 5%;
+    width: 450px;
+  }
 
-@media only screen and (max-width:450px) {
+  .profile-form-save-button-memorize {
+    display: flex;
+    justify-content: center;
+  }
+
+  .profile-save-button-memorize {
+    width: 100%;
+  }
+
   .profile-saving {
-    margin-top: -155px;
-    margin-left: -170px;
+    top: 270px
+  }
+}
+@media only screen and (max-width:400px) {
+  .profile-form-memorize {
+    margin-top: 15%;
+    width: 90%;
+  }
+
+  .profile-form-save-button-memorize {
+    display: flex;
+    justify-content: center;
+  }
+
+  .profile-save-button-memorize {
+    width: 100%;
+  }
+
+  .profile-saving {
+    top: 230px
   }
 }

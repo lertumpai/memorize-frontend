@@ -1,12 +1,13 @@
 import React from 'react'
 import { ApolloProvider } from '@apollo/client'
 import { compose } from 'redux'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-datetime/css/react-datetime.css'
 
-import PrivateContainer from '../containers/PrivateContainer'
+import PrivateContainer from '../containers/PrivateContainer/dynamic'
 import reduxWrapper from '../store'
 import client from '../utils/graphql-api/client'
+
+import '../public/style/style.scss'
 
 const MyApp = ({ Component, pageProps }) => {
 

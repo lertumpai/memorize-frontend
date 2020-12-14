@@ -4,7 +4,7 @@ import { mutation, query } from '../../utils/graphql-api/client'
 import { REGISTER, LOGIN, SAVE_PROFILE } from './gql'
 
 export const register = createAsyncThunk(
-  'auth/register',
+  'auth/mutation/register',
   async ({ username, password }, { rejectWithValue }) => {
     try {
       const response = await mutation(REGISTER, { username, password })
@@ -16,7 +16,7 @@ export const register = createAsyncThunk(
 )
 
 export const login = createAsyncThunk(
-  'auth/login',
+  'auth/query/login',
   async ({ username, password }, { rejectWithValue }) => {
     try {
       const response = await query(LOGIN, { username, password })

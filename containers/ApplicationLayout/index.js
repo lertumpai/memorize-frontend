@@ -2,13 +2,17 @@ import React from 'react'
 
 import NavBar from '../../components/NavBar'
 
-const Index = ({ children }) => {
+import './style.scss'
+
+const Navbar = ({ children }) => {
   return (
-    <div>
+    <>
       <NavBar />
-      {children}
-    </div>
+      <div id='application-layout-memorize' className='application-layout-memorize'>
+        {children}
+      </div>
+    </>
   )
 }
 
-export default Index
+export default Navbar

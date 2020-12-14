@@ -8,6 +8,12 @@ const userSlices = createSlice({
   name: 'users',
   initialState: userAdapters.getInitialState(),
   reducers: {
+    resetStateUsers: state => {
+      state.status = STATUS_IDLE
+      state.error = null
+      state.ids = []
+      state.entities = {}
+    },
     idleStateUsers: state => {
       state.status = STATUS_IDLE
     },
@@ -20,7 +26,16 @@ const userSlices = createSlice({
   },
 })
 
-export const { userAddOne, userAddMany, userUpdateOne, userUpdateMany, userRemoveOne, userRemoveMany } = userSlices.actions
+export const {
+  userAddOne,
+  userAddMany,
+  userUpdateOne,
+  userUpdateMany,
+  userRemoveOne,
+  userRemoveMany,
+  resetStateUsers,
+  idleStateUsers,
+} = userSlices.actions
 export const userSelectors = userAdapters.getSelectors(state => state.users)
 
 export default userSlices.reducer

@@ -6,6 +6,24 @@ export const QUERY_ARTICLES = gql`
       id
       content
       createdAt
+      comment
+      author {
+        id
+        profile {
+          name
+        }
+      }
+    }
+  }
+`
+
+export const MUTATE_ARTICLE = gql`
+  mutation article($id: MID, $ArticleInput: ArticleInput!) {
+    article(id: $id, input: $ArticleInput) {
+      id
+      content
+      createdAt
+      comment
       author {
         id
         profile {

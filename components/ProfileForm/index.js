@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Form } from 'react-bootstrap'
-import _ from 'lodash'
 import Datetime from 'react-datetime'
 import moment from 'moment'
 
 import Loading from '../Loading'
 import { saveUser } from '../../utils/localStorage'
-import { mutationProfile } from '../../store/auth/asyncThunk'
-import { idleStateAuth } from '../../store/auth/slice'
+import { idleStateAuth, mutationProfile } from '../../store/auth/slice'
 import { STATUS_SUCCESS, STATUS_LOADING } from '../../store/status'
 import './style.scss'
 
@@ -19,9 +16,9 @@ const ProfileForm = () => {
   const { currentUser, status } = auth
 
   const initialProfile = {
-    name: _.get(currentUser, 'profile.name') || '',
-    status: _.get(currentUser, 'profile.status') || '',
-    birthday: _.get(currentUser, 'profile.birthday') || moment(),
+    name: currentUser?.profile?.name || '',
+    status: currentUser?.profile?.status || '',
+    birthday: currentUser?.profile?.birthday || moment(),
   }
   const [profile, setProfile] = useState(initialProfile)
 
@@ -32,9 +29,8 @@ const ProfileForm = () => {
     }
   })
 
-
   function onSave() {
-    dispatch(mutationProfile({ ...profile, id: _.get(currentUser, 'id') }))
+    dispatch(mutationProfile({ ...profile, id: currentUser?.id }))
   }
 
   function onProfileChange(e) {
@@ -47,56 +43,56 @@ const ProfileForm = () => {
 
   function Name() {
     return (
-      <Form.Group controlId='name'>
-        <Form.Label>Name</Form.Label>
-        <Form.Control type='text' value={profile.name} onChange={onProfileChange} />
-      </Form.Group>
+      <div className='profile-form-control-input-memorize'>
+        <div className='profile-form-label-input-memorize'>Name</div>
+        <input className='profile-form-text-input-memorize input-memorize' id='name' type='text' value={profile.name} onChange={onProfileChange} />
+      </div>
     )
   }
 
   function Birthday() {
     const date = moment(profile.birthday)
     return (
-      <Form.Group controlId='birthday' className='pt-3'>
-        <Form.Label>Birthday</Form.Label>
-        <Datetime value={date} dateFormat='DD/MM/YYYY' timeFormat={false} onChange={onDateChange} onClose={onDateChange} />
-      </Form.Group>
+      <div className='profile-form-control-input-memorize'>
+        <div className='profile-form-label-input-memorize'>Birthday</div>
+        <Datetime className='profile-form-date-picker-memorize' value={date} dateFormat='DD/MM/YYYY' timeFormat={false} onChange={onDateChange} onClose={onDateChange} />
+      </div>
     )
   }
 
   function Status() {
     return (
-      <Form.Group controlId='status' className='pt-3'>
-        <Form.Label>Status</Form.Label>
-        <Form.Control as='textarea' rows={3} value={profile.status} onChange={onProfileChange} />
-      </Form.Group>
+      <div className='profile-form-control-input-memorize'>
+        <div className='profile-form-label-input-memorize'>Status</div>
+        <textarea className='profile-form-textarea-input-memorize input-memorize' id='status' value={profile.status} onChange={onProfileChange} />
+      </div>
     )
   }
 
   function ButtonSave() {
     return (
-      <div className='d-flex justify-content-end pt-4'>
-        <Button className='save-button-profile' variant='success' type='button' onClick={onSave} >save</Button>
+      <div className='profile-form-save-button-memorize'>
+        <div className='profile-save-button-memorize' onClick={onSave} >Update profile</div>
       </div>
     )
   }
 
   function Saving() {
-    return status === STATUS_LOADING ? <Loading height={200} /> : ''
+    return status === STATUS_LOADING ? <Loading height={400} /> : ''
   }
 
   return (
-    <div className='profile-container'>
-      <Form className='profile-form-memorize'>
+    <>
+      <div className='profile-form-memorize'>
         {Name()}
         {Birthday()}
         {Status()}
         <ButtonSave />
-      </Form>
+      </div>
       <div className='profile-saving'>
         <Saving />
       </div>
-    </div>
+    </>
   )
 }
 
