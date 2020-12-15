@@ -4,7 +4,7 @@ import { userAddMany, userAddOne } from '../users/slice'
 import { articleAddMany, articleAddOne } from './slice'
 
 import { query, mutation } from '../../utils/graphql-api/client'
-import { QUERY_ARTICLES, MUTATE_ARTICLE } from './gql'
+import { QUERY_ARTICLES, QUERY_ARTICLE, MUTATE_ARTICLE } from './gql'
 
 import { prepareResponseArticles } from '../../utils/prepareResponse'
 
@@ -16,6 +16,19 @@ export const queryArticles = createAsyncThunk(
     const { users, articles } = prepareResponseArticles(response)
     dispatch(articleAddMany(articles))
     dispatch(userAddMany(users))
+
+    return true
+  },
+)
+
+export const queryArticle = createAsyncThunk(
+  'articles/query/article',
+  async ({ id }, { dispatch }) => {
+    const response = await query(QUERY_ARTICLE, { id })
+
+    const { user, article } = prepareResponseArticles(response)
+    dispatch(articleAddOne(article))
+    dispatch(userAddOne(user))
 
     return true
   },

@@ -1,6 +1,6 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit'
 
-import { queryArticles, mutateArticle } from './asyncThunk'
+import { queryArticles, queryArticle, mutateArticle } from './asyncThunk'
 import { STATUS_LOADING, STATUS_SUCCESS, STATUS_IDLE } from '../status'
 
 const articleAdapters = createEntityAdapter({
@@ -42,6 +42,13 @@ const articleSlices = createSlice({
       state.error = null
       state.status = STATUS_SUCCESS
     },
+    [queryArticle.pending]: state => {
+      state.status = STATUS_LOADING
+    },
+    [queryArticle.fulfilled]: state => {
+      state.error = null
+      state.status = STATUS_SUCCESS
+    },
     [mutateArticle.pending]: state => {
       state.status = STATUS_LOADING
     },
@@ -63,7 +70,7 @@ export const {
   idleStateArticles,
 } = articleSlices.actions
 
-export { mutateArticle, queryArticles }
+export { queryArticles, queryArticle, mutateArticle }
 
 export const articleSelectors = articleAdapters.getSelectors(state => state.articles)
 

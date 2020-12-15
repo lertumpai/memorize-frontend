@@ -3,18 +3,20 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
+import { articleSelectors, queryArticle } from '../../store/articles/slice'
 import { commentSelectors, idleStateComments, queryComments, resetStateComments } from '../../store/comments/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
-import { MODE_COMMENT } from '../../components/MemorizeContentBox/mode'
+import { MODE_COMMENT, MODE_ARTICLE } from '../../components/MemorizeContentBox/mode'
 
 import './style.scss'
 import { mutateArticle } from '../../store/articles/asyncThunk'
 
 const Index = () => {
   const dispatch = useDispatch()
+  const articleId = window.location.pathname.replace('/articles/', '')
 
   const state = useSelector(state => state)
 
@@ -25,6 +27,8 @@ const Index = () => {
   const loader = useRef(null)
   useEffect(() => {
     dispatch(resetStateComments())
+    dispatch(queryArticle({ id: articleId }))
+
     const options = {
       root: document.querySelector('#application-layout-memorize'),
       rootMargin: '100px',
@@ -43,7 +47,6 @@ const Index = () => {
   }
 
   useEffect(() => {
-    const articleId = window.location.pathname.replace('/articles/', '')
     const lastComment = comments ? comments[comments.length - 1] : null
     const pagination = {
       before: lastComment?.createdAt,
@@ -66,10 +69,13 @@ const Index = () => {
   }
 
   function ContainerLeftCol() {
+    const article = articleSelectors.selectById(state, articleId)
+    const user = userSelectors.selectById(state, article?.author)
    return (
      <div className='comment-container-col-memorize'>
        <div className='comment-left-col-memorize'>
          <MemorizeCreateContentBox mutateContent={mutateArticle} />
+         <MemorizeContentBox memorize={article} user={user} mode={MODE_ARTICLE} />
        </div>
      </div>
    )
