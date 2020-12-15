@@ -64,19 +64,35 @@ const Index = () => {
     })
   }
 
+  function ContainerLeftCol() {
+   return (
+     <div className='comment-container-col-memorize'>
+       <div className='comment-left-col-memorize'>
+         Comment
+       </div>
+     </div>
+   )
+  }
+
+  function ContainerRightCol() {
+   return (
+     <div className='comment-container-col-memorize'>
+       <div className='comment-right-col-memorize'>
+         {CommentContentBoxes()}
+         <div ref={loader}>
+           {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+         </div>
+       </div>
+     </div>
+   )
+  }
+
   function CommentContainer() {
     return (
       <>
         <div className='comment-container-memorize'>
-          <div className='comment-container-col-left-memorize'>
-            <div>Comment</div>
-          </div>
-          <div className='comment-container-col-right-memorize'>
-            {CommentContentBoxes()}
-            <div ref={loader}>
-              {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
-            </div>
-          </div>
+          {ContainerLeftCol()}
+          {ContainerRightCol()}
         </div>
       </>
     )
