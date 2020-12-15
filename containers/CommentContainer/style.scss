@@ -1,7 +1,6 @@
 .comment-container-col-memorize {
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
 }
 
 .comment-container-memorize {
@@ -9,20 +8,11 @@
 }
 
 .comment-left-col-memorize {
-  border: 1px solid red;
-  width: 700px;
-}
-
-.comment-right-col-memorize {
-  border: 1px solid red;
-  width: 700px;
+  display: flex;
+  flex-direction: column;
 }
 
 @media only screen and (min-width:992px) {
-  .comment-container-memorize {
-    display: flex;
-  }
-
   .comment-container-col-memorize::-webkit-scrollbar {
     display: none;
   }
@@ -34,8 +24,15 @@
     -ms-overflow-style: none;
     width: 50%;
   }
-}
 
+  .comment-left-col-memorize {
+    width: 95%;
+  }
+
+  .comment-right-col-memorize {
+    width: 95%;
+  }
+}
 @media only screen and (max-width:991px) {
   .comment-container-memorize {
     display: flex;
@@ -43,6 +40,19 @@
     flex-direction: column;
   }
 
+  .comment-container-col-memorize {
+    align-items: center;
+    width: 100%;
+  }
+}
+@media only screen and (max-width:768px) {
+  .comment-container-col-memorize {
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width:576px) {
   .comment-container-col-memorize {
     align-items: center;
     width: 100%;
