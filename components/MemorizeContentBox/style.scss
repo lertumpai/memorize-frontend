@@ -1,5 +1,6 @@
 .memorize-content-box-memorize {
   margin: 10px;
+  width: 100%;
 }
 
 .memorize-content-box-head-memorize {
@@ -77,27 +78,7 @@
   border: 1px solid #e2e2e2;
 }
 
-@media only screen and (min-width:992px) {
-  .memorize-content-box-memorize {
-    width: 85%;
-  }
-}
-@media only screen and (max-width:992px) {
-  .memorize-content-box-memorize {
-    width: 85%;
-  }
-}
-@media only screen and (max-width:768px) {
-  .memorize-content-box-memorize {
-    width: 80%;
-  }
-}
-
 @media only screen and (max-width:576px) {
-  .memorize-content-box-memorize {
-    width: 98%;
-  }
-
   .memorize-button-comment-memorize {
     width: 100%;
   }

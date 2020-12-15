@@ -3,28 +3,7 @@
   margin-bottom: 10px;
   border: 2px solid #c4c4c4;
   border-radius: 15px;
-}
-
-@media only screen and (min-width:992px) {
-  .memorize-form-create-content-box-memorize {
-    width: calc(85% - 4px);;
-  }
-}
-@media only screen and (max-width:992px) {
-  .memorize-form-create-content-box-memorize {
-    width: calc(85% - 4px);
-  }
-}
-@media only screen and (max-width:768px) {
-  .memorize-form-create-content-box-memorize {
-    width: calc(80% - 4px);
-  }
-}
-
-@media only screen and (max-width:576px) {
-  .memorize-form-create-content-box-memorize {
-    width: calc(98% - 4px);
-  }
+  width: calc(100% - 4px);
 }
 
 .memorize-form-textarea-content-box-memorize {
