@@ -23,8 +23,15 @@
     display: flex;
   }
 
+  .comment-container-col-memorize::-webkit-scrollbar {
+    display: none;
+  }
+
   .comment-container-col-memorize {
     align-items: center;
+    height: calc(100vh - 60px);
+    overflow: auto;
+    -ms-overflow-style: none;
     width: 50%;
   }
 }
