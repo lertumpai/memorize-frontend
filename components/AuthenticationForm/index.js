@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 
-import Button from '../Button/dynamic'
-import { MODE_SUBMIT } from '../Button'
-
 import { STATUS_SUCCESS } from '../../store/status'
 import { resetStateAuth, idleStateAuth, register, login } from '../../store/auth/slice'
 import { saveUser } from '../../utils/localStorage'
@@ -64,7 +61,8 @@ const AuthenticationForm = () => {
   function ButtonLoginForm() {
     return (
       <>
-        <Button mode={MODE_SUBMIT} value='Memorize' />
+        <div className='form-submit-button-memorize' onClick={onLogin}>Login</div>
+        <div className='form-change-authen-button-memorize' onClick={onClickLoginToRegister}>Register</div>
       </>
     )
   }
