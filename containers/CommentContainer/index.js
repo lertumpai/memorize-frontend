@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
 import { articleSelectors, queryArticle } from '../../store/articles/slice'
-import { commentSelectors, idleStateComments, queryComments, resetStateComments } from '../../store/comments/slice'
+import { commentSelectors, idleStateComments, queryComments, resetStateComments, mutateComment } from '../../store/comments/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
@@ -12,7 +12,6 @@ import Loading from '../../components/Loading/dynamic'
 import { MODE_COMMENT, MODE_ARTICLE } from '../../components/MemorizeContentBox/mode'
 
 import './style.scss'
-import { mutateArticle } from '../../store/articles/asyncThunk'
 
 const Index = () => {
   const dispatch = useDispatch()
@@ -74,7 +73,7 @@ const Index = () => {
    return (
      <div className='comment-container-col-memorize'>
        <div className='comment-left-col-memorize'>
-         <MemorizeCreateContentBox mutateContent={mutateArticle} />
+         <MemorizeCreateContentBox mutateContent={mutateComment} articleId={articleId} />
          <MemorizeContentBox memorize={article} user={user} mode={MODE_ARTICLE} />
        </div>
      </div>

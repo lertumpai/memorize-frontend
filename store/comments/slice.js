@@ -1,9 +1,15 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit'
 
 import { STATUS_IDLE, STATUS_LOADING, STATUS_SUCCESS } from '../status'
-import { queryComments } from './asyncThunk'
+import { queryComments, mutateComment } from './asyncThunk'
 
-const commentAdapters = createEntityAdapter()
+const commentAdapters = createEntityAdapter({
+  sortComparer: (a, b) => {
+    const valueA = new Date(a.createdAt).valueOf()
+    const valueB = new Date(b.createdAt).valueOf()
+    return valueB - valueA
+  },
+})
 
 const commentSlices = createSlice({
   name: 'comments',
@@ -36,6 +42,13 @@ const commentSlices = createSlice({
       state.error = null
       state.status = STATUS_SUCCESS
     },
+    [mutateComment.pending]: state => {
+      state.status = STATUS_LOADING
+    },
+    [mutateComment.fulfilled]: state => {
+      state.error = null
+      state.status = STATUS_SUCCESS
+    },
   },
 })
 
@@ -50,7 +63,7 @@ export const {
   resetStateComments,
 } = commentSlices.actions
 
-export { queryComments }
+export { queryComments, mutateComment }
 
 export const commentSelectors = commentAdapters.getSelectors(state => state.comments)
 

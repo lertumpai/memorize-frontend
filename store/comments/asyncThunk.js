@@ -4,7 +4,7 @@ import { userAddMany, userAddOne } from '../users/slice'
 import { commentAddMany, commentAddOne } from './slice'
 
 import { query, mutation } from '../../utils/graphql-api/client'
-import { QUERY_COMMENTS } from './gql'
+import { QUERY_COMMENTS, MUTATE_COMMENT } from './gql'
 
 import { prepareResponseComments } from '../../utils/prepareResponse'
 
@@ -21,16 +21,16 @@ export const queryComments = createAsyncThunk(
   },
 )
 
-// export const mutateArticle = createAsyncThunk(
-//   'articles/mutation/article',
-//   async ({ id, content }, { dispatch }) => {
-//     const ArticleInput = { content }
-//     const response = await mutation(MUTATE_ARTICLE, { id, ArticleInput })
-//
-//     const { user, article } = prepareResponseArticles(response)
-//     dispatch(articleAddOne(article))
-//     dispatch(userAddOne(user))
-//
-//     return true
-//   },
-// )
+export const mutateComment = createAsyncThunk(
+  'articles/mutation/article',
+  async ({ id, content, articleId }, { dispatch }) => {
+    const CommentInput = { content, articleId }
+    const response = await mutation(MUTATE_COMMENT, { id, CommentInput })
+
+    const { user, comment } = prepareResponseComments(response)
+    dispatch(commentAddOne(comment))
+    dispatch(userAddOne(user))
+
+    return true
+  },
+)
