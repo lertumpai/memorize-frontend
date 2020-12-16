@@ -1,0 +1,16 @@
+$buttonConfig: 'submit' #4fbda4, 'disable' #6c7c79;
+
+@each $tuple in $buttonConfig {
+  .button-#{nth($tuple, 1)}-memorize {
+    font-size: 20px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    color: #e7e6e6;
+    background: nth($tuple, 2);
+
+    @if nth($tuple, 1) == 'disable' {
+      pointer-events: none;
+    }
+  }
+}

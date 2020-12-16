@@ -19,7 +19,6 @@
   },
   "rules": {
     "no-console": "error",
-    "default-case": "error",
     "no-multi-spaces": "error",
     "space-in-parens": ["error", "never"],
     "object-curly-spacing": ["error", "always"],
