@@ -7,6 +7,8 @@ import { resetStateAuth, idleStateAuth, register, login } from '../../store/auth
 import { saveUser } from '../../utils/localStorage'
 import './style.scss'
 
+import TextBox from '../TextBox/dynamic'
+
 const AuthenticationForm = () => {
   const dispatch = useDispatch()
   const router = useRouter()
@@ -90,6 +92,7 @@ const AuthenticationForm = () => {
     return (
       <div className='form-control-memorize'>
         <div className='form-control-text-label-memorize'>Username</div>
+        <TextBox onChange={onChange} error={error?.username} id='username' value={form.username} />
         <input className={classNameFormControl} id='username' type='text' value={form.username} onChange={onChange} />
         <div className='form-control-text-error-memorize'>{message}</div>
       </div>
