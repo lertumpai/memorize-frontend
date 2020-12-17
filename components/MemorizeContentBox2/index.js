@@ -1,12 +1,13 @@
 import React from 'react'
 import moment from 'moment'
-import { useDispatch } from 'react-redux'
 import Link from 'next/link'
 
-import { MODE_ARTICLE } from './mode'
+import { MODE_LIKE, MODE_COMMENT } from '../Button'
+import Button from '../Button/dynamic'
+
 import './style.scss'
 
-const ContentArticleBox = ({ memorize, user, mode }) => {
+const Index = ({ memorize, user, onLike, onComment }) => {
   function MemorizeContentBoxHead() {
     return (
       <div className='memorize-content-box-head-memorize'>
@@ -21,29 +22,14 @@ const ContentArticleBox = ({ memorize, user, mode }) => {
   }
 
   function MemorizeCommentButton() {
-    const articleId = memorize?.id || window.location.pathname.replace('/articles/', '')
-    const href = `/articles/${articleId}`
-    const commentButton = mode === MODE_ARTICLE
-      ? (
-        <Link href={href}>
-          <div className='memorize-button-comment-memorize'>
-            <i className='fa fa-comment-o memorize-comment-icon-memorize' count={memorize?.comment || 0} />
-          </div>
-        </Link>
-      ) : ''
-    return commentButton
+    return onComment ? <Button mode={MODE_COMMENT} onClick={onComment} value='Comment' /> : ''
   }
 
   function MemorizeLikeButton() {
-    return (
-      <div className='memorize-button-like-memorize'>
-        <i className='fa fa-heart-o memorize-like-icon-memorize' count={memorize?.comment || 0} />
-      </div>
-    )
+    return <Button mode={MODE_LIKE} onClick={onLike} value='Like' />
   }
 
   function MemorizeContentBoxBody() {
-
     return (
       <div className='memorize-container-content-box-body-memorize'>
         <div className='memorize-content-box-body-memorize'>
@@ -70,4 +56,4 @@ const ContentArticleBox = ({ memorize, user, mode }) => {
   return <ContentBox />
 }
 
-export default ContentArticleBox
+export default Index
