@@ -1,0 +1,14 @@
+.text-area-box-memorize {
+  width: calc(100% - 20px);
+  border-radius: 5px;
+  border: 1px solid #d4d4d4;
+  font-size: 18px;
+  height: 100px;
+  padding: 8px 10px;
+  resize: unset;
+  -ms-overflow-style: none;
+}
+
+.text-area-box-memorize::-webkit-scrollbar {
+  display: none;
+}

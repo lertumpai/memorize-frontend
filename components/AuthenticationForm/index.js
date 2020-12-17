@@ -92,7 +92,6 @@ const AuthenticationForm = () => {
     return (
       <div className='form-control-memorize'>
         <div className='form-control-text-label-memorize'>Username</div>
-        <TextBox onChange={onChange} error={error?.username} id='username' value={form.username} />
         <input className={classNameFormControl} id='username' type='text' value={form.username} onChange={onChange} />
         <div className='form-control-text-error-memorize'>{message}</div>
       </div>

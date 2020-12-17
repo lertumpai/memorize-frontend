@@ -9,6 +9,8 @@ import { idleStateAuth, mutationProfile } from '../../store/auth/slice'
 import { STATUS_SUCCESS, STATUS_LOADING } from '../../store/status'
 import './style.scss'
 
+import TextAreaBox from '../TextAreaBox/dynamic'
+
 const ProfileForm = () => {
   const dispatch = useDispatch()
 
@@ -86,7 +88,7 @@ const ProfileForm = () => {
       <div className='profile-form-memorize'>
         {Name()}
         {Birthday()}
-        {Status()}
+        <TextAreaBox onChange={onProfileChange} value={profile.status} id='status' />
         <ButtonSave />
       </div>
       <div className='profile-saving'>
