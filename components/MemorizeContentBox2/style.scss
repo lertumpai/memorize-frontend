@@ -1,0 +1,89 @@
+.memorize-content-box-memorize {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.memorize-content-box-head-memorize {
+  border: 2px solid #e2e2e2;
+  border-radius: 13px;
+  padding: 10px 15px;
+}
+
+.memorize-content-box-body-memorize {
+  overflow-wrap: break-word;
+}
+
+.memorize-container-content-box-body-memorize {
+  border: 2px solid #e2e2e2;
+  border-radius: 13px;
+  padding: 10px 15px;
+  margin-top: -2px;
+}
+
+.memorize-profile-name-memorize {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.memorize-createdAt-memorize {
+  margin-top: 5px;
+  font-size: 15px;
+  color: #787878;
+}
+
+.memorize-container-button-box-body-memorize {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.memorize-button-comment-memorize {
+  background: #63a3ba;
+  border-radius: 15px;
+  cursor: pointer;
+  width: 80px;
+  padding: 5px 10px;
+}
+
+.memorize-button-like-memorize {
+  background: #f17878;
+  border-radius: 15px;
+  cursor: pointer;
+  width: 80px;
+  padding: 5px 10px;
+}
+
+.memorize-like-icon-memorize,
+.memorize-comment-icon-memorize {
+  position: relative;
+  left: calc(50% - 9px);
+  font-size: 18px;
+  font-weight: bold;
+  color: #f1f0f0;
+}
+.memorize-like-icon-memorize::after,
+.memorize-comment-icon-memorize::after {
+  position: relative;
+  font-size: 13px;
+  color: #ffffff;
+  background: #6e6e6e;
+  opacity: 0.8;
+  border-radius: 15px;
+  padding: 2px 5px;
+  content: attr(count);
+  top: -7px;
+  right: 7px;
+}
+
+.memorize-horizontal-memorize {
+  border: 1px solid #e2e2e2;
+}
+
+@media only screen and (max-width:576px) {
+  .memorize-button-comment-memorize {
+    width: 100%;
+  }
+
+  .memorize-button-like-memorize {
+    width: 100%;
+  }
+}
