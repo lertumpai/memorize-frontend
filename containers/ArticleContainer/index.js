@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
@@ -8,12 +9,12 @@ import { articleSelectors, idleStateArticles, queryArticles, mutateArticle } fro
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
-import { MODE_ARTICLE } from '../../components/MemorizeContentBox/mode'
 
 import './style.scss'
 
 const Index = () => {
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const state = useSelector(state => state)
 
@@ -56,10 +57,14 @@ const Index = () => {
     }
   }, [status])
 
+  function onComment() {
+    // TODO: implement
+  }
+
   function ArticleContentBoxes() {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author)
-      return <MemorizeContentBox key={article.id} memorize={article} user={user} mode={MODE_ARTICLE} />
+      return <MemorizeContentBox key={article.id} memorize={article} author={user} onLike={onComment} onComment={onComment} />
     })
   }
 
