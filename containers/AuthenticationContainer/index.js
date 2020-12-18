@@ -109,7 +109,7 @@ const Index = () => {
     return (
       <div className='form-control-memorize'>
         <div className='form-control-text-label-memorize'>Password</div>
-        <TextBox className={classNameFormControl} id='password'value={form.password} error={message} onChange={onChange} />
+        <TextBox className={classNameFormControl} id='password' type='password' value={form.password} error={message} onChange={onChange} />
         <div className='form-control-text-error-memorize'>{message}</div>
       </div>
     )
