@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -64,12 +64,20 @@ const Index = () => {
     // TODO: implement
   }
 
-  function ArticleContentBoxes() {
+  // function ArticleContentBoxes() {
+  //   return articles.map(article => {
+  //     const user = userSelectors.selectById(state, article.author)
+  //     return <MemorizeContentBox key={article.id} memorize={article} author={user} onLike={onComment} onComment={onComment} />
+  //   })
+  // }
+
+  // TODO: block rerender
+  const ArticleContentBoxes = useCallback(() => {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author)
       return <MemorizeContentBox key={article.id} memorize={article} author={user} onLike={onComment} onComment={onComment} />
     })
-  }
+  }, [articles])
 
   function onContentChange(e) {
     setContent(e.target.value)
