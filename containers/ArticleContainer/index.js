@@ -6,7 +6,7 @@ import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
 import { articleSelectors, idleStateArticles, queryArticles, mutateArticle } from '../../store/articles/slice'
 
-import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
+import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox2/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
 
@@ -14,6 +14,9 @@ import './style.scss'
 
 const Index = () => {
   const dispatch = useDispatch()
+
+  const [content, setContent] = useState('')
+
   const router = useRouter()
 
   const state = useSelector(state => state)
@@ -68,12 +71,20 @@ const Index = () => {
     })
   }
 
+  function onContentChange(e) {
+    setContent(e.target.value)
+  }
+
+  function onMemorize() {
+    // TODO: implement
+  }
+
   function ArticleContainer() {
     return (
       <>
         <div className='article-container-memorize'>
-          <MemorizeCreateContentBox mutateContent={mutateArticle} />
-          {ArticleContentBoxes()}
+          <MemorizeCreateContentBox value={content} onChange={onContentChange} onMemorize={onMemorize} />
+          {/*{ArticleContentBoxes()}*/}
           <div ref={loader}>
             {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
           </div>
