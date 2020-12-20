@@ -58,6 +58,7 @@ const authSlices = createSlice({
     [mutationProfile.fulfilled]: (state, action) => {
       state.error = null
       state.currentUser.profile = action.payload.profile.profile
+      state.currentUser.token = action.payload.profile.token
       state.status = STATUS_SUCCESS
     },
   },

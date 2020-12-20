@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react'
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -6,7 +6,7 @@ import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
 import { articleSelectors, idleStateArticles, queryArticles, mutateArticle } from '../../store/articles/slice'
 
-import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox2/dynamic'
+import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
 
@@ -23,6 +23,7 @@ const Index = () => {
 
   const { status } = useSelector(state => state.articles)
   const articles = articleSelectors.selectAll(state)
+  const users = userSelectors.selectAll(state)
 
   const [page, setPage] = useState(1)
   const loader = useRef(null)
@@ -60,39 +61,35 @@ const Index = () => {
     }
   }, [status])
 
-  function onComment() {
-    // TODO: implement
-  }
-
-  // function ArticleContentBoxes() {
-  //   return articles.map(article => {
-  //     const user = userSelectors.selectById(state, article.author)
-  //     return <MemorizeContentBox key={article.id} memorize={article} author={user} onLike={onComment} onComment={onComment} />
-  //   })
-  // }
-
-  // TODO: block rerender
-  const ArticleContentBoxes = useCallback(() => {
-    return articles.map(article => {
-      const user = userSelectors.selectById(state, article.author)
-      return <MemorizeContentBox key={article.id} memorize={article} author={user} onLike={onComment} onComment={onComment} />
-    })
+  const onC = useMemo(() => {
+    return articles.map(({ id }) => () => console.log(id))
   }, [articles])
 
-  function onContentChange(e) {
-    setContent(e.target.value)
-  }
+  const ArticleContentBoxes = useCallback(() => {
+    return articles.map((article, index) => {
+      const user = userSelectors.selectById(state, article.author)
+      return <MemorizeContentBox key={article.id} memorize={article} author={user}  />
+    })
+  }, [articles, users])
 
-  function onMemorize() {
-    // TODO: implement
-  }
+  const onContentChange = useCallback(e => {
+    setContent(e.target.value)
+  }, [])
+
+  const onMemorize = useCallback(() => {
+    const memorize = {
+      content,
+    }
+    dispatch(mutateArticle(memorize))
+    setContent('')
+  }, [content])
 
   function ArticleContainer() {
     return (
       <>
         <div className='article-container-memorize'>
           <MemorizeCreateContentBox value={content} onChange={onContentChange} onMemorize={onMemorize} />
-          {/*{ArticleContentBoxes()}*/}
+          {ArticleContentBoxes()}
           <div ref={loader}>
             {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
           </div>

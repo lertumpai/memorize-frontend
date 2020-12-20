@@ -1,2 +1,0 @@
-export const MODE_ARTICLE = 'MODE_ARTICLE'
-export const MODE_COMMENT = 'MODE_COMMENT'

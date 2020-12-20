@@ -31,6 +31,7 @@ export const LOGIN = gql`
 export const SAVE_PROFILE = gql`
   mutation profile($id: MID!, $input: ProfileInput) {
     profile(id: $id, input: $input) {
+      token
       profile {
         name
         status
