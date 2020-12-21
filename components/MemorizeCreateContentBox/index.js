@@ -6,7 +6,6 @@ import TextAreaBox from '../TextAreaBox/dynamic'
 import './style.scss'
 
 const Index = ({ value, onChange, onMemorize }) => {
-  console.log('Create')
   function MemorizeContentBox() {
     return (
       <div className='memorize-form-textarea-content-box-memorize'>

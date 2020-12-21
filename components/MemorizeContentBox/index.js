@@ -6,7 +6,14 @@ import Button from '../Button/dynamic'
 import './style.scss'
 
 const Index = ({ memorize, author, onLike, onComment }) => {
-  console.log('Content')
+  function onClickComment() {
+    onComment(memorize.id)
+  }
+
+  function onClickLike() {
+    onLike(memorize.id)
+  }
+
   function MemorizeContentBoxHead() {
     return (
       <div className='memorize-content-box-head-memorize'>
@@ -23,13 +30,13 @@ const Index = ({ memorize, author, onLike, onComment }) => {
   function MemorizeCommentButton() {
     const classNameButton = 'memorize-button-comment-memorize'
     const value = <i className='fa fa-comment-o memorize-comment-icon-memorize' count={memorize?.comment || 0} />
-    return onComment ? <Button className={classNameButton} onClick={onComment} value={value} /> : ''
+    return onComment ? <Button className={classNameButton} onClick={onClickComment} value={value} /> : ''
   }
 
   function MemorizeLikeButton() {
     const classNameButton = 'memorize-button-like-memorize'
     const value = <i className='fa fa-heart-o memorize-like-icon-memorize' count={memorize?.comment || 0} />
-    return <Button className={classNameButton} onClick={onLike} value={value} />
+    return <Button className={classNameButton} onClick={onClickLike} value={value} />
   }
 
   function MemorizeContentBoxBody() {

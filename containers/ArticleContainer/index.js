@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -61,14 +61,14 @@ const Index = () => {
     }
   }, [status])
 
-  const onC = useMemo(() => {
-    return articles.map(({ id }) => () => console.log(id))
-  }, [articles])
+  const onComment = useCallback(articleId => {
+    router.push(`/articles/${articleId}`)
+  }, [])
 
   const ArticleContentBoxes = useCallback(() => {
-    return articles.map((article, index) => {
+    return articles.map(article => {
       const user = userSelectors.selectById(state, article.author)
-      return <MemorizeContentBox key={article.id} memorize={article} author={user}  />
+      return <MemorizeContentBox key={article.id} memorize={article} author={user} onComment={onComment}/>
     })
   }, [articles, users])
 
