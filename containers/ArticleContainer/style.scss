@@ -1,26 +1,28 @@
+@import 'public/style/style';
+
 .article-container-memorize {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width: $screen-992) {
   .article-container-memorize {
     width: 800px;
   }
 }
-@media only screen and (max-width:992px) {
+@media only screen and (max-width: $screen-992) {
   .article-container-memorize {
     width: 85%;
   }
 }
-@media only screen and (max-width:768px) {
+@media only screen and (max-width: $screen-768) {
   .article-container-memorize {
     width: 80%;
   }
 }
 
-@media only screen and (max-width:576px) {
+@media only screen and (max-width: $screen-576) {
   .article-container-memorize {
     width: 80%;
   }

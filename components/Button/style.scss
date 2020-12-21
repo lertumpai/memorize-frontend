@@ -1,5 +1,7 @@
+@import 'public/style/style';
+
 .button-memorize {
-  background: #4fbda4;
+  background: $green-memorize;
   font-size: 20px;
   text-align: center;
   cursor: pointer;

@@ -1,3 +1,13 @@
+$screen-992: 992px;
+$screen-768: 768px;
+$screen-576: 576px;
+$screen-600: 600px;
+$screen-400: 400px;
+
+$green-memorize: #4fbda4;
+$blue-memorize: #63a3ba;
+$red-memorize: #f17878;
+
 body {
   margin: 0px;
   font-family: 'Open Sans', sans-serif;
@@ -12,9 +22,9 @@ body::-webkit-scrollbar {
 
 textarea:focus,
 input:focus {
-  border: 1px solid #31c1a0;
-  box-shadow: inset 0 0px 5px rgb(207, 207, 207),0 0 8px #4fbda4;
-  -webkit-box-shadow: inset 0 0px 5px rgb(207, 207, 207),0 0 8px #4fbda4;
+  border: 1px solid $green-memorize;
+  box-shadow: inset 0 0px 5px rgb(207, 207, 207),0 0 8px $green-memorize;
+  -webkit-box-shadow: inset 0 0px 5px rgb(207, 207, 207),0 0 8px $green-memorize;
   outline: 0;
 }
 

@@ -1,3 +1,5 @@
+@import 'public/style/style';
+
 .profile-container-memorize {
   display: flex;
   justify-content: center;
@@ -30,7 +32,7 @@
 }
 
 .profile-save-button-memorize {
-  background: #4fbda4;
+  background: $green-memorize;
   width: 180px;
   padding: 10px 0px;
   text-align: center;
@@ -51,19 +53,19 @@
   top: 350px
 }
 
-@media only screen and (min-width:769px) {
+@media only screen and (min-width: $screen-768) {
   .profile-form-memorize {
     margin-top: 5%;
     width: 700px;
   }
 }
-@media only screen and (max-width:768px) {
+@media only screen and (max-width: $screen-768) {
   .profile-form-memorize {
     margin-top: 5%;
     width: 600px;
   }
 }
-@media only screen and (max-width:600px) {
+@media only screen and (max-width: $screen-600) {
   .profile-form-memorize {
     margin-top: 5%;
     width: 450px;
@@ -82,7 +84,7 @@
     top: 270px
   }
 }
-@media only screen and (max-width:400px) {
+@media only screen and (max-width: $screen-600) {
   .profile-form-memorize {
     margin-top: 15%;
     width: 90%;

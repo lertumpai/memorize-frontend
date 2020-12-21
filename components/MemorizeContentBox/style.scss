@@ -1,3 +1,5 @@
+@import 'public/style/style';
+
 .memorize-content-box-memorize {
   width: 100%;
   margin: 10px 0px;
@@ -37,7 +39,7 @@
 }
 
 .memorize-button-comment-memorize {
-  background: #63a3ba;
+  background: $blue-memorize;
   border-radius: 15px;
   cursor: pointer;
   width: 80px;
@@ -45,7 +47,7 @@
 }
 
 .memorize-button-like-memorize {
-  background: #f17878;
+  background: $red-memorize;
   border-radius: 15px;
   cursor: pointer;
   width: 80px;

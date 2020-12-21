@@ -1,3 +1,5 @@
+@import 'public/style/style';
+
 .memorize-form-create-content-box-memorize {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -34,7 +36,7 @@
   font-size: 18px;
   font-weight: bold;
   color: white;
-  background: #4fbda4;
+  background: $green-memorize;
   border-radius: 15px;
 }
 

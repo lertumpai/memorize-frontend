@@ -1,3 +1,5 @@
+@import 'public/style/style';
+
 .comment-container-col-memorize {
   display: flex;
   flex-direction: column;
@@ -12,7 +14,7 @@
   flex-direction: column;
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width: $screen-992) {
   .comment-container-col-memorize::-webkit-scrollbar {
     display: none;
   }
@@ -33,7 +35,7 @@
     width: 98%;
   }
 }
-@media only screen and (max-width:991px) {
+@media only screen and (max-width: $screen-992) {
   .comment-container-memorize {
     display: flex;
     align-items: center;
