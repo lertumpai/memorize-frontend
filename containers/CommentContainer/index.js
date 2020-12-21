@@ -125,12 +125,10 @@ const Index = ({ articleId }) => {
 
   function CommentContainer() {
     return (
-      <>
-        <div className='comment-container-memorize'>
-          {ContainerLeftCol()}
-          {ContainerRightCol()}
-        </div>
-      </>
+      <div className='comment-container-memorize'>
+        {ContainerLeftCol()}
+        {ContainerRightCol()}
+      </div>
     )
   }
 

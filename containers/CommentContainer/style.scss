@@ -26,11 +26,11 @@
   }
 
   .comment-left-col-memorize {
-    width: 95%;
+    width: 98%;
   }
 
   .comment-right-col-memorize {
-    width: 95%;
+    width: 98%;
   }
 }
 @media only screen and (max-width:991px) {
@@ -44,17 +44,12 @@
     align-items: center;
     width: 100%;
   }
-}
-@media only screen and (max-width:768px) {
-  .comment-container-col-memorize {
-    align-items: center;
-    width: 100%;
-  }
-}
 
-@media only screen and (max-width:576px) {
-  .comment-container-col-memorize {
-    align-items: center;
-    width: 100%;
+  .comment-left-col-memorize {
+    width: 95%;
+  }
+
+  .comment-right-col-memorize {
+    width: 95%;
   }
 }
