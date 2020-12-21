@@ -75,13 +75,21 @@ const Index = ({ articleId }) => {
     console.log(articleId)
   }, [])
 
+  const onComment = useCallback(() => {}, [])
+
   function ContainerLeftCol() {
     const article = articleSelectors.selectById(state, articleId)
     const user = userSelectors.selectById(state, article?.author)
     return (
       <div className='comment-container-col-memorize'>
         <div className='comment-left-col-memorize'>
-          <MemorizeContentBox key={article?.id} memorize={article} author={user} onLike={onArticleLike}/>
+          <MemorizeContentBox
+            key={article?.id}
+            memorize={article}
+            author={user}
+            onLike={onArticleLike}
+            onComment={onComment}
+          />
           <MemorizeCreateContentBox value={content} onChange={onContentChange} onMemorize={onMemorize} />
         </div>
       </div>
