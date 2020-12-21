@@ -81,8 +81,8 @@ const Index = ({ articleId }) => {
     return (
       <div className='comment-container-col-memorize'>
         <div className='comment-left-col-memorize'>
-          <MemorizeCreateContentBox value={content} onChange={onContentChange} onMemorize={onMemorize} />
           <MemorizeContentBox key={article?.id} memorize={article} author={user} onLike={onArticleLike}/>
+          <MemorizeCreateContentBox value={content} onChange={onContentChange} onMemorize={onMemorize} />
         </div>
       </div>
     )
