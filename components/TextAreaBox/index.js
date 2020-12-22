@@ -2,9 +2,9 @@ import React from 'react'
 
 import './style.scss'
 
-const Index = ({ onChange, value, id, style, placeholder }) => {
+const Index = ({ onChange, value, id, style, placeholder, className }) => {
   return <textarea
-    className='text-area-box-memorize'
+    className={className || 'text-area-box-memorize'}
     id={id}
     value={value}
     onChange={onChange}
