@@ -9,6 +9,15 @@ export const CommentFragment = gql`
         name
       }
     }
+    canMutate
+    action
+    userAction {
+      ... on CommentAction {
+        commentId
+        action
+        authorId
+      }
+    }
     content
     createdAt
   }
