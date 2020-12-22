@@ -74,7 +74,7 @@ const Index = () => {
 
   const onContentChange = useCallback(e => {
     setContent(e.target.value)
-  }, [])
+  }, [setContent])
 
   const onMemorize = useCallback(() => {
     const memorize = {
