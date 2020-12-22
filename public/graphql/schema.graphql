@@ -1,0 +1,128 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+interface Action {
+  action: ActionEnum!
+  authorId: MID!
+}
+
+type Article {
+  action: String!
+  active: Boolean!
+  author: User!
+  canMutate: Boolean!
+  comment: String!
+  content: String!
+  createdAt: Date
+  deletedAt: Date
+  id: MID!
+  updatedAt: Date
+  userAction: Action
+}
+
+type ArticleAction implements Action {
+  action: ActionEnum!
+  articleId: MID!
+  authorId: MID!
+}
+
+type Comment {
+  action: String!
+  active: Boolean!
+  article: Article!
+  author: User!
+  canMutate: Boolean!
+  content: String!
+  createdAt: Date
+  deletedAt: Date
+  id: MID!
+  updatedAt: Date
+  userAction: Action
+}
+
+type CommentAction implements Action {
+  action: ActionEnum!
+  authorId: MID!
+  commentId: MID!
+}
+
+type Mutation {
+  article(id: MID, input: ArticleInput!): Article
+  articleAction(action: ActionEnum!, articleId: MID!): Action
+  articleDelete(id: MID!): Article
+  comment(id: MID, input: CommentInput!): Comment
+  commentAction(action: ActionEnum!, commentId: MID!): Action
+  commentDelete(id: MID!): Comment
+  profile(id: MID!, input: ProfileInput): User
+  syncMongoIndexes(key: String!): [String]
+  user(password: String, username: String): User
+  version: String!
+}
+
+type ProfileUser {
+  birthday: Date
+  name: String
+  status: String
+}
+
+type Query {
+  article(id: MID!): Article
+  articles(author: MID, pagination: Pagination = {limit : 10}): [Article]
+  comment(id: MID!): Comment
+  comments(articleId: MID!, pagination: Pagination = {limit : 10}): [Comment]
+  login(password: String, username: String): User
+  user(id: MID, username: String): User
+  version: String!
+}
+
+type User {
+  active: Boolean!
+  id: MID!
+  profile: ProfileUser
+  token: String!
+}
+
+enum ActionEnum {
+  like
+  unlike
+}
+
+enum CacheControlScope {
+  PRIVATE
+  PUBLIC
+}
+
+input ArticleInput {
+  content: String!
+}
+
+input CommentInput {
+  articleId: MID
+  content: String!
+}
+
+input Pagination {
+  after: String
+  before: String
+  limit: Int = 10
+}
+
+input ProfileInput {
+  birthday: Date
+  name: String
+  status: String
+}
+
+
+"Date custom scalar type"
+scalar Date
+
+"Mongo object id"
+scalar MID
+
+"The `Upload` scalar type represents a file upload."
+scalar Upload
