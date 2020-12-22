@@ -13,4 +13,4 @@ const Index = ({ onChange, value, id, style, placeholder }) => {
   />
 }
 
-export default Index
+export default React.memo(Index)

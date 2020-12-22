@@ -10,4 +10,4 @@ const Index = ({ onChange, value, error, id, style, type = 'text' }) => {
   return TextBox()
 }
 
-export default Index
+export default React.memo(Index)

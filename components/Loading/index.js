@@ -13,4 +13,4 @@ const Loading = ({ height, width }) => {
   return <Lottie options={options} height={height} width={width} />
 }
 
-export default Loading
+export default React.memo(Loading)
