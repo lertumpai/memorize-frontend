@@ -1,52 +1,43 @@
 import { gql } from '@apollo/client'
 
-export const QUERY_ARTICLES = gql`
-  query articles($author: MID, $pagination: Pagination) {
-    articles(author: $author, pagination: $pagination) {
+export const ArticleFragment = gql`
+  fragment ArticleFragment on Article {
+    id
+    content
+    createdAt
+    comment
+    author {
       id
-      content
-      createdAt
-      comment
-      author {
-        id
-        profile {
-          name
-        }
+      profile {
+        name
       }
     }
   }
+`
+
+export const QUERY_ARTICLES = gql`
+  query articles($author: MID, $pagination: Pagination) {
+    articles(author: $author, pagination: $pagination) {
+      ...ArticleFragment
+    }
+  }
+  ${ArticleFragment}
 `
 
 export const QUERY_ARTICLE = gql`
   query article($id: MID!) {
     article(id: $id) {
-      id
-      content
-      createdAt
-      comment
-      author {
-        id
-        profile {
-          name
-        }
-      }
+      ...ArticleFragment
     }
   }
+  ${ArticleFragment}
 `
 
 export const MUTATE_ARTICLE = gql`
   mutation article($id: MID, $ArticleInput: ArticleInput!) {
     article(id: $id, input: $ArticleInput) {
-      id
-      content
-      createdAt
-      comment
-      author {
-        id
-        profile {
-          name
-        }
-      }
+      ...ArticleFragment
     }
   }
+  ${ArticleFragment}
 `
