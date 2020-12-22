@@ -34,8 +34,10 @@ const Index = ({ memorize, author, onLike, onComment }) => {
   }
 
   function MemorizeLikeButton() {
-    const classNameButton = 'memorize-button-like-memorize'
-    const value = <i className='fa fa-heart-o memorize-like-icon-memorize' count={memorize?.comment || 0} />
+    const action = memorize?.userAction ? memorize?.userAction.action : 'unlike'
+    const classNameButton = `memorize-button-like-memorize ${action}`
+    const classNameIcon = `fa fa-heart-o memorize-like-icon-memorize ${action}`
+    const value = <i className={classNameIcon} count={memorize?.action || 0} />
     return <Button className={classNameButton} onClick={onClickLike} value={value} />
   }
 

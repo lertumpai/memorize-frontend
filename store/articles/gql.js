@@ -6,6 +6,15 @@ export const ArticleFragment = gql`
     content
     createdAt
     comment
+    canMutate
+    action
+    userAction {
+      ... on ArticleAction {
+        articleId
+        action
+        authorId
+      }
+    }
     author {
       id
       profile {

@@ -29,11 +29,13 @@ const Index = ({ articleId }) => {
     }
   }, [articleId])
 
+  useEffect(() => {
+    return () => dispatch(resetStateComments())
+  }, [])
+
   const [page, setPage] = useState(1)
   const loader = useRef(null)
   useEffect(() => {
-    dispatch(resetStateComments())
-
     const options = {
       root: document.querySelector('#application-layout-memorize'),
       rootMargin: '100px',
@@ -45,18 +47,17 @@ const Index = ({ articleId }) => {
     }
   }, [])
 
-  const handleObserver = entities => {
+  const handleObserver = useCallback(entities => {
     if (entities[0].isIntersecting) {
       setPage(page => page + 1)
     }
-  }
+  }, [])
 
   useEffect(() => {
     if (status === STATUS_SUCCESS) {
       dispatch(idleStateComments())
     }
   }, [status])
-
 
   const onContentChange = useCallback(e => {
     setContent(e.target.value)

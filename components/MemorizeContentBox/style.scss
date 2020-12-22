@@ -43,15 +43,24 @@
   border-radius: 15px;
   cursor: pointer;
   width: 100px;
+  height: 32px;
   padding: 5px 10px;
 }
 
 .memorize-button-like-memorize {
-  background: $red-memorize;
   border-radius: 15px;
   cursor: pointer;
   width: 100px;
   padding: 5px 10px;
+  height: 32px;
+}
+
+.memorize-button-like-memorize.like {
+  background: $red-memorize;
+}
+
+.memorize-button-like-memorize.unlike {
+  border: 2px solid $red-memorize;
 }
 
 .memorize-like-icon-memorize,
@@ -74,6 +83,10 @@
   content: attr(count);
   top: -7px;
   right: 7px;
+}
+
+.memorize-like-icon-memorize.unlike {
+  color: $red-memorize;
 }
 
 .memorize-horizontal-memorize {

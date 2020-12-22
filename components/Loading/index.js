@@ -9,8 +9,8 @@ const options = {
   animationData: loading.default,
 }
 
-const Loading = ({ height, width }) => {
+const Index = ({ height, width }) => {
   return <Lottie options={options} height={height} width={width} />
 }
 
-export default React.memo(Loading)
+export default React.memo(Index)
