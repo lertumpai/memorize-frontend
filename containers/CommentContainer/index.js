@@ -21,7 +21,6 @@ const Index = ({ articleId }) => {
   const { status } = useSelector(state => state.comments)
   const comments = commentSelectors.selectAll(state)
   const users = userSelectors.selectAll(state)
-  const articles = articleSelectors.selectAll(state)
 
   useMemo(() => {
     if (articleId) {
