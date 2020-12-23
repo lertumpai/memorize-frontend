@@ -61,8 +61,8 @@ export const MUTATE_ARTICLE = gql`
 export const MUTATE_ARTICLE_ACTION = gql`
   mutation articleAction($articleId: MID!, $action: ActionEnum!) {
     articleAction(articleId: $articleId, action: $action) {
-      ...ArticleActionFragment
+      ...ArticleFragment
     }
   }
-  ${ArticleActionFragment}
+  ${ArticleFragment}
 `

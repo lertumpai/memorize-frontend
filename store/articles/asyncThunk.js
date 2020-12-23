@@ -54,7 +54,8 @@ export const mutateArticleAction = createAsyncThunk(
     const response = await mutation(MUTATE_ARTICLE_ACTION, { articleId, action })
 
     const { articleAction } = response
-    dispatch(articleUpdateOne({ id: articleId, changes: { userAction: articleAction } }))
+    const { article } = prepareResponseArticles({ article: articleAction })
+    dispatch(articleUpdateOne({ id: articleId, changes: article }))
 
     return true
   },
