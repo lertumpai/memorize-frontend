@@ -12,7 +12,7 @@ import Loading from '../../components/Loading/dynamic'
 
 import './style.scss'
 
-const Index = () => {
+const ArticleContainerIndex = () => {
   const dispatch = useDispatch()
 
   const [content, setContent] = useState('')
@@ -105,4 +105,4 @@ const Index = () => {
   return ArticleContainer()
 }
 
-export default Index
+export default ArticleContainerIndex

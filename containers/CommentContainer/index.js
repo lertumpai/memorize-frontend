@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
 import { articleSelectors, queryArticle, mutateArticleAction } from '../../store/articles/slice'
 import { commentSelectors, idleStateComments, queryComments, resetStateComments, mutateComment, mutateCommentAction } from '../../store/comments/slice'
+import { idleStateArticles } from '../../store/articles/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
@@ -12,17 +13,18 @@ import Loading from '../../components/Loading/dynamic'
 
 import './style.scss'
 
-const Index = ({ articleId }) => {
+const CommentContainerIndex = ({ articleId }) => {
   const dispatch = useDispatch()
 
   const [content, setContent] = useState('')
 
   const state = useSelector(state => state)
-  const { status } = useSelector(state => state.comments)
+  const { status: articleStatus } = useSelector(state => state.articles)
+  const { status: commentStatus } = useSelector(state => state.comments)
   const comments = commentSelectors.selectAll(state)
   const users = userSelectors.selectAll(state)
 
-  useMemo(() => {
+  useEffect(() => {
     if (articleId) {
       dispatch(queryArticle({ id: articleId }))
     }
@@ -53,10 +55,15 @@ const Index = ({ articleId }) => {
   }, [])
 
   useEffect(() => {
-    if (status === STATUS_SUCCESS) {
+    if (articleStatus === STATUS_SUCCESS) {
+      dispatch(idleStateArticles())
+    }
+  }, [articleStatus])
+  useEffect(() => {
+    if (commentStatus === STATUS_SUCCESS) {
       dispatch(idleStateComments())
     }
-  }, [status])
+  }, [commentStatus])
 
   const onContentChange = useCallback(e => {
     setContent(e.target.value)
@@ -124,7 +131,7 @@ const Index = ({ articleId }) => {
        <div className='comment-right-col-memorize'>
          {CommentContentBoxes()}
          <div ref={loader}>
-           {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+           {commentStatus !== STATUS_IDLE ? <Loading width={300} /> : ''}
          </div>
        </div>
      </div>
@@ -143,4 +150,4 @@ const Index = ({ articleId }) => {
   return CommentContainer()
 }
 
-export default React.memo(Index)
+export default React.memo(CommentContainerIndex)

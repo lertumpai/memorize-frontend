@@ -24,7 +24,7 @@ export function loadUser() {
   }
 
   const user = {
-    id: tokenDecoded.userId,
+    id: tokenDecoded.id,
     username: tokenDecoded.username,
     profile: tokenDecoded.profile,
     token: storage,
