@@ -5,7 +5,7 @@ import Button from '../Button/dynamic'
 
 import './style.scss'
 
-const Index = ({ memorize, author, onLike, onComment }) => {
+const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment }) => {
   function onClickComment() {
     onComment(memorize.id)
   }
@@ -69,4 +69,4 @@ const Index = ({ memorize, author, onLike, onComment }) => {
   return <MemorizeContentBox />
 }
 
-export default React.memo(Index)
+export default React.memo(MemorizeContentBoxIndex)

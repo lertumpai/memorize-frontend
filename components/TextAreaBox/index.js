@@ -2,7 +2,7 @@ import React from 'react'
 
 import './style.scss'
 
-const Index = ({ onChange, value, id, style, placeholder, className }) => {
+const TextAreaBoxIndex = ({ onChange, value, id, style, placeholder, className }) => {
   return <textarea
     className={className || 'text-area-box-memorize'}
     id={id}
@@ -13,4 +13,4 @@ const Index = ({ onChange, value, id, style, placeholder, className }) => {
   />
 }
 
-export default React.memo(Index)
+export default React.memo(TextAreaBoxIndex)

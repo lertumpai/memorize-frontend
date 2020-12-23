@@ -9,6 +9,7 @@ import { articleSelectors, idleStateArticles, queryArticles, mutateArticle, muta
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
+import Modal from '../../components/Modal/dynamic'
 
 import './style.scss'
 
@@ -80,19 +81,25 @@ const ArticleContainerIndex = () => {
     setContent(e.target.value)
   }, [setContent])
 
-  const onMemorize = useCallback(() => {
+  const onMemorize = useCallback(({ id, content }) => {
     const memorize = {
+      id,
       content,
     }
     dispatch(mutateArticle(memorize))
     setContent('')
-  }, [content])
+  }, [])
 
   function ArticleContainer() {
     return (
       <>
+        {/*<Modal>Hello</Modal>*/}
         <div className='article-container-memorize'>
-          <MemorizeCreateContentBox value={content} onChange={onContentChange} onMemorize={onMemorize} />
+          <MemorizeCreateContentBox
+            content={content}
+            onChange={onContentChange}
+            onMemorize={onMemorize}
+          />
           {ArticleContentBoxes()}
           <div ref={loader}>
             {status !== STATUS_IDLE ? <Loading width={300} /> : ''}

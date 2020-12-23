@@ -5,7 +5,11 @@ import TextAreaBox from '../TextAreaBox/dynamic'
 
 import './style.scss'
 
-const Index = ({ value, onChange, onMemorize }) => {
+const MemorizeCreateContentBoxIndex = ({ id, articleId, content, onChange, onMemorize }) => {
+  function onClickMemorize() {
+    onMemorize({ id, content, articleId })
+  }
+
   function MemorizeContentBox() {
     return (
       <div className='memorize-form-textarea-content-box-memorize'>
@@ -13,7 +17,7 @@ const Index = ({ value, onChange, onMemorize }) => {
           className='memorize-textarea-content-box-memorize input-memorize'
           id='content'
           placeholder='Your post today ^^'
-          value={value}
+          value={content}
           onChange={onChange}
         />
       </div>
@@ -21,12 +25,12 @@ const Index = ({ value, onChange, onMemorize }) => {
   }
 
   function MemorizeCreateButton() {
-    const classNameButton = value
+    const classNameButton = content
       ? 'memorize-create-button-memorize'
       : 'memorize-create-button-memorize disable-click-memorize'
     return (
         <div className='memorize-form-create-button-memorize'>
-          <Button onClick={onMemorize} className={classNameButton} value='Memorize' />
+          <Button onClick={onClickMemorize} className={classNameButton} value='Memorize' />
         </div>
       )
   }
@@ -43,4 +47,4 @@ const Index = ({ value, onChange, onMemorize }) => {
   return MemorizeCreateContentBox()
 }
 
-export default React.memo(Index)
+export default React.memo(MemorizeCreateContentBoxIndex)

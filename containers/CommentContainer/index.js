@@ -69,14 +69,15 @@ const CommentContainerIndex = ({ articleId }) => {
     setContent(e.target.value)
   }, [])
 
-  const onMemorize = useCallback(() => {
+  const onMemorize = useCallback(({ id, articleId, content }) => {
     const memorize = {
+      id,
       articleId,
       content,
     }
     dispatch(mutateComment(memorize))
     setContent('')
-  }, [content])
+  }, [])
 
   const onArticleLike = useCallback((articleId, action) => {
     dispatch(mutateArticleAction({ articleId, action }))
@@ -97,7 +98,12 @@ const CommentContainerIndex = ({ articleId }) => {
             onLike={onArticleLike}
             onComment={onComment}
           />
-          <MemorizeCreateContentBox value={content} onChange={onContentChange} onMemorize={onMemorize} />
+          <MemorizeCreateContentBox
+            content={content}
+            articleId={articleId}
+            onChange={onContentChange}
+            onMemorize={onMemorize}
+          />
         </div>
       </div>
     )
