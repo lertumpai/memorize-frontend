@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
-import { articleSelectors, queryArticle } from '../../store/articles/slice'
-import { commentSelectors, idleStateComments, queryComments, resetStateComments, mutateComment } from '../../store/comments/slice'
+import { articleSelectors, queryArticle, mutateArticleAction } from '../../store/articles/slice'
+import { commentSelectors, idleStateComments, queryComments, resetStateComments, mutateComment, mutateCommentAction } from '../../store/comments/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
@@ -72,8 +72,8 @@ const Index = ({ articleId }) => {
     setContent('')
   }, [content])
 
-  const onArticleLike = useCallback(articleId => {
-    console.log(articleId)
+  const onArticleLike = useCallback((articleId, action) => {
+    dispatch(mutateArticleAction({ articleId, action }))
   }, [])
 
   const onComment = useCallback(() => {}, [])
@@ -108,8 +108,8 @@ const Index = ({ articleId }) => {
     }
   }, [page, articleId])
 
-  const onCommentLike = useCallback(commentId => {
-    console.log(commentId)
+  const onCommentLike = useCallback((commentId, action) => {
+    dispatch(mutateCommentAction({ commentId, action }))
   }, [])
 
   const CommentContentBoxes = useCallback(() => {

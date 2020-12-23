@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { userAddMany, userAddOne } from '../users/slice'
-import { commentAddMany, commentAddOne } from './slice'
+import { commentAddMany, commentAddOne, commentUpdateOne } from './slice'
 
 import { query, mutation } from '../../utils/graphql-api/client'
-import { QUERY_COMMENTS, MUTATE_COMMENT } from './gql'
+import { QUERY_COMMENTS, MUTATE_COMMENT, MUTATE_COMMENT_ACTION } from './gql'
 
 import { prepareResponseComments } from '../../utils/prepareResponse'
 
@@ -22,7 +22,7 @@ export const queryComments = createAsyncThunk(
 )
 
 export const mutateComment = createAsyncThunk(
-  'articles/mutation/article',
+  'comments/mutation/comment',
   async ({ id, content, articleId }, { dispatch }) => {
     const CommentInput = { content, articleId }
     const response = await mutation(MUTATE_COMMENT, { id, CommentInput })
@@ -30,6 +30,19 @@ export const mutateComment = createAsyncThunk(
     const { user, comment } = prepareResponseComments(response)
     dispatch(commentAddOne(comment))
     dispatch(userAddOne(user))
+
+    return true
+  },
+)
+
+export const mutateCommentAction = createAsyncThunk(
+  'comments/mutation/commentAction',
+  async ({ commentId, action }, { dispatch }) => {
+    const response = await mutation(MUTATE_COMMENT_ACTION, { commentId, action })
+
+    const { commentAction } = response
+    const { comment } = prepareResponseComments({ comment: commentAction })
+    dispatch(commentUpdateOne({ id: commentId, changes: comment }))
 
     return true
   },
