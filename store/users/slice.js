@@ -17,20 +17,16 @@ const userSlices = createSlice({
     idleStateUsers: state => {
       state.status = STATUS_IDLE
     },
-    userAddOne: userAdapters.addOne,
-    userAddMany: userAdapters.addMany,
-    userUpdateOne: userAdapters.updateOne,
-    userUpdateMany: userAdapters.updateMany,
+    userUpsertOne: userAdapters.upsertOne,
+    userUpsertMany: userAdapters.upsertMany,
     userRemoveOne: userAdapters.removeOne,
     userRemoveMany: userAdapters.removeMany,
   },
 })
 
 export const {
-  userAddOne,
-  userAddMany,
-  userUpdateOne,
-  userUpdateMany,
+  userUpsertOne,
+  userUpsertMany,
   userRemoveOne,
   userRemoveMany,
   resetStateUsers,

@@ -27,10 +27,8 @@ const commentSlices = createSlice({
     idleStateComments: state => {
       state.status = STATUS_IDLE
     },
-    commentAddOne: commentAdapters.addOne,
-    commentAddMany: commentAdapters.addMany,
-    commentUpdateOne: commentAdapters.updateOne,
-    commentUpdateMany: commentAdapters.updateMany,
+    commentUpsertOne: commentAdapters.upsertOne,
+    commentUpsertMany: commentAdapters.upsertMany,
     commentRemoveOne: commentAdapters.removeOne,
     commentRemoveMany: commentAdapters.removeMany,
   },
@@ -60,10 +58,8 @@ const commentSlices = createSlice({
 })
 
 export const {
-  commentAddOne,
-  commentAddMany,
-  commentUpdateOne,
-  commentUpdateMany,
+  commentUpsertOne,
+  commentUpsertMany,
   commentRemoveOne,
   commentRemoveMany,
   idleStateComments,

@@ -27,10 +27,8 @@ const articleSlices = createSlice({
     idleStateArticles: state => {
       state.status = STATUS_IDLE
     },
-    articleAddOne: articleAdapters.addOne,
-    articleAddMany: articleAdapters.addMany,
-    articleUpdateOne: articleAdapters.updateOne,
-    articleUpdateMany: articleAdapters.updateMany,
+    articleUpsertOne: articleAdapters.upsertOne,
+    articleUpsertMany: articleAdapters.upsertMany,
     articleRemoveOne: articleAdapters.removeOne,
     articleRemoveMany: articleAdapters.removeMany,
   },
@@ -67,10 +65,8 @@ const articleSlices = createSlice({
 })
 
 export const {
-  articleAddOne,
-  articleAddMany,
-  articleUpdateOne,
-  articleUpdateMany,
+  articleUpsertOne,
+  articleUpsertMany,
   articleRemoveOne,
   articleRemoveMany,
   resetStateArticles,

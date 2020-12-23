@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { userAddMany, userAddOne } from '../users/slice'
-import { articleAddMany, articleAddOne, articleUpdateOne } from './slice'
+import { userUpsertMany, userUpsertOne } from '../users/slice'
+import { articleUpsertMany, articleUpsertOne } from './slice'
 
 import { query, mutation } from '../../utils/graphql-api/client'
 import { QUERY_ARTICLES, QUERY_ARTICLE, MUTATE_ARTICLE, MUTATE_ARTICLE_ACTION } from './gql'
@@ -14,8 +14,8 @@ export const queryArticles = createAsyncThunk(
     const response = await query(QUERY_ARTICLES, { author, pagination })
 
     const { users, articles } = prepareResponseArticles(response)
-    dispatch(articleAddMany(articles))
-    dispatch(userAddMany(users))
+    dispatch(articleUpsertMany(articles))
+    dispatch(userUpsertMany(users))
 
     return true
   },
@@ -27,8 +27,8 @@ export const queryArticle = createAsyncThunk(
     const response = await query(QUERY_ARTICLE, { id })
 
     const { user, article } = prepareResponseArticles(response)
-    dispatch(articleAddOne(article))
-    dispatch(userAddOne(user))
+    dispatch(articleUpsertOne(article))
+    dispatch(userUpsertOne(user))
 
     return true
   },
@@ -41,8 +41,8 @@ export const mutateArticle = createAsyncThunk(
     const response = await mutation(MUTATE_ARTICLE, { id, ArticleInput })
 
     const { user, article } = prepareResponseArticles(response)
-    dispatch(articleAddOne(article))
-    dispatch(userAddOne(user))
+    dispatch(articleUpsertOne(article))
+    dispatch(userUpsertOne(user))
 
     return true
   },
@@ -55,7 +55,7 @@ export const mutateArticleAction = createAsyncThunk(
 
     const { articleAction } = response
     const { article } = prepareResponseArticles({ article: articleAction })
-    dispatch(articleUpdateOne({ id: articleId, changes: article }))
+    dispatch(articleUpsertOne(article))
 
     return true
   },
