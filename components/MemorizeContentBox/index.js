@@ -11,7 +11,8 @@ const Index = ({ memorize, author, onLike, onComment }) => {
   }
 
   function onClickLike() {
-    onLike(memorize.id)
+    const action = !memorize.userAction ? 'like' : 'unlike'
+    onLike(memorize.id, action)
   }
 
   function MemorizeContentBoxHead() {

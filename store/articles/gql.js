@@ -1,5 +1,15 @@
 import { gql } from '@apollo/client'
 
+export const ArticleActionFragment = gql`
+  fragment ArticleActionFragment on ArticleAction {
+    ... on ArticleAction {
+      action
+      articleId
+      authorId
+    }
+  }
+`
+
 export const ArticleFragment = gql`
   fragment ArticleFragment on Article {
     id
@@ -9,11 +19,7 @@ export const ArticleFragment = gql`
     canMutate
     action
     userAction {
-      ... on ArticleAction {
-        articleId
-        action
-        authorId
-      }
+      ...ArticleActionFragment
     }
     author {
       id
@@ -22,6 +28,7 @@ export const ArticleFragment = gql`
       }
     }
   }
+  ${ArticleActionFragment}
 `
 
 export const QUERY_ARTICLES = gql`
@@ -49,4 +56,13 @@ export const MUTATE_ARTICLE = gql`
     }
   }
   ${ArticleFragment}
+`
+
+export const MUTATE_ARTICLE_ACTION = gql`
+  mutation articleAction($articleId: MID!, $action: ActionEnum!) {
+    articleAction(articleId: $articleId, action: $action) {
+      ...ArticleActionFragment
+    }
+  }
+  ${ArticleActionFragment}
 `

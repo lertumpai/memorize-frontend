@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
-import { articleSelectors, idleStateArticles, queryArticles, mutateArticle } from '../../store/articles/slice'
+import { articleSelectors, idleStateArticles, queryArticles, mutateArticle, mutateArticleAction } from '../../store/articles/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
@@ -40,11 +40,11 @@ const Index = () => {
     }
   }, [])
 
-  const handleObserver = entities => {
+  const handleObserver = useCallback(entities => {
     if (entities[0].isIntersecting) {
       setPage(page => page + 1)
     }
-  }
+  }, [])
 
   useEffect(() => {
     const lastArticle = articles ? articles[articles.length - 1] : null
@@ -65,10 +65,14 @@ const Index = () => {
     router.push(`/articles/${articleId}`)
   }, [])
 
+  const onLike = useCallback((articleId, action) => {
+    dispatch(mutateArticleAction({ articleId, action }))
+  }, [])
+
   const ArticleContentBoxes = useCallback(() => {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author)
-      return <MemorizeContentBox key={article.id} memorize={article} author={user} onComment={onComment}/>
+      return <MemorizeContentBox key={article.id} memorize={article} author={user} onComment={onComment} onLike={onLike} />
     })
   }, [articles, users])
 
