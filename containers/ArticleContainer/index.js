@@ -62,7 +62,7 @@ const Index = () => {
   }, [status])
 
   const onComment = useCallback(articleId => {
-    router.push(`/articles/${articleId}`)
+    return router.push(`/articles/${articleId}`)
   }, [])
 
   const onLike = useCallback((articleId, action) => {

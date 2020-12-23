@@ -19,7 +19,7 @@ const PrivateContainer = ({ children }) => {
       case '/': {
         if (userLocalStorage && !currentUser) {
           dispatch(setCurrentUser(userLocalStorage))
-          return router.push('/articles')
+          return router.replace('/articles')
         }
 
         break
@@ -28,7 +28,7 @@ const PrivateContainer = ({ children }) => {
       // eslint-disable-next-line no-fallthrough
       default: {
         if (!userLocalStorage) {
-          return router.push('/')
+          return router.replace('/')
         }
 
         if (userLocalStorage && !currentUser) {

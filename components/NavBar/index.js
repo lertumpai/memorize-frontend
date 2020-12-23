@@ -7,6 +7,8 @@ import { clearUser } from '../../utils/localStorage'
 import { resetStateAuth } from '../../store/auth/slice'
 import { resetStateArticles } from '../../store/articles/slice'
 import { resetStateUsers } from '../../store/users/slice'
+import { resetStateComments } from '../../store/comments/slice'
+
 import './style.scss'
 
 const NavBar = () => {
@@ -51,11 +53,12 @@ const NavBar = () => {
     dispatch(resetStateAuth())
     dispatch(resetStateArticles())
     dispatch(resetStateUsers())
+    dispatch(resetStateComments())
   }
 
   function Logout() {
     return (
-      <Link href='#'>
+      <Link href='/'>
         <div className='nav-menu-memorize' onClick={onLogout}>
           <a><i className='icon-memorize fa fa-sign-out' /></a>
         </div>
