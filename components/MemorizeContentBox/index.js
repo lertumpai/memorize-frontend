@@ -1,41 +1,62 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import moment from 'moment'
 
 import Button from '../Button/dynamic'
 import ModalConfirm from '../ModalConfirm/dynamic'
+import ModalMemorizeUpdateContentBox from '../ModalMemorizeUpdateContentBox/dynamic'
 
 import './style.scss'
 
 const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, onDelete }) => {
+  const [editContent, setEditContent] = useState('')
   const [editDisplay, setEditDisplay] = useState('hide')
   const [deleteDisplay, setDeleteDisplay] = useState('hide')
 
-  function onClickDelete() {
+  const onClickDelete = useCallback(() => {
     setDeleteDisplay('')
-  }
-  function onClickCancelDelete() {
+  }, [])
+
+  const onClickCancelDelete = useCallback(() => {
     setDeleteDisplay('hide')
-  }
+  }, [])
 
-  function onClickConfirmDelete() {
+  const onClickEdit = useCallback(() => {
+    setEditContent(memorize?.content)
+    setEditDisplay('')
+  }, [])
+
+  const onClickCancelEdit = useCallback(() => {
+    setEditDisplay('hide')
+  }, [])
+
+  const onClickConfirmDelete = useCallback(() => {
     onDelete(memorize.id)
-  }
+  }, [])
 
-  function onClickComment() {
+  const onClickComment = useCallback(() => {
     onComment(memorize.id)
-  }
+  }, [])
 
-  function onClickLike() {
+  const onClickLike = useCallback(() => {
     const action = !memorize.userAction ? 'like' : 'unlike'
     onLike(memorize.id, action)
-  }
+  }, [memorize?.userAction])
+
+  const onEditContentChange = useCallback(e => {
+    setEditContent(e.target.value)
+  }, [])
+
+  const onClickMemorize = useCallback(({ id, content }) => {
+    onEdit({ id, content })
+    setEditDisplay('hide')
+  }, [onEdit])
 
   function MemorizeEditDeleteBox() {
     const classNameEdit = 'fa fa-pencil memorize-edit-box-memorize'
     const classNameDelete = 'fa fa-trash-o memorize-delete-box-memorize'
     return (
       <div className='memorize-edit-delete-box-memorize'>
-        <i className={classNameEdit} />
+        <i className={classNameEdit} onClick={onClickEdit} />
         <i className={classNameDelete} onClick={onClickDelete} />
       </div>
     )
@@ -92,8 +113,16 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
         <ModalConfirm
           message='Are you sure you want to delete ?'
           display={deleteDisplay}
-          onCancel={onClickCancelDelete}
           onConfirm={onClickConfirmDelete}
+          onCancel={onClickCancelDelete}
+        />
+        <ModalMemorizeUpdateContentBox
+          id={memorize?.id}
+          display={editDisplay}
+          onTextAreaChange={onEditContentChange}
+          content={editContent}
+          onMemorize={onClickMemorize}
+          onCancel={onClickCancelEdit}
         />
         <div className='memorize-content-box-memorize'>
           <MemorizeContentBoxHead />
@@ -103,7 +132,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
     )
   }
 
-  return <MemorizeContentBox />
+  return MemorizeContentBox()
 }
 
 export default React.memo(MemorizeContentBoxIndex)

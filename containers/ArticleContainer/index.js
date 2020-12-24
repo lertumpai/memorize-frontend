@@ -80,6 +80,10 @@ const ArticleContainerIndex = () => {
     dispatch(mutateArticleDelete(id))
   }, [])
 
+  const onEditMemorize = useCallback(({ id, content }) => {
+    dispatch(mutateArticle({ id, content }))
+  }, [])
+
   const ArticleContentBoxes = useCallback(() => {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author)
@@ -90,6 +94,7 @@ const ArticleContainerIndex = () => {
         onComment={onComment}
         onLike={onLike}
         onDelete={onDeleteMemorize}
+        onEdit={onEditMemorize}
       />
     })
   }, [articles, users])

@@ -64,6 +64,7 @@ export const mutateArticleAction = createAsyncThunk(
 
     const { articleAction } = response
     const { article } = prepareResponseArticles({ article: articleAction })
+
     dispatch(articleUpsertOne(article))
 
     return true

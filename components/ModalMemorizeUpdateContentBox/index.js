@@ -1,16 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import TextAreaBox from '../TextAreaBox/dynamic'
 import Modal from '../Modal/dynamic'
 import Button from '../Button/dynamic'
 
-const ModalMemorizeUpdateContentBoxIndex = ({ id, content, onTextAreaChange, onMemorize }) => {
-  const [display, setDisplay] = useState('')
-
-  function onClickCancel() {
-    setDisplay('hide')
-  }
-
+const ModalMemorizeUpdateContentBoxIndex = ({ id, content, onTextAreaChange, onMemorize, onCancel, display }) => {
   function onClickMemorize() {
     onMemorize({ id, content })
   }
@@ -22,7 +16,7 @@ const ModalMemorizeUpdateContentBoxIndex = ({ id, content, onTextAreaChange, onM
     return (
       <div className='memorize-form-create-button-memorize modal-form-memorize'>
         <Button onClick={onClickMemorize} className={classNameMemorizeButton} value='Memorize' />
-        <Button onClick={onClickCancel} className={classNameCancelButton} value='Cancel' />
+        <Button onClick={onCancel} className={classNameCancelButton} value='Cancel' />
       </div>
     )
   }
