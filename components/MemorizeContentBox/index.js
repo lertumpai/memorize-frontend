@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import moment from 'moment'
 
 import Button from '../Button/dynamic'
+import ModalConfirm from '../ModalConfirm/dynamic'
 
 import './style.scss'
 
 const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, onDelete }) => {
+  const [editDisplay, setEditDisplay] = useState('hide')
+  const [deleteDisplay, setDeleteDisplay] = useState('hide')
+
+  function onClickDelete() {
+    setDeleteDisplay('')
+  }
+  function onClickCancelDelete() {
+    setDeleteDisplay('hide')
+  }
+
+  function onClickConfirmDelete() {
+    onDelete(memorize.id)
+  }
+
   function onClickComment() {
     onComment(memorize.id)
   }
@@ -21,7 +36,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
     return (
       <div className='memorize-edit-delete-box-memorize'>
         <i className={classNameEdit} />
-        <i className={classNameDelete} />
+        <i className={classNameDelete} onClick={onClickDelete} />
       </div>
     )
   }
@@ -73,10 +88,18 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
 
   function MemorizeContentBox() {
     return (
-      <div className='memorize-content-box-memorize'>
-        <MemorizeContentBoxHead />
-        <MemorizeContentBoxBody />
-      </div>
+      <>
+        <ModalConfirm
+          message='Are you sure you want to delete ?'
+          display={deleteDisplay}
+          onCancel={onClickCancelDelete}
+          onConfirm={onClickConfirmDelete}
+        />
+        <div className='memorize-content-box-memorize'>
+          <MemorizeContentBoxHead />
+          <MemorizeContentBoxBody />
+        </div>
+      </>
     )
   }
 

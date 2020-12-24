@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import { userUpsertMany, userUpsertOne } from '../users/slice'
-import { articleUpsertMany, articleUpsertOne } from './slice'
+import { articleUpsertMany, articleUpsertOne, articleRemoveOne } from './slice'
 
 import { query, mutation } from '../../utils/graphql-api/client'
-import { QUERY_ARTICLES, QUERY_ARTICLE, MUTATE_ARTICLE, MUTATE_ARTICLE_ACTION } from './gql'
+import { QUERY_ARTICLES, QUERY_ARTICLE, MUTATE_ARTICLE, MUTATE_ARTICLE_ACTION, MUTATE_ARTICLE_DELETE } from './gql'
 
 import { prepareResponseArticles } from '../../utils/prepareResponse'
 
@@ -44,6 +44,15 @@ export const mutateArticle = createAsyncThunk(
     dispatch(articleUpsertOne(article))
     dispatch(userUpsertOne(user))
 
+    return true
+  },
+)
+
+export const mutateArticleDelete = createAsyncThunk(
+  'articles/mutation/articleDelete',
+  async (id, { dispatch }) => {
+    await mutation(MUTATE_ARTICLE_DELETE, { id })
+    dispatch(articleRemoveOne(id))
     return true
   },
 )

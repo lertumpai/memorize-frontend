@@ -4,12 +4,18 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
-import { articleSelectors, idleStateArticles, queryArticles, mutateArticle, mutateArticleAction } from '../../store/articles/slice'
+import {
+  articleSelectors,
+  idleStateArticles,
+  queryArticles,
+  mutateArticle,
+  mutateArticleAction,
+  mutateArticleDelete,
+} from '../../store/articles/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
-import ModalConfirm from '../../components/ModalConfirm/dynamic'
 
 import './style.scss'
 
@@ -70,10 +76,21 @@ const ArticleContainerIndex = () => {
     dispatch(mutateArticleAction({ articleId, action }))
   }, [])
 
+  const onDeleteMemorize = useCallback(id => {
+    dispatch(mutateArticleDelete(id))
+  }, [])
+
   const ArticleContentBoxes = useCallback(() => {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author)
-      return <MemorizeContentBox key={article.id} memorize={article} author={user} onComment={onComment} onLike={onLike} />
+      return <MemorizeContentBox
+        key={article.id}
+        memorize={article}
+        author={user}
+        onComment={onComment}
+        onLike={onLike}
+        onDelete={onDeleteMemorize}
+      />
     })
   }, [articles, users])
 
@@ -94,7 +111,6 @@ const ArticleContainerIndex = () => {
     return (
       <>
         <div className='article-container-memorize'>
-          <ModalConfirm />
           <MemorizeCreateContentBox
             content={content}
             onChange={onContentChange}

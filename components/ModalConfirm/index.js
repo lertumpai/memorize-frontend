@@ -1,20 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Modal from '../Modal/dynamic'
 import Button from '../Button/dynamic'
 
 import './style.scss'
 
-const ModalConfirmIndex = ({ message, onConfirm, onCancel }) => {
-  const [display, setDisplay] = useState('')
-
+const ModalConfirmIndex = ({ message, onConfirm, onCancel, display }) => {
   function MemorizeCreateButton() {
     const classNameButton = 'memorize-confirm-button-memorize modal-button-memorize'
     const classNameConfirmButton = classNameButton + ' confirm-button-memorize'
     return (
       <div className='memorize-form-confirm-button-memorize modal-form-memorize'>
         <Button className={classNameConfirmButton} value='Confirm' onClick={onConfirm} />
-        <Button className={classNameButton} value='Cancel' />
+        <Button className={classNameButton} value='Cancel' onClick={onCancel} />
       </div>
     )
   }

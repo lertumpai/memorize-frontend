@@ -2,7 +2,7 @@ import React from 'react'
 
 import './style.scss'
 
-const ModalIndex = ({ children, className = '', display = '' }) => {
+const ModalIndex = ({ children, className = '', display = 'hide' }) => {
   function Modal() {
     const classNameCanvas = `modal-canvas-memorize ${display}`
     const classNameModal = `modal-memorize ${className} ${display}`
