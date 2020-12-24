@@ -8,7 +8,6 @@ import ModalMemorizeUpdateContentBox from '../ModalMemorizeUpdateContentBox/dyna
 import './style.scss'
 
 const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, onDelete }) => {
-  console.log(memorize?.content)
   const [editContent, setEditContent] = useState('')
   const [editDisplay, setEditDisplay] = useState('hide')
   const [deleteDisplay, setDeleteDisplay] = useState('hide')

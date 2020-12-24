@@ -17,7 +17,9 @@ const userSlices = createSlice({
     idleStateUsers: state => {
       state.status = STATUS_IDLE
     },
+    userAddOne: userAdapters.addOne,
     userUpsertOne: userAdapters.upsertOne,
+    userAddMany: userAdapters.addMany,
     userUpsertMany: userAdapters.upsertMany,
     userRemoveOne: userAdapters.removeOne,
     userRemoveMany: userAdapters.removeMany,
@@ -25,7 +27,9 @@ const userSlices = createSlice({
 })
 
 export const {
+  userAddOne,
   userUpsertOne,
+  userAddMany,
   userUpsertMany,
   userRemoveOne,
   userRemoveMany,

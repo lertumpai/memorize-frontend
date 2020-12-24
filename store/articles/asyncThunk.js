@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { userUpsertMany, userUpsertOne } from '../users/slice'
+import { userAddMany, userAddOne } from '../users/slice'
 import { articleUpsertMany, articleUpsertOne, articleRemoveOne } from './slice'
 
 import { query, mutation } from '../../utils/graphql-api/client'
@@ -15,7 +15,7 @@ export const queryArticles = createAsyncThunk(
 
     const { users, articles } = prepareResponseArticles(response)
     dispatch(articleUpsertMany(articles))
-    dispatch(userUpsertMany(users))
+    dispatch(userAddMany(users))
 
     return true
   },
@@ -28,7 +28,7 @@ export const queryArticle = createAsyncThunk(
 
     const { user, article } = prepareResponseArticles(response)
     dispatch(articleUpsertOne(article))
-    dispatch(userUpsertOne(user))
+    dispatch(userAddOne(user))
 
     return true
   },
@@ -42,7 +42,7 @@ export const mutateArticle = createAsyncThunk(
 
     const { user, article } = prepareResponseArticles(response)
     dispatch(articleUpsertOne(article))
-    dispatch(userUpsertOne(user))
+    dispatch(userAddOne(user))
 
     return true
   },
