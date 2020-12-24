@@ -93,8 +93,8 @@ const ArticleContainerIndex = () => {
         author={user}
         onComment={onComment}
         onLike={onLike}
-        onDelete={onDeleteMemorize}
-        onEdit={onEditMemorize}
+        // onDelete={onDeleteMemorize}
+        // onEdit={onEditMemorize}
       />
     })
   }, [articles, users])

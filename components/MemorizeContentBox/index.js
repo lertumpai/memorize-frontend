@@ -8,6 +8,7 @@ import ModalMemorizeUpdateContentBox from '../ModalMemorizeUpdateContentBox/dyna
 import './style.scss'
 
 const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, onDelete }) => {
+  console.log(memorize?.content)
   const [editContent, setEditContent] = useState('')
   const [editDisplay, setEditDisplay] = useState('hide')
   const [deleteDisplay, setDeleteDisplay] = useState('hide')
@@ -49,7 +50,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
   const onClickMemorize = useCallback(({ id, content }) => {
     onEdit({ id, content })
     setEditDisplay('hide')
-  }, [onEdit])
+  }, [])
 
   function MemorizeEditDeleteBox() {
     const classNameEdit = 'fa fa-pencil memorize-edit-box-memorize'
