@@ -1,0 +1,28 @@
+@import '../../public/style/style';
+
+.memorize-form-confirm-button-memorize {
+  margin-top: 15px;
+}
+
+.message-confirm-memorize {
+  display: flex;
+  justify-content: center;
+}
+
+.memorize-confirm-button-memorize {
+  cursor: pointer;
+  padding: 5px 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: $green-memorize;
+  border-radius: 15px;
+}
+.confirm-button-memorize {
+  background: $red-memorize;
+}
+
+.modal-memorize.modal-confirm-memorize {
+  width: 400px;
+}

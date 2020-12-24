@@ -9,7 +9,7 @@ import { articleSelectors, idleStateArticles, queryArticles, mutateArticle, muta
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
-import ModalMemorizeUpdateContentBox from '../../components/ModalMemorizeUpdateContentBox/dynamic'
+import ModalConfirm from '../../components/ModalConfirm/dynamic'
 
 import './style.scss'
 
@@ -93,8 +93,8 @@ const ArticleContainerIndex = () => {
   function ArticleContainer() {
     return (
       <>
-        <ModalMemorizeUpdateContentBox />
         <div className='article-container-memorize'>
+          <ModalConfirm />
           <MemorizeCreateContentBox
             content={content}
             onChange={onContentChange}

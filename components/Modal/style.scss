@@ -28,6 +28,18 @@
   display: none;
 }
 
+.modal-form-memorize {
+  display: flex;
+}
+
+.modal-button-memorize {
+  width: 50%;
+}
+
+.memorize-create-button-memorize.cancel-button-memorize {
+  background: $red-memorize;
+}
+
 @media only screen and (min-width: $screen-992) {
   .modal-memorize {
     width: 800px;

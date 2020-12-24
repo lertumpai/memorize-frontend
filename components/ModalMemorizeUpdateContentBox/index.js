@@ -4,8 +4,6 @@ import TextAreaBox from '../TextAreaBox/dynamic'
 import Modal from '../Modal/dynamic'
 import Button from '../Button/dynamic'
 
-import './style.scss'
-
 const ModalMemorizeUpdateContentBoxIndex = ({ id, content, onTextAreaChange, onMemorize }) => {
   const [display, setDisplay] = useState('')
 
