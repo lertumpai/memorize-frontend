@@ -14,17 +14,38 @@
   border: 2px solid #535353;
   position: fixed;
   background: #eee9e9;
-  top: 25%;
-  width: 800px;
-  height: 200px;
+  top: 20%;
   border-radius: 15px;
+  padding: 20px;
   z-index: 100;
 }
 
-.modal-memorize.show {
-  display: block;
+.modal-memorize.hide {
+  display: none;
 }
 
-.modal-canvas-memorize.show {
-  display: block;
+.modal-canvas-memorize.hide {
+  display: none;
+}
+
+@media only screen and (min-width: $screen-992) {
+  .modal-memorize {
+    width: 800px;
+  }
+}
+@media only screen and (max-width: $screen-992) {
+  .modal-memorize {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: $screen-768) {
+  .modal-memorize {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: $screen-576) {
+  .modal-memorize {
+    width: 95%;
+  }
 }

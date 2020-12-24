@@ -25,6 +25,14 @@
 .memorize-profile-name-memorize {
   font-size: 18px;
   font-weight: bold;
+  display: flex;
+}
+
+.memorize-edit-delete-box-memorize {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .memorize-createdAt-memorize {
@@ -91,6 +99,17 @@
 
 .memorize-horizontal-memorize {
   border: 1px solid #e2e2e2;
+}
+
+.memorize-edit-box-memorize {
+  margin-right: 5px;
+  color: $green-memorize;
+  cursor: pointer;
+}
+
+.memorize-delete-box-memorize {
+  color: $red-memorize;
+  cursor: pointer;
 }
 
 @media only screen and (max-width:576px) {

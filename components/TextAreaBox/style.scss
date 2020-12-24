@@ -1,3 +1,5 @@
+@import 'public/style/style';
+
 .text-area-box-memorize {
   width: 100%;
   border-radius: 5px;
@@ -11,4 +13,34 @@
 
 .text-area-box-memorize::-webkit-scrollbar {
   display: none;
+}
+
+.memorize-textarea-content-box-memorize {
+  -ms-overflow-style: none;
+  width: 100%;
+  height: 100px;
+  border-radius: 15px;
+  border-color: #d4d4d4;
+  padding: 10px 15px;
+  font-size: 18px;
+  resize: unset;
+}
+.memorize-textarea-content-box-memorize::-webkit-scrollbar {
+  display: none;
+}
+
+.memorize-create-button-memorize {
+  cursor: pointer;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: $green-memorize;
+  border-radius: 15px;
+}
+
+.memorize-create-button-memorize.disable-click-memorize {
+  background: #6c7c79;
+  pointer-events: none;
 }

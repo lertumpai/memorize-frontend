@@ -5,7 +5,7 @@ import Button from '../Button/dynamic'
 
 import './style.scss'
 
-const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment }) => {
+const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, onDelete }) => {
   function onClickComment() {
     onComment(memorize.id)
   }
@@ -15,11 +15,25 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment }) => {
     onLike(memorize.id, action)
   }
 
+  function MemorizeEditDeleteBox() {
+    const classNameEdit = 'fa fa-pencil memorize-edit-box-memorize'
+    const classNameDelete = 'fa fa-trash-o memorize-delete-box-memorize'
+    return (
+      <div className='memorize-edit-delete-box-memorize'>
+        <i className={classNameEdit} />
+        <i className={classNameDelete} />
+      </div>
+    )
+  }
+
   function MemorizeContentBoxHead() {
     return (
       <div className='memorize-content-box-head-memorize'>
         <div className='memorize-profile-name-memorize'>
-          {author?.profile?.name || 'unknown'}
+          <div>
+            {author?.profile?.name || 'unknown'}
+          </div>
+          {memorize?.canMutate ? MemorizeEditDeleteBox() : ''}
         </div>
         <div className='memorize-createdAt-memorize'>
           {moment(memorize?.createdAt).format('DD/MM/YYYY HH:mm:ss')}

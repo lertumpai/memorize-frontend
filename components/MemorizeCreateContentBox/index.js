@@ -14,7 +14,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, onChange, onMem
     return (
       <div className='memorize-form-textarea-content-box-memorize'>
         <TextAreaBox
-          className='memorize-textarea-content-box-memorize input-memorize'
+          className='memorize-textarea-content-box-memorize'
           id='content'
           placeholder='Your post today ^^'
           value={content}
