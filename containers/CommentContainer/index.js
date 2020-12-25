@@ -3,8 +3,22 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
 import { userSelectors } from '../../store/users/slice'
-import { articleSelectors, queryArticle, mutateArticleAction } from '../../store/articles/slice'
-import { commentSelectors, idleStateComments, queryComments, resetStateComments, mutateComment, mutateCommentAction } from '../../store/comments/slice'
+import {
+  articleSelectors,
+  queryArticle,
+  mutateArticleAction,
+  mutateArticleDelete,
+  mutateArticle,
+} from '../../store/articles/slice'
+import {
+  commentSelectors,
+  idleStateComments,
+  queryComments,
+  resetStateComments,
+  mutateComment,
+  mutateCommentAction,
+  mutateCommentDelete,
+} from '../../store/comments/slice'
 import { idleStateArticles } from '../../store/articles/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
@@ -83,6 +97,14 @@ const CommentContainerIndex = ({ articleId }) => {
     dispatch(mutateArticleAction({ articleId, action }))
   }, [])
 
+  const onDeleteMemorize = useCallback(id => {
+    dispatch(mutateArticleDelete(id))
+  }, [])
+
+  const onEditMemorize = useCallback(({ id, content }) => {
+    dispatch(mutateArticle({ id, content }))
+  }, [])
+
   const onComment = useCallback(() => {}, [])
 
   function ContainerLeftCol() {
@@ -97,6 +119,8 @@ const CommentContainerIndex = ({ articleId }) => {
             author={user}
             onLike={onArticleLike}
             onComment={onComment}
+            onDelete={onDeleteMemorize}
+            onEdit={onEditMemorize}
           />
           <MemorizeCreateContentBox
             content={content}
@@ -124,10 +148,25 @@ const CommentContainerIndex = ({ articleId }) => {
     dispatch(mutateCommentAction({ commentId, action }))
   }, [])
 
+  const onDeleteCommentMemorize = useCallback(id => {
+    dispatch(mutateCommentDelete(id))
+  }, [])
+
+  const onEditCommentMemorize = useCallback(({ id, content }) => {
+    dispatch(mutateComment({ id, content }))
+  }, [])
+
   const CommentContentBoxes = useCallback(() => {
     return comments.map(comment => {
       const user = userSelectors.selectById(state, comment.author)
-      return <MemorizeContentBox key={comment?.id} memorize={comment} author={user} onLike={onCommentLike}/>
+      return <MemorizeContentBox
+        key={comment?.id}
+        memorize={comment}
+        author={user}
+        onLike={onCommentLike}
+        onDelete={onDeleteCommentMemorize}
+        onEdit={onEditCommentMemorize}
+      />
     })
   }, [comments, users])
 

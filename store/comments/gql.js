@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client'
+import { ArticleFragment } from '../articles/gql'
 
 export const CommentActionFragment = gql`
   fragment CommentActionFragment on CommentAction {
@@ -51,6 +52,15 @@ export const MUTATE_COMMENT = gql`
 export const MUTATE_COMMENT_ACTION = gql`
   mutation commentAction($commentId: MID!, $action: ActionEnum!) {
     commentAction(commentId: $commentId, action: $action) {
+      ...CommentFragment
+    }
+  }
+  ${CommentFragment}
+`
+
+export const MUTATE_COMMENT_DELETE = gql`
+  mutation commentDelete($id: MID!) {
+    commentDelete(id: $id) {
       ...CommentFragment
     }
   }
