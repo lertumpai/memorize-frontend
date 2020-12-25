@@ -51,8 +51,8 @@ const Index = () => {
   function ButtonRegisterForm() {
     return (
       <>
-        <Button className='form-submit-button-memorize' onClick={onRegister} value='Register'/>
-        <Button className='form-change-authen-button-memorize' onClick={onClickRegisterToLogin} value='Login'/>
+        <Button className='button-memorize green-memorize' onClick={onRegister} value='Register'/>
+        <Button className='button-memorize blue-memorize' onClick={onClickRegisterToLogin} value='Login'/>
       </>
     )
   }
@@ -64,8 +64,8 @@ const Index = () => {
   function ButtonLoginForm() {
     return (
       <>
-        <Button className='form-submit-button-memorize' onClick={onLogin} value='Login'/>
-        <Button className='form-change-authen-button-memorize' onClick={onClickLoginToRegister} value='Register'/>
+        <Button className='button-memorize green-memorize' onClick={onLogin} value='Login'/>
+        <Button className='button-memorize blue-memorize' onClick={onClickLoginToRegister} value='Register'/>
       </>
     )
   }
@@ -73,15 +73,15 @@ const Index = () => {
   function ButtonForm() {
     const buttonForm = isLogin ? <ButtonLoginForm /> : <ButtonRegisterForm />
     return (
-      <div className='form-button-memorize'>
+      <div className='container-authentication-button-memorize'>
         {buttonForm}
       </div>
     )
   }
 
   function LabelForm() {
-    let text = isLogin ? 'Login Form' : 'Register Form'
-    return <div className='form-authentication-label'>{text}</div>
+    const label = isLogin ? 'Login Form' : 'Register Form'
+    return <div className='label-authentication-memorize'>{label}</div>
   }
 
   function UsernameForm() {
@@ -93,7 +93,7 @@ const Index = () => {
 
     return (
       <div className='form-control-memorize'>
-        <div className='form-control-text-label-memorize'>Username</div>
+        <div className='textbox-label-authentication-memorize'>Username</div>
         <TextBox className={classNameFormControl} id='username'value={form.username} error={message} onChange={onChange} />
         <div className='form-control-text-error-memorize'>{message}</div>
       </div>
@@ -108,7 +108,7 @@ const Index = () => {
     }
     return (
       <div className='form-control-memorize'>
-        <div className='form-control-text-label-memorize'>Password</div>
+        <div className='textbox-label-authentication-memorize'>Password</div>
         <TextBox className={classNameFormControl} id='password' type='password' value={form.password} error={message} onChange={onChange} />
         <div className='form-control-text-error-memorize'>{message}</div>
       </div>

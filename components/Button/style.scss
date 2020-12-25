@@ -1,9 +1,10 @@
 @import 'public/style/style';
 
 .button-memorize {
-  background: $green-memorize;
+  padding: 10px 0px;
   font-size: 20px;
+  border-radius: 8px;
   text-align: center;
   cursor: pointer;
-  color: #e7e6e6;
+  width: 100%;
 }
