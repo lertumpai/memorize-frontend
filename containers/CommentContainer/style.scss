@@ -5,6 +5,7 @@
 }
 
 .container-comment-col-memorize {
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -12,6 +13,11 @@
 .container-comment-left-col-memorize {
   display: flex;
   flex-direction: column;
+}
+
+.container-comment-content-box-memorize {
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 @media only screen and (min-width: $screen-992) {

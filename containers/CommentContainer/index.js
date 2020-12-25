@@ -159,14 +159,18 @@ const CommentContainerIndex = ({ articleId }) => {
   const CommentContentBoxes = useCallback(() => {
     return comments.map(comment => {
       const user = userSelectors.selectById(state, comment.author)
-      return <MemorizeContentBox
-        key={comment?.id}
-        memorize={comment}
-        author={user}
-        onLike={onCommentLike}
-        onDelete={onDeleteCommentMemorize}
-        onEdit={onEditCommentMemorize}
-      />
+      return (
+        <div className='container-comment-content-box-memorize'>
+          <MemorizeContentBox
+            key={comment?.id}
+            memorize={comment}
+            author={user}
+            onLike={onCommentLike}
+            onDelete={onDeleteCommentMemorize}
+            onEdit={onEditCommentMemorize}
+          />
+        </div>
+      )
     })
   }, [comments, users])
 
