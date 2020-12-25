@@ -4,7 +4,7 @@ import './style.scss'
 
 const TextAreaBoxIndex = ({ onChange, value, id, style, placeholder, className }) => {
   return <textarea
-    className={className || 'text-area-box-memorize'}
+    className={className || 'textarea-box-memorize'}
     id={id}
     value={value}
     onChange={onChange}

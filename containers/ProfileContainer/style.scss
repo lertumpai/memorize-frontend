@@ -1,18 +1,8 @@
 @import 'public/style/style';
 
-.profile-container-memorize {
+.container-profile-memorize {
   display: flex;
   justify-content: center;
-}
-
-.profile-form-control-input-memorize {
-  margin: 20px 0px;
-}
-
-.profile-form-label-input-memorize {
-  margin-left: 5px;
-  padding-bottom: 5px;
-  font-size: 25px;
 }
 
 .form-control {
@@ -25,81 +15,56 @@
   font-size: 18px;
 }
 
-.profile-form-save-button-memorize {
-  padding: 10px 0px;
-  display: flex;
-  justify-content: flex-end;
+.container-profile-form-control-memorize {
+  margin: 20px 0px;
 }
 
-.profile-save-button-memorize {
-  background: $green-memorize;
-  width: 180px;
-  padding: 10px 0px;
-  text-align: center;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 20px;
-  color: #e7e6e6;
+.textbox-label-profile-memorize {
+  margin-left: 5px;
+  padding-bottom: 5px;
+  font-size: 25px;
 }
 
-.profile-form-memorize {
+.container-profile-form-memorize {
   border: 3px solid #b1b0b0;
   border-radius: 15px;
   padding: 20px;
 }
 
-.profile-saving-memorize {
+.container-profile-saving-memorize {
   position: absolute;
   top: 350px
 }
 
 @media only screen and (min-width: $screen-768) {
-  .profile-form-memorize {
+  .container-profile-form-memorize {
     margin-top: 5%;
     width: 700px;
   }
 }
 @media only screen and (max-width: $screen-768) {
-  .profile-form-memorize {
+  .container-profile-form-memorize {
     margin-top: 5%;
     width: 600px;
   }
 }
 @media only screen and (max-width: $screen-600) {
-  .profile-form-memorize {
+  .container-profile-form-memorize {
     margin-top: 5%;
     width: 450px;
   }
 
-  .profile-form-save-button-memorize {
-    display: flex;
-    justify-content: center;
-  }
-
-  .profile-save-button-memorize {
-    width: 100%;
-  }
-
-  .profile-saving-memorize {
+  .container-profile-saving-memorize {
     top: 270px
   }
 }
 @media only screen and (max-width: $screen-600) {
-  .profile-form-memorize {
+  .container-profile-form-memorize {
     margin-top: 15%;
-    width: 90%;
+    width: 95%;
   }
 
-  .profile-form-save-button-memorize {
-    display: flex;
-    justify-content: center;
-  }
-
-  .profile-save-button-memorize {
-    width: 100%;
-  }
-
-  .profile-saving-memorize {
+  .container-profile-saving-memorize {
     top: 230px
   }
 }

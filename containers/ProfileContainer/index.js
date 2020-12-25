@@ -48,9 +48,14 @@ const Index = () => {
 
   function Name() {
     return (
-      <div className='profile-form-control-input-memorize'>
-        <div className='profile-form-label-input-memorize'>Name</div>
-        <TextBox id='name' type='text' value={profile.name} onChange={onProfileChange} />
+      <div className='container-profile-form-control-memorize'>
+        <div className='textbox-label-profile-memorize'>Name</div>
+        <TextBox
+          id='name'
+          type='text'
+          value={profile.name}
+          onChange={onProfileChange}
+        />
       </div>
     )
   }
@@ -58,26 +63,36 @@ const Index = () => {
   function Birthday() {
     const date = moment(profile.birthday)
     return (
-      <div className='profile-form-control-input-memorize'>
-        <div className='profile-form-label-input-memorize'>Birthday</div>
-        <Datetime className='profile-form-date-picker-memorize' value={date} dateFormat='DD/MM/YYYY' timeFormat={false} onChange={onDateChange} onClose={onDateChange} />
+      <div className='container-profile-form-control-memorize'>
+        <div className='textbox-label-profile-memorize'>Birthday</div>
+        <Datetime
+          value={date}
+          dateFormat='DD/MM/YYYY'
+          timeFormat={false}
+          onChange={onDateChange}
+          onClose={onDateChange}
+        />
       </div>
     )
   }
 
   function Status() {
     return (
-      <div className='profile-form-control-input-memorize'>
-        <div className='profile-form-label-input-memorize'>Status</div>
-        <TextAreaBox id='status' value={profile.status} onChange={onProfileChange} />
+      <div className='container-profile-form-control-memorize'>
+        <div className='textbox-label-profile-memorize'>Status</div>
+        <TextAreaBox
+          id='status'
+          value={profile.status}
+          onChange={onProfileChange}
+        />
       </div>
     )
   }
 
   function ButtonSave() {
     return (
-      <div className='profile-form-save-button-memorize'>
-        <Button className='profile-save-button-memorize' onClick={onSave} value='Update profile' />
+      <div className='container-profile-form-control-memorize'>
+        <Button className='button-memorize green-memorize' onClick={onSave} value='Update profile' />
       </div>
     )
   }
@@ -89,13 +104,13 @@ const Index = () => {
   function ProfileForm() {
     return (
       <>
-        <div className='profile-form-memorize'>
+        <div className='container-profile-form-memorize'>
           {Name()}
           {Birthday()}
           {Status()}
           <ButtonSave />
         </div>
-        <div className='profile-saving-memorize'>
+        <div className='container-profile-saving-memorize'>
           <Saving />
         </div>
       </>
@@ -103,7 +118,7 @@ const Index = () => {
   }
 
   return (
-    <div className='profile-container-memorize'>
+    <div className='container-profile-memorize'>
       {ProfileForm()}
     </div>
   )
