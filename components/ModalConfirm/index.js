@@ -6,13 +6,13 @@ import Button from '../Button/dynamic'
 import './style.scss'
 
 const ModalConfirmIndex = ({ message, onConfirm, onCancel, display }) => {
-  function MemorizeCreateButton() {
-    const classNameButton = 'memorize-confirm-button-memorize modal-button-memorize'
-    const classNameConfirmButton = classNameButton + ' confirm-button-memorize'
+  function MemorizeConfirmButton() {
+    const classNameConfirmButton = 'button-confirm-memorize green-memorize'
+    const classNameCancelButton = 'button-confirm-memorize red-memorize'
     return (
-      <div className='memorize-form-confirm-button-memorize modal-form-memorize'>
+      <div className='container-confirm-modal-button-memorize'>
         <Button className={classNameConfirmButton} value='Confirm' onClick={onConfirm} />
-        <Button className={classNameButton} value='Cancel' onClick={onCancel} />
+        <Button className={classNameCancelButton} value='Cancel' onClick={onCancel} />
       </div>
     )
   }
@@ -23,7 +23,7 @@ const ModalConfirmIndex = ({ message, onConfirm, onCancel, display }) => {
         <div className='message-confirm-memorize'>
           {message || 'Message'}
         </div>
-        {MemorizeCreateButton()}
+        {MemorizeConfirmButton()}
       </Modal>
     )
   }

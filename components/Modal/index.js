@@ -5,8 +5,8 @@ import './style.scss'
 const ModalIndex = ({ children, className = '', display = 'hide' }) => {
   function Modal() {
     const classNameCanvas = `modal-canvas-memorize ${display}`
-    const classNameModal = `modal-memorize ${className} ${display}`
-    const classNameContainerModal = `modal-container-memorize ${display}`
+    const classNameContainerModal = `container-modal-memorize ${display}`
+    const classNameModal = `${className || 'modal-memorize'} ${display}`
     return (
       <>
         <div className={classNameCanvas} />

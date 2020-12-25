@@ -6,13 +6,13 @@
   position: fixed;
   left: 0;
   top: 0;
-  opacity: 70%;
+  opacity: 50%;
   width: 100%;
   height: 100%;
   z-index: 100;
 }
 
-.modal-container-memorize {
+.container-modal-memorize {
   display: flex;
   justify-content: center;
   position: absolute;
@@ -30,28 +30,19 @@
   z-index: 100;
 }
 
+.modal-confirm-memorize {
+  @extend .modal-memorize;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px !important;
+  height: 150px;
+}
+
+.container-modal-memorize.hide,
+.modal-canvas-memorize.hide,
 .modal-memorize.hide {
   display: none;
-}
-
-.modal-canvas-memorize.hide {
-  display: none;
-}
-
-.modal-container-memorize.hide {
-  display: none;
-}
-
-.modal-form-memorize {
-  display: flex;
-}
-
-.modal-button-memorize {
-  width: 50%;
-}
-
-.memorize-create-button-memorize.cancel-button-memorize {
-  background: $red-memorize;
 }
 
 @media only screen and (min-width: $screen-992) {
@@ -73,5 +64,9 @@
 @media only screen and (max-width: $screen-576) {
   .modal-memorize {
     width: 95%;
+  }
+  .modal-confirm-memorize {
+    width: 95%;
+    margin-top: 20%;
   }
 }
