@@ -4,7 +4,7 @@ import NavBar from '../../components/NavBar'
 
 import './style.scss'
 
-const Navbar = ({ children }) => {
+const ApplicationLayout = ({ children }) => {
   return (
     <>
       <NavBar />
@@ -15,4 +15,4 @@ const Navbar = ({ children }) => {
   )
 }
 
-export default Navbar
+export default ApplicationLayout

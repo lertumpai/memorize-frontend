@@ -111,8 +111,8 @@ const CommentContainerIndex = ({ articleId }) => {
     const article = articleSelectors.selectById(state, articleId)
     const user = userSelectors.selectById(state, article?.author)
     return (
-      <div className='comment-container-col-memorize'>
-        <div className='comment-left-col-memorize'>
+      <div className='container-comment-col-memorize'>
+        <div className='container-comment-left-col-memorize'>
           <MemorizeContentBox
             key={article?.id}
             memorize={article}
@@ -172,8 +172,8 @@ const CommentContainerIndex = ({ articleId }) => {
 
   function ContainerRightCol() {
     return (
-     <div className='comment-container-col-memorize'>
-       <div className='comment-right-col-memorize'>
+     <div className='container-comment-col-memorize'>
+       <div className='container-comment-right-col-memorize'>
          {CommentContentBoxes()}
          <div ref={loader}>
            {commentStatus !== STATUS_IDLE ? <Loading width={300} /> : ''}
@@ -185,7 +185,7 @@ const CommentContainerIndex = ({ articleId }) => {
 
   function CommentContainer() {
     return (
-      <div className='comment-container-memorize'>
+      <div className='container-comment-memorize'>
         {ContainerLeftCol()}
         {ContainerRightCol()}
       </div>

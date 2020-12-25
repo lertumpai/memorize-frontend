@@ -14,7 +14,7 @@ import Button from '../../components/Button/dynamic'
 
 import './style.scss'
 
-const Index = () => {
+const ProfileContainerIndex = () => {
   const dispatch = useDispatch()
 
   const auth = useSelector(state => state.auth)
@@ -124,4 +124,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default ProfileContainerIndex

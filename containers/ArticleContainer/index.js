@@ -115,7 +115,7 @@ const ArticleContainerIndex = () => {
   function ArticleContainer() {
     return (
       <>
-        <div className='article-container-memorize'>
+        <div className='container-article-memorize'>
           <MemorizeCreateContentBox
             content={content}
             onChange={onContentChange}
