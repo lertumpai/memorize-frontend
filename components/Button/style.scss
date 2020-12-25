@@ -8,3 +8,10 @@
   cursor: pointer;
   width: 100%;
 }
+
+.button-create-content-memorize {
+  @extend .button-memorize;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-radius: 15px;
+}

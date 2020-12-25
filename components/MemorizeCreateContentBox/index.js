@@ -12,21 +12,19 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, onChange, onMem
 
   function MemorizeContentBox() {
     return (
-      <div className='memorize-form-textarea-content-box-memorize'>
-        <TextAreaBox
-          className='memorize-textarea-content-box-memorize'
-          id='content'
-          placeholder='Your post today ^^'
-          value={content}
-          onChange={onChange}
-        />
-      </div>
+      <TextAreaBox
+        className='textarea-content-box-memorize'
+        id='content'
+        placeholder='Your post today ^^'
+        value={content}
+        onChange={onChange}
+      />
     )
   }
 
   function MemorizeCreateButton() {
     const color = content ? 'green-memorize' : 'disable-memorize'
-    const classNameButton = `button-memorize ${color}`
+    const classNameButton = `button-create-content-memorize ${color}`
     return (
         <div className='container-create-content-button-memorize'>
           <Button onClick={onClickMemorize} className={classNameButton} value='Memorize' />
