@@ -1,30 +1,19 @@
 @import 'public/style/style';
 
-.authentication-container-memorize {
-  position: relative;
-  height: 99vh;
+.container-authentication-memorize {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.form-authentication-memorize {
+.container-authentication-form-memorize {
   border: 3px solid #c1c1c1;
   border-radius: 20px;
   padding: 40px 20px;
 }
 
-.form-control-memorize {
+.container-authentication-form-control-memorize {
   margin: 20px 0px;
-}
-
-.form-text-input-memorize {
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid #d4d4d4;
-  height: 40px;
-  margin-top: 8px;
-  padding: 0px 10px;
-  font-size: 18px;
 }
 
 .textbox-label-authentication-memorize {
@@ -37,7 +26,7 @@
   font-weight: bold;
 }
 
-.form-control-text-error-memorize {
+.error-message-authentication-memorize {
   color: red;
   margin-left: 3px;
 }
@@ -48,12 +37,12 @@
 }
 
 @media only screen and (min-width: $screen-576) {
-  .form-authentication-memorize {
+  .container-authentication-form-memorize {
     width: 600px;
   }
 }
 @media only screen and (max-width: $screen-576) {
-  .form-authentication-memorize {
+  .container-authentication-form-memorize {
     width: 400px;
   }
 }

@@ -1,10 +1,14 @@
 import React from 'react'
 import './style.scss'
 
-const TextBoxIndex = ({ onChange, value, error, id, style, type = 'text' }) => {
+const TextBoxIndex = ({ onChange, value, id, className = '', type = 'text' }) => {
   function TextBox() {
-    const className = error ? 'text-box-memorize text-box-error-memorize' : 'text-box-memorize'
-    return <input className={className} id={id} type={type} value={value} onChange={onChange} style={style} />
+    return <input
+      className={className || 'textbox-memorize'}
+      id={id} type={type}
+      value={value}
+      onChange={onChange}
+    />
   }
 
   return TextBox()
