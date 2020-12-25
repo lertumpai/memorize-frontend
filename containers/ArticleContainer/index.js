@@ -87,15 +87,19 @@ const ArticleContainerIndex = () => {
   const ArticleContentBoxes = useCallback(() => {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author)
-      return <MemorizeContentBox
-        key={article.id}
-        memorize={article}
-        author={user}
-        onComment={onComment}
-        onLike={onLike}
-        onDelete={onDeleteMemorize}
-        onEdit={onEditMemorize}
-      />
+      return (
+        <div className='container-article-content-box-memorize'>
+          <MemorizeContentBox
+            key={article.id}
+            memorize={article}
+            author={user}
+            onComment={onComment}
+            onLike={onLike}
+            onDelete={onDeleteMemorize}
+            onEdit={onEditMemorize}
+          />
+        </div>
+      )
     })
   }, [articles, users])
 

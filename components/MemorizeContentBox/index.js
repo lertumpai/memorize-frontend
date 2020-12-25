@@ -52,10 +52,10 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
   }, [])
 
   function MemorizeEditDeleteBox() {
-    const classNameEdit = 'fa fa-pencil memorize-edit-box-memorize'
-    const classNameDelete = 'fa fa-trash-o memorize-delete-box-memorize'
+    const classNameEdit = 'fa fa-pencil icon-edit-memorize'
+    const classNameDelete = 'fa fa-trash-o icon-delete-memorize'
     return (
-      <div className='memorize-edit-delete-box-memorize'>
+      <div className='container-edit-delete-box-memorize'>
         <i className={classNameEdit} onClick={onClickEdit} />
         <i className={classNameDelete} onClick={onClickDelete} />
       </div>
@@ -64,14 +64,12 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
 
   function MemorizeContentBoxHead() {
     return (
-      <div className='memorize-content-box-head-memorize'>
-        <div className='memorize-profile-name-memorize'>
-          <div>
-            {author?.profile?.name || 'unknown'}
-          </div>
+      <div className='container-content-box-head-memorize'>
+        <div className='container-content-box-head-profile-name-memorize'>
+          {author?.profile?.name || 'unknown'}
           {memorize?.canMutate ? MemorizeEditDeleteBox() : ''}
         </div>
-        <div className='memorize-createdAt-memorize'>
+        <div className='container-content-box-head-createdAt-memorize'>
           {moment(memorize?.createdAt).format('DD/MM/YYYY HH:mm:ss')}
         </div>
       </div>
@@ -79,27 +77,27 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
   }
 
   function MemorizeCommentButton() {
-    const classNameButton = 'memorize-button-comment-memorize'
-    const value = <i className='fa fa-comment-o memorize-comment-icon-memorize' count={memorize?.comment || 0} />
+    const classNameButton = 'button-comment-memorize blue-memorize'
+    const value = <i className='fa fa-comment-o icon-comment-memorize' count={memorize?.comment || 0} />
     return onComment ? <Button className={classNameButton} onClick={onClickComment} value={value} /> : ''
   }
 
   function MemorizeLikeButton() {
     const action = memorize?.userAction ? memorize?.userAction.action : 'unlike'
-    const classNameButton = `memorize-button-like-memorize ${action}`
-    const classNameIcon = `fa fa-heart-o memorize-like-icon-memorize ${action}`
+    const classNameButton = `button-like-memorize ${action}-memorize`
+    const classNameIcon = `fa fa-heart-o icon-like-memorize ${action}`
     const value = <i className={classNameIcon} count={memorize?.action || 0} />
     return <Button className={classNameButton} onClick={onClickLike} value={value} />
   }
 
   function MemorizeContentBoxBody() {
     return (
-      <div className='memorize-container-content-box-body-memorize'>
-        <div className='memorize-content-box-body-memorize'>
+      <div className='container-content-box-body-memorize'>
+        <div className='container-content-box-content-memorize'>
           {memorize?.content}
         </div>
-        <hr className='memorize-horizontal-memorize' />
-        <div className='memorize-container-button-box-body-memorize'>
+        <hr className='content-box-body-horizontal-memorize' />
+        <div className='container-content-box-body-button-memorize'>
           {MemorizeLikeButton()}
           {MemorizeCommentButton()}
         </div>
@@ -124,7 +122,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
           onMemorize={onClickMemorize}
           onCancel={onClickCancelEdit}
         />
-        <div className='memorize-content-box-memorize'>
+        <div className='container-memorize-content-box-memorize'>
           <MemorizeContentBoxHead />
           <MemorizeContentBoxBody />
         </div>

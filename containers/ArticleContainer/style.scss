@@ -6,6 +6,11 @@
   flex-direction: column;
 }
 
+.container-article-content-box-memorize {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
 @media only screen and (min-width: $screen-992) {
   .container-article-memorize {
     width: 800px;

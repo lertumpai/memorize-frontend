@@ -35,6 +35,12 @@ $disable-memorize: #6c7c79;
   pointer-events: none;
   color: #e7e6e6;
 }
+*.unlike-memorize {
+  border: 2px solid $red-memorize;
+}
+*.like-memorize {
+  background: $red-memorize;
+}
 
 body {
   margin: 0px;

@@ -1,86 +1,67 @@
 @import 'public/style/style';
 
-.memorize-content-box-memorize {
+.container-memorize-content-box-memorize {
   width: 100%;
-  margin: 10px 0px;
 }
 
-.memorize-content-box-head-memorize {
+// head
+.container-content-box-head-memorize {
   border: 2px solid #e2e2e2;
   border-radius: 13px;
   padding: 10px 15px;
 }
 
-.memorize-content-box-body-memorize {
-  overflow-wrap: break-word;
+.container-content-box-head-profile-name-memorize {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
 }
 
-.memorize-container-content-box-body-memorize {
+.container-content-box-head-createdAt-memorize {
+  margin-top: 5px;
+  font-size: 15px;
+  color: #787878;
+}
+
+// body
+.container-content-box-body-memorize {
   border: 2px solid #e2e2e2;
   border-radius: 13px;
   padding: 10px 15px;
   margin-top: -2px;
 }
 
-.memorize-profile-name-memorize {
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
+.container-content-box-content-memorize {
+  overflow-wrap: break-word;
 }
 
-.memorize-edit-delete-box-memorize {
+.container-edit-delete-box-memorize {
   width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.memorize-createdAt-memorize {
-  margin-top: 5px;
-  font-size: 15px;
-  color: #787878;
-}
-
-.memorize-container-button-box-body-memorize {
+.container-content-box-body-button-memorize {
   display: flex;
   justify-content: flex-end;
 }
 
-.memorize-button-comment-memorize {
-  background: $blue-memorize;
-  border-radius: 15px;
-  cursor: pointer;
-  width: 100px;
-  height: 32px;
-  padding: 5px 10px;
+.content-box-body-horizontal-memorize {
+  border: 1px solid #e2e2e2;
 }
 
-.memorize-button-like-memorize {
-  border-radius: 15px;
-  cursor: pointer;
-  width: 100px;
-  padding: 5px 10px;
-  height: 32px;
-}
-
-.memorize-button-like-memorize.like {
-  background: $red-memorize;
-}
-
-.memorize-button-like-memorize.unlike {
-  border: 2px solid $red-memorize;
-}
-
-.memorize-like-icon-memorize,
-.memorize-comment-icon-memorize {
+// icon
+.icon-like-memorize,
+.icon-comment-memorize {
   position: relative;
-  left: calc(50% - 9px);
+  left: 9px;
   font-size: 18px;
   font-weight: bold;
   color: #f1f0f0;
 }
-.memorize-like-icon-memorize::after,
-.memorize-comment-icon-memorize::after {
+.icon-like-memorize::after,
+.icon-comment-memorize::after {
   position: relative;
   font-size: 13px;
   color: #ffffff;
@@ -93,31 +74,17 @@
   right: 7px;
 }
 
-.memorize-like-icon-memorize.unlike {
+.icon-like-memorize.unlike {
   color: $red-memorize;
 }
 
-.memorize-horizontal-memorize {
-  border: 1px solid #e2e2e2;
-}
-
-.memorize-edit-box-memorize {
+.icon-edit-memorize {
   margin-right: 5px;
   color: $green-memorize;
   cursor: pointer;
 }
 
-.memorize-delete-box-memorize {
+.icon-delete-memorize {
   color: $red-memorize;
   cursor: pointer;
-}
-
-@media only screen and (max-width:576px) {
-  .memorize-button-comment-memorize {
-    width: 100%;
-  }
-
-  .memorize-button-like-memorize {
-    width: 100%;
-  }
 }
