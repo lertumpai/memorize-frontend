@@ -25,11 +25,10 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, onChange, onMem
   }
 
   function MemorizeCreateButton() {
-    const classNameButton = content
-      ? 'memorize-create-button-memorize'
-      : 'memorize-create-button-memorize disable-click-memorize'
+    const color = content ? 'green-memorize' : 'disable-memorize'
+    const classNameButton = `button-memorize ${color}`
     return (
-        <div className='memorize-form-create-button-memorize'>
+        <div className='container-create-content-button-memorize'>
           <Button onClick={onClickMemorize} className={classNameButton} value='Memorize' />
         </div>
       )
@@ -37,7 +36,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, onChange, onMem
 
   function MemorizeCreateContentBox() {
     return (
-      <div className='memorize-form-create-content-box-memorize'>
+      <div className='container-form-create-content-box-memorize'>
         {MemorizeContentBox()}
         <MemorizeCreateButton />
       </div>

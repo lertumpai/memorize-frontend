@@ -8,6 +8,7 @@ $green-memorize: #4fbda4;
 $blue-memorize: #63a3ba;
 $red-memorize: #f17878;
 $yellow-memorize: #F59149;
+$disable-memorize: #6c7c79;
 
 * {
   box-sizing: border-box;
@@ -27,6 +28,11 @@ $yellow-memorize: #F59149;
 }
 *.yellow-memorize {
   background: $yellow-memorize;
+  color: #e7e6e6;
+}
+*.disable-memorize {
+  background: $disable-memorize;
+  pointer-events: none;
   color: #e7e6e6;
 }
 
