@@ -4,10 +4,20 @@
   display: block;
   background: #b1b1b1;
   position: fixed;
+  left: 0;
+  top: 0;
   opacity: 70%;
   width: 100%;
   height: 100%;
   z-index: 100;
+}
+
+.modal-container-memorize {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
 }
 
 .modal-memorize {
@@ -25,6 +35,10 @@
 }
 
 .modal-canvas-memorize.hide {
+  display: none;
+}
+
+.modal-container-memorize.hide {
   display: none;
 }
 

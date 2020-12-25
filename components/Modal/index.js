@@ -6,11 +6,14 @@ const ModalIndex = ({ children, className = '', display = 'hide' }) => {
   function Modal() {
     const classNameCanvas = `modal-canvas-memorize ${display}`
     const classNameModal = `modal-memorize ${className} ${display}`
+    const classNameContainerModal = `modal-container-memorize ${display}`
     return (
       <>
         <div className={classNameCanvas} />
-        <div className={classNameModal}>
-          {children}
+        <div className={classNameContainerModal}>
+          <div className={classNameModal}>
+            {children}
+          </div>
         </div>
       </>
     )
