@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import moment from 'moment'
 
 import Button from '../Button/dynamic'
@@ -12,44 +12,44 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
   const [editDisplay, setEditDisplay] = useState('hide')
   const [deleteDisplay, setDeleteDisplay] = useState('hide')
 
-  const onClickDelete = useCallback(() => {
+  function onClickDelete() {
     setDeleteDisplay('')
-  }, [])
+  }
 
-  const onClickCancelDelete = useCallback(() => {
+  function onClickCancelDelete() {
     setDeleteDisplay('hide')
-  }, [])
+  }
 
-  const onClickEdit = useCallback(() => {
+  function onClickEdit() {
     setEditContent(memorize?.content)
     setEditDisplay('')
-  }, [])
+  }
 
-  const onClickCancelEdit = useCallback(() => {
+  function onClickCancelEdit() {
     setEditDisplay('hide')
-  }, [])
+  }
 
-  const onClickConfirmDelete = useCallback(() => {
+  function onClickConfirmDelete() {
     onDelete(memorize.id)
-  }, [])
+  }
 
-  const onClickComment = useCallback(() => {
+  function onClickComment() {
     onComment(memorize.id)
-  }, [])
+  }
 
-  const onClickLike = useCallback(() => {
+  function onClickLike() {
     const action = !memorize.userAction ? 'like' : 'unlike'
     onLike(memorize.id, action)
-  }, [memorize?.userAction])
+  }
 
-  const onEditContentChange = useCallback(e => {
+  function onEditContentChange(e) {
     setEditContent(e.target.value)
-  }, [])
+  }
 
-  const onClickMemorize = useCallback(({ id, content }) => {
+  function onClickMemorize({ id, content }) {
     onEdit({ id, content })
     setEditDisplay('hide')
-  }, [])
+  }
 
   function MemorizeEditDeleteBox() {
     const classNameEdit = 'fa fa-pencil icon-edit-memorize'
