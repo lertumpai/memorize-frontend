@@ -30,5 +30,5 @@ export function useInfiniteScroll({ loader, query, memorizes }, { articleId }) {
       limit: 15,
     }
     dispatch(query({ articleId, pagination }))
-  }, [page])
+  }, [page, articleId])
 }

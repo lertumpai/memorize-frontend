@@ -9,6 +9,7 @@ import {
   mutateArticleAction,
   mutateArticleDelete,
   mutateArticle,
+  idleStateArticles,
 } from '../../store/articles/slice'
 import {
   commentSelectors,
@@ -19,7 +20,6 @@ import {
   mutateCommentAction,
   mutateCommentDelete,
 } from '../../store/comments/slice'
-import { idleStateArticles } from '../../store/articles/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
@@ -28,6 +28,7 @@ import Loading from '../../components/Loading/dynamic'
 import { useInfiniteScroll } from '../../utils/hooks/useInfiniteScroll'
 
 import './style.scss'
+import { useContent } from '../../utils/hooks/useContent'
 
 const CommentContainerIndex = ({ articleId }) => {
   const dispatch = useDispatch()
@@ -39,6 +40,18 @@ const CommentContainerIndex = ({ articleId }) => {
   const { status: commentStatus } = useSelector(state => state.comments)
   const comments = commentSelectors.selectAll(state)
   const users = userSelectors.selectAll(state)
+
+  const useContentArticle = useContent({
+    mutateMemorize: mutateArticle,
+    actionMemorize: mutateArticleAction,
+    deleteMemorize: mutateArticleDelete,
+  })
+
+  const useContentComment = useContent({
+    mutateMemorize: mutateComment,
+    actionMemorize: mutateCommentAction,
+    deleteMemorize: mutateCommentDelete,
+  })
 
   useEffect(() => {
     if (articleId) {
@@ -68,28 +81,6 @@ const CommentContainerIndex = ({ articleId }) => {
     setContent(e.target.value)
   }, [])
 
-  const onMemorize = useCallback(({ id, articleId, content }) => {
-    const memorize = {
-      id,
-      articleId,
-      content,
-    }
-    dispatch(mutateComment(memorize))
-    setContent('')
-  }, [])
-
-  const onArticleLike = useCallback((articleId, action) => {
-    dispatch(mutateArticleAction({ articleId, action }))
-  }, [])
-
-  const onDeleteMemorize = useCallback(id => {
-    dispatch(mutateArticleDelete(id))
-  }, [])
-
-  const onEditMemorize = useCallback(({ id, content }) => {
-    dispatch(mutateArticle({ id, content }))
-  }, [])
-
   const onComment = useCallback(() => {}, [])
 
   function ContainerLeftCol() {
@@ -103,32 +94,21 @@ const CommentContainerIndex = ({ articleId }) => {
             memorize={article}
             author={user}
             onComment={onComment}
-            onLike={onArticleLike}
-            onDelete={onDeleteMemorize}
-            onEdit={onEditMemorize}
+            onLike={useContentArticle.onLike}
+            onDelete={useContentArticle.onDelete}
+            onEdit={useContentArticle.onMemorize}
           />
           <MemorizeCreateContentBox
             content={content}
+            setContent={setContent}
             articleId={articleId}
             onChange={onContentChange}
-            onMemorize={onMemorize}
+            onMemorize={useContentComment.onMemorize}
           />
         </div>
       </div>
     )
   }
-
-  const onCommentLike = useCallback((commentId, action) => {
-    dispatch(mutateCommentAction({ commentId, action }))
-  }, [])
-
-  const onDeleteCommentMemorize = useCallback(id => {
-    dispatch(mutateCommentDelete(id))
-  }, [])
-
-  const onEditCommentMemorize = useCallback(({ id, content }) => {
-    dispatch(mutateComment({ id, content }))
-  }, [])
 
   const CommentContentBoxes = useCallback(() => {
     return comments.map(comment => {
@@ -141,9 +121,9 @@ const CommentContainerIndex = ({ articleId }) => {
           <MemorizeContentBox
             memorize={comment}
             author={user}
-            onLike={onCommentLike}
-            onDelete={onDeleteCommentMemorize}
-            onEdit={onEditCommentMemorize}
+            onLike={useContentComment.onLike}
+            onDelete={useContentComment.onDelete}
+            onEdit={useContentComment.onMemorize}
           />
         </div>
       )
