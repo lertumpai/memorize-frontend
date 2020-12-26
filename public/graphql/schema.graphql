@@ -52,10 +52,10 @@ type CommentAction implements Action {
 
 type Mutation {
   article(id: MID, input: ArticleInput!): Article
-  articleAction(action: ActionEnum!, articleId: MID!): Action
+  articleAction(action: ActionEnum!, id: MID!): Article!
   articleDelete(id: MID!): Article
   comment(id: MID, input: CommentInput!): Comment
-  commentAction(action: ActionEnum!, commentId: MID!): Action
+  commentAction(action: ActionEnum!, id: MID!): Comment!
   commentDelete(id: MID!): Comment
   profile(id: MID!, input: ProfileInput): User
   syncMongoIndexes(key: String!): [String]

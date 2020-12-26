@@ -50,8 +50,8 @@ export const MUTATE_COMMENT = gql`
 `
 
 export const MUTATE_COMMENT_ACTION = gql`
-  mutation commentAction($commentId: MID!, $action: ActionEnum!) {
-    commentAction(commentId: $commentId, action: $action) {
+  mutation commentAction($id: MID!, $action: ActionEnum!) {
+    commentAction(id: $id, action: $action) {
       ...CommentFragment
     }
   }

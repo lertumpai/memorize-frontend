@@ -5,9 +5,9 @@ import TextAreaBox from '../TextAreaBox/dynamic'
 
 import './style.scss'
 
-const MemorizeCreateContentBoxIndex = ({ id, articleId, content, onChange, onMemorize }) => {
+const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onChange, onMemorize }) => {
   function onClickMemorize() {
-    onMemorize({ id, content, articleId })
+    onMemorize({ id, content, articleId, setContent })
   }
 
   function MemorizeContentBox() {

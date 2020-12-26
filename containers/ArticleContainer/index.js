@@ -18,6 +18,7 @@ import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
 
 import { useInfiniteScroll } from '../../utils/hooks/useInfiniteScroll'
+import { useContent } from '../../utils/hooks/useContent'
 
 import './style.scss'
 
@@ -37,6 +38,12 @@ const ArticleContainerIndex = () => {
   const loader = useRef(null)
   useInfiniteScroll({ loader, query: queryArticles, memorizes: articles }, {})
 
+  const useContentArticle = useContent({
+    mutateMemorize: mutateArticle,
+    actionMemorize: mutateArticleAction,
+    deleteMemorize: mutateArticleDelete,
+  })
+
   useEffect(() => {
     if (status === STATUS_SUCCESS) {
       dispatch(idleStateArticles())
@@ -45,18 +52,6 @@ const ArticleContainerIndex = () => {
 
   const onComment = useCallback(articleId => {
     return router.push(`/articles/${articleId}`)
-  }, [])
-
-  const onLike = useCallback((articleId, action) => {
-    dispatch(mutateArticleAction({ articleId, action }))
-  }, [])
-
-  const onDeleteMemorize = useCallback(id => {
-    dispatch(mutateArticleDelete(id))
-  }, [])
-
-  const onEditMemorize = useCallback(({ id, content }) => {
-    dispatch(mutateArticle({ id, content }))
   }, [])
 
   const ArticleContentBoxes = useCallback(() => {
@@ -71,9 +66,9 @@ const ArticleContainerIndex = () => {
             memorize={article}
             author={user}
             onComment={onComment}
-            onLike={onLike}
-            onDelete={onDeleteMemorize}
-            onEdit={onEditMemorize}
+            onLike={useContentArticle.onLike}
+            onDelete={useContentArticle.onDelete}
+            onEdit={useContentArticle.onMemorize}
           />
         </div>
       )
@@ -84,23 +79,15 @@ const ArticleContainerIndex = () => {
     setContent(e.target.value)
   }, [setContent])
 
-  const onMemorize = useCallback(({ id, content }) => {
-    const memorize = {
-      id,
-      content,
-    }
-    dispatch(mutateArticle(memorize))
-    setContent('')
-  }, [])
-
   function ArticleContainer() {
     return (
       <>
         <div className='container-article-memorize'>
           <MemorizeCreateContentBox
             content={content}
+            setContent={setContent}
             onChange={onContentChange}
-            onMemorize={onMemorize}
+            onMemorize={useContentArticle.onMemorize}
           />
           {ArticleContentBoxes()}
           <div ref={loader}>

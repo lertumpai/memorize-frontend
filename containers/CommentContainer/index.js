@@ -102,8 +102,8 @@ const CommentContainerIndex = ({ articleId }) => {
             key={article?.id}
             memorize={article}
             author={user}
-            onLike={onArticleLike}
             onComment={onComment}
+            onLike={onArticleLike}
             onDelete={onDeleteMemorize}
             onEdit={onEditMemorize}
           />

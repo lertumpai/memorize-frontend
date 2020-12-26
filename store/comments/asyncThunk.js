@@ -37,8 +37,8 @@ export const mutateComment = createAsyncThunk(
 
 export const mutateCommentAction = createAsyncThunk(
   'comments/mutation/commentAction',
-  async ({ commentId, action }, { dispatch }) => {
-    const response = await mutation(MUTATE_COMMENT_ACTION, { commentId, action })
+  async ({ id, action }, { dispatch }) => {
+    const response = await mutation(MUTATE_COMMENT_ACTION, { id, action })
 
     const { commentAction } = response
     const { comment } = prepareResponseComments({ comment: commentAction })

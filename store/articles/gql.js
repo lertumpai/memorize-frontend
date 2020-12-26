@@ -68,8 +68,8 @@ export const MUTATE_ARTICLE_DELETE = gql`
 `
 
 export const MUTATE_ARTICLE_ACTION = gql`
-  mutation articleAction($articleId: MID!, $action: ActionEnum!) {
-    articleAction(articleId: $articleId, action: $action) {
+  mutation articleAction($id: MID!, $action: ActionEnum!) {
+    articleAction(id: $id, action: $action) {
       ...ArticleFragment
     }
   }
