@@ -35,7 +35,7 @@ const ArticleContainerIndex = () => {
   const users = userSelectors.selectAll(state)
 
   const loader = useRef(null)
-  useInfiniteScroll({ loader, query: queryArticles, memorizes: articles })
+  useInfiniteScroll({ loader, query: queryArticles, memorizes: articles }, {})
 
   useEffect(() => {
     if (status === STATUS_SUCCESS) {
@@ -63,9 +63,11 @@ const ArticleContainerIndex = () => {
     return articles.map(article => {
       const user = userSelectors.selectById(state, article.author)
       return (
-        <div className='container-article-content-box-memorize'>
+        <div
+          className='container-article-content-box-memorize'
+          key={article.id}
+        >
           <MemorizeContentBox
-            key={article.id}
             memorize={article}
             author={user}
             onComment={onComment}

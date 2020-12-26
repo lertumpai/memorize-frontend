@@ -25,6 +25,8 @@ import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
 
+import { useInfiniteScroll } from '../../utils/hooks/useInfiniteScroll'
+
 import './style.scss'
 
 const CommentContainerIndex = ({ articleId }) => {
@@ -48,25 +50,8 @@ const CommentContainerIndex = ({ articleId }) => {
     return () => dispatch(resetStateComments())
   }, [])
 
-  const [page, setPage] = useState(1)
   const loader = useRef(null)
-  useEffect(() => {
-    const options = {
-      root: document.querySelector('#application-layout-memorize'),
-      rootMargin: '100px',
-      threshold: 0.5,
-    }
-    const observer = new IntersectionObserver(handleObserver, options)
-    if (loader.current) {
-      observer.observe(loader.current)
-    }
-  }, [])
-
-  const handleObserver = useCallback(entities => {
-    if (entities[0].isIntersecting) {
-      setPage(page => page + 1)
-    }
-  }, [])
+  useInfiniteScroll({ loader, query: queryComments, memorizes: comments }, { articleId })
 
   useEffect(() => {
     if (articleStatus === STATUS_SUCCESS) {
@@ -133,17 +118,6 @@ const CommentContainerIndex = ({ articleId }) => {
     )
   }
 
-  useEffect(() => {
-    if (articleId) {
-      const lastComment = comments ? comments[comments.length - 1] : null
-      const pagination = {
-        before: lastComment?.createdAt,
-        limit: 15,
-      }
-      dispatch(queryComments({ articleId, pagination }))
-    }
-  }, [page, articleId])
-
   const onCommentLike = useCallback((commentId, action) => {
     dispatch(mutateCommentAction({ commentId, action }))
   }, [])
@@ -160,9 +134,11 @@ const CommentContainerIndex = ({ articleId }) => {
     return comments.map(comment => {
       const user = userSelectors.selectById(state, comment.author)
       return (
-        <div className='container-comment-content-box-memorize'>
+        <div
+          className='container-comment-content-box-memorize'
+          key={comment?.id}
+        >
           <MemorizeContentBox
-            key={comment?.id}
             memorize={comment}
             author={user}
             onLike={onCommentLike}

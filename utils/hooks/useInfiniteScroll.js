@@ -1,8 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 
-export function useInfiniteScroll({ loader, query, memorizes }) {
-  console.log('infinite')
+export function useInfiniteScroll({ loader, query, memorizes }, { articleId }) {
   const dispatch = useDispatch()
   const [page, setPage] = useState(1)
 
@@ -25,11 +24,11 @@ export function useInfiniteScroll({ loader, query, memorizes }) {
   }, [])
 
   useEffect(() => {
-    const lastArticle = memorizes ? memorizes[memorizes.length - 1] : null
+    const lastMemorize = memorizes ? memorizes[memorizes.length - 1] : null
     const pagination = {
-      before: lastArticle?.createdAt,
+      before: lastMemorize?.createdAt,
       limit: 15,
     }
-    dispatch(query({ pagination }))
+    dispatch(query({ articleId, pagination }))
   }, [page])
 }
