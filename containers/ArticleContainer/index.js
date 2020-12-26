@@ -17,6 +17,8 @@ import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
 
+import { useInfiniteScroll } from '../../utils/hooks/useInfiniteScroll'
+
 import './style.scss'
 
 const ArticleContainerIndex = () => {
@@ -32,35 +34,8 @@ const ArticleContainerIndex = () => {
   const articles = articleSelectors.selectAll(state)
   const users = userSelectors.selectAll(state)
 
-  const [page, setPage] = useState(1)
   const loader = useRef(null)
-
-  useEffect(() => {
-    const options = {
-      root: document.querySelector('#application-layout-memorize'),
-      rootMargin: '100px',
-      threshold: 1.0,
-    }
-    const observer = new IntersectionObserver(handleObserver, options)
-    if (loader.current) {
-      observer.observe(loader.current)
-    }
-  }, [])
-
-  const handleObserver = useCallback(entities => {
-    if (entities[0].isIntersecting) {
-      setPage(page => page + 1)
-    }
-  }, [])
-
-  useEffect(() => {
-    const lastArticle = articles ? articles[articles.length - 1] : null
-    const pagination = {
-      before: lastArticle?.createdAt,
-      limit: 15,
-    }
-    dispatch(queryArticles({ pagination }))
-  }, [page])
+  useInfiniteScroll({ loader, query: queryArticles, memorizes: articles })
 
   useEffect(() => {
     if (status === STATUS_SUCCESS) {
