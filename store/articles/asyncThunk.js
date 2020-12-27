@@ -51,8 +51,12 @@ export const mutateArticle = createAsyncThunk(
 export const mutateArticleDelete = createAsyncThunk(
   'articles/mutation/articleDelete',
   async (id, { dispatch }) => {
-    await mutation(MUTATE_ARTICLE_DELETE, { id })
-    dispatch(articleRemoveOne(id))
+    const response = await mutation(MUTATE_ARTICLE_DELETE, { id })
+
+    const { articleDelete } = response
+    const { article } = prepareResponseArticles({ article: articleDelete })
+    dispatch(articleUpsertOne(article))
+
     return true
   },
 )

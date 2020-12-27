@@ -18,6 +18,7 @@ export const ArticleFragment = gql`
     comment
     canMutate
     action
+    active
     userAction {
       ...ArticleActionFragment
     }

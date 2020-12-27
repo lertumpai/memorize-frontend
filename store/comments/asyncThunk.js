@@ -11,6 +11,8 @@ import { prepareResponseComments } from '../../utils/prepareResponse'
 export const queryComments = createAsyncThunk(
   'comments/query/comments',
   async ({ articleId, pagination }, { dispatch }) => {
+    if (!articleId) return false
+
     const response = await query(QUERY_COMMENTS, { articleId, pagination })
 
     const { users, comments } = prepareResponseComments(response)

@@ -55,22 +55,24 @@ const ArticleContainerIndex = () => {
   }, [])
 
   const ArticleContentBoxes = useCallback(() => {
-    return articles.map(article => {
-      const user = userSelectors.selectById(state, article.author)
-      return (
-        <div
-          className='container-article-content-box-memorize'
-          key={article.id}
-        >
-          <MemorizeContentBox
-            memorize={article}
-            author={user}
-            onComment={onComment}
-            onLike={useContentArticle.onLike}
-            onDelete={useContentArticle.onDelete}
-            onEdit={useContentArticle.onMemorize}
-          />
-        </div>
+    return articles
+      .filter(article => article.active)
+      .map(article => {
+        const user = userSelectors.selectById(state, article.author)
+        return (
+          <div
+            className='container-article-content-box-memorize'
+            key={article.id}
+          >
+            <MemorizeContentBox
+              memorize={article}
+              author={user}
+              onComment={onComment}
+              onLike={useContentArticle.onLike}
+              onDelete={useContentArticle.onDelete}
+              onEdit={useContentArticle.onMemorize}
+            />
+          </div>
       )
     })
   }, [articles, users])

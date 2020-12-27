@@ -26,9 +26,9 @@ import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'
 import Loading from '../../components/Loading/dynamic'
 
 import { useInfiniteScroll } from '../../utils/hooks/useInfiniteScroll'
+import { useContent } from '../../utils/hooks/useContent'
 
 import './style.scss'
-import { useContent } from '../../utils/hooks/useContent'
 
 const CommentContainerIndex = ({ articleId }) => {
   const dispatch = useDispatch()
@@ -36,10 +36,11 @@ const CommentContainerIndex = ({ articleId }) => {
   const [content, setContent] = useState('')
 
   const state = useSelector(state => state)
+
   const { status: articleStatus } = useSelector(state => state.articles)
   const { status: commentStatus } = useSelector(state => state.comments)
   const comments = commentSelectors.selectAll(state)
-  const users = userSelectors.selectAll(state)
+  const article = articleSelectors.selectById(state, articleId)
 
   const useContentArticle = useContent({
     mutateMemorize: mutateArticle,
@@ -57,7 +58,7 @@ const CommentContainerIndex = ({ articleId }) => {
     if (articleId) {
       dispatch(queryArticle({ id: articleId }))
     }
-  }, [articleId])
+  }, [articleId, article])
 
   useEffect(() => {
     return () => dispatch(resetStateComments())
@@ -84,7 +85,6 @@ const CommentContainerIndex = ({ articleId }) => {
   const onComment = useCallback(() => {}, [])
 
   function ContainerLeftCol() {
-    const article = articleSelectors.selectById(state, articleId)
     const user = userSelectors.selectById(state, article?.author)
     return (
       <div className='container-comment-col-memorize'>
@@ -128,7 +128,7 @@ const CommentContainerIndex = ({ articleId }) => {
         </div>
       )
     })
-  }, [comments, users])
+  }, [comments, state.users])
 
   function ContainerRightCol() {
     return (
