@@ -15,12 +15,14 @@ const commentSlices = createSlice({
   name: 'comments',
   initialState: commentAdapters.getInitialState({
     status: STATUS_IDLE,
+    hasMore: false,
     error: null,
   }),
   reducers: {
     resetStateComments: state => {
       state.status = STATUS_IDLE
       state.error = null
+      state.hasMore = false
       state.ids = []
       state.entities = {}
     },
@@ -36,7 +38,8 @@ const commentSlices = createSlice({
     [queryComments.pending]: state => {
       state.status = STATUS_LOADING
     },
-    [queryComments.fulfilled]: state => {
+    [queryComments.fulfilled]: (state, { payload }) => {
+      state.hasMore = payload.comments?.hasMore
       state.error = null
       state.status = STATUS_SUCCESS
     },

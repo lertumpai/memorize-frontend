@@ -19,6 +19,7 @@ type Article {
   content: String!
   createdAt: Date
   deletedAt: Date
+  hasMore: Boolean!
   id: MID!
   updatedAt: Date
   userAction: Action
@@ -50,6 +51,16 @@ type CommentAction implements Action {
   commentId: MID!
 }
 
+type FeedArticle {
+  data: [Article]
+  hasMore: Boolean!
+}
+
+type FeedComment {
+  data: [Comment]
+  hasMore: Boolean!
+}
+
 type Mutation {
   article(id: MID, input: ArticleInput!): Article
   articleAction(action: ActionEnum!, id: MID!): Article!
@@ -71,9 +82,9 @@ type ProfileUser {
 
 type Query {
   article(id: MID!): Article
-  articles(author: MID, pagination: Pagination = {limit : 10}): [Article]
+  articles(author: MID, pagination: Pagination = {limit : 10}): FeedArticle!
   comment(id: MID!): Comment
-  comments(articleId: MID!, pagination: Pagination = {limit : 10}): [Comment]
+  comments(articleId: MID!, pagination: Pagination = {limit : 10}): FeedComment
   login(password: String, username: String): User
   user(id: MID, username: String): User
   version: String!

@@ -81,6 +81,14 @@ const ArticleContainerIndex = () => {
     setContent(e.target.value)
   }, [setContent])
 
+  function HasMoreLoading() {
+    return (
+      <div ref={loader}>
+        {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+      </div>
+    )
+  }
+
   function ArticleContainer() {
     return (
       <>
@@ -92,9 +100,7 @@ const ArticleContainerIndex = () => {
             onMemorize={useContentArticle.onMemorize}
           />
           {ArticleContentBoxes()}
-          <div ref={loader}>
-            {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
-          </div>
+          {HasMoreLoading()}
         </div>
       </>
     )

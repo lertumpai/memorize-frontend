@@ -35,7 +35,10 @@ export const ArticleFragment = gql`
 export const QUERY_ARTICLES = gql`
   query articles($author: MID, $pagination: Pagination) {
     articles(author: $author, pagination: $pagination) {
-      ...ArticleFragment
+      data {
+        ...ArticleFragment
+      }
+      hasMore
     }
   }
   ${ArticleFragment}

@@ -7,8 +7,9 @@ export function prepareResponseArticles(response) {
     return { user, article: _article }
   }
 
-  const users = articles.map(({ author }) => author)
-  const preparedArticles = articles.map(article => {
+  const { data } = articles
+  const users = data.map(({ author }) => author)
+  const preparedArticles = data.map(article => {
     return {
       ...article,
       author: article.author.id,
@@ -27,8 +28,9 @@ export function prepareResponseComments(response) {
     return { user, comment: _comment }
   }
 
-  const users = comments.map(({ author }) => author)
-  const preparedComments = comments.map(comment => {
+  const { data } = comments
+  const users = data.map(({ author }) => author)
+  const preparedComments = data.map(comment => {
     return {
       ...comment,
       author: comment.author.id,

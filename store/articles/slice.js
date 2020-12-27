@@ -15,12 +15,14 @@ const articleSlices = createSlice({
   name: 'articles',
   initialState: articleAdapters.getInitialState({
     status: STATUS_IDLE,
+    hasMore: false,
     error: null,
   }),
   reducers: {
     resetStateArticles: state => {
       state.status = STATUS_IDLE
       state.error = null
+      state.hasMore = false
       state.ids = []
       state.entities = {}
     },
@@ -36,7 +38,8 @@ const articleSlices = createSlice({
     [queryArticles.pending]: state => {
       state.status = STATUS_LOADING
     },
-    [queryArticles.fulfilled]: state => {
+    [queryArticles.fulfilled]: (state, { payload }) => {
+      state.hasMore = payload.articles?.hasMore
       state.error = null
       state.status = STATUS_SUCCESS
     },

@@ -19,7 +19,7 @@ export const queryComments = createAsyncThunk(
     dispatch(commentUpsertMany(comments))
     dispatch(userAddMany(users))
 
-    return true
+    return response
   },
 )
 

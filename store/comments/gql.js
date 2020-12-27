@@ -34,7 +34,10 @@ export const CommentFragment = gql`
 export const QUERY_COMMENTS = gql`
   query comments($articleId: MID!, $pagination: Pagination) {
     comments(articleId: $articleId, pagination: $pagination) {
-      ...CommentFragment
+      data {
+        ...CommentFragment
+      }
+      hasMore
     }
   }
   ${CommentFragment}

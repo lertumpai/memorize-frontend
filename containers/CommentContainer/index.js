@@ -32,6 +32,7 @@ import { useContent } from '../../utils/hooks/useContent'
 import './style.scss'
 
 const CommentContainerIndex = ({ articleId }) => {
+  console.log('comment')
   const dispatch = useDispatch()
   const router = useRouter()
 
@@ -40,7 +41,7 @@ const CommentContainerIndex = ({ articleId }) => {
   const state = useSelector(state => state)
 
   const { status: articleStatus } = useSelector(state => state.articles)
-  const { status: commentStatus } = useSelector(state => state.comments)
+  const { status: commentStatus, hasMore } = useSelector(state => state.comments)
   const comments = commentSelectors.selectAll(state)
   const users = userSelectors.selectAll(state)
   const article = articleSelectors.selectById(state, articleId)
@@ -139,14 +140,24 @@ const CommentContainerIndex = ({ articleId }) => {
     })
   }, [comments, users])
 
+  const HasMoreLoading = useCallback(() => {
+    if (!hasMore) {
+      return <div>NotHave</div>
+    }
+
+    return (
+      <div ref={loader}>
+        {commentStatus !== STATUS_IDLE ? <Loading width={300} /> : 'have'}
+      </div>
+    )
+  }, [hasMore])
+
   const ContainerRightCol = useCallback(() => {
     return (
       <div className='container-comment-col-memorize'>
         <div className='container-comment-right-col-memorize'>
           {CommentContentBoxes()}
-          <div ref={loader}>
-            {commentStatus !== STATUS_IDLE ? <Loading width={300} /> : ''}
-          </div>
+          {HasMoreLoading()}
         </div>
       </div>
     )
