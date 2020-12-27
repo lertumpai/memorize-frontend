@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
+import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { STATUS_IDLE, STATUS_SUCCESS } from '../../store/status'
@@ -32,6 +33,7 @@ import './style.scss'
 
 const CommentContainerIndex = ({ articleId }) => {
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const [content, setContent] = useState('')
 
@@ -40,6 +42,7 @@ const CommentContainerIndex = ({ articleId }) => {
   const { status: articleStatus } = useSelector(state => state.articles)
   const { status: commentStatus } = useSelector(state => state.comments)
   const comments = commentSelectors.selectAll(state)
+  const users = userSelectors.selectAll(state)
   const article = articleSelectors.selectById(state, articleId)
 
   const useContentArticle = useContent({
@@ -58,7 +61,13 @@ const CommentContainerIndex = ({ articleId }) => {
     if (articleId) {
       dispatch(queryArticle({ id: articleId }))
     }
-  }, [articleId, article])
+  }, [articleId])
+
+  useEffect(() => {
+    if (article && !article.active) {
+      return router.push('/articles')
+    }
+  }, [article])
 
   useEffect(() => {
     return () => dispatch(resetStateComments())
@@ -84,7 +93,7 @@ const CommentContainerIndex = ({ articleId }) => {
 
   const onComment = useCallback(() => {}, [])
 
-  function ContainerLeftCol() {
+  const ContainerLeftCol = useCallback(() => {
     const user = userSelectors.selectById(state, article?.author)
     return (
       <div className='container-comment-col-memorize'>
@@ -108,7 +117,7 @@ const CommentContainerIndex = ({ articleId }) => {
         </div>
       </div>
     )
-  }
+  }, [article, users])
 
   const CommentContentBoxes = useCallback(() => {
     return comments.map(comment => {
@@ -128,20 +137,20 @@ const CommentContainerIndex = ({ articleId }) => {
         </div>
       )
     })
-  }, [comments, state.users])
+  }, [comments, users])
 
-  function ContainerRightCol() {
+  const ContainerRightCol = useCallback(() => {
     return (
-     <div className='container-comment-col-memorize'>
-       <div className='container-comment-right-col-memorize'>
-         {CommentContentBoxes()}
-         <div ref={loader}>
-           {commentStatus !== STATUS_IDLE ? <Loading width={300} /> : ''}
-         </div>
-       </div>
-     </div>
+      <div className='container-comment-col-memorize'>
+        <div className='container-comment-right-col-memorize'>
+          {CommentContentBoxes()}
+          <div ref={loader}>
+            {commentStatus !== STATUS_IDLE ? <Loading width={300} /> : ''}
+          </div>
+        </div>
+      </div>
     )
-  }
+  }, [commentStatus])
 
   function CommentContainer() {
     return (
