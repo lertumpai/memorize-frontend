@@ -117,7 +117,7 @@ const CommentContainerIndex = ({ articleId }) => {
         </div>
       </div>
     )
-  }, [article, users])
+  }, [article, users, content])
 
   const CommentContentBoxes = useCallback(() => {
     return comments.map(comment => {
