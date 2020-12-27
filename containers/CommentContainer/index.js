@@ -32,7 +32,6 @@ import { useContent } from '../../utils/hooks/useContent'
 import './style.scss'
 
 const CommentContainerIndex = ({ articleId }) => {
-  console.log('comment')
   const dispatch = useDispatch()
   const router = useRouter()
 
