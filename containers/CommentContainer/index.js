@@ -75,7 +75,7 @@ const CommentContainerIndex = ({ articleId }) => {
   }, [])
 
   const loader = useRef(null)
-  useInfiniteScroll({ loader, query: queryComments, memorizes: comments }, { articleId })
+  useInfiniteScroll({ loader, query: queryComments, memorizes: comments, status: commentStatus }, { articleId })
 
   useEffect(() => {
     if (articleStatus === STATUS_SUCCESS) {
@@ -141,16 +141,13 @@ const CommentContainerIndex = ({ articleId }) => {
   }, [comments, users])
 
   const HasMoreLoading = useCallback(() => {
-    if (!hasMore) {
-      return <div>NotHave</div>
-    }
-
-    return (
-      <div ref={loader}>
-        {commentStatus !== STATUS_IDLE ? <Loading width={300} /> : 'have'}
-      </div>
-    )
-  }, [hasMore])
+    return hasMore
+      ? (
+        <div ref={loader}>
+          {commentStatus !== STATUS_IDLE ? <Loading width={300} /> : ''}
+        </div>
+      ) : ''
+  }, [commentStatus, hasMore])
 
   const ContainerRightCol = useCallback(() => {
     return (

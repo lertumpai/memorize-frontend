@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-export function useInfiniteScroll({ loader, query, memorizes }, { articleId }) {
+export function useInfiniteScroll({ loader, query, memorizes, status }, { articleId }) {
   const dispatch = useDispatch()
   const [page, setPage] = useState(1)
 
@@ -15,13 +15,13 @@ export function useInfiniteScroll({ loader, query, memorizes }, { articleId }) {
     if (loader.current) {
       observer.observe(loader.current)
     }
-  }, [])
+  }, [status])
 
-  const handleObserver = useCallback(entities => {
+  function handleObserver(entities) {
     if (entities[0].isIntersecting) {
       setPage(page => page + 1)
     }
-  }, [])
+  }
 
   useEffect(() => {
     const lastMemorize = memorizes ? memorizes[memorizes.length - 1] : null
@@ -31,4 +31,6 @@ export function useInfiniteScroll({ loader, query, memorizes }, { articleId }) {
     }
     dispatch(query({ articleId, pagination }))
   }, [page, articleId])
+
+  return page
 }

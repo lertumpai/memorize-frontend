@@ -36,7 +36,7 @@ const ArticleContainerIndex = () => {
   const users = userSelectors.selectAll(state)
 
   const loader = useRef(null)
-  useInfiniteScroll({ loader, query: queryArticles, memorizes: articles }, {})
+  useInfiniteScroll({ loader, query: queryArticles, memorizes: articles, status }, {})
 
   const useContentArticle = useContent({
     mutateMemorize: mutateArticle,
