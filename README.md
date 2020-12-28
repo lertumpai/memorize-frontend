@@ -24,7 +24,7 @@ style-items-memorize
 docker build --no-cache -t lertumpai/memorize-frontend .
 
 # run application
-docker run --rm --name memorize-frontend -p 3000:3000 lertumpai/memorize-frontend
+docker run --name memorize-frontend -p 3000:3000 lertumpai/memorize-frontend
 
 # Push docker
 docker commit memorize lertumpai/memorize-backend
