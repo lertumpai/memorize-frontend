@@ -31,7 +31,7 @@ const ArticleContainerIndex = () => {
 
   const state = useSelector(state => state)
 
-  const { status } = useSelector(state => state.articles)
+  const { status, hasMore } = useSelector(state => state.articles)
   const articles = articleSelectors.selectAll(state)
   const users = userSelectors.selectAll(state)
 
@@ -82,11 +82,12 @@ const ArticleContainerIndex = () => {
   }, [setContent])
 
   function HasMoreLoading() {
-    return (
-      <div ref={loader}>
-        {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
-      </div>
-    )
+    return hasMore ?
+      (
+        <div ref={loader}>
+          {status !== STATUS_IDLE ? <Loading width={300} /> : ''}
+        </div>
+      ) : ''
   }
 
   function ArticleContainer() {
