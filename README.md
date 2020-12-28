@@ -17,3 +17,17 @@ style-items-memorize
 * items are set of object. eg. button, textarea, textbox
 * domain is optional
 ```
+
+# Docker
+```
+# build image
+docker build --no-cache -t lertumpai/memorize-frontend .
+
+# run application
+docker run --rm --name memorize-frontend -p 3000:3000 lertumpai/memorize-frontend
+
+# Push docker
+docker commit memorize lertumpai/memorize-backend
+docker push lertumpai/memorize-backend
+docker tag memorize lertumpai/memorize-backend
+```
