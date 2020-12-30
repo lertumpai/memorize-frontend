@@ -27,7 +27,7 @@ docker build --no-cache -t lertumpai/memorize-frontend .
 docker run --name memorize-frontend -p 3000:3000 lertumpai/memorize-frontend
 
 # Push docker
-docker commit memorize lertumpai/memorize-backend
-docker push lertumpai/memorize-backend
-docker tag memorize lertumpai/memorize-backend
+docker commit memorize-frontend lertumpai/memorize-frontend
+docker push lertumpai/memorize-frontend
+docker tag memorize lertumpai/memorize-frontend
 ```
