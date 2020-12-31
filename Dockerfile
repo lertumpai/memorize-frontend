@@ -1,8 +1,13 @@
 FROM node:lts
 
-ENV NODE_ENV="production"
-ENV SERVER_URL="http://192.168.1.106:5000/graphql"
-ENV LOCAL_STORAGE_KEY="current_user"
+ARG NODE_ENV="production"
+ENV NODE_ENV="${NODE_ENV}"
+
+ARG SERVER_URL="http://localhost:5000/graphql"
+ENV SERVER_URL="${SERVER_URL}"
+
+ARG LOCAL_STORAGE_KEY=current_user
+ENV LOCAL_STORAGE_KEY="${LOCAL_STORAGE_KEY}"
 
 # set a directory for the app
 WORKDIR /usr/src/memorize-frontend
