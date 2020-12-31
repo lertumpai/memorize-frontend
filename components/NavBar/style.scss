@@ -19,6 +19,10 @@
   cursor: pointer;
 }
 
+.hamburger-menu-memorize {
+  z-index: 50;
+}
+
 @media only screen and (min-width:992px) {
   .navbar-link-memorize {
     display: flex;

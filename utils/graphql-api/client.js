@@ -12,6 +12,7 @@ const httpLink = createHttpLink({
 })
 
 const authLink = setContext((_, { headers }) => {
+  console.log(SERVER_URL)
   const currentUser = loadUser()
   return {
     headers: {
