@@ -3,6 +3,5 @@ node_modules
 .next
 
 .env.development
-.env.production
 
 .idea

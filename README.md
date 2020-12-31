@@ -24,7 +24,7 @@ style-items-memorize
 docker build --no-cache -t lertumpai/memorize-frontend .
 
 # build for production
-docker build --build-arg ./.env.production --no-cache -t lertumpai/memorize-frontend .
+docker build --build-arg .env.production --no-cache -t lertumpai/memorize-frontend .
 
 # run application
 docker run --name memorize-frontend -p 3000:3000 lertumpai/memorize-frontend
