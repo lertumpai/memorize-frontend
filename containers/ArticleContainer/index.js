@@ -11,7 +11,7 @@ import {
   mutateArticle,
   mutateArticleAction,
   mutateArticleDelete,
-} from '../../store/articles/slice'
+} from '../../store/socket/slice'
 
 import MemorizeCreateContentBox from '../../components/MemorizeCreateContentBox/dynamic'
 import MemorizeContentBox from '../../components/MemorizeContentBox/dynamic'

@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import { ArticleFragment } from '../articles/gql'
+import { ArticleFragment } from '../socket/gql'
 
 export const CommentActionFragment = gql`
   fragment CommentActionFragment on CommentAction {

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 
 import { clearUser } from '../../utils/localStorage'
 import { resetStateAuth } from '../../store/auth/slice'
-import { resetStateArticles } from '../../store/articles/slice'
+import { resetStateArticles } from '../../store/socket/slice'
 import { resetStateUsers } from '../../store/users/slice'
 import { resetStateComments } from '../../store/comments/slice'
 

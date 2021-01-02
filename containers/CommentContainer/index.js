@@ -11,7 +11,7 @@ import {
   mutateArticleDelete,
   mutateArticle,
   idleStateArticles,
-} from '../../store/articles/slice'
+} from '../../store/socket/slice'
 import {
   commentSelectors,
   idleStateComments,
