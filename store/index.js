@@ -3,7 +3,7 @@ import { createWrapper } from 'next-redux-wrapper'
 
 import authReducer from './auth/slice'
 import userReducer from './users/slice'
-import articleReducer from './socket/slice'
+import articleReducer from './articles/slice'
 import commentReducer from './comments/slice'
 import socketReducer from './socket/slice'
 
