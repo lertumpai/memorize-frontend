@@ -3,12 +3,14 @@ import React from 'react'
 import ApplicationLayout from '../../containers/ApplicationLayout/dynamic'
 import ArticleContainer from '../../containers/ArticleContainer/dynamic'
 
+import { useSocket } from '../../utils/socket/useSocket'
 import { useSocketArticle } from '../../utils/socket'
 
 import './style.scss'
 
 const ArticlePage = () => {
-  useSocketArticle()
+  const socket = useSocket()
+  useSocketArticle(socket)
 
   return (
     <ApplicationLayout>

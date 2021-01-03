@@ -2,11 +2,9 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { queryArticle } from '../../store/articles/slice'
-import { useSocket } from './useSocket'
 
-export function useSocketArticle() {
+export function useSocketArticle(socket) {
   const dispatch = useDispatch()
-  const socket = useSocket()
 
   useEffect(() => {
     if (socket) {

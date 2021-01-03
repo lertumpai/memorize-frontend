@@ -17,14 +17,14 @@ const socketIO = () => {
   }
 
   function open() {
-    if (socket) {
-      socket.open()
+    if (socket && socket.disconnected) {
+      socket.connect()
     }
   }
 
   function close() {
     if (socket) {
-      socket.close()
+      socket.disconnect()
       socket = null
     }
   }
