@@ -23,6 +23,20 @@
   color: #787878;
 }
 
+.container-profile-name-box-memorize {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 300%;
+}
+
+.container-edit-delete-box-memorize {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 // body
 .container-content-box-body-memorize {
   border: 2px solid #e2e2e2;
@@ -33,13 +47,6 @@
 
 .container-content-box-content-memorize {
   overflow-wrap: break-word;
-}
-
-.container-edit-delete-box-memorize {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 .container-content-box-body-button-memorize {

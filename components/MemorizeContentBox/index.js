@@ -66,7 +66,9 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
     return (
       <div className='container-content-box-head-memorize'>
         <div className='container-content-box-head-profile-name-memorize'>
-          {author?.profile?.name || 'unknown'}
+          <div className='container-profile-name-box-memorize'>
+            {author?.profile?.name || 'unknown'}
+          </div>
           {memorize?.canMutate ? MemorizeEditDeleteBox() : ''}
         </div>
         <div className='container-content-box-head-createdAt-memorize'>
