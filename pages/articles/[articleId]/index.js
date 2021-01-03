@@ -4,10 +4,11 @@ import { useRouter } from 'next/router'
 import ApplicationLayout from '../../../containers/ApplicationLayout/dynamic'
 import CommentContainer from '../../../containers/CommentContainer/dynamic'
 
-import { useSocketPageComments } from '../../../utils/socket/useSocketPageComments'
+import { useSocketComment, useSocketArticle } from '../../../utils/socket'
 
 const ArticleIdPage = () => {
-  useSocketPageComments()
+  useSocketComment()
+  useSocketArticle()
 
   const router = useRouter()
   const { articleId } = router.query

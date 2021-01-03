@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import socketIO from './'
+import socketIO from './socket'
 
 export function useSocket() {
   const socket = socketIO()
