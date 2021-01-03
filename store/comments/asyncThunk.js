@@ -4,7 +4,7 @@ import { userAddOne, userAddMany } from '../users/slice'
 import { commentUpsertMany, commentUpsertOne, commentRemoveOne } from './slice'
 
 import { query, mutation } from '../../utils/graphql-api/client'
-import { QUERY_COMMENTS, MUTATE_COMMENT, MUTATE_COMMENT_ACTION, MUTATE_COMMENT_DELETE } from './gql'
+import { QUERY_COMMENTS, QUERY_COMMENT, MUTATE_COMMENT, MUTATE_COMMENT_ACTION, MUTATE_COMMENT_DELETE } from './gql'
 
 import { prepareResponseComments } from '../../utils/prepareResponse'
 
@@ -23,39 +23,40 @@ export const queryComments = createAsyncThunk(
   },
 )
 
-export const mutateComment = createAsyncThunk(
-  'comments/mutation/comment',
-  async ({ id, content, articleId }, { dispatch }) => {
-    const CommentInput = { content, articleId }
-    const response = await mutation(MUTATE_COMMENT, { id, CommentInput })
+export const queryComment = createAsyncThunk(
+  'comments/query/comment',
+  async (id, { dispatch }) => {
+    const response = await query(QUERY_COMMENT, { id })
 
     const { user, comment } = prepareResponseComments(response)
     dispatch(commentUpsertOne(comment))
     dispatch(userAddOne(user))
 
+    return response
+  },
+)
+
+export const mutateComment = createAsyncThunk(
+  'comments/mutation/comment',
+  async ({ id, content, articleId }) => {
+    const CommentInput = { content, articleId }
+    await mutation(MUTATE_COMMENT, { id, CommentInput })
     return true
   },
 )
 
 export const mutateCommentAction = createAsyncThunk(
   'comments/mutation/commentAction',
-  async ({ id, action }, { dispatch }) => {
-    const response = await mutation(MUTATE_COMMENT_ACTION, { id, action })
-
-    const { commentAction } = response
-    const { comment } = prepareResponseComments({ comment: commentAction })
-    dispatch(commentUpsertOne(comment))
-
+  async ({ id, action }) => {
+    await mutation(MUTATE_COMMENT_ACTION, { id, action })
     return true
   },
 )
 
 export const mutateCommentDelete = createAsyncThunk(
   'comments/mutation/commentDelete',
-  async (id, { dispatch }) => {
+  async id => {
     await mutation(MUTATE_COMMENT_DELETE, { id })
-    dispatch(commentRemoveOne(id))
-
     return true
   },
 )

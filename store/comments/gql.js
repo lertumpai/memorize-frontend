@@ -42,6 +42,15 @@ export const QUERY_COMMENTS = gql`
   ${CommentFragment}
 `
 
+export const QUERY_COMMENT = gql`
+  query comment($id: MID!) {
+    comment(id: $id) {
+      ...CommentFragment
+    }
+  }
+  ${CommentFragment}
+`
+
 export const MUTATE_COMMENT = gql`
   mutation comment($id: MID, $CommentInput: CommentInput!) {
     comment(id: $id, input: $CommentInput) {

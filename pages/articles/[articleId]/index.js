@@ -4,7 +4,11 @@ import { useRouter } from 'next/router'
 import ApplicationLayout from '../../../containers/ApplicationLayout/dynamic'
 import CommentContainer from '../../../containers/CommentContainer/dynamic'
 
-const Index = () => {
+import { useSocketPageComments } from '../../../utils/socket/useSocketPageComments'
+
+const ArticleIdPage = () => {
+  useSocketPageComments()
+
   const router = useRouter()
   const { articleId } = router.query
 
@@ -15,4 +19,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default ArticleIdPage

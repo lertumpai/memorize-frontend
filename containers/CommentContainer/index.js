@@ -59,7 +59,7 @@ const CommentContainerIndex = ({ articleId }) => {
 
   useEffect(() => {
     if (articleId) {
-      dispatch(queryArticle({ id: articleId }))
+      dispatch(queryArticle(articleId))
     }
   }, [articleId])
 

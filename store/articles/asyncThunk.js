@@ -23,7 +23,7 @@ export const queryArticles = createAsyncThunk(
 
 export const queryArticle = createAsyncThunk(
   'articles/query/article',
-  async ({ id }, { dispatch }) => {
+  async (id, { dispatch }) => {
     const response = await query(QUERY_ARTICLE, { id })
 
     const { user, article } = prepareResponseArticles(response)
@@ -36,41 +36,25 @@ export const queryArticle = createAsyncThunk(
 
 export const mutateArticle = createAsyncThunk(
   'articles/mutation/article',
-  async ({ id, content }, { dispatch }) => {
+  async ({ id, content }) => {
     const ArticleInput = { content }
-    const response = await mutation(MUTATE_ARTICLE, { id, ArticleInput })
-
-    const { user, article } = prepareResponseArticles(response)
-    dispatch(articleUpsertOne(article))
-    dispatch(userAddOne(user))
-
+    await mutation(MUTATE_ARTICLE, { id, ArticleInput })
     return true
   },
 )
 
 export const mutateArticleDelete = createAsyncThunk(
   'articles/mutation/articleDelete',
-  async (id, { dispatch }) => {
-    const response = await mutation(MUTATE_ARTICLE_DELETE, { id })
-
-    const { articleDelete } = response
-    const { article } = prepareResponseArticles({ article: articleDelete })
-    dispatch(articleUpsertOne(article))
-
+  async id => {
+    await mutation(MUTATE_ARTICLE_DELETE, { id })
     return true
   },
 )
 
 export const mutateArticleAction = createAsyncThunk(
   'articles/mutation/articleAction',
-  async ({ id, action }, { dispatch }) => {
-    const response = await mutation(MUTATE_ARTICLE_ACTION, { id, action })
-
-    const { articleAction } = response
-    const { article } = prepareResponseArticles({ article: articleAction })
-
-    dispatch(articleUpsertOne(article))
-
+  async ({ id, action }) => {
+    await mutation(MUTATE_ARTICLE_ACTION, { id, action })
     return true
   },
 )

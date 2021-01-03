@@ -85,6 +85,7 @@ type Query {
   articles(author: MID, pagination: Pagination = {limit : 10}): FeedArticle!
   comment(id: MID!): Comment
   comments(articleId: MID!, pagination: Pagination = {limit : 10}): FeedComment
+  env(key: String!): [String]
   login(password: String, username: String): User
   user(id: MID, username: String): User
   version: String!
