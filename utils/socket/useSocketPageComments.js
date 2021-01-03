@@ -3,11 +3,10 @@ import { useDispatch } from 'react-redux'
 
 import { queryArticle } from '../../store/articles/slice'
 import { queryComment } from '../../store/comments/slice'
-import { useSocket } from './useSocket'
+import socket from './'
 
 export function useSocketPageComments() {
   const dispatch = useDispatch()
-  const socket = useSocket()
 
   useEffect(() => {
     if (socket) {

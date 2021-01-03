@@ -4,6 +4,7 @@ const withCss = require('@zeit/next-css')
 const nextConfig = {
   publicRuntimeConfig: {
     SERVER_URL: process.env.SERVER_URL,
+    SERVER_URL_PATH: process.env.SERVER_URL_PATH,
     LOCAL_STORAGE_KEY: process.env.LOCAL_STORAGE_KEY,
   },
 }

@@ -3,12 +3,11 @@ import { setContext } from '@apollo/client/link/context'
 import getConfig from 'next/config'
 
 const { publicRuntimeConfig } = getConfig()
-const { SERVER_URL } = publicRuntimeConfig
+const { SERVER_URL, SERVER_URL_PATH } = publicRuntimeConfig
 
 import { loadUser } from '../localStorage'
-
 const httpLink = createHttpLink({
-  uri: SERVER_URL,
+  uri: SERVER_URL + SERVER_URL_PATH,
 })
 
 const authLink = setContext((_, { headers }) => {
