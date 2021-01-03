@@ -2,10 +2,11 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { queryArticle } from '../../store/articles/slice'
-import socket from './'
+import { useSocket } from './useSocket'
 
 export function useSocketPageArticles() {
   const dispatch = useDispatch()
+  const socket = useSocket()
 
   useEffect(() => {
     if (socket) {
