@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { queryArticle } from '../../store/articles/asyncThunk'
-import { queryComment } from '../../store/comments/asyncThunk'
+import { queryArticle } from '../../store/articles/slice'
+import { queryComment } from '../../store/comments/slice'
 import { useSocket } from './useSocket'
 
 export function useSocketPageComments() {

@@ -19,6 +19,7 @@ export const CommentFragment = gql`
         name
       }
     }
+    active
     canMutate
     action
     userAction {

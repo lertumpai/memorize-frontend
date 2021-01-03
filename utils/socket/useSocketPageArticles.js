@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { queryArticle } from '../../store/articles/asyncThunk'
+import { queryArticle } from '../../store/articles/slice'
 import { useSocket } from './useSocket'
 
 export function useSocketPageArticles() {

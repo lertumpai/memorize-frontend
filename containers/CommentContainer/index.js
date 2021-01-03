@@ -120,7 +120,9 @@ const CommentContainerIndex = ({ articleId }) => {
   }, [article, users, content])
 
   const CommentContentBoxes = useCallback(() => {
-    return comments.map(comment => {
+    return comments
+      .filter(comment => comment.active)
+      .map(comment => {
       const user = userSelectors.selectById(state, comment.author)
       return (
         <div
