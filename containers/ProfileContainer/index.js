@@ -11,6 +11,7 @@ import Loading from '../../components/Loading/dynamic'
 import TextBox from '../../components/TextBox/dynamic'
 import TextAreaBox from '../../components/TextAreaBox/dynamic'
 import Button from '../../components/Button/dynamic'
+import Image from '../../components/Image/dynamic'
 
 import './style.scss'
 
@@ -44,6 +45,19 @@ const ProfileContainerIndex = () => {
 
   function onDateChange(date) {
     setProfile({ ...profile, birthday: date.toDate() })
+  }
+
+  function ImageProfile() {
+    return (
+      <div className='container-profile-form-control-memorize'>
+        <div className='container-profile-image-memorize'>
+          <Image
+            image='http://192.168.1.106:4000/profiles/lertumpai-800-gY9CwSCz6gv521UTtAu6-1609766910951.jpeg'
+            className='image-profile-memorize'
+          />
+        </div>
+      </div>
+    )
   }
 
   function Name() {
@@ -105,6 +119,7 @@ const ProfileContainerIndex = () => {
     return (
       <>
         <div className='container-profile-form-memorize'>
+          {ImageProfile()}
           {Name()}
           {Birthday()}
           {Status()}

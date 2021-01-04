@@ -1,0 +1,19 @@
+@import 'public/style/style';
+
+.image-memorize {
+  width: 100%;
+}
+
+.image-profile-memorize {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: $screen-600) {
+  .image-profile-memorize {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+}

@@ -8,6 +8,7 @@ export const UserFragment = gql`
       status
       name
       birthday
+      image
     }
   }
 `
