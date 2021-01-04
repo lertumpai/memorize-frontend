@@ -1,9 +1,18 @@
 @import 'public/style/style';
 
-.container-profile-image-memorize,
 .container-profile-memorize {
   display: flex;
   justify-content: center;
+}
+
+.container-profile-image-memorize {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container-profile-image-input-memorize {
+  margin-top: 15px;
 }
 
 .form-control {

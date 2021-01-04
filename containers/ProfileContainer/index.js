@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Datetime from 'react-datetime'
 import { useDispatch, useSelector } from 'react-redux'
+import axios from 'axios'
 import moment from 'moment'
+import getConfig from 'next/config'
 
 import { STATUS_LOADING, STATUS_SUCCESS } from '../../store/status'
 import { saveUser } from '../../utils/localStorage'
@@ -12,6 +14,10 @@ import TextBox from '../../components/TextBox/dynamic'
 import TextAreaBox from '../../components/TextAreaBox/dynamic'
 import Button from '../../components/Button/dynamic'
 import Image from '../../components/Image/dynamic'
+import InputFile from '../../components/InputFile/dynamic'
+
+const { publicRuntimeConfig } = getConfig()
+const { SERVER_UPLOAD_IMAGE_URL, SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH } = publicRuntimeConfig
 
 import './style.scss'
 
@@ -25,6 +31,7 @@ const ProfileContainerIndex = () => {
     name: currentUser?.profile?.name || '',
     status: currentUser?.profile?.status || '',
     birthday: currentUser?.profile?.birthday || moment(),
+    image: currentUser?.profile?.image || 'avatar.svg',
   }
   const [profile, setProfile] = useState(initialProfile)
 
@@ -47,14 +54,29 @@ const ProfileContainerIndex = () => {
     setProfile({ ...profile, birthday: date.toDate() })
   }
 
+  async function onImageChange(e) {
+    const selectedFile = e.target.files[0]
+    const fd = new FormData()
+    fd.append('photo', selectedFile, selectedFile.name)
+    fd.append('userId', currentUser.id)
+
+    const url = `${SERVER_UPLOAD_IMAGE_URL}${SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH}`
+    const response = await axios.post(url, fd)
+    const { data } = response
+    setProfile({ ...profile, image: data.urlImage })
+  }
+
   function ImageProfile() {
     return (
       <div className='container-profile-form-control-memorize'>
         <div className='container-profile-image-memorize'>
           <Image
-            image='http://localhost:4000/profiles/lertumpai-800-EdrnFlKsnMisyHXRLTOs-1609769572136.jpeg'
+            image={profile.image}
             className='image-profile-memorize'
           />
+        </div>
+        <div className='container-profile-image-input-memorize'>
+          <InputFile onChange={onImageChange}/>
         </div>
       </div>
     )

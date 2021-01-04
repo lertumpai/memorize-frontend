@@ -30,7 +30,7 @@ export const login = createAsyncThunk(
 export const mutationProfile = createAsyncThunk(
   'auth/mutation/profile',
   async ({ id, name, birthday, status, image }) => {
-    const input = { name, birthday, status }
+    const input = { name, birthday, status, image }
     return mutation(SAVE_PROFILE, { id, input })
   },
 )
