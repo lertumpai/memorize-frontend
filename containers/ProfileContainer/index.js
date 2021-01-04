@@ -31,7 +31,12 @@ const ProfileContainerIndex = () => {
     name: currentUser?.profile?.name || '',
     status: currentUser?.profile?.status || '',
     birthday: currentUser?.profile?.birthday || moment(),
-    image: currentUser?.profile?.image || 'avatar.svg',
+    image: {
+      urlImage: currentUser?.profile?.image || 'avatar.svg',
+      destination: '',
+      uploadPath: '',
+      fileName: '',
+    },
   }
   const [profile, setProfile] = useState(initialProfile)
 
@@ -63,7 +68,7 @@ const ProfileContainerIndex = () => {
     const url = `${SERVER_UPLOAD_IMAGE_URL}${SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH}`
     const response = await axios.post(url, fd)
     const { data } = response
-    setProfile({ ...profile, image: data.urlImage })
+    setProfile({ ...profile, image: { ...data } })
   }
 
   function ImageProfile() {
@@ -71,7 +76,7 @@ const ProfileContainerIndex = () => {
       <div className='container-profile-form-control-memorize'>
         <div className='container-profile-image-memorize'>
           <Image
-            image={profile.image}
+            image={profile.image.urlImage}
             className='image-profile-memorize'
           />
         </div>
