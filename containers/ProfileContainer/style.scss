@@ -11,10 +11,6 @@
   flex-direction: column;
 }
 
-.container-profile-image-input-memorize {
-  margin-top: 15px;
-}
-
 .form-control {
   width: 100%;
   margin-top: 8px;
@@ -39,6 +35,7 @@
   border: 3px solid #b1b0b0;
   border-radius: 15px;
   padding: 20px;
+  margin-top: 50px;
 }
 
 .container-profile-saving-memorize {
@@ -48,19 +45,16 @@
 
 @media only screen and (min-width: $screen-768) {
   .container-profile-form-memorize {
-    margin-top: 20px;
     width: 700px;
   }
 }
 @media only screen and (max-width: $screen-768) {
   .container-profile-form-memorize {
-    margin-top: 20px;
     width: 600px;
   }
 }
 @media only screen and (max-width: $screen-600) {
   .container-profile-form-memorize {
-    margin-top: 20px;
     width: 450px;
   }
 
@@ -70,7 +64,7 @@
 }
 @media only screen and (max-width: $screen-600) {
   .container-profile-form-memorize {
-    margin-top: 20px;
+    margin-top: 30px;
     width: 95%;
   }
 

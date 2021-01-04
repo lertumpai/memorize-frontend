@@ -61,14 +61,20 @@ const ProfileContainerIndex = () => {
 
   async function onImageChange(e) {
     const selectedFile = e.target.files[0]
-    const fd = new FormData()
-    fd.append('photo', selectedFile, selectedFile.name)
-    fd.append('userId', currentUser.id)
+    if (selectedFile) {
+      const fd = new FormData()
+      fd.append('photo', selectedFile, selectedFile.name)
+      fd.append('userId', currentUser.id)
 
-    const url = `${SERVER_UPLOAD_IMAGE_URL}${SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH}`
-    const response = await axios.post(url, fd)
-    const { data } = response
-    setProfile({ ...profile, image: { ...data } })
+      const url = `${SERVER_UPLOAD_IMAGE_URL}${SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH}`
+      const response = await axios.post(url, fd)
+      const { data } = response
+      setProfile({ ...profile, image: { ...data } })
+    }
+  }
+
+  function onClickImage() {
+    document.getElementById('input-image-profile').click()
   }
 
   function ImageProfile() {
@@ -78,11 +84,10 @@ const ProfileContainerIndex = () => {
           <Image
             image={profile.image.urlImage}
             className='image-profile-memorize'
+            onClick={onClickImage}
           />
         </div>
-        <div className='container-profile-image-input-memorize'>
-          <InputImage onChange={onImageChange}/>
-        </div>
+        <InputImage onChange={onImageChange} id='input-image-profile' />
       </div>
     )
   }

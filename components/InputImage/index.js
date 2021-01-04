@@ -2,13 +2,12 @@ import React from 'react'
 
 import './style.scss'
 
-const InputFileIndex = ({ onChange, value, id, className = '', type = 'file' }) => {
+const InputFileIndex = ({ onChange, id }) => {
   return <input
-    className={className}
+    className='input-image-memorize'
     accept='image/*'
     id={id}
-    type={type}
-    value={value}
+    type='file'
     onChange={onChange}
   />
 }
