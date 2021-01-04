@@ -52,7 +52,7 @@ const ProfileContainerIndex = () => {
       <div className='container-profile-form-control-memorize'>
         <div className='container-profile-image-memorize'>
           <Image
-            image='http://192.168.1.106:4000/profiles/lertumpai-800-gY9CwSCz6gv521UTtAu6-1609766910951.jpeg'
+            image='http://localhost:4000/profiles/lertumpai-800-EdrnFlKsnMisyHXRLTOs-1609769572136.jpeg'
             className='image-profile-memorize'
           />
         </div>
