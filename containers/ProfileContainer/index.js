@@ -14,7 +14,7 @@ import TextBox from '../../components/TextBox/dynamic'
 import TextAreaBox from '../../components/TextAreaBox/dynamic'
 import Button from '../../components/Button/dynamic'
 import Image from '../../components/Image/dynamic'
-import InputFile from '../../components/InputFile/dynamic'
+import InputImage from '../../components/InputImage/dynamic'
 
 const { publicRuntimeConfig } = getConfig()
 const { SERVER_UPLOAD_IMAGE_URL, SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH } = publicRuntimeConfig
@@ -81,7 +81,7 @@ const ProfileContainerIndex = () => {
           />
         </div>
         <div className='container-profile-image-input-memorize'>
-          <InputFile onChange={onImageChange}/>
+          <InputImage onChange={onImageChange}/>
         </div>
       </div>
     )
