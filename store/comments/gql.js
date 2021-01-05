@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import { UserContentFragment } from '../users/gql'
+
 export const CommentActionFragment = gql`
   fragment CommentActionFragment on CommentAction {
     ... on CommentAction {
@@ -14,10 +16,7 @@ export const CommentFragment = gql`
   fragment CommentFragment on Comment {
     id
     author {
-      id
-      profile {
-        name
-      }
+      ...UserContentFragment
     }
     active
     canMutate
@@ -29,6 +28,7 @@ export const CommentFragment = gql`
     createdAt
   }
   ${CommentActionFragment}
+  ${UserContentFragment}
 `
 
 export const QUERY_COMMENTS = gql`

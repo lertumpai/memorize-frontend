@@ -6,9 +6,22 @@
 
 // head
 .container-content-box-head-memorize {
+  display: flex;
   border: 2px solid #e2e2e2;
   border-radius: 13px;
   padding: 10px 15px;
+}
+
+.container-content-box-head-left-memorize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.container-content-box-head-right-memorize {
+  width: calc(100% - 60px);
 }
 
 .container-content-box-head-profile-name-memorize {

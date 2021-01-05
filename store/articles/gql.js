@@ -1,5 +1,7 @@
 import { gql } from '@apollo/client'
 
+import { UserContentFragment } from '../users/gql'
+
 export const ArticleActionFragment = gql`
   fragment ArticleActionFragment on ArticleAction {
     ... on ArticleAction {
@@ -23,13 +25,11 @@ export const ArticleFragment = gql`
       ...ArticleActionFragment
     }
     author {
-      id
-      profile {
-        name
-      }
+      ...UserContentFragment
     }
   }
   ${ArticleActionFragment}
+  ${UserContentFragment}
 `
 
 export const QUERY_ARTICLES = gql`

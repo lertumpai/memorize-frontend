@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import moment from 'moment'
 
 import Button from '../Button/dynamic'
+import Image from '../Image/dynamic'
 import ModalConfirm from '../ModalConfirm/dynamic'
 import ModalMemorizeUpdateContentBox from '../ModalMemorizeUpdateContentBox/dynamic'
 
@@ -65,14 +66,22 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
   function MemorizeContentBoxHead() {
     return (
       <div className='container-content-box-head-memorize'>
-        <div className='container-content-box-head-profile-name-memorize'>
-          <div className='container-profile-name-box-memorize'>
-            {author?.profile?.name || 'unknown'}
-          </div>
-          {memorize?.canMutate ? MemorizeEditDeleteBox() : ''}
+        <div className='container-content-box-head-left-memorize'>
+          <Image
+            image={author.profile?.image || 'avatar.svg'}
+            className='image-profile-content-memorize'
+          />
         </div>
-        <div className='container-content-box-head-createdAt-memorize'>
-          {moment(memorize?.createdAt).format('DD/MM/YYYY HH:mm:ss')}
+        <div className='container-content-box-head-right-memorize'>
+          <div className='container-content-box-head-profile-name-memorize'>
+            <div className='container-profile-name-box-memorize'>
+              {author?.profile?.name || 'unknown'}
+            </div>
+            {memorize?.canMutate ? MemorizeEditDeleteBox() : ''}
+          </div>
+          <div className='container-content-box-head-createdAt-memorize'>
+            {moment(memorize?.createdAt).format('DD/MM/YYYY HH:mm:ss')}
+          </div>
         </div>
       </div>
     )
