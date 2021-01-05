@@ -68,7 +68,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
       <div className='container-content-box-head-memorize'>
         <div className='container-content-box-head-left-memorize'>
           <Image
-            image={author.profile?.image || 'avatar.svg'}
+            image={author?.profile?.image || 'avatar.svg'}
             className='image-profile-content-memorize'
           />
         </div>
