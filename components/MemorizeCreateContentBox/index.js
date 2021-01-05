@@ -25,18 +25,26 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
   function MemorizeCreateButton() {
     const color = content ? 'green-memorize' : 'disable-memorize'
     const classNameButton = `button-create-content-memorize ${color}`
-    return (
-        <div className='container-create-content-button-memorize'>
-          <Button onClick={onClickMemorize} className={classNameButton} value='Memorize' />
-        </div>
-      )
+    return <Button onClick={onClickMemorize} className={classNameButton} value='Memorize' />
+  }
+
+  function MemorizeImage() {
+    const classNameIcon = 'icon-upload-image-memorize fa fa-picture-o'
+    return <i className={classNameIcon} />
   }
 
   function MemorizeCreateContentBox() {
     return (
       <div className='container-form-create-content-box-memorize'>
         {MemorizeContentBox()}
-        <MemorizeCreateButton />
+        <div className='container-form-upload-create-memorize'>
+          <div className='container-form-upload-image-memorize'>
+            {MemorizeImage()}
+          </div>
+          <div className='container-create-content-button-memorize'>
+            {MemorizeCreateButton()}
+          </div>
+        </div>
       </div>
     )
   }

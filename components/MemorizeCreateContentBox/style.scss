@@ -9,6 +9,26 @@
   padding: 20px;
 }
 
-.container-create-content-button-memorize {
+.container-form-upload-create-memorize {
   margin-top: 10px;
+  display: flex;
+}
+
+.container-create-content-button-memorize {
+  width: calc(100% - 50px);
+}
+
+.container-form-upload-image-memorize {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-upload-image-memorize {
+  font-size: 30px;
+  padding: 5px;
+  border-radius: 50%;
+  color: $blue-memorize;
+  border: 2px solid $blue-memorize;
 }
