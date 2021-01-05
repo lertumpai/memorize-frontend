@@ -31,14 +31,12 @@ const ProfileContainerIndex = () => {
     name: currentUser?.profile?.name || '',
     status: currentUser?.profile?.status || '',
     birthday: currentUser?.profile?.birthday || moment(),
-    image: {
-      urlImage: currentUser?.profile?.image || 'avatar.svg',
-      destination: '',
-      uploadPath: '',
-      fileName: '',
-    },
+    image: currentUser?.profile?.image || 'avatar.svg',
   }
   const [profile, setProfile] = useState(initialProfile)
+
+  const initialImage = {}
+  const [image, setImage] = useState(initialImage)
 
   useEffect(() => {
     if (status === STATUS_SUCCESS) {
@@ -48,7 +46,7 @@ const ProfileContainerIndex = () => {
   })
 
   function onSave() {
-    dispatch(mutationProfile({ ...profile, id: currentUser?.id }))
+    dispatch(mutationProfile({ ...profile, image, id: currentUser?.id }))
   }
 
   function onProfileChange(e) {
@@ -69,7 +67,12 @@ const ProfileContainerIndex = () => {
       const url = `${SERVER_UPLOAD_IMAGE_URL}${SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH}`
       const response = await axios.post(url, fd)
       const { data } = response
-      setProfile({ ...profile, image: { ...data } })
+      setImage({
+        destination: data.destination,
+        uploadPath: data.uploadPath,
+        fileName: data.fileName,
+      })
+      setProfile({ ...profile, image: data.urlImage })
     }
   }
 
@@ -82,7 +85,7 @@ const ProfileContainerIndex = () => {
       <div className='container-profile-form-control-memorize'>
         <div className='container-profile-image-memorize'>
           <Image
-            image={profile.image.urlImage}
+            image={profile.image}
             className='image-profile-memorize'
             onClick={onClickImage}
           />
