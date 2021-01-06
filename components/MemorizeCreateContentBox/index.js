@@ -30,7 +30,11 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
 
   function MemorizeImage() {
     const classNameIcon = 'icon-upload-image-memorize fa fa-picture-o'
-    return <i className={classNameIcon} />
+    return (
+      <div className='container-form-upload-image-memorize'>
+        <i className={classNameIcon} />
+      </div>
+    )
   }
 
   function MemorizeCreateContentBox() {
@@ -38,9 +42,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
       <div className='container-form-create-content-box-memorize'>
         {MemorizeContentBox()}
         <div className='container-form-upload-create-memorize'>
-          <div className='container-form-upload-image-memorize'>
-            {MemorizeImage()}
-          </div>
+          {!articleId ? MemorizeImage() : ''}
           <div className='container-create-content-button-memorize'>
             {MemorizeCreateButton()}
           </div>

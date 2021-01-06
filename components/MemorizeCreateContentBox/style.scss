@@ -15,7 +15,7 @@
 }
 
 .container-create-content-button-memorize {
-  width: calc(100% - 50px);
+  width: 100%;
 }
 
 .container-form-upload-image-memorize {
@@ -23,6 +23,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  margin-right: 5px;
 }
 
 .icon-upload-image-memorize {
