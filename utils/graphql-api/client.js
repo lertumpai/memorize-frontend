@@ -7,7 +7,7 @@ const { SERVER_URL, SERVER_URL_PATH } = publicRuntimeConfig
 
 import { loadUser } from '../localStorage'
 const httpLink = createHttpLink({
-  uri: SERVER_URL + SERVER_URL_PATH,
+  uri: `${SERVER_URL}${SERVER_URL_PATH}`,
 })
 
 const authLink = setContext((_, { headers }) => {
