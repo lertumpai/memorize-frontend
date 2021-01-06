@@ -107,6 +107,12 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
         <div className='container-content-box-content-memorize'>
           {memorize?.content}
         </div>
+        <div className='container-content-box-image-memorize'>
+          <Image
+            image={memorize?.image}
+            className='image-content-memorize'
+          />
+        </div>
         <hr className='content-box-body-horizontal-memorize' />
         <div className='container-content-box-body-button-memorize'>
           {MemorizeLikeButton()}

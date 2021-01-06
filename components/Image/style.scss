@@ -16,15 +16,9 @@
   border-radius: 50%;
 }
 
-.image-content-box-memorize {
-  width: 50%;
+.image-create-content-box-memorize,
+.image-content-memorize {
   border-radius: 15px;
-}
-
-.container-image-content-box-memorize {
-  display: flex;
-  justify-content: center;
-  margin-top: 5px;
 }
 
 @media only screen and (max-width: $screen-600) {
@@ -32,5 +26,10 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
+  }
+
+  .image-create-content-box-memorize,
+  .image-content-memorize {
+    width: 100%;
   }
 }

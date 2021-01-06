@@ -79,7 +79,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
       ? (
         <Image
           image={tempImage}
-          className='image-content-box-memorize'
+          className='image-create-content-box-memorize'
         />
       ) : ''
   }
