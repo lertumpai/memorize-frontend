@@ -35,8 +35,7 @@ const ProfileContainerIndex = () => {
   }
   const [profile, setProfile] = useState(initialProfile)
 
-  const initialImage = {}
-  const [image, setImage] = useState(initialImage)
+  const [image, setImage] = useState(null)
 
   useEffect(() => {
     if (status === STATUS_SUCCESS) {

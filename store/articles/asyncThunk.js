@@ -36,8 +36,8 @@ export const queryArticle = createAsyncThunk(
 
 export const mutateArticle = createAsyncThunk(
   'articles/mutation/article',
-  async ({ id, content }) => {
-    const ArticleInput = { content }
+  async ({ id, content, image }) => {
+    const ArticleInput = { content, image }
     await mutation(MUTATE_ARTICLE, { id, ArticleInput })
     return true
   },

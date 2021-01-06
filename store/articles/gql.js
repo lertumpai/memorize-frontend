@@ -16,6 +16,7 @@ export const ArticleFragment = gql`
   fragment ArticleFragment on Article {
     id
     content
+    image
     createdAt
     comment
     canMutate

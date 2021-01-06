@@ -16,10 +16,11 @@ export function useContent({ mutateMemorize, actionMemorize, deleteMemorize }) {
     }
   }, [])
 
-  const onMemorize = useCallback(({ id, content, articleId, setContent }) => {
+  const onMemorize = useCallback(({ id, content, image, articleId, setContent, setTempImage }) => {
     if (mutateMemorize) {
-      dispatch(mutateMemorize({ id, content, articleId }))
+      dispatch(mutateMemorize({ id, content, image, articleId }))
       if (setContent) setContent('')
+      if (setTempImage) setTempImage('')
     }
   }, [])
 

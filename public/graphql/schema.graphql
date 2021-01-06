@@ -21,6 +21,7 @@ type Article {
   deletedAt: Date
   hasMore: Boolean!
   id: MID!
+  image: String
   updatedAt: Date
   userAction: Action
 }
@@ -96,7 +97,7 @@ type User {
   active: Boolean!
   id: MID!
   profile: ProfileUser
-  token: String!
+  token: String
 }
 
 enum ActionEnum {
@@ -111,11 +112,18 @@ enum CacheControlScope {
 
 input ArticleInput {
   content: String!
+  image: ImageInput
 }
 
 input CommentInput {
   articleId: MID
   content: String!
+}
+
+input ImageInput {
+  destination: String
+  fileName: String
+  uploadPath: String
 }
 
 input Pagination {
@@ -126,7 +134,7 @@ input Pagination {
 
 input ProfileInput {
   birthday: Date
-  image: String
+  image: ImageInput
   name: String
   status: String
 }
