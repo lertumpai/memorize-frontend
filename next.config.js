@@ -12,6 +12,8 @@ const nextConfig = {
   },
 }
 
+console.log(nextConfig)
+
 module.exports = withCss(
   withSass({
     ...nextConfig,
