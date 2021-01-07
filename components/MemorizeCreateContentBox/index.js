@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
 import getConfig from 'next/config'
-import axios from 'axios'
 import { useSelector } from 'react-redux'
 
 import Button from '../Button/dynamic'
 import TextAreaBox from '../TextAreaBox/dynamic'
 import InputImage from '../InputImage/dynamic'
 import Image from '../Image/dynamic'
+
+import { useUpload } from '../../utils/hooks/useUpload'
 
 import './style.scss'
 
@@ -42,24 +43,17 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
     return <Button onClick={onClickMemorize} className={classNameButton} value='Memorize' />
   }
 
-  async function onImageChange(e) {
-    const selectedFile = e.target.files[0]
-    if (selectedFile) {
-      const fd = new FormData()
-      fd.append('photo', selectedFile, selectedFile.name)
-      fd.append('userId', currentUser.id)
+  const url = useMemo(() => `${SERVER_UPLOAD_IMAGE_URL}${SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH}`, [])
+  const setData = useCallback(data => {
+    setImage({
+      destination: data.destination,
+      uploadPath: data.uploadPath,
+      fileName: data.fileName,
+    })
+    setTempImage(data.urlImage)
+  }, [])
 
-      const url = `${SERVER_UPLOAD_IMAGE_URL}${SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH}`
-      const response = await axios.post(url, fd)
-      const { data } = response
-      setImage({
-        destination: data.destination,
-        uploadPath: data.uploadPath,
-        fileName: data.fileName,
-      })
-      setTempImage(data.urlImage)
-    }
-  }
+  const { uploadStatus, onImageChange } = useUpload({ url, setData, currentUser })
 
   function onClickImage() {
     document.getElementById('input-image-profile').click()
@@ -80,6 +74,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
         <Image
           image={tempImage}
           className='image-create-content-box-memorize'
+          status={uploadStatus}
         />
       ) : ''
   }

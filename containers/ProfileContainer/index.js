@@ -66,7 +66,7 @@ const ProfileContainerIndex = () => {
     setProfile({ ...profile, image: data.urlImage })
   }, [])
 
-  const { uploadState, onImageChange } = useUpload({ url, setData, currentUser })
+  const { uploadStatus, onImageChange } = useUpload({ url, setData, currentUser })
 
   function onClickImage() {
     document.getElementById('input-image-profile').click()
@@ -78,7 +78,7 @@ const ProfileContainerIndex = () => {
         <div className='container-profile-image-memorize'>
           <Image
             image={profile.image}
-            status={uploadState}
+            status={uploadStatus}
             className='image-profile-memorize'
             onClick={onClickImage}
           />

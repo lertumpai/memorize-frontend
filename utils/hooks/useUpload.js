@@ -4,12 +4,12 @@ import axios from 'axios'
 import { STATUS_IDLE, STATUS_LOADING } from '../../store/status'
 
 export function useUpload({ url, currentUser, setData }) {
-  const [uploadState, setUploadState] = useState(STATUS_IDLE)
+  const [uploadStatus, setUploadStatus] = useState(STATUS_IDLE)
 
   const onImageChange = useCallback(async e => {
     const selectedFile = e.target.files[0]
     if (selectedFile) {
-      setUploadState(STATUS_LOADING)
+      setUploadStatus(STATUS_LOADING)
 
       const fd = new FormData()
       fd.append('photo', selectedFile, selectedFile.name)
@@ -19,12 +19,12 @@ export function useUpload({ url, currentUser, setData }) {
       const { data } = response
       setData(data)
 
-      setUploadState(STATUS_IDLE)
+      setUploadStatus(STATUS_IDLE)
     }
   }, [url, setData, currentUser])
 
   return {
-    uploadState,
+    uploadStatus,
     onImageChange,
   }
 }
