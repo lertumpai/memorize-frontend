@@ -7,6 +7,7 @@ import TextAreaBox from '../TextAreaBox/dynamic'
 import InputImage from '../InputImage/dynamic'
 import Image from '../Image/dynamic'
 
+import { STATUS_LOADING } from '../../store/status'
 import { useUpload } from '../../utils/hooks/useUpload'
 
 import './style.scss'
@@ -69,7 +70,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
   }
 
   function MemorizeContentImage() {
-    return tempImage
+    return tempImage || uploadStatus === STATUS_LOADING
       ? (
         <Image
           image={tempImage}
