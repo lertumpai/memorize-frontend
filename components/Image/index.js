@@ -1,12 +1,22 @@
 import React from 'react'
 import './style.scss'
 
-const ImageIndex = ({ image, className = '', onClick }) => {
-  return <img
-    src={image}
-    className={className || `image-memorize`}
-    onClick={onClick}
-  />
+import { STATUS_LOADING } from '../../store/status'
+
+const ImageIndex = ({ image, className = '', onClick, status }) => {
+  function Image() {
+    return (
+      <>
+        <img
+          src={status === STATUS_LOADING ? '/loading/image_loading.gif' : image}
+          className={className || `image-memorize`}
+          onClick={onClick}
+        />
+      </>
+    )
+  }
+
+  return Image()
 }
 
 export default React.memo(ImageIndex)

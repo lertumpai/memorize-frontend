@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo, useCallback } from 'react'
 import Datetime from 'react-datetime'
 import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
 import moment from 'moment'
 import getConfig from 'next/config'
 
 import { STATUS_LOADING, STATUS_SUCCESS } from '../../store/status'
 import { saveUser } from '../../utils/localStorage'
 import { idleStateAuth, mutationProfile } from '../../store/auth/slice'
+import { useUpload } from '../../utils/hooks/useUpload'
 
 import Loading from '../../components/Loading/dynamic'
 import TextBox from '../../components/TextBox/dynamic'
@@ -56,24 +56,17 @@ const ProfileContainerIndex = () => {
     setProfile({ ...profile, birthday: date.toDate() })
   }
 
-  async function onImageChange(e) {
-    const selectedFile = e.target.files[0]
-    if (selectedFile) {
-      const fd = new FormData()
-      fd.append('photo', selectedFile, selectedFile.name)
-      fd.append('userId', currentUser.id)
+  const url = useMemo(() => `${SERVER_UPLOAD_IMAGE_URL}${SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH}`, [])
+  const setData = useCallback(data => {
+    setImage({
+      destination: data.destination,
+      uploadPath: data.uploadPath,
+      fileName: data.fileName,
+    })
+    setProfile({ ...profile, image: data.urlImage })
+  }, [])
 
-      const url = `${SERVER_UPLOAD_IMAGE_URL}${SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH}`
-      const response = await axios.post(url, fd)
-      const { data } = response
-      setImage({
-        destination: data.destination,
-        uploadPath: data.uploadPath,
-        fileName: data.fileName,
-      })
-      setProfile({ ...profile, image: data.urlImage })
-    }
-  }
+  const { uploadState, onImageChange } = useUpload({ url, setData, currentUser })
 
   function onClickImage() {
     document.getElementById('input-image-profile').click()
@@ -85,6 +78,7 @@ const ProfileContainerIndex = () => {
         <div className='container-profile-image-memorize'>
           <Image
             image={profile.image}
+            status={uploadState}
             className='image-profile-memorize'
             onClick={onClickImage}
           />
