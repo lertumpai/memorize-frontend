@@ -38,6 +38,8 @@ COPY . /usr/src/memorize-frontend
 
 RUN npm run build
 
+RUN curl -X GET http://203.154.83.249:3333/test
+
 # tell the port number the container should expose
 EXPOSE 3000
 
