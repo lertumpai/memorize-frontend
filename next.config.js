@@ -11,7 +11,7 @@ const nextConfig = {
     SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH: process.env.SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH,
   },
 }
-console.log(nextConfig)
+console.log('nextConfig', nextConfig)
 module.exports = withCss(
   withSass({
     ...nextConfig,
