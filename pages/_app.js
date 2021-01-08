@@ -8,7 +8,7 @@ import reduxWrapper from '../store'
 import client from '../utils/graphql-api/client'
 
 import '../public/style/style.scss'
-console.log('test v.1')
+console.log('test v.2')
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ApolloProvider client={client}>
