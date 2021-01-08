@@ -1,6 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'
 
+import pkg from '../package.json'
+
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
@@ -11,7 +13,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>Memorize</title>
+          <title>Memorize version {pkg.version}</title>
           <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link href='https://fonts.googleapis.com/css2?family=Open+Sans&display=swap' rel='stylesheet' />
           <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' />
