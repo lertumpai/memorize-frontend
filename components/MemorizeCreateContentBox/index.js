@@ -13,7 +13,11 @@ import { useUpload } from '../../utils/hooks/useUpload'
 import './style.scss'
 
 const { publicRuntimeConfig } = getConfig()
-const { SERVER_UPLOAD_IMAGE_URL, SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH } = publicRuntimeConfig
+const {
+  SERVER_UPLOAD_IMAGE_URL,
+  SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH,
+  SERVER_URL_IMAGE_URL,
+} = publicRuntimeConfig
 
 const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onChange, onMemorize }) => {
   const [image, setImage] = useState(null)
@@ -51,7 +55,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
       uploadPath: data.uploadPath,
       fileName: data.fileName,
     })
-    setTempImage(data.urlImage)
+    setTempImage(`${SERVER_URL_IMAGE_URL}${data.urlImage}`)
   }, [])
 
   const { uploadStatus, onImageChange } = useUpload({ url, setData, currentUser })

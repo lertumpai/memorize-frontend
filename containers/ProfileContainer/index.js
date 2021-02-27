@@ -17,7 +17,11 @@ import Image from '../../components/Image/dynamic'
 import InputImage from '../../components/InputImage/dynamic'
 
 const { publicRuntimeConfig } = getConfig()
-const { SERVER_UPLOAD_IMAGE_URL, SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH } = publicRuntimeConfig
+const {
+  SERVER_UPLOAD_IMAGE_URL,
+  SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH,
+  SERVER_URL_IMAGE_URL,
+} = publicRuntimeConfig
 
 import './style.scss'
 
@@ -63,7 +67,10 @@ const ProfileContainerIndex = () => {
       uploadPath: data.uploadPath,
       fileName: data.fileName,
     })
-    setProfile({ ...profile, image: data.urlImage })
+    setProfile({
+      ...profile,
+      image: `${SERVER_URL_IMAGE_URL}${data.urlImage}`,
+    })
   }, [])
 
   const { uploadStatus, onImageChange } = useUpload({ url, setData, currentUser })
