@@ -20,7 +20,7 @@ const { publicRuntimeConfig } = getConfig()
 const {
   SERVER_UPLOAD_IMAGE_URL,
   SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH,
-  SERVER_URL_IMAGE_URL,
+  SERVER_URL_IMAGE,
 } = publicRuntimeConfig
 
 import './style.scss'
@@ -69,7 +69,7 @@ const ProfileContainerIndex = () => {
     })
     setProfile({
       ...profile,
-      image: `${SERVER_URL_IMAGE_URL}${data.urlImage}`,
+      image: `${SERVER_URL_IMAGE}${data.urlImage}`,
     })
   }, [])
 

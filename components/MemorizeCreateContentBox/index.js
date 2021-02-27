@@ -16,7 +16,7 @@ const { publicRuntimeConfig } = getConfig()
 const {
   SERVER_UPLOAD_IMAGE_URL,
   SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH,
-  SERVER_URL_IMAGE_URL,
+  SERVER_URL_IMAGE,
 } = publicRuntimeConfig
 
 const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onChange, onMemorize }) => {
@@ -55,7 +55,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
       uploadPath: data.uploadPath,
       fileName: data.fileName,
     })
-    setTempImage(`${SERVER_URL_IMAGE_URL}${data.urlImage}`)
+    setTempImage(`${SERVER_URL_IMAGE}${data.urlImage}`)
   }, [])
 
   const { uploadStatus, onImageChange } = useUpload({ url, setData, currentUser })
