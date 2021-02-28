@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Modal from '../Modal/dynamic'
-import Button from '../Button/dynamic'
 import CropImage from '../CropImage/dynamic'
 
 import './style.scss'

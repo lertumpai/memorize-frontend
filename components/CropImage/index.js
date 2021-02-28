@@ -13,14 +13,14 @@ function generateImage(canvas) {
 }
 
 const CropImageIndex = ({ onSubmit, onCancel }) => {
-  const [upImg, setUpImg] = useState(null)
-  const imgRef = useRef(null)
-  const previewCanvasRef = useRef(null)
+  const [image, setImage] = useState({ base64: null, name: null })
   const [crop, setCrop] = useState({ width: 300, height: 300, aspect: 1 })
   const [completedCrop, setCompletedCrop] = useState(null)
+  const imgRef = useRef(null)
+  const previewCanvasRef = useRef(null)
 
   function reset() {
-    setUpImg(null)
+    setImage({ uploadImage: null, imageName: null })
     setCompletedCrop(null)
     setCrop({ width: 300, height: 300, aspect: 1 })
   }
@@ -29,14 +29,20 @@ const CropImageIndex = ({ onSubmit, onCancel }) => {
     onCancel(reset)
   }
 
+  async function onClickSubmit() {
+    const croppedImage = await generateImage(previewCanvasRef.current)
+    onSubmit({ fnReset: reset, image: { name: image.name, blob: croppedImage } })
+  }
+
   function onClickImage() {
     document.getElementById('input-image-profile').click()
   }
 
   const onSelectFile = useCallback(e => {
-    if (e.target.files && e.target.files.length > 0) {
+    const files = e.target.files
+    if (files && files.length > 0) {
       const reader = new FileReader()
-      reader.addEventListener('load', () => setUpImg(reader.result))
+      reader.addEventListener('load', () => setImage({ base64: reader.result, name: files[0].name }))
       reader.readAsDataURL(e.target.files[0])
     }
   }, [])
@@ -92,7 +98,7 @@ const CropImageIndex = ({ onSubmit, onCancel }) => {
     return (
       <div className='container-canvas-crop-image-memorize'>
         <ReactCrop
-          src={upImg}
+          src={image.base64}
           onImageLoaded={onLoad}
           crop={crop}
           onChange={c => setCrop(c)}
@@ -113,7 +119,7 @@ const CropImageIndex = ({ onSubmit, onCancel }) => {
     const classNameCancelButton = 'button-confirm-memorize red-memorize'
     return (
       <div className='container-confirm-modal-button-memorize'>
-        <Button className={classNameConfirmButton} value='Confirm' onClick={onSubmit} />
+        <Button className={classNameConfirmButton} value='Confirm' onClick={onClickSubmit} />
         <Button className={classNameCancelButton} value='Cancel' onClick={onClickCancel} />
       </div>
     )
@@ -123,7 +129,7 @@ const CropImageIndex = ({ onSubmit, onCancel }) => {
     return (
       <>
         <InputImage onChange={onSelectFile} id='input-image-profile' />
-        {upImg ? CanvasCropImage() : IconUploadImage()}
+        {image.name ? CanvasCropImage() : IconUploadImage()}
         {CropImageButton()}
       </>
     )

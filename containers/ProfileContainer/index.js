@@ -75,7 +75,7 @@ const ProfileContainerIndex = () => {
     })
   }, [])
 
-  const { uploadStatus } = useUpload({ url, setData, currentUser })
+  const { uploadStatus, onUploadImage } = useUpload({ url, setData, currentUser })
 
   const onClickImage = useCallback(() => {
     setCropImageDisplay('')
@@ -85,6 +85,12 @@ const ProfileContainerIndex = () => {
     fnReset()
     setCropImageDisplay('hide')
   }, [])
+
+  const onSubmitUploadProfile = useCallback(async ({ fnReset, image }) => {
+    await onUploadImage(image)
+    fnReset()
+    setCropImageDisplay('hide')
+  }, [onUploadImage])
 
   function ImageProfile() {
     return (
@@ -159,7 +165,7 @@ const ProfileContainerIndex = () => {
   function ProfileForm() {
     return (
       <>
-        <ModalCropImage display={cropImageDisplay} onCancel={onCancelUploadProfile} />
+        <ModalCropImage display={cropImageDisplay} onCancel={onCancelUploadProfile} onSubmit={onSubmitUploadProfile} />
         <div className='container-profile-form-memorize'>
           {ImageProfile()}
           {Name()}
