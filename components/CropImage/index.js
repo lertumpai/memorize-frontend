@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState, useMemo } from 'react'
 import ReactCrop from 'react-image-crop'
 
 import InputImage from '../InputImage/dynamic'
@@ -6,27 +6,41 @@ import InputImage from '../InputImage/dynamic'
 import './style.scss'
 import Button from '../Button/dynamic'
 
-function generateImage(canvas) {
-  return canvas
-    ? new Promise(resolve => canvas.toBlob(blob => resolve(blob), 'image/jpeg'))
-    : null
-}
-
 const CropImageIndex = ({ onSubmit, onCancel }) => {
   const [image, setImage] = useState({ base64: null, name: null })
-  const [crop, setCrop] = useState({ width: 300, height: 300, aspect: 1 })
+  const [crop, setCrop] = useState(null)
   const [completedCrop, setCompletedCrop] = useState(null)
   const imgRef = useRef(null)
   const previewCanvasRef = useRef(null)
 
+  const cropWidthHeight = useMemo(() => {
+    const screenWidth = window.screen.width
+    if (screenWidth > 600) {
+      return { width: 300, height: 300, aspect: 1 }
+    }
+    else {
+      return { width: 200, height: 200, aspect: 1 }
+    }
+  }, [])
+
+  useEffect(() => {
+    setCrop(cropWidthHeight)
+  }, [])
+
   function reset() {
     setImage({ uploadImage: null, imageName: null })
     setCompletedCrop(null)
-    setCrop({ width: 300, height: 300, aspect: 1 })
+    setCrop(cropWidthHeight)
   }
 
   function onClickCancel() {
     onCancel(reset)
+  }
+
+  function generateImage(canvas) {
+    return canvas
+      ? new Promise(resolve => canvas.toBlob(blob => resolve(blob), 'image/jpeg'))
+      : null
   }
 
   async function onClickSubmit() {

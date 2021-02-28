@@ -87,7 +87,9 @@ const ProfileContainerIndex = () => {
   }, [])
 
   const onSubmitUploadProfile = useCallback(async ({ fnReset, image }) => {
-    await onUploadImage(image)
+    if (image.name && image.blob) {
+      await onUploadImage(image)
+    }
     fnReset()
     setCropImageDisplay('hide')
   }, [onUploadImage])

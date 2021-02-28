@@ -3,8 +3,6 @@ import React from 'react'
 import Modal from '../Modal/dynamic'
 import CropImage from '../CropImage/dynamic'
 
-import './style.scss'
-
 const ModalCropImageIndex = ({ onSubmit, onCancel, display }) => {
   function ModalCropImage() {
     return (

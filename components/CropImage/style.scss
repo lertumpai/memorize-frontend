@@ -16,9 +16,19 @@
 
 .ReactCrop__image {
   max-width: 100%;
-  max-height: 500px;
+  max-height: 496px;
 }
 
 @media only screen and (max-width: $screen-600) {
+  .container-canvas-crop-image-memorize {
+    height: 300px;
+  }
 
+  .icon-crop-image-upload-memorize {
+    font-size: 200px;
+  }
+
+  .ReactCrop__image {
+    max-height: 296px;
+  }
 }
