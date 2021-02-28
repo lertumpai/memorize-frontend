@@ -39,6 +39,13 @@
   height: 150px;
 }
 
+.modal-crop-image-memorize {
+  @extend .modal-memorize;
+  top: 15%;
+  width: 600px !important;
+  height: 600px;
+}
+
 .container-modal-memorize.hide,
 .modal-canvas-memorize.hide,
 .modal-memorize.hide {

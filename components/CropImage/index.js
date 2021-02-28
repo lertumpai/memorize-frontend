@@ -4,6 +4,7 @@ import ReactCrop from 'react-image-crop'
 import InputImage from '../InputImage/dynamic'
 
 import './style.scss'
+import Button from '../Button/dynamic'
 
 function generateImage(canvas) {
   return canvas
@@ -11,12 +12,22 @@ function generateImage(canvas) {
     : null
 }
 
-const CropImageIndex = ({ className = '', onSubmit }) => {
+const CropImageIndex = ({ onSubmit, onCancel }) => {
   const [upImg, setUpImg] = useState(null)
   const imgRef = useRef(null)
   const previewCanvasRef = useRef(null)
   const [crop, setCrop] = useState({ width: 300, height: 300, aspect: 1 })
   const [completedCrop, setCompletedCrop] = useState(null)
+
+  function reset() {
+    setUpImg(null)
+    setCompletedCrop(null)
+    setCrop({ width: 300, height: 300, aspect: 1 })
+  }
+
+  function onClickCancel() {
+    onCancel(reset)
+  }
 
   function onClickImage() {
     document.getElementById('input-image-profile').click()
@@ -71,7 +82,7 @@ const CropImageIndex = ({ className = '', onSubmit }) => {
   function IconUploadImage() {
     const classNameIcon = 'fa fa-picture-o icon-crop-image-upload-memorize'
     return (
-      <div className='container-crop-image-icon-upload-memorize' onClick={onClickImage}>
+      <div className='container-canvas-crop-image-memorize' onClick={onClickImage}>
         <i className={classNameIcon} />
       </div>
     )
@@ -90,13 +101,20 @@ const CropImageIndex = ({ className = '', onSubmit }) => {
         />
         <canvas
           ref={previewCanvasRef}
-          // Rounding is important so the canvas width and height matches/is a multiple for sharpness.
-          style={{
-            width: Math.round(completedCrop?.width ?? 0),
-            height: Math.round(completedCrop?.height ?? 0),
-            display: 'none',
-          }}
+          style={{ display: 'none' }}
         />
+      </div>
+    )
+  }
+
+
+  function CropImageButton() {
+    const classNameConfirmButton = 'button-confirm-memorize green-memorize'
+    const classNameCancelButton = 'button-confirm-memorize red-memorize'
+    return (
+      <div className='container-confirm-modal-button-memorize'>
+        <Button className={classNameConfirmButton} value='Confirm' onClick={onSubmit} />
+        <Button className={classNameCancelButton} value='Cancel' onClick={onClickCancel} />
       </div>
     )
   }
@@ -106,6 +124,7 @@ const CropImageIndex = ({ className = '', onSubmit }) => {
       <>
         <InputImage onChange={onSelectFile} id='input-image-profile' />
         {upImg ? CanvasCropImage() : IconUploadImage()}
+        {CropImageButton()}
       </>
     )
   }

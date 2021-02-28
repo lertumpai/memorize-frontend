@@ -14,7 +14,7 @@ import TextBox from '../../components/TextBox/dynamic'
 import TextAreaBox from '../../components/TextAreaBox/dynamic'
 import Button from '../../components/Button/dynamic'
 import Image from '../../components/Image/dynamic'
-import InputImage from '../../components/InputImage/dynamic'
+import ModalCropImage from '../../components/ModalCropImage/dynamic'
 
 const { publicRuntimeConfig } = getConfig()
 const {
@@ -26,6 +26,8 @@ const {
 import './style.scss'
 
 const ProfileContainerIndex = () => {
+  const [cropImageDisplay, setCropImageDisplay] = useState('hide')
+
   const dispatch = useDispatch()
 
   const auth = useSelector(state => state.auth)
@@ -73,11 +75,16 @@ const ProfileContainerIndex = () => {
     })
   }, [])
 
-  const { uploadStatus, onImageChange } = useUpload({ url, setData, currentUser })
+  const { uploadStatus } = useUpload({ url, setData, currentUser })
 
-  function onClickImage() {
-    document.getElementById('input-image-profile').click()
-  }
+  const onClickImage = useCallback(() => {
+    setCropImageDisplay('')
+  }, [])
+
+  const onCancelUploadProfile = useCallback(fnReset => {
+    fnReset()
+    setCropImageDisplay('hide')
+  }, [])
 
   function ImageProfile() {
     return (
@@ -90,7 +97,6 @@ const ProfileContainerIndex = () => {
             onClick={onClickImage}
           />
         </div>
-        <InputImage onChange={onImageChange} id='input-image-profile' />
       </div>
     )
   }
@@ -153,6 +159,7 @@ const ProfileContainerIndex = () => {
   function ProfileForm() {
     return (
       <>
+        <ModalCropImage display={cropImageDisplay} onCancel={onCancelUploadProfile} />
         <div className='container-profile-form-memorize'>
           {ImageProfile()}
           {Name()}
