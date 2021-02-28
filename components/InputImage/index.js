@@ -2,7 +2,7 @@ import React from 'react'
 
 import './style.scss'
 
-const InputFileIndex = ({ onChange, id }) => {
+const InputImageIndex = ({ onChange, id }) => {
   return <input
     className='input-image-memorize'
     accept='image/*'
@@ -12,4 +12,4 @@ const InputFileIndex = ({ onChange, id }) => {
   />
 }
 
-export default React.memo(InputFileIndex)
+export default React.memo(InputImageIndex)
