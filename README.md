@@ -1,8 +1,13 @@
 # env
 ```
-SERVER_URL=localhost:5000/graphql
+NODE_ENV=production
+SERVER_URL=http://35.189.33.46
+SERVER_URL_PATH=/backend/graphql
 LOCAL_STORAGE_KEY=current_user
-NODE_ENV=development
+SERVER_UPLOAD_IMAGE_URL=http://34.126.83.31:4000/upload
+SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH=/profile
+SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH=/article
+SERVER_URL_IMAGE=http://34.126.83.31:4000
 ```
 
 # CSS convention
