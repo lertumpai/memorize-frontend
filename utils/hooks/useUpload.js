@@ -15,7 +15,11 @@ export function useUpload({ url, currentUser, setData }) {
       fd.append('photo', selectedFile, selectedFile.name)
       fd.append('userId', currentUser.id)
 
-      const response = await axios.post(url, fd)
+      const response = await axios.post(url, fd, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        }
+      })
       const { data } = response
       setData(data)
 
@@ -31,7 +35,11 @@ export function useUpload({ url, currentUser, setData }) {
       fd.append('photo', image.blob, image.name)
       fd.append('userId', currentUser.id)
 
-      const response = await axios.post(url, fd)
+      const response = await axios.post(url, fd, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        }
+      })
       const { data } = response
       setData(data)
 
