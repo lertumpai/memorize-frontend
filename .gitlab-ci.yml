@@ -37,8 +37,8 @@ build-to-gcp-registry:
   script:
     - export VERSION=$(cat package.json | grep version | head -1 | sed 's/[version,",:]//g' | tr -d [:space:])
     - docker build --no-cache
-      --tag $CI_REGISTRY_IMAGE:$VERSION
-      --tag $CI_REGISTRY_IMAGE:latest
+      --tag asia.gcr.io/$PROJECT_ID/$IMAGE_NAME:$VERSION
+      --tag asia.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
       --build-arg NODE_ENV=$NODE_ENV
       --build-arg SERVER_URL=$SERVER_URL
       --build-arg SERVER_URL_PATH=$SERVER_URL_PATH
