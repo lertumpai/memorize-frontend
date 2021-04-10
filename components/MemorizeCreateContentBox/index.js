@@ -14,9 +14,9 @@ import './style.scss'
 
 const { publicRuntimeConfig } = getConfig()
 const {
-  SERVER_UPLOAD_IMAGE_URL,
-  SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH,
-  SERVER_URL_IMAGE,
+  SERVER_UPLOAD_IMAGE_PATH,
+  SERVER_UPLOAD_IMAGE_PATH_ARTICLE,
+  SERVER_URL,
 } = publicRuntimeConfig
 
 const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onChange, onMemorize }) => {
@@ -48,17 +48,20 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
     return <Button onClick={onClickMemorize} className={classNameButton} value='Memorize' />
   }
 
-  const url = useMemo(() => `${SERVER_UPLOAD_IMAGE_URL}${SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH}`, [])
+  const url = useMemo(() => `${SERVER_URL}${SERVER_UPLOAD_IMAGE_PATH}`, [])
   const setData = useCallback(data => {
     setImage({
       destination: data.destination,
-      uploadPath: data.uploadPath,
       fileName: data.fileName,
     })
-    setTempImage(`${SERVER_URL_IMAGE}${data.urlImage}`)
+    setTempImage(data.imageUrl)
   }, [])
 
-  const { uploadStatus, onImageChange } = useUpload({ url, setData, currentUser })
+  const { uploadStatus, onImageChange } = useUpload({
+    url,
+    setData,
+    destination: SERVER_UPLOAD_IMAGE_PATH_ARTICLE,
+  })
 
   function onClickImage() {
     document.getElementById('input-image-profile').click()

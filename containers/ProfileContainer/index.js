@@ -18,9 +18,9 @@ import ModalCropImage from '../../components/ModalCropImage/dynamic'
 
 const { publicRuntimeConfig } = getConfig()
 const {
-  SERVER_UPLOAD_IMAGE_URL,
-  SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH,
-  SERVER_URL_IMAGE,
+  SERVER_UPLOAD_IMAGE_PATH,
+  SERVER_UPLOAD_IMAGE_PATH_PROFILE,
+  SERVER_URL,
 } = publicRuntimeConfig
 
 import './style.scss'
@@ -62,20 +62,23 @@ const ProfileContainerIndex = () => {
     setProfile({ ...profile, birthday: date.toDate() })
   }
 
-  const url = useMemo(() => `${SERVER_UPLOAD_IMAGE_URL}${SERVER_UPLOAD_IMAGE_URL_PROFILE_PATH}`, [])
+  const url = useMemo(() => `${SERVER_URL}${SERVER_UPLOAD_IMAGE_PATH}`, [])
   const setData = useCallback(data => {
     setImage({
       destination: data.destination,
-      uploadPath: data.uploadPath,
       fileName: data.fileName,
     })
     setProfile({
       ...profile,
-      image: `${SERVER_URL_IMAGE}${data.urlImage}`,
+      image: data.imageUrl,
     })
   }, [])
 
-  const { uploadStatus, onUploadImage } = useUpload({ url, setData, currentUser })
+  const { uploadStatus, onUploadImage } = useUpload({
+    url,
+    destination: SERVER_UPLOAD_IMAGE_PATH_PROFILE,
+    setData,
+  })
 
   const onClickImage = useCallback(() => {
     setCropImageDisplay('')
