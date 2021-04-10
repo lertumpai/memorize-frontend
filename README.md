@@ -1,4 +1,5 @@
 # env
+Create file .env.development
 ```
 NODE_ENV=production
 SERVER_URL=http://35.189.33.46
