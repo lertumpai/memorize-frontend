@@ -49,3 +49,16 @@ build-to-gcp-registry:
       --build-arg SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH=$SERVER_UPLOAD_IMAGE_URL_ARTICLE_PATH .
     - docker push asia.gcr.io/$PROJECT_ID/$IMAGE_NAME:$VERSION
     - docker push asia.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
+
+deploy-to-gke-cluster:
+  services:
+    - name: docker:19.03.13-dind
+  image: google/cloud-sdk
+  stage: deploy-to-gke-cluster
+  before_script:
+    - base64 -d $GCP_SA_KEY > ${HOME}/gcloud-service-key.json
+    - gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+    - gcloud container clusters get-credentials memorize-cluster --zone australia-southeast1-a --project $PROJECT_ID
+    - export VERSION=$(cat package.json | grep version | head -1 | sed 's/[version,",:]//g' | tr -d [:space:])
+  script:
+    - kubectl set image deployment/memorize-frontend memorize-frontend=asia.gcr.io/$PROJECT_ID/$IMAGE_NAME:$VERSION --record
