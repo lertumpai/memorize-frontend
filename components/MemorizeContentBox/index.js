@@ -32,6 +32,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
 
   function onClickConfirmDelete() {
     onDelete(memorize.id)
+    setDeleteDisplay('hide')
   }
 
   function onClickComment() {
