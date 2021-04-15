@@ -64,15 +64,21 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
     )
   }
 
-  const MemorizeContentBoxHead = useCallback(() => {
+  const MemorizeProfileImage = useCallback(() => {
+    return (
+      <div className='container-content-box-head-left-memorize'>
+        <Image
+          image={author?.profile?.image || '/avatar.svg'}
+          className='image-profile-content-memorize'
+        />
+      </div>
+    )
+  }, [author?.profile?.image])
+
+  function MemorizeContentBoxHead() {
     return (
       <div className='container-content-box-head-memorize'>
-        <div className='container-content-box-head-left-memorize'>
-          <Image
-            image={author?.profile?.image || '/avatar.svg'}
-            className='image-profile-content-memorize'
-          />
-        </div>
+        {MemorizeProfileImage()}
         <div className='container-content-box-head-right-memorize'>
           <div className='container-content-box-head-profile-name-memorize'>
             <div className='container-profile-name-box-memorize'>
@@ -86,7 +92,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
         </div>
       </div>
     )
-  }, [author])
+  }
 
   const MemorizeCommentButton = useCallback(() => {
     const classNameButton = 'button-comment-memorize blue-memorize'
@@ -150,7 +156,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
           onCancel={onClickCancelEdit}
         />
         <div className='container-memorize-content-box-memorize'>
-          <MemorizeContentBoxHead />
+          {MemorizeContentBoxHead()}
           {MemorizeContentBoxBody()}
         </div>
       </>
