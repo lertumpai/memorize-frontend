@@ -23,6 +23,7 @@ build-to-docker-hub:
       --tag $REGISTRY_IMAGE:latest
       --build-arg NODE_ENV=$NODE_ENV
       --build-arg SERVER_URL=$SERVER_URL
+      --build-arg SERVER_UPLOAD_URL=$SERVER_UPLOAD_URL
       --build-arg SERVER_URL_PATH=$SERVER_URL_PATH
       --build-arg LOCAL_STORAGE_KEY=$LOCAL_STORAGE_KEY
       --build-arg SERVER_UPLOAD_IMAGE_PATH=$SERVER_UPLOAD_IMAGE_PATH
@@ -48,6 +49,7 @@ build-to-gcp-registry:
       --tag asia.gcr.io/$GCP_PROJECT_ID/$IMAGE_NAME:latest
       --build-arg NODE_ENV=$NODE_ENV
       --build-arg SERVER_URL=$SERVER_URL
+      --build-arg SERVER_UPLOAD_URL=$SERVER_UPLOAD_URL
       --build-arg SERVER_URL_PATH=$SERVER_URL_PATH
       --build-arg LOCAL_STORAGE_KEY=$LOCAL_STORAGE_KEY
       --build-arg SERVER_UPLOAD_IMAGE_PATH=$SERVER_UPLOAD_IMAGE_PATH

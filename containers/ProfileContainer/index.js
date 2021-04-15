@@ -20,7 +20,7 @@ const { publicRuntimeConfig } = getConfig()
 const {
   SERVER_UPLOAD_IMAGE_PATH,
   SERVER_UPLOAD_IMAGE_PATH_PROFILE,
-  SERVER_URL,
+  SERVER_UPLOAD_URL,
 } = publicRuntimeConfig
 
 import './style.scss'
@@ -62,7 +62,7 @@ const ProfileContainerIndex = () => {
     setProfile({ ...profile, birthday: date.toDate() })
   }
 
-  const url = useMemo(() => `${SERVER_URL}${SERVER_UPLOAD_IMAGE_PATH}`, [])
+  const url = useMemo(() => `${SERVER_UPLOAD_URL}${SERVER_UPLOAD_IMAGE_PATH}`, [])
   const setData = useCallback(data => {
     setImage({
       destination: data.destination,

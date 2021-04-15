@@ -1,31 +1,26 @@
 import React, { useState, useMemo, useCallback } from 'react'
 import getConfig from 'next/config'
-import { useSelector } from 'react-redux'
 
 import Button from '../Button/dynamic'
 import TextAreaBox from '../TextAreaBox/dynamic'
 import InputImage from '../InputImage/dynamic'
 import Image from '../Image/dynamic'
 
-import { STATUS_IDLE, STATUS_LOADING } from '../../store/status'
+import { STATUS_LOADING } from '../../store/status'
 import { useUpload } from '../../utils/hooks/useUpload'
 
 import './style.scss'
-import axios from 'axios'
 
 const { publicRuntimeConfig } = getConfig()
 const {
   SERVER_UPLOAD_IMAGE_PATH,
   SERVER_UPLOAD_IMAGE_PATH_ARTICLE,
-  SERVER_URL,
+  SERVER_UPLOAD_URL,
 } = publicRuntimeConfig
 
 const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onChange, onMemorize }) => {
   const [image, setImage] = useState(null)
   const [tempImage, setTempImage] = useState('')
-
-  const auth = useSelector(state => state.auth)
-  const { currentUser } = auth
 
   function onClickMemorize() {
     onMemorize({ id, content, image, articleId, setContent, setTempImage })
@@ -49,7 +44,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
     return <Button onClick={onClickMemorize} className={classNameButton} value='Memorize' />
   }
 
-  const url = useMemo(() => `${SERVER_URL}${SERVER_UPLOAD_IMAGE_PATH}`, [])
+  const url = useMemo(() => `${SERVER_UPLOAD_URL}${SERVER_UPLOAD_IMAGE_PATH}`, [])
   const setData = useCallback(data => {
     setImage({
       destination: data.destination,
