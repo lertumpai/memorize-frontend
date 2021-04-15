@@ -29,7 +29,6 @@ export function useUpload({ url, destination, setData }) {
 
   return {
     uploadStatus,
-    onImageChange,
     onUploadImage,
   }
 }
