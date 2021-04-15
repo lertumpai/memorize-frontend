@@ -14,12 +14,13 @@ build-to-docker-hub:
       - main
   stage: build-to-docker-hub
   before_script:
-    - echo $CI_REGISTRY_PASSWORD | docker login --username $CI_REGISTRY_USER --password-stdin
-  script:
+    - echo $DOCKER_HUB_REGISTRY_PASSWORD | docker login --username $DOCKER_HUB_REGISTRY_USER --password-stdin
     - export VERSION=$(cat package.json | grep version | head -1 | sed 's/[version,",:]//g' | tr -d [:space:])
+    - export REGISTRY_IMAGE=$($DOCKER_HUB_REGISTRY_USER/$IMAGE_NAME)
+  script:
     - docker build --no-cache
-      --tag $CI_REGISTRY_IMAGE:$VERSION
-      --tag $CI_REGISTRY_IMAGE:latest
+      --tag $REGISTRY_IMAGE:$VERSION
+      --tag $REGISTRY_IMAGE:latest
       --build-arg NODE_ENV=$NODE_ENV
       --build-arg SERVER_URL=$SERVER_URL
       --build-arg SERVER_URL_PATH=$SERVER_URL_PATH
@@ -27,8 +28,8 @@ build-to-docker-hub:
       --build-arg SERVER_UPLOAD_IMAGE_PATH=$SERVER_UPLOAD_IMAGE_PATH
       --build-arg SERVER_UPLOAD_IMAGE_PATH_PROFILE=$SERVER_UPLOAD_IMAGE_PATH_PROFILE
       --build-arg SERVER_UPLOAD_IMAGE_PATH_ARTICLE=$SERVER_UPLOAD_IMAGE_PATH_ARTICLE .
-    - docker push $CI_REGISTRY_IMAGE:$VERSION
-    - docker push $CI_REGISTRY_IMAGE:latest
+    - docker push $REGISTRY_IMAGE:$VERSION
+    - docker push $REGISTRY_IMAGE:latest
 
 build-to-gcp-registry:
   services:
@@ -40,8 +41,8 @@ build-to-gcp-registry:
   stage: build-to-gcp-registry
   before_script:
     - base64 -d $GCP_SA_KEY | docker login -u _json_key --password-stdin https://asia.gcr.io
-  script:
     - export VERSION=$(cat package.json | grep version | head -1 | sed 's/[version,",:]//g' | tr -d [:space:])
+  script:
     - docker build --no-cache
       --tag asia.gcr.io/$PROJECT_ID/$IMAGE_NAME:$VERSION
       --tag asia.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
@@ -66,7 +67,7 @@ deploy-to-gke-cluster:
   before_script:
     - base64 -d $GCP_SA_KEY > ${HOME}/gcloud-service-key.json
     - gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
-    - gcloud container clusters get-credentials memorize-cluster --zone australia-southeast1-a --project $PROJECT_ID
+    - gcloud container clusters get-credentials $GCP_CLUSTER_NAME --zone $GCP_CLUSTER_ZONE --project $PROJECT_ID
     - export VERSION=$(cat package.json | grep version | head -1 | sed 's/[version,",:]//g' | tr -d [:space:])
   script:
-    - kubectl set image deployment/memorize-frontend memorize-frontend=asia.gcr.io/$PROJECT_ID/$IMAGE_NAME:$VERSION --record
+    - kubectl set image deployment/$DEPLOYMENT_NAME $DEPLOYMENT_NAME=asia.gcr.io/$GCP_PROJECT_ID/$IMAGE_NAME:$VERSION --record
