@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import moment from 'moment'
 
 import Button from '../Button/dynamic'
@@ -63,7 +63,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
     )
   }
 
-  function MemorizeContentBoxHead() {
+  const MemorizeContentBoxHead = useCallback(() => {
     return (
       <div className='container-content-box-head-memorize'>
         <div className='container-content-box-head-left-memorize'>
@@ -85,33 +85,34 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
         </div>
       </div>
     )
-  }
+  }, [author, memorize?.createdAt])
 
-  function MemorizeCommentButton() {
+  const MemorizeCommentButton = useCallback(() => {
     const classNameButton = 'button-comment-memorize blue-memorize'
     const value = <i className='fa fa-comment-o icon-comment-memorize' count={memorize?.comment || 0} />
     return onComment ? <Button className={classNameButton} onClick={onClickComment} value={value} /> : ''
-  }
+  }, [memorize?.comment])
 
-  function MemorizeLikeButton() {
+  const MemorizeLikeButton = useCallback(() => {
     const action = memorize?.userAction ? memorize?.userAction.action : 'unlike'
     const classNameButton = `button-like-memorize ${action}-memorize`
     const classNameIcon = `fa fa-heart-o icon-like-memorize ${action}`
     const value = <i className={classNameIcon} count={memorize?.action || 0} />
     return <Button className={classNameButton} onClick={onClickLike} value={value} />
-  }
+  }, [memorize?.action])
 
-  function MemorizeContentBoxBody() {
+  const MemorizeImage = useCallback(() => {
+    return <Image image={memorize?.image} className='image-content-memorize' />
+  }, [memorize?.image])
+
+  const MemorizeContentBoxBody = useCallback(() => {
     return (
       <div className='container-content-box-body-memorize'>
         <div className='container-content-box-content-memorize'>
           {memorize?.content}
         </div>
         <div className='container-content-box-image-memorize'>
-          <Image
-            image={memorize?.image}
-            className='image-content-memorize'
-          />
+          {MemorizeImage()}
         </div>
         <hr className='content-box-body-horizontal-memorize' />
         <div className='container-content-box-body-button-memorize'>
@@ -120,7 +121,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
         </div>
       </div>
     )
-  }
+  }, [memorize])
 
   function MemorizeContentBox() {
     return (
