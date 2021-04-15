@@ -6,7 +6,7 @@ import TextAreaBox from '../TextAreaBox/dynamic'
 import InputImage from '../InputImage/dynamic'
 import Image from '../Image/dynamic'
 
-import { STATUS_LOADING } from '../../store/status'
+import { STATUS_LOADING, STATUS_IDLE } from '../../store/status'
 import { useUpload } from '../../utils/hooks/useUpload'
 
 import './style.scss'
@@ -22,8 +22,14 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
   const [image, setImage] = useState(null)
   const [tempImage, setTempImage] = useState('')
 
+  function resetImageState() {
+    setImage(null)
+    setTempImage('')
+  }
+
   function onClickMemorize() {
     onMemorize({ id, content, image, articleId, setContent, setTempImage })
+    resetImageState()
   }
 
   function MemorizeContentBox() {
@@ -36,12 +42,6 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
         onChange={onChange}
       />
     )
-  }
-
-  function MemorizeCreateButton() {
-    const color = content ? 'green-memorize' : 'disable-memorize'
-    const classNameButton = `button-create-content-memorize ${color}`
-    return <Button onClick={onClickMemorize} className={classNameButton} value='Memorize' />
   }
 
   const url = useMemo(() => `${SERVER_UPLOAD_URL}${SERVER_UPLOAD_IMAGE_PATH}`, [])
@@ -58,6 +58,12 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
     setData,
     destination: SERVER_UPLOAD_IMAGE_PATH_ARTICLE,
   })
+
+  function MemorizeCreateButton() {
+    const color = content && uploadStatus === STATUS_IDLE ? 'green-memorize' : 'disable-memorize'
+    const classNameButton = `button-create-content-memorize ${color}`
+    return <Button onClick={onClickMemorize} className={classNameButton} value='Memorize' />
+  }
 
   function onClickImage() {
     document.getElementById('input-image-profile').click()
