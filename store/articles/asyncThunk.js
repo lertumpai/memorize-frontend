@@ -27,7 +27,6 @@ export const queryArticle = createAsyncThunk(
     const response = await query(QUERY_ARTICLE, { id })
 
     const { user, article } = prepareResponseArticles(response)
-    console.log(article)
     dispatch(articleUpsertOne(article))
     dispatch(userAddOne(user))
 
