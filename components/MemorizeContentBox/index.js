@@ -85,7 +85,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
         </div>
       </div>
     )
-  }, [author, memorize?.createdAt])
+  }, [author])
 
   const MemorizeCommentButton = useCallback(() => {
     const classNameButton = 'button-comment-memorize blue-memorize'
@@ -102,18 +102,26 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
   }, [memorize?.action])
 
   const MemorizeImage = useCallback(() => {
-    return <Image image={memorize?.image} className='image-content-memorize' />
+    return (
+      <div className='container-content-box-image-memorize'>
+        <Image image={memorize?.image} className='image-content-memorize' />
+      </div>
+    )
   }, [memorize?.image])
 
-  const MemorizeContentBoxBody = useCallback(() => {
+  const MemorizeContent = useCallback(() => {
+    return (
+      <div className='container-content-box-content-memorize'>
+        {memorize?.content}
+      </div>
+    )
+  }, [memorize?.content])
+
+  function MemorizeContentBoxBody() {
     return (
       <div className='container-content-box-body-memorize'>
-        <div className='container-content-box-content-memorize'>
-          {memorize?.content}
-        </div>
-        <div className='container-content-box-image-memorize'>
-          {MemorizeImage()}
-        </div>
+        {MemorizeContent()}
+        {MemorizeImage()}
         <hr className='content-box-body-horizontal-memorize' />
         <div className='container-content-box-body-button-memorize'>
           {MemorizeLikeButton()}
@@ -121,7 +129,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
         </div>
       </div>
     )
-  }, [memorize])
+  }
 
   function MemorizeContentBox() {
     return (
@@ -142,7 +150,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
         />
         <div className='container-memorize-content-box-memorize'>
           <MemorizeContentBoxHead />
-          <MemorizeContentBoxBody />
+          {MemorizeContentBoxBody()}
         </div>
       </>
     )
