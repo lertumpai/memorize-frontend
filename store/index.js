@@ -16,7 +16,8 @@ const rootReducer = {
 const config = () => {
   return configureStore({
     reducer: rootReducer,
-    devTools: process.env.NODE_ENV !== 'production',
+    devTools: true,
+    // devTools: process.env.NODE_ENV !== 'production',
   })
 }
 
