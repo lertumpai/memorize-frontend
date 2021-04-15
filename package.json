@@ -1,6 +1,6 @@
 {
   "name": "memorize-frontend",
-  "version": "1.4.16",
+  "version": "1.4.17",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
