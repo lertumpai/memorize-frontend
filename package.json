@@ -1,6 +1,6 @@
 {
   "name": "memorize-frontend",
-  "version": "1.4.15",
+  "version": "1.4.16",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,10 +9,10 @@
     "lint-fix": "eslint --fix ."
   },
   "dependencies": {
-    "@apollo/client": "^3.3.6",
-    "@babel/node": "^7.12.10",
+    "@apollo/client": "^3.3.15",
+    "@babel/node": "^7.13.13",
     "@nano-sql/core": "^2.3.7",
-    "@reduxjs/toolkit": "^1.5.0",
+    "@reduxjs/toolkit": "^1.5.1",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.21.1",
@@ -25,15 +25,15 @@
     "next-redux-wrapper": "^6.0.2",
     "node-sass": "^5.0.0",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
+    "react": "^17.0.2",
     "react-datetime": "^3.0.4",
-    "react-dom": "^17.0.1",
+    "react-dom": "^17.0.2",
     "react-image-crop": "^8.6.6",
     "react-lottie": "^1.2.3",
-    "react-redux": "^7.2.2",
+    "react-redux": "^7.2.3",
     "redux": "^4.0.5",
-    "socket.io-client": "^3.0.5",
-    "styled-components": "^5.2.1"
+    "socket.io-client": "^4.0.1",
+    "styled-components": "^5.2.3"
   },
   "license": "ISC",
   "resolutions": {
@@ -41,9 +41,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
-    "@babel/eslint-parser": "^7.13.8",
-    "eslint": "^7.17.0",
-    "eslint-plugin-react": "^7.22.0",
+    "@babel/eslint-parser": "^7.13.14",
+    "eslint": "^7.24.0",
+    "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0"
   }
 }
