@@ -7,10 +7,11 @@ import TextAreaBox from '../TextAreaBox/dynamic'
 import InputImage from '../InputImage/dynamic'
 import Image from '../Image/dynamic'
 
-import { STATUS_LOADING } from '../../store/status'
+import { STATUS_IDLE, STATUS_LOADING } from '../../store/status'
 import { useUpload } from '../../utils/hooks/useUpload'
 
 import './style.scss'
+import axios from 'axios'
 
 const { publicRuntimeConfig } = getConfig()
 const {
@@ -57,7 +58,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
     setTempImage(data.imageUrl)
   }, [])
 
-  const { uploadStatus, onImageChange } = useUpload({
+  const { uploadStatus, onUploadImage } = useUpload({
     url,
     setData,
     destination: SERVER_UPLOAD_IMAGE_PATH_ARTICLE,
@@ -66,6 +67,13 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
   function onClickImage() {
     document.getElementById('input-image-profile').click()
   }
+
+  const onImageChange = useCallback(async e => {
+    const selectedFile = e.target.files[0]
+    if (selectedFile) {
+      await onUploadImage(selectedFile, selectedFile.name)
+    }
+  }, [])
 
   function MemorizeImage() {
     const classNameIcon = 'icon-upload-image-memorize fa fa-picture-o'
