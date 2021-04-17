@@ -11,15 +11,11 @@ const nextConfig = {
 }
 
 console.log('nextConfig', nextConfig)
-// module.exports = withCss(
-//   withSass({
-//     ...nextConfig,
-//     cssModules: true,
-//     cssLoaderOptions: {
-//       importLoaders: 1,
-//       localIdentName: "[local]",
-//     },
-//   }),
-// )
+module.exports = {
+  ...nextConfig,
+  webpack: config => {
+    console.log(config.module.rules)
+    return config
+  },
+}
 
-module.exports = nextConfig
