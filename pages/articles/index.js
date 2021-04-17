@@ -6,7 +6,7 @@ import ArticleContainer from '../../containers/ArticleContainer/dynamic'
 import { useSocket } from '../../utils/socket/useSocket'
 import { useSocketArticle } from '../../utils/socket'
 
-import './style.scss'
+import './style.module.scss'
 
 const ArticlePage = () => {
   const socket = useSocket()

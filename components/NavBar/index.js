@@ -9,7 +9,7 @@ import { resetStateArticles } from '../../store/articles/slice'
 import { resetStateUsers } from '../../store/users/slice'
 import { resetStateComments } from '../../store/comments/slice'
 
-import './style.scss'
+import './style.module.scss'
 
 const NavBar = () => {
   const router = useRouter()

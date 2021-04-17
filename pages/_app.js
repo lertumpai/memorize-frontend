@@ -9,7 +9,7 @@ import PrivateContainer from '../containers/PrivateContainer/dynamic'
 import reduxWrapper from '../store'
 import client from '../utils/graphql-api/client'
 
-import '../public/style/style.scss'
+import '../public/style/global.scss'
 import pkg from '../package.json'
 
 const MyApp = ({ Component, pageProps }) => {
