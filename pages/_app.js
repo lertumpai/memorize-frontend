@@ -1,5 +1,5 @@
 import React from 'react'
-import { Head } from 'next/document'
+import Head from 'next/head'
 import { ApolloProvider } from '@apollo/client'
 import { compose } from 'redux'
 import 'react-image-crop/dist/ReactCrop.css'
