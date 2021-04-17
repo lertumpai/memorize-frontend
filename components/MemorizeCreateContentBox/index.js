@@ -9,7 +9,7 @@ import Image from '../Image/dynamic'
 import { STATUS_LOADING, STATUS_IDLE } from '../../store/status'
 import { useUpload } from '../../utils/hooks/useUpload'
 
-import './style.scss'
+import './style.module.scss'
 
 const { publicRuntimeConfig } = getConfig()
 const {

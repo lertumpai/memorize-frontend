@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.scss'
+import './style.module.scss'
 
 const TextBoxIndex = ({ onChange, value, id, className = '', type = 'text' }) => {
   function TextBox() {

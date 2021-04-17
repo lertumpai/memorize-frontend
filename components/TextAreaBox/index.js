@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './style.scss'
+import './style.module.scss'
 
 const TextAreaBoxIndex = ({ onChange, value, id, style, placeholder, className }) => {
   return <textarea

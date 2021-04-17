@@ -1,4 +1,5 @@
 import React from 'react'
+import { Head } from 'next/document'
 import { ApolloProvider } from '@apollo/client'
 import { compose } from 'redux'
 import 'react-image-crop/dist/ReactCrop.css'
@@ -9,14 +10,20 @@ import reduxWrapper from '../store'
 import client from '../utils/graphql-api/client'
 
 import '../public/style/style.scss'
+import pkg from '../package.json'
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <ApolloProvider client={client}>
-      <PrivateContainer>
-        <Component {...pageProps} />
-      </PrivateContainer>
-    </ApolloProvider>
+    <>
+      <Head>
+        <title>Memorize version {pkg.version}</title>
+      </Head>
+      <ApolloProvider client={client}>
+        <PrivateContainer>
+          <Component {...pageProps} />
+        </PrivateContainer>
+      </ApolloProvider>
+    </>
   )
 }
 

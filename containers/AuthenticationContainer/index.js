@@ -8,7 +8,7 @@ import { STATUS_SUCCESS } from '../../store/status'
 import { saveUser } from '../../utils/localStorage'
 import { idleStateAuth, login, register, resetStateAuth } from '../../store/auth/slice'
 
-import './style.scss'
+import './style.module.scss'
 
 const AuthenticationContainerIndex = () => {
   const dispatch = useDispatch()

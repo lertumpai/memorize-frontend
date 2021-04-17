@@ -6,7 +6,7 @@ import Image from '../Image/dynamic'
 import ModalConfirm from '../ModalConfirm/dynamic'
 import ModalMemorizeUpdateContentBox from '../ModalMemorizeUpdateContentBox/dynamic'
 
-import './style.scss'
+import './style.module.scss'
 
 const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, onDelete }) => {
   const [editContent, setEditContent] = useState('')

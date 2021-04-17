@@ -3,7 +3,7 @@ import React from 'react'
 import Modal from '../Modal/dynamic'
 import Button from '../Button/dynamic'
 
-import './style.scss'
+import './style.module.scss'
 
 const ModalConfirmIndex = ({ message, onConfirm, onCancel, display }) => {
   function MemorizeConfirmButton() {

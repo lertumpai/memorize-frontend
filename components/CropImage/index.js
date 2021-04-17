@@ -3,7 +3,7 @@ import ReactCrop from 'react-image-crop'
 
 import InputImage from '../InputImage/dynamic'
 
-import './style.scss'
+import './style.module.scss'
 import Button from '../Button/dynamic'
 
 const CropImageIndex = ({ onSubmit, onCancel }) => {

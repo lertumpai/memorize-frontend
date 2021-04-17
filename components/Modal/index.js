@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './style.scss'
+import './style.module.scss'
 
 const ModalIndex = ({ children, className = '', display = 'hide' }) => {
   function Modal() {

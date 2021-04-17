@@ -29,7 +29,7 @@ import Loading from '../../components/Loading/dynamic'
 import { useInfiniteScroll } from '../../utils/hooks/useInfiniteScroll'
 import { useContent } from '../../utils/hooks/useContent'
 
-import './style.scss'
+import './style.module.scss'
 
 const CommentContainerIndex = ({ articleId }) => {
   const dispatch = useDispatch()

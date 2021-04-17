@@ -23,7 +23,7 @@ const {
   SERVER_UPLOAD_URL,
 } = publicRuntimeConfig
 
-import './style.scss'
+import './style.module.scss'
 
 const ProfileContainerIndex = () => {
   const [cropImageDisplay, setCropImageDisplay] = useState('hide')
