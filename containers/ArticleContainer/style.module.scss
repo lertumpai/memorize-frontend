@@ -1,0 +1,34 @@
+@import 'public/style/style';
+
+.container-article-memorize {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container-article-content-box-memorize {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+@media only screen and (min-width: $screen-992) {
+  .container-article-memorize {
+    width: 800px;
+  }
+}
+@media only screen and (max-width: $screen-992) {
+  .container-article-memorize {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: $screen-768) {
+  .container-article-memorize {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: $screen-576) {
+  .container-article-memorize {
+    width: 95%;
+  }
+}

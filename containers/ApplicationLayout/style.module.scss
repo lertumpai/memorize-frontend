@@ -1,0 +1,9 @@
+.application-layout-memorize {
+  height: calc(100vh - 60px);
+  overflow: auto;
+  -ms-overflow-style: none;
+}
+
+.application-layout-memorize::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,42 @@
+@import 'public/style/style';
+
+.container-form-create-content-box-memorize {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #c4c4c4;
+  border-radius: 15px;
+  width: 100%;
+  padding: 20px;
+}
+
+.container-form-upload-create-memorize {
+  margin-top: 10px;
+  display: flex;
+}
+
+.container-create-content-button-memorize {
+  width: 100%;
+}
+
+.container-form-upload-image-memorize {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.icon-upload-image-memorize {
+  font-size: 30px;
+  padding: 5px;
+  border-radius: 50%;
+  color: $blue-memorize;
+  border: 2px solid $blue-memorize;
+}
+
+.container-image-content-box-memorize {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}

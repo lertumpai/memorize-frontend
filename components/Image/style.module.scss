@@ -1,0 +1,36 @@
+@import 'public/style/style';
+
+.image-memorize {
+  width: 100%;
+}
+
+.image-profile-memorize {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.image-profile-content-memorize {
+  width: 100%;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.image-create-content-box-memorize,
+.image-content-memorize {
+  border-radius: 15px;
+  width: 60%;
+}
+
+@media only screen and (max-width: $screen-600) {
+  .image-profile-memorize {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  .image-create-content-box-memorize,
+  .image-content-memorize {
+    width: 100%;
+  }
+}

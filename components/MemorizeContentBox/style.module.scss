@@ -1,0 +1,115 @@
+@import 'public/style/style';
+
+.container-memorize-content-box-memorize {
+  width: 100%;
+}
+
+// head
+.container-content-box-head-memorize {
+  display: flex;
+  border: 2px solid #e2e2e2;
+  border-radius: 13px;
+  padding: 10px 15px;
+}
+
+.container-content-box-head-left-memorize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.container-content-box-head-right-memorize {
+  width: calc(100% - 60px);
+}
+
+.container-content-box-head-profile-name-memorize {
+  font-size: 18px;
+  display: flex;
+}
+
+.container-content-box-head-createdAt-memorize {
+  margin-top: 5px;
+  font-size: 15px;
+  color: #787878;
+}
+
+.container-profile-name-box-memorize {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 300%;
+}
+
+.container-edit-delete-box-memorize {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+// body
+.container-content-box-body-memorize {
+  border: 2px solid #e2e2e2;
+  border-radius: 13px;
+  padding: 10px 15px;
+  margin-top: -2px;
+}
+
+.container-content-box-content-memorize {
+  overflow-wrap: break-word;
+}
+
+.container-content-box-body-button-memorize {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content-box-body-horizontal-memorize {
+  border: 1px solid #e2e2e2;
+}
+
+.container-content-box-image-memorize {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+// icon
+.icon-like-memorize,
+.icon-comment-memorize {
+  position: relative;
+  left: 9px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #f1f0f0;
+}
+.icon-like-memorize::after,
+.icon-comment-memorize::after {
+  position: relative;
+  font-size: 13px;
+  color: #ffffff;
+  background: #6e6e6e;
+  opacity: 0.8;
+  border-radius: 15px;
+  padding: 2px 5px;
+  content: attr(count);
+  top: -7px;
+  right: 7px;
+}
+
+.icon-like-memorize.unlike {
+  color: $red-memorize;
+}
+
+.icon-edit-memorize {
+  margin-right: 5px;
+  color: $green-memorize;
+  cursor: pointer;
+}
+
+.icon-delete-memorize {
+  color: $red-memorize;
+  cursor: pointer;
+}

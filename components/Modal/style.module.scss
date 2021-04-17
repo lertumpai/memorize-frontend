@@ -1,0 +1,77 @@
+@import 'public/style/style';
+
+.modal-canvas-memorize {
+  display: block;
+  background: #b1b1b1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 50%;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.container-modal-memorize {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.modal-memorize {
+  border: 2px solid #535353;
+  position: fixed;
+  background: #eee9e9;
+  top: 20%;
+  border-radius: 15px;
+  padding: 20px;
+  z-index: 100;
+}
+
+.modal-confirm-memorize {
+  @extend .modal-memorize;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px !important;
+  height: 150px;
+}
+
+.modal-crop-image-memorize {
+  @extend .modal-memorize;
+  top: 15%;
+}
+
+.container-modal-memorize.hide,
+.modal-canvas-memorize.hide,
+.modal-memorize.hide {
+  display: none;
+}
+
+@media only screen and (min-width: $screen-992) {
+  .modal-memorize {
+    width: 800px;
+  }
+}
+@media only screen and (max-width: $screen-992) {
+  .modal-memorize {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: $screen-768) {
+  .modal-memorize {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: $screen-576) {
+  .modal-memorize {
+    width: 95%;
+  }
+  .modal-confirm-memorize {
+    width: 95%;
+    margin-top: 20%;
+  }
+}
