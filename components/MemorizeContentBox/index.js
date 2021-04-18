@@ -101,9 +101,29 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
   }, [memorize?.comment])
 
   const MemorizeLikeButton = useCallback(() => {
-    const action = memorize?.userAction ? memorize?.userAction.action : 'unlike'
-    const classNameButton = `${styles.Button.buttonLikeMemorize} ${action}-memorize`
-    const classNameIcon = `fa fa-heart-o ${styles.MemorizeContentBox.iconLikeMemorize} ${action}`
+    let actionButtonStyle
+    let actionIconStyle
+    switch (memorize?.userAction?.action) {
+      case 'like': {
+        actionButtonStyle = styles.Button.like
+        break
+      }
+
+      case 'unlike': {
+        actionButtonStyle = styles.Button.like
+        actionIconStyle = styles.MemorizeContentBox.unlike
+        break
+      }
+
+      default: {
+        actionButtonStyle = styles.Button.unlike
+        actionIconStyle = styles.MemorizeContentBox.unlike
+        break
+      }
+    }
+
+    const classNameButton = `${styles.Button.buttonLikeMemorize} ${actionButtonStyle}`
+    const classNameIcon = `fa fa-heart-o ${styles.MemorizeContentBox.iconLikeMemorize} ${actionIconStyle}`
     const value = <i className={classNameIcon} count={memorize?.action || 0} />
     return <Button className={classNameButton} onClick={onClickLike} value={value} />
   }, [memorize?.action])

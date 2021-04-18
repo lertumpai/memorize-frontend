@@ -36,6 +36,13 @@
   height: 32px;
 }
 
+.buttonLikeMemorize.unlike {
+  border: 2px solid $red-memorize;
+}
+
+.buttonLikeMemorize.like {
+  background: $red-memorize;
+}
 
 @media only screen and (max-width:576px) {
   .buttonLikeMemorize,

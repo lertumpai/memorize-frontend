@@ -25,12 +25,6 @@
   pointer-events: none;
   color: #e7e6e6;
 }
-*.unlike-memorize {
-  border: 2px solid $red-memorize;
-}
-*.like-memorize {
-  background: $red-memorize;
-}
 
 body {
   margin: 0px;
@@ -56,4 +50,13 @@ input:focus {
 div {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+}
+
+.form-control {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #d4d4d4;
+  height: 40px;
+  padding: 0px 10px;
+  font-size: 18px;
 }
