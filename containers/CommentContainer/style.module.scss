@@ -1,35 +1,35 @@
 @import 'public/style/style';
 
-.container-comment-memorize {
+.containerCommentMemorize {
   display: flex;
 }
 
-.container-comment-col-memorize {
+.containerCommentColMemorize {
   padding-top: 10px;
   display: flex;
   flex-direction: column;
 }
 
-.container-comment-left-col-memorize {
+.containerCommentLeftColMemorize {
   display: flex;
   flex-direction: column;
 }
 
-.container-comment-content-box-memorize {
+.containerCommentContentBoxMemorize {
   margin-bottom: 10px;
   width: 100%;
 }
 
 @media only screen and (min-width: $screen-992) {
-  .container-comment-memorize {
+  .containerCommentMemorize {
     justify-content: center;
   }
 
-  .container-comment-col-memorize::-webkit-scrollbar {
+  .containerCommentColMemorize::-webkit-scrollbar {
     display: none;
   }
 
-  .container-comment-col-memorize {
+  .containerCommentColMemorize {
     align-items: center;
     height: calc(100vh - 60px);
     overflow: auto;
@@ -37,23 +37,23 @@
     width: 45%;
   }
 
-  .container-comment-right-col-memorize,
-  .container-comment-left-col-memorize {
+  .containerCommentRightColMemorize,
+  .containerCommentLeftColMemorize {
     width: 95%;
   }
 }
 @media only screen and (max-width: $screen-992) {
-  .container-comment-memorize {
+  .containerCommentMemorize {
     flex-direction: column;
   }
 
-  .container-comment-col-memorize {
+  .containerCommentColMemorize {
     align-items: center;
     width: 100%;
   }
 
-  .container-comment-right-col-memorize,
-  .container-comment-left-col-memorize {
+  .containerCommentRightColMemorize,
+  .containerCommentLeftColMemorize {
     width: 95%;
   }
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 
-import './style.module.scss'
+import styles from '../styles'
 
 const InputImageIndex = ({ onChange, id }) => {
   return <input
-    className='input-image-memorize'
+    className={styles.InputImage.inputImageMemorize}
     accept='image/*'
     id={id}
     type='file'

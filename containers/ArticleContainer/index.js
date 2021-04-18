@@ -20,7 +20,7 @@ import Loading from '../../components/Loading/dynamic'
 import { useInfiniteScroll } from '../../utils/hooks/useInfiniteScroll'
 import { useContent } from '../../utils/hooks/useContent'
 
-import './style.module.scss'
+import ArticleContainerStyles from './style.module.scss'
 
 const ArticleContainerIndex = () => {
   const dispatch = useDispatch()
@@ -61,7 +61,7 @@ const ArticleContainerIndex = () => {
         const user = userSelectors.selectById(state, article.author)
         return (
           <div
-            className='container-article-content-box-memorize'
+            className={ArticleContainerStyles.containerArticleContentBoxMemorize}
             key={article.id}
           >
             <MemorizeContentBox
@@ -93,7 +93,7 @@ const ArticleContainerIndex = () => {
   function ArticleContainer() {
     return (
       <>
-        <div className='container-article-memorize'>
+        <div className={ArticleContainerStyles.containerArticleMemorize}>
           <MemorizeCreateContentBox
             content={content}
             setContent={setContent}

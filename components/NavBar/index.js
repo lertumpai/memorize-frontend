@@ -9,7 +9,7 @@ import { resetStateArticles } from '../../store/articles/slice'
 import { resetStateUsers } from '../../store/users/slice'
 import { resetStateComments } from '../../store/comments/slice'
 
-import './style.module.scss'
+import styles from '../styles'
 
 const NavBar = () => {
   const router = useRouter()
@@ -17,11 +17,11 @@ const NavBar = () => {
   const [isCollapse, setIsCollapse] = useState(false)
 
   function Home() {
-    let classNameIcon = 'icon-memorize fa fa-home'
-    let classNameMenu = 'nav-menu-memorize'
+    let classNameIcon = `${styles.NavBar.iconMemorize} fa fa-home`
+    let classNameMenu = styles.NavBar.navMenuMemorize
     if (router.pathname.includes('/articles')) {
-      classNameIcon += ' active-memorize'
-      classNameMenu += ' active-memorize'
+      classNameIcon += ` ${styles.NavBar.activeMemorize}`
+      classNameMenu += ` ${styles.NavBar.activeMemorize}`
     }
     return (
       <Link href='/articles'>
@@ -33,11 +33,11 @@ const NavBar = () => {
   }
 
   function Profile() {
-    let classNameIcon = 'icon-memorize fa fa-user'
-    let classNameMenu = 'nav-menu-memorize'
+    let classNameIcon = `${styles.NavBar.iconMemorize} fa fa-user`
+    let classNameMenu = styles.NavBar.navMenuMemorize
     if (router.pathname === '/profile') {
-      classNameIcon += ' active-memorize'
-      classNameMenu += ' active-memorize'
+      classNameIcon += ` ${styles.NavBar.activeMemorize}`
+      classNameMenu += ` ${styles.NavBar.activeMemorize}`
     }
     return (
       <Link href='/profile'>
@@ -59,17 +59,17 @@ const NavBar = () => {
   function Logout() {
     return (
       <Link href='/'>
-        <div className='nav-menu-memorize' onClick={onLogout}>
-          <a><i className='icon-memorize fa fa-sign-out' /></a>
+        <div className={styles.NavBar.navMenuMemorize} onClick={onLogout}>
+          <a><i className={`${styles.NavBar.iconMemorize} fa fa-sign-out`} /></a>
         </div>
       </Link>
     )
   }
 
   function NavbarLink() {
-    let className = 'navbar-link-memorize'
+    let className = styles.NavBar.navbarLinkMemorize
     if (isCollapse) {
-      className += ' collapse'
+      className += ` ${styles.NavBar.collapse}`
     }
     return (
       <div className={className}>
@@ -85,8 +85,8 @@ const NavBar = () => {
   }
 
   function HamburgerMenu() {
-    const classNameHamburgerMenu = 'hamburger-menu-memorize'
-    const classNameHamburger = 'fa fa-bars hamburger-memorize'
+    const classNameHamburgerMenu = styles.NavBar.hamburgerMenuMemorize
+    const classNameHamburger = `fa fa-bars ${styles.NavBar.hamburgerMemorize}`
     return (
       <div className={classNameHamburgerMenu} onClick={collapse}>
         <a><i className={classNameHamburger} /></a>
@@ -96,7 +96,7 @@ const NavBar = () => {
 
   function NavbarCollapse() {
     return (
-      <div className='navbar-memorize'>
+      <div className={styles.NavBar.navbarMemorize}>
         <NavbarLink />
         <HamburgerMenu />
       </div>

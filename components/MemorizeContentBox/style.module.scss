@@ -1,18 +1,18 @@
 @import 'public/style/style';
 
-.container-memorize-content-box-memorize {
+.containerMemorizeContentBoxMemorize {
   width: 100%;
 }
 
 // head
-.container-content-box-head-memorize {
+.containerContentBoxHeadMemorize {
   display: flex;
   border: 2px solid #e2e2e2;
   border-radius: 13px;
   padding: 10px 15px;
 }
 
-.container-content-box-head-left-memorize {
+.containerContentBoxHeadLeftMemorize {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,29 +20,29 @@
   margin-right: 10px;
 }
 
-.container-content-box-head-right-memorize {
+.containerContentBoxHeadRightMemorize {
   width: calc(100% - 60px);
 }
 
-.container-content-box-head-profile-name-memorize {
+.containerContentBoxHeadProfileNameMemorize {
   font-size: 18px;
   display: flex;
 }
 
-.container-content-box-head-createdAt-memorize {
+.containerContentBoxHeadCreatedAtMemorize {
   margin-top: 5px;
   font-size: 15px;
   color: #787878;
 }
 
-.container-profile-name-box-memorize {
+.containerProfileNameBoxMemorize {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 300%;
 }
 
-.container-edit-delete-box-memorize {
+.containerEditDeleteBoxMemorize {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -50,23 +50,23 @@
 }
 
 // body
-.container-content-box-body-memorize {
+.containerContentBoxBodyMemorize {
   border: 2px solid #e2e2e2;
   border-radius: 13px;
   padding: 10px 15px;
   margin-top: -2px;
 }
 
-.container-content-box-content-memorize {
+.containerContentBoxContentMemorize {
   overflow-wrap: break-word;
 }
 
-.container-content-box-body-button-memorize {
+.containerContentBoxBodyButtonMemorize {
   display: flex;
   justify-content: flex-end;
 }
 
-.content-box-body-horizontal-memorize {
+.contentBoxBodyHorizontalMemorize {
   border: 1px solid #e2e2e2;
 }
 
@@ -77,16 +77,16 @@
 }
 
 // icon
-.icon-like-memorize,
-.icon-comment-memorize {
+.iconLikeMemorize,
+.iconCommentMemorize {
   position: relative;
   left: 9px;
   font-size: 18px;
   font-weight: bold;
   color: #f1f0f0;
 }
-.icon-like-memorize::after,
-.icon-comment-memorize::after {
+.iconLikeMemorize::after,
+.iconCommentMemorize::after {
   position: relative;
   font-size: 13px;
   color: #ffffff;
@@ -99,11 +99,11 @@
   right: 7px;
 }
 
-.icon-like-memorize.unlike {
+.iconLikeMemorize.unlike {
   color: $red-memorize;
 }
 
-.icon-edit-memorize {
+.iconEditMemorize {
   margin-right: 5px;
   color: $green-memorize;
   cursor: pointer;

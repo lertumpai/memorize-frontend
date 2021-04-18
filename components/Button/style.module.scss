@@ -1,6 +1,6 @@
 @import 'public/style/style';
 
-.button-memorize {
+.buttonMemorize {
   padding: 10px 0px;
   font-size: 20px;
   border-radius: 8px;
@@ -9,15 +9,15 @@
   width: 100%;
 }
 
-.button-create-content-memorize {
-  @extend .button-memorize;
+.buttonCreateContentMemorize {
+  @extend .buttonMemorize;
   padding: 10px 15px;
   font-weight: bold;
   border-radius: 15px;
 }
 
-.button-confirm-memorize {
-  @extend .button-memorize;
+.buttonConfirmMemorize {
+  @extend .buttonMemorize;
   padding: 5px 10px;
   font-size: 16px;
   font-weight: bold;
@@ -25,9 +25,9 @@
   border-radius: 15px;
 }
 
-.button-like-memorize,
-.button-comment-memorize {
-  @extend .button-memorize;
+.buttonLikeMemorize,
+.buttonCommentMemorize {
+  @extend .buttonMemorize;
   padding: 5px 10px;
   font-size: 16px;
   font-weight: bold;
@@ -38,8 +38,8 @@
 
 
 @media only screen and (max-width:576px) {
-  .button-like-memorize,
-  .button-comment-memorize {
+  .buttonLikeMemorize,
+  .buttonCommentMemorize {
     width: 100%;
   }
 }

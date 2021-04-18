@@ -4,7 +4,7 @@ import TextAreaBox from '../TextAreaBox/dynamic'
 import Modal from '../Modal/dynamic'
 import Button from '../Button/dynamic'
 
-import './style.module.scss'
+import styles from '../styles'
 
 const ModalMemorizeUpdateContentBoxIndex = ({ id, content, onTextAreaChange, onMemorize, onCancel, display }) => {
   function onClickMemorize() {
@@ -12,15 +12,15 @@ const ModalMemorizeUpdateContentBoxIndex = ({ id, content, onTextAreaChange, onM
   }
 
   function MemorizeButton() {
-    const classNameCancelButton = 'button-confirm-memorize red-memorize'
+    const classNameCancelButton = `${styles.Button.buttonConfirmMemorize} red-memorize`
     const color = content ? 'green-memorize' : 'disable-memorize'
-    const classNameMemorizeButton = `button-confirm-memorize ${color}`
+    const classNameMemorizeButton = `${styles.Button.buttonConfirmMemorize} ${color}`
     return (
-      <div className='container-modal-update-form-button-memorize'>
-        <div className='container-modal-update-button-memorize'>
+      <div className={styles.ModalMemorizeUpdateContentBox.containerModalUpdateFormButtonMemorize} >
+        <div className={styles.ModalMemorizeUpdateContentBox.containerModalUpdateButtonMemorize} >
           <Button onClick={onClickMemorize} className={classNameMemorizeButton} value='Memorize' />
         </div>
-        <div className='container-modal-update-button-memorize'>
+        <div className={styles.ModalMemorizeUpdateContentBox.containerModalUpdateButtonMemorize} >
           <Button onClick={onCancel} className={classNameCancelButton} value='Cancel' />
         </div>
       </div>
@@ -31,7 +31,7 @@ const ModalMemorizeUpdateContentBoxIndex = ({ id, content, onTextAreaChange, onM
     return (
       <Modal display={display}>
         <TextAreaBox
-          className='textarea-content-box-memorize'
+          className={styles.TextAreaBox.textareaContentBoxMemorize}
           id='TextAreaBox'
           value={content}
           onChange={onTextAreaChange}

@@ -1,49 +1,49 @@
 @import 'public/style/style';
 
-.container-authentication-memorize {
+.containerAuthenticationMemorize {
   position: relative;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.container-authentication-form-memorize {
+.containerAuthenticationFormMemorize {
   border: 3px solid #c1c1c1;
   border-radius: 20px;
   padding: 40px 20px;
 }
 
-.container-authentication-form-control-memorize {
+.containerAuthenticationFormControlMemorize {
   margin: 20px 0px;
 }
 
-.textbox-label-authentication-memorize {
+.textboxLabelAuthenticationMemorize {
   margin-left: 3px;
   font-size: 20px;
 }
 
-.label-authentication-memorize {
+.labelAuthenticationMemorize {
   font-size: 30px;
   font-weight: bold;
 }
 
-.error-message-authentication-memorize {
+.errorMessageAuthenticationMemorize {
   color: red;
   margin-left: 3px;
 }
 
-.container-authentication-button-memorize {
+.containerAuthenticationButtonMemorize {
   margin-top: 35px;
   display: flex;
 }
 
 @media only screen and (min-width: $screen-576) {
-  .container-authentication-form-memorize {
+  .containerAuthenticationFormMemorize {
     width: 600px;
   }
 }
 @media only screen and (max-width: $screen-576) {
-  .container-authentication-form-memorize {
+  .containerAuthenticationFormMemorize {
     width: 400px;
   }
 }

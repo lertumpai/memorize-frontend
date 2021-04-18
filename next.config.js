@@ -11,11 +11,6 @@ const nextConfig = {
 }
 
 console.log('nextConfig', nextConfig)
-module.exports = {
-  ...nextConfig,
-  webpack: config => {
-    console.log(config.module.rules)
-    return config
-  },
-}
+
+module.exports = nextConfig
 

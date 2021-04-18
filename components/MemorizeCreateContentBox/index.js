@@ -9,7 +9,7 @@ import Image from '../Image/dynamic'
 import { STATUS_LOADING, STATUS_IDLE } from '../../store/status'
 import { useUpload } from '../../utils/hooks/useUpload'
 
-import './style.module.scss'
+import styles from '../styles'
 
 const { publicRuntimeConfig } = getConfig()
 const {
@@ -35,7 +35,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
   function MemorizeContentBox() {
     return (
       <TextAreaBox
-        className='textarea-content-box-memorize'
+        className={styles.TextAreaBox.textareaContentBoxMemorize}
         id='content'
         placeholder='Your post today ^^'
         value={content}
@@ -61,7 +61,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
 
   function MemorizeCreateButton() {
     const color = content && uploadStatus === STATUS_IDLE ? 'green-memorize' : 'disable-memorize'
-    const classNameButton = `button-create-content-memorize ${color}`
+    const classNameButton = `${styles.Button.buttonCreateContentMemorize} ${color}`
     return <Button onClick={onClickMemorize} className={classNameButton} value='Memorize' />
   }
 
@@ -77,9 +77,9 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
   }, [])
 
   function MemorizeImage() {
-    const classNameIcon = 'icon-upload-image-memorize fa fa-picture-o'
+    const classNameIcon = `${styles.MemorizeCreateContentBox.iconUploadImageMemorize} fa fa-picture-o`
     return (
-      <div className='container-form-upload-image-memorize' onClick={onClickImage}>
+      <div className={styles.MemorizeCreateContentBox.containerFormUploadImageMemorize} onClick={onClickImage}>
         <i className={classNameIcon} />
       </div>
     )
@@ -90,7 +90,7 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
       ? (
         <Image
           image={tempImage}
-          className='image-create-content-box-memorize'
+          className={styles.Image.imageCreateContentBoxMemorize}
           status={uploadStatus}
         />
       ) : ''
@@ -98,15 +98,15 @@ const MemorizeCreateContentBoxIndex = ({ id, articleId, content, setContent, onC
 
   function MemorizeCreateContentBox() {
     return (
-      <div className='container-form-create-content-box-memorize'>
+      <div className={styles.MemorizeCreateContentBox.containerFormCreateContentBoxMemorize}>
         <InputImage onChange={onImageChange} id='input-image-profile' />
         {MemorizeContentBox()}
-        <div className='container-image-content-box-memorize'>
+        <div className={styles.MemorizeCreateContentBox.containerImageContentBoxMemorize}>
           {MemorizeContentImage()}
         </div>
-        <div className='container-form-upload-create-memorize'>
+        <div className={styles.MemorizeCreateContentBox.containerFormUploadCreateMemorize}>
           {!articleId ? MemorizeImage() : ''}
-          <div className='container-create-content-button-memorize'>
+          <div className={styles.MemorizeCreateContentBox.containerCreateContentButtonMemorize}>
             {MemorizeCreateButton()}
           </div>
         </div>

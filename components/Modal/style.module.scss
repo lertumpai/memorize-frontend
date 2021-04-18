@@ -1,6 +1,6 @@
 @import 'public/style/style';
 
-.modal-canvas-memorize {
+.modalCanvasMemorize {
   display: block;
   background: #b1b1b1;
   position: fixed;
@@ -12,7 +12,7 @@
   z-index: 100;
 }
 
-.container-modal-memorize {
+.containerModalMemorize {
   display: flex;
   justify-content: center;
   position: absolute;
@@ -20,7 +20,7 @@
   width: 100%;
 }
 
-.modal-memorize {
+.modalMemorize {
   border: 2px solid #535353;
   position: fixed;
   background: #eee9e9;
@@ -30,8 +30,8 @@
   z-index: 100;
 }
 
-.modal-confirm-memorize {
-  @extend .modal-memorize;
+.modalConfirmMemorize {
+  @extend .modalMemorize;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,38 +39,38 @@
   height: 150px;
 }
 
-.modal-crop-image-memorize {
-  @extend .modal-memorize;
+.modalCropImageMemorize {
+  @extend .modalMemorize;
   top: 15%;
 }
 
-.container-modal-memorize.hide,
-.modal-canvas-memorize.hide,
-.modal-memorize.hide {
+.containerModalMemorize.hide,
+.modalCanvasMemorize.hide,
+.modalMemorize.hide {
   display: none;
 }
 
 @media only screen and (min-width: $screen-992) {
-  .modal-memorize {
+  .modalMemorize {
     width: 800px;
   }
 }
 @media only screen and (max-width: $screen-992) {
-  .modal-memorize {
+  .modalMemorize {
     width: 85%;
   }
 }
 @media only screen and (max-width: $screen-768) {
-  .modal-memorize {
+  .modalMemorize {
     width: 90%;
   }
 }
 
 @media only screen and (max-width: $screen-576) {
-  .modal-memorize {
+  .modalMemorize {
     width: 95%;
   }
-  .modal-confirm-memorize {
+  .modalConfirmMemorize {
     width: 95%;
     margin-top: 20%;
   }

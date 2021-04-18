@@ -8,7 +8,8 @@ import { STATUS_SUCCESS } from '../../store/status'
 import { saveUser } from '../../utils/localStorage'
 import { idleStateAuth, login, register, resetStateAuth } from '../../store/auth/slice'
 
-import './style.module.scss'
+import styles from '../../components/styles'
+import AuthenticationContainerStyles from './style.module.scss'
 
 const AuthenticationContainerIndex = () => {
   const dispatch = useDispatch()
@@ -51,8 +52,8 @@ const AuthenticationContainerIndex = () => {
   function ButtonRegisterForm() {
     return (
       <>
-        <Button className='button-memorize green-memorize' onClick={onRegister} value='Register'/>
-        <Button className='button-memorize blue-memorize' onClick={onClickRegisterToLogin} value='Login'/>
+        <Button className={`${styles.Button.buttonMemorize} green-memorize`} onClick={onRegister} value='Register'/>
+        <Button className={`${styles.Button.buttonMemorize} blue-memorize`} onClick={onClickRegisterToLogin} value='Login'/>
       </>
     )
   }
@@ -64,8 +65,8 @@ const AuthenticationContainerIndex = () => {
   function ButtonLoginForm() {
     return (
       <>
-        <Button className='button-memorize green-memorize' onClick={onLogin} value='Login'/>
-        <Button className='button-memorize blue-memorize' onClick={onClickLoginToRegister} value='Register'/>
+        <Button className={`${styles.Button.buttonMemorize} green-memorize`} onClick={onLogin} value='Login'/>
+        <Button className={`${styles.Button.buttonMemorize} blue-memorize`} onClick={onClickLoginToRegister} value='Register'/>
       </>
     )
   }
@@ -73,7 +74,7 @@ const AuthenticationContainerIndex = () => {
   function ButtonForm() {
     const buttonForm = isLogin ? <ButtonLoginForm /> : <ButtonRegisterForm />
     return (
-      <div className='container-authentication-button-memorize'>
+      <div className={AuthenticationContainerStyles.containerAuthenticationButtonMemorize}>
         {buttonForm}
       </div>
     )
@@ -81,38 +82,38 @@ const AuthenticationContainerIndex = () => {
 
   function LabelForm() {
     const label = isLogin ? 'Login Form' : 'Register Form'
-    return <div className='label-authentication-memorize'>{label}</div>
+    return <div className={AuthenticationContainerStyles.labelAuthenticationMemorize}>{label}</div>
   }
 
   function UsernameForm() {
     const message = error?.username
-    const classNameTextbox = `textbox-memorize ${message ? 'textbox-error-memorize' : ''}`
+    const classNameTextbox = `${styles.TextBox.textboxMemorize} ${message ? styles.TextBox.textboxErrorMemorize : ''}`
 
     return (
-      <div className='container-authentication-form-control-memorize'>
-        <div className='textbox-label-authentication-memorize'>Username</div>
+      <div className={AuthenticationContainerStyles.containerAuthenticationFormControlMemorize} >
+        <div className={AuthenticationContainerStyles.textboxLabelAuthenticationMemorize}>Username</div>
         <TextBox className={classNameTextbox} id='username' value={form.username} onChange={onChange} />
-        <div className='error-message-authentication-memorize'>{message}</div>
+        <div className={AuthenticationContainerStyles.errorMessageAuthenticationMemorize}>{message}</div>
       </div>
     )
   }
 
   function PasswordForm() {
     const message = error?.password
-    const classNameTextbox = `textbox-memorize ${message ? 'textbox-error-memorize' : ''}`
+    const classNameTextbox = `${styles.TextBox.textboxMemorize} ${message ? styles.TextBox.textboxErrorMemorize : ''}`
 
     return (
-      <div className='container-authentication-form-control-memorize'>
-        <div className='textbox-label-authentication-memorize'>Password</div>
+      <div className={AuthenticationContainerStyles.containerAuthenticationFormControlMemorize} >
+        <div className={AuthenticationContainerStyles.textboxLabelAuthenticationMemorize}>Password</div>
         <TextBox className={classNameTextbox} id='password' type='password' value={form.password} error={message} onChange={onChange} />
-        <div className='error-message-authentication-memorize'>{message}</div>
+        <div className={AuthenticationContainerStyles.errorMessageAuthenticationMemorize}>{message}</div>
       </div>
     )
   }
 
   function AuthenticationContainer() {
     return (
-      <div className='container-authentication-form-memorize'>
+      <div className={AuthenticationContainerStyles.containerAuthenticationFormMemorize}>
         <LabelForm />
         {UsernameForm()}
         {PasswordForm()}
@@ -122,7 +123,7 @@ const AuthenticationContainerIndex = () => {
   }
 
   return (
-    <div className='container-authentication-memorize'>
+    <div className={AuthenticationContainerStyles.containerAuthenticationMemorize}>
       {AuthenticationContainer()}
     </div>
   )

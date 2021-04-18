@@ -1,9 +1,8 @@
 import React from 'react'
-import styles from './style.module.scss'
+import styles from '../styles'
 
 const ButtonIndex = ({ onClick, value, style, className = '' }) => {
-  console.log(styles)
-  return <div className={styles.buttonMemorize} onClick={onClick} style={style} >{value}</div>
+  return <div className={className || styles.Button.buttonMemorize} onClick={onClick} style={style} >{value}</div>
 }
 
 export default React.memo(ButtonIndex)

@@ -6,7 +6,7 @@ import ArticleContainer from '../../containers/ArticleContainer/dynamic'
 import { useSocket } from '../../utils/socket/useSocket'
 import { useSocketArticle } from '../../utils/socket'
 
-import './style.module.scss'
+import ArticleStyles from './style.module.scss'
 
 const ArticlePage = () => {
   const socket = useSocket()
@@ -14,7 +14,7 @@ const ArticlePage = () => {
 
   return (
     <ApplicationLayout>
-      <div className='article-page-container-memorize'>
+      <div className={ArticleStyles.articlePageContainerMemorize}>
         <ArticleContainer />
       </div>
     </ApplicationLayout>

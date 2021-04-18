@@ -23,10 +23,11 @@ const {
   SERVER_UPLOAD_URL,
 } = publicRuntimeConfig
 
-import './style.module.scss'
+import styles from '../../components/styles'
+import ProfileContainerStyles from './style.module.scss'
 
 const ProfileContainerIndex = () => {
-  const [cropImageDisplay, setCropImageDisplay] = useState('hide')
+  const [cropImageDisplay, setCropImageDisplay] = useState(styles.Modal.hide)
 
   const dispatch = useDispatch()
 
@@ -86,7 +87,7 @@ const ProfileContainerIndex = () => {
 
   const onCancelUploadProfile = useCallback(fnReset => {
     fnReset()
-    setCropImageDisplay('hide')
+    setCropImageDisplay(styles.Modal.hide)
   }, [])
 
   const onSubmitUploadProfile = useCallback(async ({ fnReset, image }) => {
@@ -94,17 +95,17 @@ const ProfileContainerIndex = () => {
       await onUploadImage(image.blob, image.name)
     }
     fnReset()
-    setCropImageDisplay('hide')
+    setCropImageDisplay(styles.Modal.hide)
   }, [onUploadImage])
 
   function ImageProfile() {
     return (
-      <div className='container-profile-form-control-memorize'>
-        <div className='container-profile-image-memorize'>
+      <div className={ProfileContainerStyles.containerProfileFormControlMemorize}>
+        <div className={ProfileContainerStyles.containerProfileImageMemorize}>
           <Image
             image={profile.image}
             status={uploadStatus}
-            className='image-profile-memorize'
+            className={styles.Image.imageProfileMemorize}
             onClick={onClickImage}
           />
         </div>
@@ -114,8 +115,9 @@ const ProfileContainerIndex = () => {
 
   function Name() {
     return (
-      <div className='container-profile-form-control-memorize'>
-        <div className='textbox-label-profile-memorize'>Name</div>
+      <div className={ProfileContainerStyles.containerProfileFormControlMemorize}>
+        {/* TODO: create label component */}
+        <div className={ProfileContainerStyles.textboxLabelProfileMemorize}>Name</div>
         <TextBox
           id='name'
           type='text'
@@ -129,8 +131,8 @@ const ProfileContainerIndex = () => {
   function Birthday() {
     const date = moment(profile.birthday)
     return (
-      <div className='container-profile-form-control-memorize'>
-        <div className='textbox-label-profile-memorize'>Birthday</div>
+      <div className={ProfileContainerStyles.containerProfileFormControlMemorize}>
+        <div className={ProfileContainerStyles.textboxLabelProfileMemorize}>Birthday</div>
         <Datetime
           value={date}
           dateFormat='DD/MM/YYYY'
@@ -144,8 +146,8 @@ const ProfileContainerIndex = () => {
 
   function Status() {
     return (
-      <div className='container-profile-form-control-memorize'>
-        <div className='textbox-label-profile-memorize'>Status</div>
+      <div className={ProfileContainerStyles.containerProfileFormControlMemorize}>
+        <div className={ProfileContainerStyles.textboxLabelProfileMemorize}>Status</div>
         <TextAreaBox
           id='status'
           value={profile.status}
@@ -157,8 +159,8 @@ const ProfileContainerIndex = () => {
 
   function ButtonSave() {
     return (
-      <div className='container-profile-form-control-memorize'>
-        <Button className='button-memorize green-memorize' onClick={onSave} value='Update profile' />
+      <div className={ProfileContainerStyles.containerProfileFormControlMemorize}>
+        <Button className={`${styles.Button.buttonMemorize} green-memorize`} onClick={onSave} value='Update profile' />
       </div>
     )
   }
@@ -171,14 +173,14 @@ const ProfileContainerIndex = () => {
     return (
       <>
         <ModalCropImage display={cropImageDisplay} onCancel={onCancelUploadProfile} onSubmit={onSubmitUploadProfile} />
-        <div className='container-profile-form-memorize'>
+        <div className={ProfileContainerStyles.containerProfileFormMemorize}>
           {ImageProfile()}
           {Name()}
           {Birthday()}
           {Status()}
           <ButtonSave />
         </div>
-        <div className='container-profile-saving-memorize'>
+        <div className={ProfileContainerStyles.containerProfileSavingMemorize}>
           <Saving />
         </div>
       </>
@@ -186,7 +188,7 @@ const ProfileContainerIndex = () => {
   }
 
   return (
-    <div className='container-profile-memorize'>
+    <div className={ProfileContainerStyles.containerProfileMemorize}>
       {ProfileForm()}
     </div>
   )

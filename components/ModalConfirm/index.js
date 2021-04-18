@@ -3,14 +3,14 @@ import React from 'react'
 import Modal from '../Modal/dynamic'
 import Button from '../Button/dynamic'
 
-import './style.module.scss'
+import styles from '../styles'
 
 const ModalConfirmIndex = ({ message, onConfirm, onCancel, display }) => {
   function MemorizeConfirmButton() {
-    const classNameConfirmButton = 'button-confirm-memorize green-memorize'
-    const classNameCancelButton = 'button-confirm-memorize red-memorize'
+    const classNameConfirmButton = `${styles.Button.buttonConfirmMemorize} green-memorize`
+    const classNameCancelButton = `${styles.Button.buttonConfirmMemorize} red-memorize`
     return (
-      <div className='container-confirm-modal-button-memorize'>
+      <div className={styles.ModalConfirm.containerConfirmModalButtonMemorize}>
         <Button className={classNameConfirmButton} value='Confirm' onClick={onConfirm} />
         <Button className={classNameCancelButton} value='Cancel' onClick={onCancel} />
       </div>
@@ -19,8 +19,8 @@ const ModalConfirmIndex = ({ message, onConfirm, onCancel, display }) => {
 
   function ModalMemorizeUpdateContentBox() {
     return (
-      <Modal display={display} className='modal-confirm-memorize'>
-        <div className='message-confirm-memorize'>
+      <Modal display={display} className={styles.Modal.modalConfirmMemorize}>
+        <div className={styles.ModalConfirm.messageConfirmMemorize}>
           {message || 'Message'}
         </div>
         {MemorizeConfirmButton()}

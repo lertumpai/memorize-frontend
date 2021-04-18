@@ -1,6 +1,6 @@
 @import 'public/style/style';
 
-.container-form-create-content-box-memorize {
+.containerFormCreateContentBoxMemorize {
   margin-top: 10px;
   margin-bottom: 10px;
   border: 2px solid #c4c4c4;
@@ -9,16 +9,16 @@
   padding: 20px;
 }
 
-.container-form-upload-create-memorize {
+.containerFormUploadCreateMemorize {
   margin-top: 10px;
   display: flex;
 }
 
-.container-create-content-button-memorize {
+.containerCreateContentButtonMemorize {
   width: 100%;
 }
 
-.container-form-upload-image-memorize {
+.containerFormUploadImageMemorize {
   width: 50px;
   display: flex;
   justify-content: center;
@@ -27,7 +27,7 @@
   margin-right: 5px;
 }
 
-.icon-upload-image-memorize {
+.iconUploadImageMemorize {
   font-size: 30px;
   padding: 5px;
   border-radius: 50%;
@@ -35,7 +35,7 @@
   border: 2px solid $blue-memorize;
 }
 
-.container-image-content-box-memorize {
+.containerImageContentBoxMemorize {
   display: flex;
   justify-content: center;
   margin-top: 5px;

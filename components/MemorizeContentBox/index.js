@@ -6,19 +6,19 @@ import Image from '../Image/dynamic'
 import ModalConfirm from '../ModalConfirm/dynamic'
 import ModalMemorizeUpdateContentBox from '../ModalMemorizeUpdateContentBox/dynamic'
 
-import './style.module.scss'
+import styles from '../styles'
 
 const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, onDelete }) => {
   const [editContent, setEditContent] = useState('')
-  const [editDisplay, setEditDisplay] = useState('hide')
-  const [deleteDisplay, setDeleteDisplay] = useState('hide')
+  const [editDisplay, setEditDisplay] = useState(styles.Modal.hide)
+  const [deleteDisplay, setDeleteDisplay] = useState(styles.Modal.hide)
 
   function onClickDelete() {
     setDeleteDisplay('')
   }
 
   function onClickCancelDelete() {
-    setDeleteDisplay('hide')
+    setDeleteDisplay(styles.Modal.hide)
   }
 
   function onClickEdit() {
@@ -27,12 +27,12 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
   }
 
   function onClickCancelEdit() {
-    setEditDisplay('hide')
+    setEditDisplay(styles.Modal.hide)
   }
 
   function onClickConfirmDelete() {
     onDelete(memorize.id)
-    setDeleteDisplay('hide')
+    setDeleteDisplay(styles.Modal.hide)
   }
 
   function onClickComment() {
@@ -50,14 +50,14 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
 
   function onClickMemorize({ id, content }) {
     onEdit({ id, content })
-    setEditDisplay('hide')
+    setEditDisplay(styles.Modal.hide)
   }
 
   function MemorizeEditDeleteBox() {
-    const classNameEdit = 'fa fa-pencil icon-edit-memorize'
-    const classNameDelete = 'fa fa-trash-o icon-delete-memorize'
+    const classNameEdit = `fa fa-pencil ${styles.MemorizeContentBox.iconEditMemorize}`
+    const classNameDelete = `fa fa-trash-o ${styles.MemorizeContentBox.iconDeleteMemorize}`
     return (
-      <div className='container-edit-delete-box-memorize'>
+      <div className={styles.MemorizeContentBox.containerEditDeleteBoxMemorize}>
         <i className={classNameEdit} onClick={onClickEdit} />
         <i className={classNameDelete} onClick={onClickDelete} />
       </div>
@@ -66,10 +66,10 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
 
   const MemorizeProfileImage = useCallback(() => {
     return (
-      <div className='container-content-box-head-left-memorize'>
+      <div className={styles.MemorizeContentBox.containerContentBoxHeadLeftMemorize}>
         <Image
           image={author?.profile?.image || '/avatar.svg'}
-          className='image-profile-content-memorize'
+          className={styles.Image.imageProfileContentMemorize}
         />
       </div>
     )
@@ -77,16 +77,16 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
 
   function MemorizeContentBoxHead() {
     return (
-      <div className='container-content-box-head-memorize'>
+      <div className={styles.MemorizeContentBox.containerContentBoxHeadMemorize}>
         {MemorizeProfileImage()}
-        <div className='container-content-box-head-right-memorize'>
-          <div className='container-content-box-head-profile-name-memorize'>
-            <div className='container-profile-name-box-memorize'>
+        <div className={styles.MemorizeContentBox.containerContentBoxHeadRightMemorize}>
+          <div className={styles.MemorizeContentBox.containerContentBoxHeadProfileNameMemorize}>
+            <div className={styles.MemorizeContentBox.containerProfileNameBoxMemorize}>
               {author?.profile?.name || 'unknown'}
             </div>
             {memorize?.canMutate ? MemorizeEditDeleteBox() : ''}
           </div>
-          <div className='container-content-box-head-createdAt-memorize'>
+          <div className={styles.MemorizeContentBox.containerContentBoxHeadCreatedAtMemorize}>
             {moment(memorize?.createdAt).format('DD/MM/YYYY HH:mm:ss')}
           </div>
         </div>
@@ -95,30 +95,30 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
   }
 
   const MemorizeCommentButton = useCallback(() => {
-    const classNameButton = 'button-comment-memorize blue-memorize'
-    const value = <i className='fa fa-comment-o icon-comment-memorize' count={memorize?.comment || 0} />
+    const classNameButton = `${styles.Button.buttonCommentMemorize} blue-memorize`
+    const value = <i className={`fa fa-comment-o ${styles.MemorizeContentBox.iconCommentMemorize}`} count={memorize?.comment || 0} />
     return onComment ? <Button className={classNameButton} onClick={onClickComment} value={value} /> : ''
   }, [memorize?.comment])
 
   const MemorizeLikeButton = useCallback(() => {
     const action = memorize?.userAction ? memorize?.userAction.action : 'unlike'
-    const classNameButton = `button-like-memorize ${action}-memorize`
-    const classNameIcon = `fa fa-heart-o icon-like-memorize ${action}`
+    const classNameButton = `${styles.Button.buttonLikeMemorize} ${action}-memorize`
+    const classNameIcon = `fa fa-heart-o ${styles.MemorizeContentBox.iconLikeMemorize} ${action}`
     const value = <i className={classNameIcon} count={memorize?.action || 0} />
     return <Button className={classNameButton} onClick={onClickLike} value={value} />
   }, [memorize?.action])
 
   const MemorizeImage = useCallback(() => {
     return (
-      <div className='container-content-box-image-memorize'>
-        <Image image={memorize?.image} className='image-content-memorize' />
+      <div className={styles.MemorizeContentBox.containerContentBoxImageMemorize}>
+        <Image image={memorize?.image} className={styles.Image.imageContentMemorize} />
       </div>
     )
   }, [memorize?.image])
 
   const MemorizeContent = useCallback(() => {
     return (
-      <div className='container-content-box-content-memorize'>
+      <div className={styles.MemorizeContentBox.containerContentBoxContentMemorize}>
         {memorize?.content}
       </div>
     )
@@ -126,11 +126,11 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
 
   function MemorizeContentBoxBody() {
     return (
-      <div className='container-content-box-body-memorize'>
+      <div className={styles.MemorizeContentBox.containerContentBoxBodyMemorize}>
         {MemorizeContent()}
         {MemorizeImage()}
-        <hr className='content-box-body-horizontal-memorize' />
-        <div className='container-content-box-body-button-memorize'>
+        <hr className={styles.MemorizeContentBox.contentBoxBodyHorizontalMemorize} />
+        <div className={styles.MemorizeContentBox.containerContentBoxBodyButtonMemorize}>
           {MemorizeLikeButton()}
           {MemorizeCommentButton()}
         </div>
@@ -155,7 +155,7 @@ const MemorizeContentBoxIndex = ({ memorize, author, onLike, onComment, onEdit, 
           onMemorize={onClickMemorize}
           onCancel={onClickCancelEdit}
         />
-        <div className='container-memorize-content-box-memorize'>
+        <div className={styles.MemorizeContentBox.containerMemorizeContentBoxMemorize}>
           {MemorizeContentBoxHead()}
           {MemorizeContentBoxBody()}
         </div>

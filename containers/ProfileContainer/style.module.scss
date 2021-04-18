@@ -1,17 +1,17 @@
 @import 'public/style/style';
 
-.container-profile-memorize {
+.containerProfileMemorize {
   display: flex;
   justify-content: center;
 }
 
-.container-profile-image-memorize {
+.containerProfileImageMemorize {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.form-control {
+.formControl {
   width: 100%;
   margin-top: 8px;
   border-radius: 5px;
@@ -21,54 +21,54 @@
   font-size: 18px;
 }
 
-.container-profile-form-control-memorize {
+.containerProfileFormControlMemorize {
   margin: 20px 0px;
 }
 
-.textbox-label-profile-memorize {
+.textboxLabelProfileMemorize {
   margin-left: 5px;
   padding-bottom: 5px;
   font-size: 25px;
 }
 
-.container-profile-form-memorize {
+.containerProfileFormMemorize {
   border: 3px solid #b1b0b0;
   border-radius: 15px;
   padding: 20px;
   margin-top: 50px;
 }
 
-.container-profile-saving-memorize {
+.containerProfileSavingMemorize {
   position: absolute;
   top: 350px
 }
 
 @media only screen and (min-width: $screen-768) {
-  .container-profile-form-memorize {
+  .containerProfileFormMemorize {
     width: 700px;
   }
 }
 @media only screen and (max-width: $screen-768) {
-  .container-profile-form-memorize {
+  .containerProfileFormMemorize {
     width: 600px;
   }
 }
 @media only screen and (max-width: $screen-600) {
-  .container-profile-form-memorize {
+  .containerProfileFormMemorize {
     width: 450px;
   }
 
-  .container-profile-saving-memorize {
+  .containerProfileSavingMemorize {
     top: 270px
   }
 }
 @media only screen and (max-width: $screen-600) {
-  .container-profile-form-memorize {
+  .containerProfileFormMemorize {
     margin-top: 30px;
     width: 95%;
   }
 
-  .container-profile-saving-memorize {
+  .containerProfileSavingMemorize {
     top: 230px
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.module.scss'
+import styles from '../styles'
 
 import { STATUS_LOADING } from '../../store/status'
 
@@ -9,7 +9,7 @@ const ImageIndex = ({ image, className = '', onClick, status }) => {
       <>
         <img
           src={status === STATUS_LOADING ? '/loading/image_loading.gif' : image}
-          className={className || `image-memorize`}
+          className={className || styles.Image.imageMemorize}
           onClick={onClick}
         />
       </>

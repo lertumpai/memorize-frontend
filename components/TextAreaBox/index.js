@@ -1,10 +1,10 @@
 import React from 'react'
 
-import './style.module.scss'
+import styles from '../styles'
 
 const TextAreaBoxIndex = ({ onChange, value, id, style, placeholder, className }) => {
   return <textarea
-    className={className || 'textarea-box-memorize'}
+    className={className || styles.TextAreaBox.textareaBoxMemorize}
     id={id}
     value={value}
     onChange={onChange}

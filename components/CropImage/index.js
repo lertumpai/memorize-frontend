@@ -3,7 +3,7 @@ import ReactCrop from 'react-image-crop'
 
 import InputImage from '../InputImage/dynamic'
 
-import './style.module.scss'
+import styles from '../styles'
 import Button from '../Button/dynamic'
 
 const CropImageIndex = ({ onSubmit, onCancel }) => {
@@ -100,9 +100,9 @@ const CropImageIndex = ({ onSubmit, onCancel }) => {
   }, [completedCrop])
 
   function IconUploadImage() {
-    const classNameIcon = 'fa fa-picture-o icon-crop-image-upload-memorize'
+    const classNameIcon = `fa fa-picture-o ${styles.CropImage.iconCropImageUploadMemorize}`
     return (
-      <div className='container-canvas-crop-image-memorize' onClick={onClickImage}>
+      <div className={styles.CropImage.containerCanvasCropImageMemorize} onClick={onClickImage}>
         <i className={classNameIcon} />
       </div>
     )
@@ -110,7 +110,7 @@ const CropImageIndex = ({ onSubmit, onCancel }) => {
 
   function CanvasCropImage() {
     return (
-      <div className='container-canvas-crop-image-memorize'>
+      <div className={styles.CropImage.containerCanvasCropImageMemorize}>
         <ReactCrop
           src={image.base64}
           onImageLoaded={onLoad}
@@ -129,10 +129,10 @@ const CropImageIndex = ({ onSubmit, onCancel }) => {
 
 
   function CropImageButton() {
-    const classNameConfirmButton = 'button-confirm-memorize green-memorize'
-    const classNameCancelButton = 'button-confirm-memorize red-memorize'
+    const classNameConfirmButton = `${styles.Button.buttonConfirmMemorize} green-memorize`
+    const classNameCancelButton = `${styles.Button.buttonConfirmMemorize} red-memorize`
     return (
-      <div className='container-confirm-modal-button-memorize'>
+      <div className={styles.ModalConfirm.containerConfirmModalButtonMemorize}>
         <Button className={classNameConfirmButton} value='Confirm' onClick={onClickSubmit} />
         <Button className={classNameCancelButton} value='Cancel' onClick={onClickCancel} />
       </div>

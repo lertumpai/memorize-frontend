@@ -1,6 +1,6 @@
 @import 'public/style/style';
 
-.container-canvas-crop-image-memorize {
+.containerCanvasCropImageMemorize {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@
   border: 2px solid black;
 }
 
-.icon-crop-image-upload-memorize {
+.iconCropImageUploadMemorize {
   font-size: 300px;
   color: $blue-memorize;
 }
@@ -20,11 +20,11 @@
 }
 
 @media only screen and (max-width: $screen-600) {
-  .container-canvas-crop-image-memorize {
+  .containerCanvasCropImageMemorize {
     height: 300px;
   }
 
-  .icon-crop-image-upload-memorize {
+  .iconCropImageUploadMemorize {
     font-size: 200px;
   }
 

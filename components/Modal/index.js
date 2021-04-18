@@ -1,12 +1,12 @@
 import React from 'react'
 
-import './style.module.scss'
+import styles from '../styles'
 
-const ModalIndex = ({ children, className = '', display = 'hide' }) => {
+const ModalIndex = ({ children, className = '', display = styles.Modal.hide }) => {
   function Modal() {
-    const classNameCanvas = `modal-canvas-memorize ${display}`
-    const classNameContainerModal = `container-modal-memorize ${display}`
-    const classNameModal = `${className || 'modal-memorize'} ${display}`
+    const classNameCanvas = `${styles.Modal.modalCanvasMemorize} ${display}`
+    const classNameContainerModal = `${styles.Modal.containerModalMemorize} ${display}`
+    const classNameModal = `${className || styles.Modal.modalMemorize} ${display}`
     return (
       <>
         <div className={classNameCanvas} />

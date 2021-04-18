@@ -29,7 +29,7 @@ import Loading from '../../components/Loading/dynamic'
 import { useInfiniteScroll } from '../../utils/hooks/useInfiniteScroll'
 import { useContent } from '../../utils/hooks/useContent'
 
-import './style.module.scss'
+import CommentContainerStyles from './style.module.scss'
 
 const CommentContainerIndex = ({ articleId }) => {
   const dispatch = useDispatch()
@@ -96,8 +96,8 @@ const CommentContainerIndex = ({ articleId }) => {
   const ContainerLeftCol = useCallback(() => {
     const user = userSelectors.selectById(state, article?.author)
     return (
-      <div className='container-comment-col-memorize'>
-        <div className='container-comment-left-col-memorize'>
+      <div className={CommentContainerStyles.containerCommentColMemorize}>
+        <div className={CommentContainerStyles.containerCommentLeftColMemorize}>
           <MemorizeContentBox
             key={article?.id}
             memorize={article}
@@ -126,7 +126,7 @@ const CommentContainerIndex = ({ articleId }) => {
       const user = userSelectors.selectById(state, comment.author)
       return (
         <div
-          className='container-comment-content-box-memorize'
+          className={CommentContainerStyles.containerCommentContentBoxMemorize}
           key={comment?.id}
         >
           <MemorizeContentBox
@@ -152,8 +152,8 @@ const CommentContainerIndex = ({ articleId }) => {
 
   const ContainerRightCol = useCallback(() => {
     return (
-      <div className='container-comment-col-memorize'>
-        <div className='container-comment-right-col-memorize'>
+      <div className={CommentContainerStyles.containerCommentColMemorize}>
+        <div className={CommentContainerStyles.containerCommentRightColMemorize}>
           {CommentContentBoxes()}
           {HasMoreLoading()}
         </div>
@@ -163,7 +163,7 @@ const CommentContainerIndex = ({ articleId }) => {
 
   function CommentContainer() {
     return (
-      <div className='container-comment-memorize'>
+      <div className={CommentContainerStyles.containerCommentMemorize}>
         {ContainerLeftCol()}
         {ContainerRightCol()}
       </div>
