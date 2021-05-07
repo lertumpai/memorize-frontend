@@ -60,3 +60,14 @@ div {
   padding: 0px 10px;
   font-size: 18px;
 }
+
+.ReactCrop__image {
+  max-width: 100%;
+  max-height: 496px;
+}
+
+@media only screen and (max-width: $screen-600) {
+  .ReactCrop__image {
+    max-height: 296px;
+  }
+}
